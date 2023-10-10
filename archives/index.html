@@ -34,6 +34,8 @@
 
 
 
+<script src="/js/lib/search.js"></script>
+
 
 
 <link rel="stylesheet" href="/css/main.css" />
@@ -147,6 +149,8 @@
             
 <div id="archives">
     
+    <input id="search-bar" class="input" placeholder="搜索" v-model="rawSearch" />
+    
     <div id="timeline-wrap" ref="timeline">
         
         <div class="timeline" data-title="helloworld">
@@ -181,7 +185,7 @@
                         
                         <span class="tag">
                             
-                            <a href="/tags/%E6%B5%8B%E8%AF%95/" style="color: #03a9f4">测试</a>
+                            <a href="/tags/%E6%B5%8B%E8%AF%95/" style="color: #ffa2c4">测试</a>
                         </span>
                         
                     </span>

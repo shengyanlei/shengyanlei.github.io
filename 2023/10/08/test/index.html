@@ -36,6 +36,9 @@
 
 
 
+<script src="https://cdn.staticfile.org/gitalk/1.8.0/gitalk.min.js"></script>
+<link rel="stylesheet" href="https://cdn.staticfile.org/gitalk/1.8.0/gitalk.min.css" />
+
 
 
 
@@ -169,7 +172,7 @@
             
             <span class="tag">
                 
-                <a href="/tags/%E6%B5%8B%E8%AF%95/" style="color: #ff7d73">测试</a>
+                <a href="/tags/%E6%B5%8B%E8%AF%95/" style="color: #00bcd4">测试</a>
             </span>
             
         </span>
@@ -187,6 +190,10 @@
     </div>
     
     
+    
+    <div id="comment">
+        <div id="gitalk-container"></div>
+    </div>
     
     
     
@@ -224,6 +231,20 @@
     <script src="/js/main.js"></script>
     
     
+
+<script>
+    const gitalk = new Gitalk({
+        clientID: "",
+        clientSecret: "",
+        repo: "https://shengyanlei.github.io/",
+        owner: "shengyanlei",
+        admin: "shengyanlei".split(","),
+        language: "zh-CN",
+        id: location.pathname,
+        
+    })
+    gitalk.render("gitalk-container");
+</script>
 
 
 
