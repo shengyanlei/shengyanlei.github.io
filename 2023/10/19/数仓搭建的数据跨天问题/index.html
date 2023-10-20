@@ -16,25 +16,27 @@
   <meta name="author" content="shyl">
   <meta name="keywords" content="">
   
-    <meta name="description" content="这是摘要">
+    <meta name="description" content="在电商的离线数仓搭建中，进行dwd层订单域的设计中，普遍会出现订单数据跨天的情况，对于边界数据该如何处理。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="fluid使用指南">
-<meta property="og:url" content="http://example.com/2023/10/13/fluid%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/index.html">
+<meta property="og:title" content="数仓搭建的数据跨天问题">
+<meta property="og:url" content="http://example.com/2023/10/19/%E6%95%B0%E4%BB%93%E6%90%AD%E5%BB%BA%E7%9A%84%E6%95%B0%E6%8D%AE%E8%B7%A8%E5%A4%A9%E9%97%AE%E9%A2%98/index.html">
 <meta property="og:site_name" content="碎念随风">
-<meta property="og:description" content="这是摘要">
+<meta property="og:description" content="在电商的离线数仓搭建中，进行dwd层订单域的设计中，普遍会出现订单数据跨天的情况，对于边界数据该如何处理。">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://note.youdao.com/yws/api/personal/file/WEBaaa031cfd37fe1a3dd18b7ec91942b83?method=download&shareKey=d589454301282c7228d3591bfe629136">
-<meta property="article:published_time" content="2023-10-13T07:17:59.000Z">
-<meta property="article:modified_time" content="2023-10-20T03:12:04.693Z">
+<meta property="og:image" content="https://wallpapercave.com/wp/wp13010199.jpg">
+<meta property="article:published_time" content="2023-10-19T09:19:32.000Z">
+<meta property="article:modified_time" content="2023-10-20T03:14:07.239Z">
 <meta property="article:author" content="shyl">
+<meta property="article:tag" content="总结">
+<meta property="article:tag" content="数仓搭建">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://note.youdao.com/yws/api/personal/file/WEBaaa031cfd37fe1a3dd18b7ec91942b83?method=download&shareKey=d589454301282c7228d3591bfe629136">
+<meta name="twitter:image" content="https://wallpapercave.com/wp/wp13010199.jpg">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>fluid使用指南 - 碎念随风</title>
+  <title>数仓搭建的数据跨天问题 - 碎念随风</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -233,13 +235,13 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/img/article_index/default.png') no-repeat center center; background-size: cover;">
+     style="background: url('https://wallpapercave.com/wp/wp13010199.jpg') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="fluid使用指南"></span>
+            <span id="subtitle" data-typed-text="数仓搭建的数据跨天问题"></span>
           
         </div>
 
@@ -255,8 +257,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-10-13 15:17" pubdate>
-          2023年10月13日 下午
+        <time datetime="2023-10-19 17:19" pubdate>
+          2023年10月19日 下午
         </time>
       </span>
     
@@ -267,7 +269,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          400 字
+          749 字
         
       </span>
     
@@ -278,7 +280,7 @@
         
         
         
-          4 分钟
+          7 分钟
         
       </span>
     
@@ -336,12 +338,12 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">fluid使用指南</h1>
+            <h1 id="seo-header">数仓搭建的数据跨天问题</h1>
             
               <p class="note note-info">
                 
                   
-                    本文最后更新于：3 分钟前
+                    本文最后更新于：1 分钟前
                   
                 
               </p>
@@ -349,24 +351,22 @@
             
               <div class="markdown-body">
                 
-                <h3 id="1-文章中使用主题内置的便签"><a href="#1-文章中使用主题内置的便签" class="headerlink" title="1.文章中使用主题内置的便签"></a>1.文章中使用主题内置的便签</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;note note-primary&quot;</span>&gt;</span>标签<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span><br></code></pre></td></tr></table></figure>
+                <!-- more -->
 
-<p>使用效果图如下：</p>
-<p><img src="https://note.youdao.com/yws/api/personal/file/WEBaefe0d8151326e6297d0a1c2604201a5?method=download&shareKey=e76161d555ba41618cd18f07fda59b2e" srcset="/img/loading.gif" lazyload alt="效果图"></p>
-<h3 id="2-文章中链接其它文章"><a href="#2-文章中链接其它文章" class="headerlink" title="2.文章中链接其它文章"></a>2.文章中链接其它文章</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;&#123;% post_path 文章名 %&#125;&quot;</span>&gt;</span>转到【文章名】<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<h3 id="一、问题背景"><a href="#一、问题背景" class="headerlink" title="一、问题背景"></a>一、问题背景</h3><p>在电商的离线数仓搭建中，进行dwd层订单域的设计中，普遍会出现订单数据跨天的情况，对于边界数据该如何处理。</p>
+<h3 id="二、业务背景"><a href="#二、业务背景" class="headerlink" title="二、业务背景"></a>二、业务背景</h3><p>业务表的关系如下图所示：</p>
+<img src='https://note.youdao.com/yws/api/personal/file/WEBe8594c5b923fa1ad10c34399375740d0?method=download&shareKey=709a969272424f2a2da8e4550013b845'>
 
-<p>示例：<a href="/2023/10/08/md%E8%AF%AD%E6%B3%95/">转到【md语法】</a></p>
-<h3 id="3-摘要的处理"><a href="#3-摘要的处理" class="headerlink" title="3.摘要的处理"></a>3.摘要的处理</h3><p>手动指定摘要，使用 <code>&lt;!-- more --&gt;</code> MD文档里划分，如：</p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs markdown">正文的一部分作为摘要<br>&lt;!-- more --&gt;<br>余下的正文<br></code></pre></td></tr></table></figure>
-
-<p>或者在 <a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/front-matter">front-matter (opens new window)</a>里设置 <code>excerpt</code> 字段，如：</p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-meta">---</span><br><span class="hljs-attr">title:</span> <span class="hljs-string">这是标题</span><br><span class="hljs-attr">excerpt:</span> <span class="hljs-string">这是摘要</span><br><span class="hljs-meta">---</span><br></code></pre></td></tr></table></figure>
-
-<p class="note note-primary">Tips:<br>
-    优先级: 手动摘要 > 自动摘要<br>
-    如果关闭自动摘要，并且没有设置手动摘要，摘要区域空白<br>
-    无论哪种摘要都最多显示 3 行，当屏幕宽度不足时会隐藏部分摘要。</p>
-
+<h5 id="举例说明："><a href="#举例说明：" class="headerlink" title="举例说明："></a>举例说明：</h5><p>​		假设某用户在2023-08-18 23:59分下单，在 2023-08-19 0：01完成支付。在业务系统的中数据的流转是：</p>
+<ol>
+<li>下单会在order_info【订单信息表】,order_detail【订单详情表】，order_detail_coupon【订单明细优惠券关联表】,order_detail_activity【订单明细活动关联表】会新增一条订单相关数据。</li>
+<li>order_info【订单信息表】是一张状态表，数据发生变化，会update相关数据，比如订单状态【从未支付到已支付】而order_detail【订单详情表】只记录了订单的详细信息，基本上都是维度信息，不会发生变动。</li>
+<li>我们搭建离线数仓中，增量数据同步使用的maxwell，全量数据同步使用的是datax，订单相关的表我们选择的是maxwell，众所周知，maxwell同步数据基本上分为两类，insert【新增的数据】和update【更新的数据】。</li>
+<li>现想要制作一张用户下单成功的事务事实表，由于用户订单成功状态是在19日更新的，所以计算该条下单成功是在19日，而订单的详细信息是18日的时候插入订单详细表中的，在数仓中数据18日的分区。</li>
+<li>所以我们加工19日分区的下单成功表，需要关联的是18日，19日的订单详情表。</li>
+<li>一般数仓的加工是T+1,所以 2023-08-20 计算2023-08-19的数据，插入2023-08-19分区。 内部需要关联2023-08-18,2023-08-19 的数据。、</li>
+</ol>
+<h3 id="问题总结"><a href="#问题总结" class="headerlink" title="问题总结"></a>问题总结</h3><p>数仓中的业务过程要仔细理解，根据表的更新逻辑，数据同步的方式，选择出合理的数据加工方式。</p>
 
                 
               </div>
@@ -385,12 +385,12 @@
     
       <span class="category-chain">
         
-  <a href="/categories/%E6%95%99%E7%A8%8B/" class="category-chain-item">教程</a>
+  <a href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/" class="category-chain-item">大数据</a>
   
   
     <span>></span>
     
-  <a href="/categories/%E6%95%99%E7%A8%8B/Fluid%E4%B8%BB%E9%A2%98/" class="category-chain-item">Fluid主题</a>
+  <a href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/%E7%A6%BB%E7%BA%BF%E6%95%B0%E4%BB%93/" class="category-chain-item">离线数仓</a>
   
   
 
@@ -404,6 +404,15 @@
     </div>
   
   
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E6%80%BB%E7%BB%93/" class="print-no-link">#总结</a>
+      
+        <a href="/tags/%E6%95%B0%E4%BB%93%E6%90%AD%E5%BB%BA/" class="print-no-link">#数仓搭建</a>
+      
+    </div>
+  
 </div>
 
 
@@ -412,8 +421,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>fluid使用指南</div>
-      <div>http://example.com/2023/10/13/fluid使用指南/</div>
+      <div>数仓搭建的数据跨天问题</div>
+      <div>http://example.com/2023/10/19/数仓搭建的数据跨天问题/</div>
     </div>
     <div class="license-meta">
       
@@ -425,7 +434,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2023年10月13日</div>
+          <div>2023年10月19日</div>
         </div>
       
       
@@ -457,18 +466,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/10/19/%E6%95%B0%E4%BB%93%E6%90%AD%E5%BB%BA%E7%9A%84%E6%95%B0%E6%8D%AE%E8%B7%A8%E5%A4%A9%E9%97%AE%E9%A2%98/" title="数仓搭建的数据跨天问题">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">数仓搭建的数据跨天问题</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/10/13/%E6%B5%8B%E8%AF%95%E5%9B%BE%E5%BA%8A/" title="测试图床">
-                        <span class="hidden-mobile">测试图床</span>
+                      <a href="/2023/10/13/fluid%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/" title="fluid使用指南">
+                        <span class="hidden-mobile">fluid使用指南</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
