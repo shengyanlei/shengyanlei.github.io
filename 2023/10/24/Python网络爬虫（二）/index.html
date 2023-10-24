@@ -16,27 +16,27 @@
   <meta name="author" content="shyl">
   <meta name="keywords" content="">
   
-    <meta name="description" content="在电商的离线数仓搭建中，进行dwd层订单域的设计中，普遍会出现订单数据跨天的情况，对于边界数据该如何处理。">
+    <meta name="description" content="爬虫相关库学习">
 <meta property="og:type" content="article">
-<meta property="og:title" content="数仓搭建的数据跨天问题">
-<meta property="og:url" content="http://example.com/2023/10/19/%E6%95%B0%E4%BB%93%E6%90%AD%E5%BB%BA%E7%9A%84%E6%95%B0%E6%8D%AE%E8%B7%A8%E5%A4%A9%E9%97%AE%E9%A2%98/index.html">
+<meta property="og:title" content="Python网络爬虫（二）">
+<meta property="og:url" content="http://example.com/2023/10/24/Python%E7%BD%91%E7%BB%9C%E7%88%AC%E8%99%AB%EF%BC%88%E4%BA%8C%EF%BC%89/index.html">
 <meta property="og:site_name" content="碎念随风">
-<meta property="og:description" content="在电商的离线数仓搭建中，进行dwd层订单域的设计中，普遍会出现订单数据跨天的情况，对于边界数据该如何处理。">
+<meta property="og:description" content="爬虫相关库学习">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://wallpapercave.com/wp/wp13010199.jpg">
-<meta property="article:published_time" content="2023-10-19T09:19:32.000Z">
-<meta property="article:modified_time" content="2023-10-20T03:17:43.814Z">
+<meta property="og:image" content="https://note.youdao.com/yws/api/personal/file/WEBfd61fce1198561c0adeabacd9d29194a?method=download&shareKey=78367fe2ada0a536acba3bf932a8b467">
+<meta property="article:published_time" content="2023-10-24T07:34:44.000Z">
+<meta property="article:modified_time" content="2023-10-24T08:27:07.189Z">
 <meta property="article:author" content="shyl">
-<meta property="article:tag" content="总结">
-<meta property="article:tag" content="数仓搭建">
+<meta property="article:tag" content="Python">
+<meta property="article:tag" content="爬虫">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://wallpapercave.com/wp/wp13010199.jpg">
+<meta name="twitter:image" content="https://note.youdao.com/yws/api/personal/file/WEBfd61fce1198561c0adeabacd9d29194a?method=download&shareKey=78367fe2ada0a536acba3bf932a8b467">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>数仓搭建的数据跨天问题 - 碎念随风</title>
+  <title>Python网络爬虫（二） - 碎念随风</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -235,13 +235,13 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('https://wallpapercave.com/wp/wp13010199.jpg') no-repeat center center; background-size: cover;">
+     style="background: url('https://note.youdao.com/yws/api/personal/file/WEBfd61fce1198561c0adeabacd9d29194a?method=download&shareKey=78367fe2ada0a536acba3bf932a8b467') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="数仓搭建的数据跨天问题"></span>
+            <span id="subtitle" data-typed-text="Python网络爬虫（二）"></span>
           
         </div>
 
@@ -257,8 +257,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-10-19 17:19" pubdate>
-          2023年10月19日 下午
+        <time datetime="2023-10-24 15:34" pubdate>
+          2023年10月24日 下午
         </time>
       </span>
     
@@ -269,7 +269,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          749 字
+          73 字
         
       </span>
     
@@ -280,7 +280,7 @@
         
         
         
-          7 分钟
+          1 分钟
         
       </span>
     
@@ -338,12 +338,12 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">数仓搭建的数据跨天问题</h1>
+            <h1 id="seo-header">Python网络爬虫（二）</h1>
             
               <p class="note note-info">
                 
                   
-                    本文最后更新于：4 天前
+                    本文最后更新于：1 小时前
                   
                 
               </p>
@@ -351,20 +351,9 @@
             
               <div class="markdown-body">
                 
-                <h3 id="一、问题背景"><a href="#一、问题背景" class="headerlink" title="一、问题背景"></a>一、问题背景</h3><p>在电商的离线数仓搭建中，进行dwd层订单域的设计中，普遍会出现订单数据跨天的情况，对于边界数据该如何处理。</p>
-<h3 id="二、业务背景"><a href="#二、业务背景" class="headerlink" title="二、业务背景"></a>二、业务背景</h3><p>业务表的关系如下图所示：</p>
-<img src='https://note.youdao.com/yws/api/personal/file/WEBe8594c5b923fa1ad10c34399375740d0?method=download&shareKey=709a969272424f2a2da8e4550013b845'>
+                <h3 id="一、request库"><a href="#一、request库" class="headerlink" title="一、request库"></a>一、request库</h3><p>Requests是一个优雅而简单的PythonHTTP库,这是官方的文档：<a target="_blank" rel="noopener" href="https://requests.readthedocs.io/en/latest/">request官方文档</a></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> requests<br></code></pre></td></tr></table></figure>
 
-<h5 id="举例说明："><a href="#举例说明：" class="headerlink" title="举例说明："></a>举例说明：</h5><p>​		假设某用户在2023-08-18 23:59分下单，在 2023-08-19 0：01完成支付。在业务系统的中数据的流转是：</p>
-<ol>
-<li>下单会在order_info【订单信息表】,order_detail【订单详情表】，order_detail_coupon【订单明细优惠券关联表】,order_detail_activity【订单明细活动关联表】会新增一条订单相关数据。</li>
-<li>order_info【订单信息表】是一张状态表，数据发生变化，会update相关数据，比如订单状态【从未支付到已支付】而order_detail【订单详情表】只记录了订单的详细信息，基本上都是维度信息，不会发生变动。</li>
-<li>我们搭建离线数仓中，增量数据同步使用的maxwell，全量数据同步使用的是datax，订单相关的表我们选择的是maxwell，众所周知，maxwell同步数据基本上分为两类，insert【新增的数据】和update【更新的数据】。</li>
-<li>现想要制作一张用户下单成功的事务事实表，由于用户订单成功状态是在19日更新的，所以计算该条下单成功是在19日，而订单的详细信息是18日的时候插入订单详细表中的，在数仓中数据18日的分区。</li>
-<li>所以我们加工19日分区的下单成功表，需要关联的是18日，19日的订单详情表。</li>
-<li>一般数仓的加工是T+1,所以 2023-08-20 计算2023-08-19的数据，插入2023-08-19分区。 内部需要关联2023-08-18,2023-08-19 的数据。、</li>
-</ol>
-<h3 id="问题总结"><a href="#问题总结" class="headerlink" title="问题总结"></a>问题总结</h3><p>数仓中的业务过程要仔细理解，根据表的更新逻辑，数据同步的方式，选择出合理的数据加工方式。</p>
 
                 
               </div>
@@ -383,13 +372,20 @@
     
       <span class="category-chain">
         
-  <a href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/" class="category-chain-item">大数据</a>
+  <a href="/categories/%E6%95%99%E7%A8%8B/" class="category-chain-item">教程</a>
   
   
     <span>></span>
     
-  <a href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/%E7%A6%BB%E7%BA%BF%E6%95%B0%E4%BB%93/" class="category-chain-item">离线数仓</a>
+  <a href="/categories/%E6%95%99%E7%A8%8B/Python/" class="category-chain-item">Python</a>
   
+  
+    <span>></span>
+    
+  <a href="/categories/%E6%95%99%E7%A8%8B/Python/%E7%88%AC%E8%99%AB/" class="category-chain-item">爬虫</a>
+  
+  
+
   
 
   
@@ -405,9 +401,9 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E6%80%BB%E7%BB%93/" class="print-no-link">#总结</a>
+        <a href="/tags/Python/" class="print-no-link">#Python</a>
       
-        <a href="/tags/%E6%95%B0%E4%BB%93%E6%90%AD%E5%BB%BA/" class="print-no-link">#数仓搭建</a>
+        <a href="/tags/%E7%88%AC%E8%99%AB/" class="print-no-link">#爬虫</a>
       
     </div>
   
@@ -419,8 +415,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>数仓搭建的数据跨天问题</div>
-      <div>http://example.com/2023/10/19/数仓搭建的数据跨天问题/</div>
+      <div>Python网络爬虫（二）</div>
+      <div>http://example.com/2023/10/24/Python网络爬虫（二）/</div>
     </div>
     <div class="license-meta">
       
@@ -432,7 +428,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2023年10月19日</div>
+          <div>2023年10月24日</div>
         </div>
       
       
@@ -464,18 +460,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/10/24/Python%E7%BD%91%E7%BB%9C%E7%88%AC%E8%99%AB%E4%B8%80/" title="Python网络爬虫（一）">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Python网络爬虫（一）</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/10/13/fluid%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/" title="fluid使用指南">
-                        <span class="hidden-mobile">fluid使用指南</span>
+                      <a href="/2023/10/24/Python%E7%BD%91%E7%BB%9C%E7%88%AC%E8%99%AB%E4%B8%80/" title="Python网络爬虫（一）">
+                        <span class="hidden-mobile">Python网络爬虫（一）</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
