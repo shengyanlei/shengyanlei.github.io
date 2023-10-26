@@ -23,14 +23,14 @@
 <meta property="og:site_name" content="碎念随风">
 <meta property="og:description" content="爬虫相关库学习">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://note.youdao.com/yws/api/personal/file/WEBfd61fce1198561c0adeabacd9d29194a?method=download&shareKey=78367fe2ada0a536acba3bf932a8b467">
+<meta property="og:image" content="https://note.youdao.com/yws/api/personal/file/WEBe123b98470d50153f69a2a1bf423a181?method=download&shareKey=99870fc289521c395ea62147ba3ed972">
 <meta property="article:published_time" content="2023-10-24T07:34:44.000Z">
-<meta property="article:modified_time" content="2023-10-24T08:27:07.189Z">
+<meta property="article:modified_time" content="2023-10-26T10:03:37.417Z">
 <meta property="article:author" content="shyl">
 <meta property="article:tag" content="Python">
 <meta property="article:tag" content="爬虫">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://note.youdao.com/yws/api/personal/file/WEBfd61fce1198561c0adeabacd9d29194a?method=download&shareKey=78367fe2ada0a536acba3bf932a8b467">
+<meta name="twitter:image" content="https://note.youdao.com/yws/api/personal/file/WEBe123b98470d50153f69a2a1bf423a181?method=download&shareKey=99870fc289521c395ea62147ba3ed972">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
@@ -269,7 +269,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          73 字
+          4.9k 字
         
       </span>
     
@@ -280,7 +280,7 @@
         
         
         
-          1 分钟
+          41 分钟
         
       </span>
     
@@ -343,7 +343,7 @@
               <p class="note note-info">
                 
                   
-                    本文最后更新于：1 小时前
+                    本文最后更新于：几秒前
                   
                 
               </p>
@@ -351,8 +351,193 @@
             
               <div class="markdown-body">
                 
-                <h3 id="一、request库"><a href="#一、request库" class="headerlink" title="一、request库"></a>一、request库</h3><p>Requests是一个优雅而简单的PythonHTTP库,这是官方的文档：<a target="_blank" rel="noopener" href="https://requests.readthedocs.io/en/latest/">request官方文档</a></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> requests<br></code></pre></td></tr></table></figure>
+                <h3 id="一、request库"><a href="#一、request库" class="headerlink" title="一、request库"></a>一、request库</h3><p>Requests是一个常用的 HTTP 请求库，可以方便地向网站发送 HTTP 请求，并获取响应结果。这是官方的文档：<a target="_blank" rel="noopener" href="https://requests.readthedocs.io/en/latest/">request官方文档</a>（官方文档不太容易看懂😹）可以选择菜鸟教程里面的requests库讲解<a target="_blank" rel="noopener" href="https://www.runoob.com/python3/python-requests.html">菜鸟教程</a>。</p>
+<table>
+<thead>
+<tr>
+<th align="left">属性或方法</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">apparent_encoding</td>
+<td align="left">编码方式</td>
+</tr>
+<tr>
+<td align="left">close()</td>
+<td align="left">关闭与服务器的连接</td>
+</tr>
+<tr>
+<td align="left">content</td>
+<td align="left">返回响应的内容，以字节为单位</td>
+</tr>
+<tr>
+<td align="left">cookies</td>
+<td align="left">返回一个 CookieJar 对象，包含了从服务器发回的 cookie</td>
+</tr>
+<tr>
+<td align="left">elapsed</td>
+<td align="left">返回一个 timedelta 对象，包含了从发送请求到响应到达之间经过的时间量，可以用于测试响应速度。比如 r.elapsed.microseconds 表示响应到达需要多少微秒。</td>
+</tr>
+<tr>
+<td align="left">encoding</td>
+<td align="left">解码 r.text 的编码方式</td>
+</tr>
+<tr>
+<td align="left">headers</td>
+<td align="left">返回响应头，字典格式</td>
+</tr>
+<tr>
+<td align="left">history</td>
+<td align="left">返回包含请求历史的响应对象列表（url）</td>
+</tr>
+<tr>
+<td align="left">is_permanent_redirect</td>
+<td align="left">如果响应是永久重定向的 url，则返回 True，否则返回 False</td>
+</tr>
+<tr>
+<td align="left">is_redirect</td>
+<td align="left">如果响应被重定向，则返回 True，否则返回 False</td>
+</tr>
+<tr>
+<td align="left">iter_content()</td>
+<td align="left">迭代响应</td>
+</tr>
+<tr>
+<td align="left">iter_lines()</td>
+<td align="left">迭代响应的行</td>
+</tr>
+<tr>
+<td align="left">json()</td>
+<td align="left">返回结果的 JSON 对象 (结果需要以 JSON 格式编写的，否则会引发错误)</td>
+</tr>
+<tr>
+<td align="left">links</td>
+<td align="left">返回响应的解析头链接</td>
+</tr>
+<tr>
+<td align="left">next</td>
+<td align="left">返回重定向链中下一个请求的 PreparedRequest 对象</td>
+</tr>
+<tr>
+<td align="left">ok</td>
+<td align="left">检查 “status_code” 的值，如果小于400，则返回 True，如果不小于 400，则返回 False</td>
+</tr>
+<tr>
+<td align="left">raise_for_status()</td>
+<td align="left">如果发生错误，方法返回一个 HTTPError 对象</td>
+</tr>
+<tr>
+<td align="left">reason</td>
+<td align="left">响应状态的描述，比如 “Not Found” 或 “OK”</td>
+</tr>
+<tr>
+<td align="left">request</td>
+<td align="left">返回请求此响应的请求对象</td>
+</tr>
+<tr>
+<td align="left">status_code</td>
+<td align="left">返回 http 的状态码，比如 404 和 200（200 是 OK，404 是 Not Found）</td>
+</tr>
+<tr>
+<td align="left">text</td>
+<td align="left">返回响应的内容，unicode 类型数据</td>
+</tr>
+<tr>
+<td align="left">url</td>
+<td align="left">返回响应的 URL</td>
+</tr>
+</tbody></table>
+<h3 id="二、Beautiful-soup库"><a href="#二、Beautiful-soup库" class="headerlink" title="二、Beautiful soup库"></a>二、Beautiful soup库</h3><p><a target="_blank" rel="noopener" href="https://beautifulsoup.cn/">Beautiful Soup</a>是一个可以从HTML或XML文件中提取数据的Python库.它能够通过你喜欢的转换器实现惯用的文档导航,查找,修改文档的方式.Beautiful Soup会帮你节省数小时甚至数天的工作时间.</p>
+<p>下表列出了主要的解析器,以及它们的优缺点:</p>
+<table>
+<thead>
+<tr>
+<th align="left">解析器</th>
+<th align="left">使用方法</th>
+<th align="left">优势</th>
+<th align="left">劣势</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">Python标准库</td>
+<td align="left"><code>BeautifulSoup(markup, &quot;html.parser&quot;)</code></td>
+<td align="left">Python的内置标准库执行速度适中文档容错能力强</td>
+<td align="left">Python 2.7.3 or 3.2.2)前 的版本中文档容错能力差</td>
+</tr>
+<tr>
+<td align="left">lxml HTML 解析器</td>
+<td align="left"><code>BeautifulSoup(markup, &quot;lxml&quot;)</code></td>
+<td align="left">速度快文档容错能力强</td>
+<td align="left">需要安装C语言库</td>
+</tr>
+<tr>
+<td align="left">lxml XML 解析器</td>
+<td align="left"><code>BeautifulSoup(markup, [&quot;lxml-xml&quot;])``BeautifulSoup(markup, &quot;xml&quot;)</code></td>
+<td align="left">速度快唯一支持XML的解析器</td>
+<td align="left">需要安装C语言库</td>
+</tr>
+<tr>
+<td align="left">html5lib</td>
+<td align="left"><code>BeautifulSoup(markup, &quot;html5lib&quot;)</code></td>
+<td align="left">最好的容错性以浏览器的方式解析文档生成HTML5格式的文档</td>
+<td align="left">速度慢不依赖外部扩展</td>
+</tr>
+</tbody></table>
+<p>将一段文档传入BeautifulSoup 的构造方法,就能得到一个文档的对象, 可以传入一段字符串或一个文件句柄.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> bs4 <span class="hljs-keyword">import</span> BeautifulSoup<br><br>soup = BeautifulSoup(<span class="hljs-built_in">open</span>(<span class="hljs-string">&quot;index.html&quot;</span>))<br><br>soup = BeautifulSoup(<span class="hljs-string">&quot;&lt;html&gt;data&lt;/html&gt;&quot;</span>)<br></code></pre></td></tr></table></figure>
+
+<p>Beautiful Soup将复杂HTML文档转换成一个复杂的树形结构,每个节点都是Python对象,所有对象可以归纳为4种: <code>Tag</code> , <code>NavigableString</code> , <code>BeautifulSoup</code> , <code>Comment</code> .</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs python">html_doc = <span class="hljs-string">&quot;&quot;&quot;</span><br><span class="hljs-string">&lt;html&gt;&lt;head&gt;&lt;title&gt;The Dormouse&#x27;s story&lt;/title&gt;&lt;/head&gt;</span><br><span class="hljs-string">&lt;body&gt;</span><br><span class="hljs-string">&lt;p class=&quot;title&quot;&gt;&lt;b&gt;The Dormouse&#x27;s story&lt;/b&gt;&lt;/p&gt;</span><br><span class="hljs-string"></span><br><span class="hljs-string">&lt;p class=&quot;story&quot;&gt;Once upon a time there were three little sisters; and their names were</span><br><span class="hljs-string">&lt;a href=&quot;http://example.com/elsie&quot; class=&quot;sister&quot; id=&quot;link1&quot;&gt;Elsie&lt;/a&gt;,</span><br><span class="hljs-string">&lt;a href=&quot;http://example.com/lacie&quot; class=&quot;sister&quot; id=&quot;link2&quot;&gt;Lacie&lt;/a&gt; and</span><br><span class="hljs-string">&lt;a href=&quot;http://example.com/tillie&quot; class=&quot;sister&quot; id=&quot;link3&quot;&gt;Tillie&lt;/a&gt;;</span><br><span class="hljs-string">and they lived at the bottom of a well.&lt;/p&gt;</span><br><span class="hljs-string"></span><br><span class="hljs-string">&lt;p class=&quot;story&quot;&gt;...&lt;/p&gt;</span><br><span class="hljs-string">&quot;&quot;&quot;</span><br></code></pre></td></tr></table></figure>
+
+<p class="note note-danger">以下代码块中  `#` 后面的内容太一般代指输出结果</p>
+
+<ol>
+<li><strong>Tag</strong></li>
+</ol>
+<p><code>Tag</code> 对象与XML或HTML原生文档中的tag相同:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs python">soup = BeautifulSoup(<span class="hljs-string">&#x27;&lt;b class=&quot;boldest&quot;&gt;Extremely bold&lt;/b&gt;&#x27;</span>)<br>tag = soup.b<br><span class="hljs-built_in">type</span>(tag)<br><span class="hljs-comment"># &lt;class &#x27;bs4.element.Tag&#x27;&gt;</span><br></code></pre></td></tr></table></figure>
+
+<p><font style='color:red'>tag中最重要的属性: name和attributes</font></p>
+<ul>
+<li><em><strong>Name</strong></em>:每个tag都有自己的名字,通过 <code>.name</code> 来获取:</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python">soup.a.name<br><span class="hljs-comment"># a</span><br></code></pre></td></tr></table></figure>
+
+<p>如果改变了tag的name,那将影响所有通过当前Beautiful Soup对象生成的HTML文档:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python">soup.a.name=<span class="hljs-string">&#x27;你好&#x27;</span> <span class="hljs-comment">#只会修改第一个a标签</span><br><span class="hljs-built_in">print</span>(soup.你好)<br><span class="hljs-comment">#&lt;你好 class=&quot;sister&quot; href=&quot;http://example.com/elsie&quot; id=&quot;link1&quot;&gt;Elsie&lt;/你好&gt;</span><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><em><strong>Attributes</strong></em>:一个tag可能有很多个属性. tag <code>&lt;a href=&quot;http://example.com/elsie&quot; class=&quot;sister&quot; id=&quot;link1&quot;&gt;Elsie&lt;/a&gt;,</code>有一个 “class” 的属性,值为 “sister” .<font style='color:red'> tag的属性的操作方法与字典相同;可以使用<code>.attrs</code>老获取全部属性 </font></li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs python">soup.a[<span class="hljs-string">&#x27;class&#x27;</span>]<br><span class="hljs-comment">#[&#x27;sister&#x27;]</span><br>soup.a[<span class="hljs-string">&#x27;id&#x27;</span>]<br><span class="hljs-comment"># link1</span><br>soup.a.attrs<br><span class="hljs-comment"># &#123;&#x27;href&#x27;: &#x27;http://example.com/elsie&#x27;, &#x27;class&#x27;: [&#x27;sister&#x27;], &#x27;id&#x27;: &#x27;link1&#x27;&#125;</span><br></code></pre></td></tr></table></figure>
+
+<p class="note note-primary">tag的属性可以被添加,删除或修改.tag的属性操作方法与字典一样<br>一下方法 只针对遇到的第一个标签的属性</p>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#新增</span><br>soup.a[<span class="hljs-string">&#x27;insert&#x27;</span>]=<span class="hljs-string">&#x27;增加&#x27;</span><br><span class="hljs-built_in">print</span>(soup.a)<br><span class="hljs-comment"># &lt;a class=&quot;sister&quot; href=&quot;http://example.com/elsie&quot; id=&quot;link1&quot; insert=&quot;增加&quot;&gt;Elsie&lt;/a&gt;</span><br><br><span class="hljs-comment">#删除</span><br><span class="hljs-keyword">del</span> soup.a[<span class="hljs-string">&#x27;class&#x27;</span>]<br><span class="hljs-built_in">print</span>(soup.a)<br><span class="hljs-comment"># &lt;a href=&quot;http://example.com/elsie&quot; id=&quot;link1&quot;&gt;Elsie&lt;/a&gt;</span><br><br><span class="hljs-comment"># 修改</span><br>soup.a[<span class="hljs-string">&#x27;class&#x27;</span>]=<span class="hljs-string">&#x27;brother&#x27;</span><br><span class="hljs-built_in">print</span>(soup.a.attrs)<br><span class="hljs-comment"># &#123;&#x27;href&#x27;: &#x27;http://example.com/elsie&#x27;, &#x27;class&#x27;: &#x27;brother&#x27;, &#x27;id&#x27;: &#x27;link1&#x27;&#125;</span><br></code></pre></td></tr></table></figure>
+
+<ol start="2">
+<li><strong>NavigableString</strong>（可以遍历的字符串）</li>
+</ol>
+<p>字符串常被包含在tag内.Beautiful Soup用 <code>NavigableString</code> 类来包装tag中的字符串:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs python">soup.a.string<br><span class="hljs-comment"># Elsie</span><br><span class="hljs-built_in">type</span>(soup.a.string)<br>&lt;<span class="hljs-keyword">class</span> <span class="hljs-string">&#x27;bs4.element.NavigableString&#x27;</span>&gt;<br></code></pre></td></tr></table></figure>
+
+<p><font style='color:red'>tag中包含的字符串不能编辑,但是可以被替换成其它的字符串,用 replace_with() 方法</font></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python">soup.a.string.replace_with(<span class="hljs-string">&#x27;你好&#x27;</span>)<br><span class="hljs-built_in">print</span>(soup.a)<br><span class="hljs-comment"># &lt;a class=&quot;sister&quot; href=&quot;http://example.com/elsie&quot; id=&quot;link1&quot;&gt;你好&lt;/a&gt;</span><br></code></pre></td></tr></table></figure>
+
+<ol start="3">
+<li><strong>BeautifulSoup</strong></li>
+</ol>
+<p><code>BeautifulSoup</code> 对象表示的是一个文档的全部内容.大部分时候,可以把它当作 <code>Tag</code> 对象,它支持 遍历文档树 和 搜索文档树中描述的大部分的方法。</p>
+<ol start="4">
+<li><strong>comment</strong></li>
+</ol>
+<p><code>Tag</code> , <code>NavigableString</code> , <code>BeautifulSoup</code> 几乎覆盖了html和xml中的所有内容,但是还有一些特殊对象.容易让人担心的内容是文档的注释部分:</p>
+<ul>
+<li>Coment对象是一个特殊类型的NavigableString对象。</li>
+<li>如果标签内部的内容是注释，例如：<code>&lt;!-- Elsie --&gt;</code>。那么该NavigableSring对象会转换成Comment对象，并且会把注释符号去掉。</li>
+</ul>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs py">markup = <span class="hljs-string">&quot;&lt;b&gt;&lt;!--Hey, buddy. Want to buy a used parser?--&gt;&lt;/b&gt;&quot;</span><br>soup = BeautifulSoup(markup,<span class="hljs-string">&#x27;lxml&#x27;</span>)<br><span class="hljs-built_in">print</span>(soup.b.text+<span class="hljs-string">&#x27;输出为空&#x27;</span>)<br><span class="hljs-comment">#输出为空</span><br>comment = soup.b.string<br><span class="hljs-built_in">print</span>(comment)<br><span class="hljs-comment"># Hey, buddy. Want to buy a used parser?</span><br><span class="hljs-built_in">print</span>(<span class="hljs-built_in">type</span>(comment))<br><span class="hljs-comment"># &lt;class &#x27;bs4.element.Comment&#x27;&gt;</span><br></code></pre></td></tr></table></figure>
 
 
                 
