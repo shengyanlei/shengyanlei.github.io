@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://note.youdao.com/yws/api/personal/file/WEBe123b98470d50153f69a2a1bf423a181?method=download&shareKey=99870fc289521c395ea62147ba3ed972">
 <meta property="article:published_time" content="2023-10-24T07:34:44.000Z">
-<meta property="article:modified_time" content="2023-10-26T10:03:37.417Z">
+<meta property="article:modified_time" content="2023-10-27T10:02:40.020Z">
 <meta property="article:author" content="shyl">
 <meta property="article:tag" content="Python">
 <meta property="article:tag" content="爬虫">
@@ -269,7 +269,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          4.9k 字
+          7.8k 字
         
       </span>
     
@@ -280,7 +280,7 @@
         
         
         
-          41 分钟
+          65 分钟
         
       </span>
     
@@ -343,7 +343,7 @@
               <p class="note note-info">
                 
                   
-                    本文最后更新于：几秒前
+                    本文最后更新于：2 个月前
                   
                 
               </p>
@@ -487,20 +487,20 @@
 <p>将一段文档传入BeautifulSoup 的构造方法,就能得到一个文档的对象, 可以传入一段字符串或一个文件句柄.</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> bs4 <span class="hljs-keyword">import</span> BeautifulSoup<br><br>soup = BeautifulSoup(<span class="hljs-built_in">open</span>(<span class="hljs-string">&quot;index.html&quot;</span>))<br><br>soup = BeautifulSoup(<span class="hljs-string">&quot;&lt;html&gt;data&lt;/html&gt;&quot;</span>)<br></code></pre></td></tr></table></figure>
 
-<p>Beautiful Soup将复杂HTML文档转换成一个复杂的树形结构,每个节点都是Python对象,所有对象可以归纳为4种: <code>Tag</code> , <code>NavigableString</code> , <code>BeautifulSoup</code> , <code>Comment</code> .</p>
+<h4 id="Beautiful-Soup的4种对象"><a href="#Beautiful-Soup的4种对象" class="headerlink" title="Beautiful Soup的4种对象"></a>Beautiful Soup的4种对象</h4><p>Beautiful Soup将复杂HTML文档转换成一个复杂的树形结构,每个节点都是Python对象,所有对象可以归纳为4种: <code>Tag</code> , <code>NavigableString</code> , <code>BeautifulSoup</code> , <code>Comment</code> .</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs python">html_doc = <span class="hljs-string">&quot;&quot;&quot;</span><br><span class="hljs-string">&lt;html&gt;&lt;head&gt;&lt;title&gt;The Dormouse&#x27;s story&lt;/title&gt;&lt;/head&gt;</span><br><span class="hljs-string">&lt;body&gt;</span><br><span class="hljs-string">&lt;p class=&quot;title&quot;&gt;&lt;b&gt;The Dormouse&#x27;s story&lt;/b&gt;&lt;/p&gt;</span><br><span class="hljs-string"></span><br><span class="hljs-string">&lt;p class=&quot;story&quot;&gt;Once upon a time there were three little sisters; and their names were</span><br><span class="hljs-string">&lt;a href=&quot;http://example.com/elsie&quot; class=&quot;sister&quot; id=&quot;link1&quot;&gt;Elsie&lt;/a&gt;,</span><br><span class="hljs-string">&lt;a href=&quot;http://example.com/lacie&quot; class=&quot;sister&quot; id=&quot;link2&quot;&gt;Lacie&lt;/a&gt; and</span><br><span class="hljs-string">&lt;a href=&quot;http://example.com/tillie&quot; class=&quot;sister&quot; id=&quot;link3&quot;&gt;Tillie&lt;/a&gt;;</span><br><span class="hljs-string">and they lived at the bottom of a well.&lt;/p&gt;</span><br><span class="hljs-string"></span><br><span class="hljs-string">&lt;p class=&quot;story&quot;&gt;...&lt;/p&gt;</span><br><span class="hljs-string">&quot;&quot;&quot;</span><br></code></pre></td></tr></table></figure>
 
-<p class="note note-danger">以下代码块中  `#` 后面的内容太一般代指输出结果</p>
+<p class="note note-danger">以下代码块中  `#` 后面的内容一般代指输出结果</p>
 
 <ol>
-<li><strong>Tag</strong></li>
+<li><em><strong>Tag</strong></em></li>
 </ol>
 <p><code>Tag</code> 对象与XML或HTML原生文档中的tag相同:</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs python">soup = BeautifulSoup(<span class="hljs-string">&#x27;&lt;b class=&quot;boldest&quot;&gt;Extremely bold&lt;/b&gt;&#x27;</span>)<br>tag = soup.b<br><span class="hljs-built_in">type</span>(tag)<br><span class="hljs-comment"># &lt;class &#x27;bs4.element.Tag&#x27;&gt;</span><br></code></pre></td></tr></table></figure>
 
 <p><font style='color:red'>tag中最重要的属性: name和attributes</font></p>
 <ul>
-<li><em><strong>Name</strong></em>:每个tag都有自己的名字,通过 <code>.name</code> 来获取:</li>
+<li>Name:每个tag都有自己的名字,通过 <code>.name</code> 来获取:</li>
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python">soup.a.name<br><span class="hljs-comment"># a</span><br></code></pre></td></tr></table></figure>
 
@@ -508,16 +508,16 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python">soup.a.name=<span class="hljs-string">&#x27;你好&#x27;</span> <span class="hljs-comment">#只会修改第一个a标签</span><br><span class="hljs-built_in">print</span>(soup.你好)<br><span class="hljs-comment">#&lt;你好 class=&quot;sister&quot; href=&quot;http://example.com/elsie&quot; id=&quot;link1&quot;&gt;Elsie&lt;/你好&gt;</span><br></code></pre></td></tr></table></figure>
 
 <ul>
-<li><em><strong>Attributes</strong></em>:一个tag可能有很多个属性. tag <code>&lt;a href=&quot;http://example.com/elsie&quot; class=&quot;sister&quot; id=&quot;link1&quot;&gt;Elsie&lt;/a&gt;,</code>有一个 “class” 的属性,值为 “sister” .<font style='color:red'> tag的属性的操作方法与字典相同;可以使用<code>.attrs</code>老获取全部属性 </font></li>
+<li>Attributes:一个tag可能有很多个属性. tag <code>&lt;a href=&quot;http://example.com/elsie&quot; class=&quot;sister&quot; id=&quot;link1&quot;&gt;Elsie&lt;/a&gt;,</code>有一个 “class” 的属性,值为 “sister” .<font style='color:red'> tag的属性的操作方法与字典相同;可以使用<code>.attrs</code>老获取全部属性 </font></li>
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs python">soup.a[<span class="hljs-string">&#x27;class&#x27;</span>]<br><span class="hljs-comment">#[&#x27;sister&#x27;]</span><br>soup.a[<span class="hljs-string">&#x27;id&#x27;</span>]<br><span class="hljs-comment"># link1</span><br>soup.a.attrs<br><span class="hljs-comment"># &#123;&#x27;href&#x27;: &#x27;http://example.com/elsie&#x27;, &#x27;class&#x27;: [&#x27;sister&#x27;], &#x27;id&#x27;: &#x27;link1&#x27;&#125;</span><br></code></pre></td></tr></table></figure>
 
-<p class="note note-primary">tag的属性可以被添加,删除或修改.tag的属性操作方法与字典一样<br>一下方法 只针对遇到的第一个标签的属性</p>
+<p class="note note-primary">tag的属性可以被添加,删除或修改.tag的属性操作方法与字典一样<br>以下方法 只针对遇到的第一个标签的属性</p>
 
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#新增</span><br>soup.a[<span class="hljs-string">&#x27;insert&#x27;</span>]=<span class="hljs-string">&#x27;增加&#x27;</span><br><span class="hljs-built_in">print</span>(soup.a)<br><span class="hljs-comment"># &lt;a class=&quot;sister&quot; href=&quot;http://example.com/elsie&quot; id=&quot;link1&quot; insert=&quot;增加&quot;&gt;Elsie&lt;/a&gt;</span><br><br><span class="hljs-comment">#删除</span><br><span class="hljs-keyword">del</span> soup.a[<span class="hljs-string">&#x27;class&#x27;</span>]<br><span class="hljs-built_in">print</span>(soup.a)<br><span class="hljs-comment"># &lt;a href=&quot;http://example.com/elsie&quot; id=&quot;link1&quot;&gt;Elsie&lt;/a&gt;</span><br><br><span class="hljs-comment"># 修改</span><br>soup.a[<span class="hljs-string">&#x27;class&#x27;</span>]=<span class="hljs-string">&#x27;brother&#x27;</span><br><span class="hljs-built_in">print</span>(soup.a.attrs)<br><span class="hljs-comment"># &#123;&#x27;href&#x27;: &#x27;http://example.com/elsie&#x27;, &#x27;class&#x27;: &#x27;brother&#x27;, &#x27;id&#x27;: &#x27;link1&#x27;&#125;</span><br></code></pre></td></tr></table></figure>
 
 <ol start="2">
-<li><strong>NavigableString</strong>（可以遍历的字符串）</li>
+<li><em><strong>NavigableString</strong></em>（可以遍历的字符串）</li>
 </ol>
 <p>字符串常被包含在tag内.Beautiful Soup用 <code>NavigableString</code> 类来包装tag中的字符串:</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs python">soup.a.string<br><span class="hljs-comment"># Elsie</span><br><span class="hljs-built_in">type</span>(soup.a.string)<br>&lt;<span class="hljs-keyword">class</span> <span class="hljs-string">&#x27;bs4.element.NavigableString&#x27;</span>&gt;<br></code></pre></td></tr></table></figure>
@@ -526,19 +526,54 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python">soup.a.string.replace_with(<span class="hljs-string">&#x27;你好&#x27;</span>)<br><span class="hljs-built_in">print</span>(soup.a)<br><span class="hljs-comment"># &lt;a class=&quot;sister&quot; href=&quot;http://example.com/elsie&quot; id=&quot;link1&quot;&gt;你好&lt;/a&gt;</span><br></code></pre></td></tr></table></figure>
 
 <ol start="3">
-<li><strong>BeautifulSoup</strong></li>
+<li><em><strong>BeautifulSoup</strong></em></li>
 </ol>
 <p><code>BeautifulSoup</code> 对象表示的是一个文档的全部内容.大部分时候,可以把它当作 <code>Tag</code> 对象,它支持 遍历文档树 和 搜索文档树中描述的大部分的方法。</p>
 <ol start="4">
-<li><strong>comment</strong></li>
+<li><em><strong>comment</strong></em></li>
 </ol>
 <p><code>Tag</code> , <code>NavigableString</code> , <code>BeautifulSoup</code> 几乎覆盖了html和xml中的所有内容,但是还有一些特殊对象.容易让人担心的内容是文档的注释部分:</p>
 <ul>
 <li>Coment对象是一个特殊类型的NavigableString对象。</li>
 <li>如果标签内部的内容是注释，例如：<code>&lt;!-- Elsie --&gt;</code>。那么该NavigableSring对象会转换成Comment对象，并且会把注释符号去掉。</li>
 </ul>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs py">markup = <span class="hljs-string">&quot;&lt;b&gt;&lt;!--Hey, buddy. Want to buy a used parser?--&gt;&lt;/b&gt;&quot;</span><br>soup = BeautifulSoup(markup,<span class="hljs-string">&#x27;lxml&#x27;</span>)<br><span class="hljs-built_in">print</span>(soup.b.text+<span class="hljs-string">&#x27;输出为空&#x27;</span>)<br><span class="hljs-comment">#输出为空</span><br>comment = soup.b.string<br><span class="hljs-built_in">print</span>(comment)<br><span class="hljs-comment"># Hey, buddy. Want to buy a used parser?</span><br><span class="hljs-built_in">print</span>(<span class="hljs-built_in">type</span>(comment))<br><span class="hljs-comment"># &lt;class &#x27;bs4.element.Comment&#x27;&gt;</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs python">markup = <span class="hljs-string">&quot;&lt;b&gt;&lt;!--Hey, buddy. Want to buy a used parser?--&gt;&lt;/b&gt;&quot;</span><br>soup = BeautifulSoup(markup,<span class="hljs-string">&#x27;lxml&#x27;</span>)<br><span class="hljs-built_in">print</span>(soup.b.text+<span class="hljs-string">&#x27;输出为空&#x27;</span>)<br><span class="hljs-comment">#输出为空</span><br>comment = soup.b.string<br><span class="hljs-built_in">print</span>(comment)<br><span class="hljs-comment"># Hey, buddy. Want to buy a used parser?</span><br><span class="hljs-built_in">print</span>(<span class="hljs-built_in">type</span>(comment))<br><span class="hljs-comment"># &lt;class &#x27;bs4.element.Comment&#x27;&gt;</span><br></code></pre></td></tr></table></figure>
 
+<h4 id="遍历文档树"><a href="#遍历文档树" class="headerlink" title="遍历文档树"></a>遍历文档树</h4><ol>
+<li><em><strong>子结点</strong></em></li>
+</ol>
+<p>一个Tag可能包含多个字符串或其它的Tag,这些都是这个Tag的子节点.Beautiful Soup提供了许多操作和遍历子节点的属性.</p>
+<p><font style="color:red">注意: Beautiful Soup中字符串节点不支持这些属性,因为字符串没有子节点</font></p>
+<ol start="2">
+<li><em><strong>tag的名字</strong></em></li>
+</ol>
+<p>操作文档树最简单的方法就是告诉它你想获取的tag的name.如果想获取 <head> 标签,只要用 <code>soup.head</code> :</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs Python">soup.head<br><span class="hljs-comment"># &lt;head&gt;&lt;title&gt;The Dormouse&#x27;s story&lt;/title&gt;&lt;/head&gt;</span><br><br>soup.title<br><span class="hljs-comment"># &lt;title&gt;The Dormouse&#x27;s story&lt;/title&gt;</span><br></code></pre></td></tr></table></figure>
+
+<p>这是个获取tag的小窍门,可以在文档树的tag中多次调用这个方法.下面的代码可以获取<code>&lt;body&gt;</code>标签中的第一个<code>&lt;b&gt;</code>标签:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python">soup.body.b<br><span class="hljs-comment"># &lt;b&gt;The Dormouse&#x27;s story&lt;/b&gt;</span><br></code></pre></td></tr></table></figure>
+
+<p class="note note-info">Tip:通过点取属性的方式只能获得当前名字的第一个tag:</p>
+
+<p>如果想要得到所有的<code>&lt;a&gt;</code>标签,或是通过名字得到比一个tag更多的内容的时候,就需要用到 Searching the tree 中描述的方法,比如: find_all()</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs python">soup.find_all(<span class="hljs-string">&#x27;a&#x27;</span>)<br><span class="hljs-comment"># [&lt;a class=&quot;sister&quot; href=&quot;http://example.com/elsie&quot; id=&quot;link1&quot;&gt;Elsie&lt;/a&gt;, &lt;a class=&quot;sister&quot; href=&quot;http://example.com/lacie&quot; id=&quot;link2&quot;&gt;Lacie&lt;/a&gt;, &lt;a class=&quot;sister&quot; href=&quot;http://example.com/tillie&quot; id=&quot;link3&quot;&gt;Tillie&lt;/a&gt;]</span><br><br><span class="hljs-built_in">type</span>(soup.find_all(<span class="hljs-string">&#x27;a&#x27;</span>))<br><span class="hljs-comment"># &lt;class &#x27;bs4.element.ResultSet&#x27;&gt;</span><br></code></pre></td></tr></table></figure>
+
+<ol start="3">
+<li><em><strong>.contents 和 .children</strong></em></li>
+</ol>
+<p>tag的 <code>.contents</code> 属性可以将tag的子节点以列表的方式输出:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python">soup.body.contents<br><span class="hljs-comment"># [&#x27;\n&#x27;, &lt;p class=&quot;title&quot;&gt;&lt;b&gt;The Dormouse&#x27;s story&lt;/b&gt;&lt;/p&gt;, &#x27;\n&#x27;, &lt;p class=&quot;story&quot;&gt;Once upon a time there were three little sisters; and their names were &lt;a class=&quot;sister&quot; href=&quot;http://example.com/elsie&quot; id=&quot;link1&quot;&gt;Elsie&lt;/a&gt;, &lt;a class=&quot;sister&quot; href=&quot;http://example.com/lacie&quot; id=&quot;link2&quot;&gt;Lacie&lt;/a&gt; and &lt;a class=&quot;sister&quot; href=&quot;http://example.com/tillie&quot; id=&quot;link3&quot;&gt;Tillie&lt;/a&gt;; and they lived at the bottom of a well.&lt;/p&gt;, &#x27;\n&#x27;, &lt;p class=&quot;story&quot;&gt;...&lt;/p&gt;, &#x27;\n&#x27;]</span><br></code></pre></td></tr></table></figure>
+
+<p>通过tag的 <code>.children</code> 生成器,可以对tag的子节点进行循环:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-built_in">print</span>(<span class="hljs-built_in">type</span>(soup.body.children))<br><span class="hljs-comment"># &lt;class &#x27;list_iterator&#x27;&gt; 迭代器</span><br><span class="hljs-keyword">for</span> child <span class="hljs-keyword">in</span> soup.body.children:<br>    <span class="hljs-built_in">print</span>(child)<br>    <span class="hljs-built_in">print</span>(<span class="hljs-built_in">type</span>(child))<br><br><span class="hljs-comment">#                      &lt;第一行数据为空&gt;    </span><br><span class="hljs-comment"># &lt;class &#x27;bs4.element.NavigableString</span><br><br><span class="hljs-comment">#&lt;p class=&quot;title&quot;&gt;&lt;b&gt;The Dormouse&#x27;s story&lt;/b&gt;&lt;/p&gt;</span><br><span class="hljs-comment">#&lt;class &#x27;bs4.element.Tag&#x27;&gt;</span><br><br><span class="hljs-comment"># &lt;p class=&quot;story&quot;&gt;Once upon a time there were three little sisters; and their names were</span><br><span class="hljs-comment"># &lt;a class=&quot;sister&quot; href=&quot;http://example.com/elsie&quot; id=&quot;link1&quot;&gt;Elsie&lt;/a&gt;,</span><br><span class="hljs-comment"># &lt;a class=&quot;sister&quot; href=&quot;http://example.com/lacie&quot; id=&quot;link2&quot;&gt;Lacie&lt;/a&gt; and</span><br><span class="hljs-comment"># &lt;a class=&quot;sister&quot; href=&quot;http://example.com/tillie&quot; id=&quot;link3&quot;&gt;Tillie&lt;/a&gt;;</span><br><span class="hljs-comment"># and they lived at the bottom of a well.&lt;/p&gt;</span><br><span class="hljs-comment"># &lt;class &#x27;bs4.element.Tag&#x27;&gt;</span><br></code></pre></td></tr></table></figure>
+
+<ol start="4">
+<li><em><strong>.descendants</strong></em></li>
+</ol>
+<p><code>.contents</code> 和 <code>.children</code> 属性仅包含tag的直接子节点.例如,<head>标签只有一个直接子节点<title></p>
+<figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs applescript">head_tag.<span class="hljs-built_in">contents</span><br><span class="hljs-comment"># [&lt;title&gt;The Dormouse&#x27;s story&lt;/title&gt;]</span><br></code></pre></td></tr></table></figure>
+
+<p>但是<title>标签也包含一个子节点:字符串 “The Dormouse’s story”,这种情况下字符串 “The Dormouse’s story”也属于<head>标签的子孙节点. <code>.descendants</code> 属性可以对所有tag的子孙节点进行递归循环</p>
 
                 
               </div>
@@ -644,6 +679,12 @@
                 <div class="post-prevnext my-3">
                   <article class="post-prev col-6">
                     
+                    
+                      <a href="/2023/11/03/Hive%E4%B8%AD%E7%9A%84Struct%E7%B1%BB%E5%9E%8BBug/" title="Hive中的Struct类型Bug">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Hive中的Struct类型Bug</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
                     
                   </article>
                   <article class="post-next col-6">

@@ -16,25 +16,26 @@
   <meta name="author" content="shyl">
   <meta name="keywords" content="">
   
-    <meta name="description" content="这是摘要">
+    <meta name="description" content="Hive的Explode使用讲解">
 <meta property="og:type" content="article">
-<meta property="og:title" content="fluid使用指南">
-<meta property="og:url" content="http://example.com/2023/10/13/fluid%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/index.html">
+<meta property="og:title" content="Hive中的explode">
+<meta property="og:url" content="http://example.com/2023/11/03/Hive%E4%B8%AD%E7%9A%84explode/index.html">
 <meta property="og:site_name" content="碎念随风">
-<meta property="og:description" content="这是摘要">
+<meta property="og:description" content="Hive的Explode使用讲解">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://note.youdao.com/yws/api/personal/file/WEBaaa031cfd37fe1a3dd18b7ec91942b83?method=download&shareKey=d589454301282c7228d3591bfe629136">
-<meta property="article:published_time" content="2023-10-13T07:17:59.000Z">
-<meta property="article:modified_time" content="2023-10-24T07:50:07.900Z">
+<meta property="og:image" content="https://note.youdao.com/yws/api/personal/file/WEB19e4464dc9e219637ab74610afecca12?method=download&shareKey=b6ff8e0d1625f1e55caad6bdd5aafd3a">
+<meta property="article:published_time" content="2023-11-03T02:22:29.000Z">
+<meta property="article:modified_time" content="2023-11-03T09:27:20.769Z">
 <meta property="article:author" content="shyl">
+<meta property="article:tag" content="Bug">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://note.youdao.com/yws/api/personal/file/WEBaaa031cfd37fe1a3dd18b7ec91942b83?method=download&shareKey=d589454301282c7228d3591bfe629136">
+<meta name="twitter:image" content="https://note.youdao.com/yws/api/personal/file/WEB19e4464dc9e219637ab74610afecca12?method=download&shareKey=b6ff8e0d1625f1e55caad6bdd5aafd3a">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>fluid使用指南 - 碎念随风</title>
+  <title>Hive中的explode - 碎念随风</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -239,7 +240,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="fluid使用指南"></span>
+            <span id="subtitle" data-typed-text="Hive中的explode"></span>
           
         </div>
 
@@ -255,8 +256,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-10-13 15:17" pubdate>
-          2023年10月13日 下午
+        <time datetime="2023-11-03 10:22" pubdate>
+          2023年11月3日 上午
         </time>
       </span>
     
@@ -267,7 +268,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          449 字
+          1.9k 字
         
       </span>
     
@@ -278,7 +279,7 @@
         
         
         
-          4 分钟
+          16 分钟
         
       </span>
     
@@ -336,12 +337,12 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">fluid使用指南</h1>
+            <h1 id="seo-header">Hive中的explode</h1>
             
               <p class="note note-info">
                 
                   
-                    本文最后更新于：2 个月前
+                    本文最后更新于：1 个月前
                   
                 
               </p>
@@ -349,23 +350,171 @@
             
               <div class="markdown-body">
                 
-                <h3 id="1-文章中使用主题内置的便签"><a href="#1-文章中使用主题内置的便签" class="headerlink" title="1.文章中使用主题内置的便签"></a>1.文章中使用主题内置的便签</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;note note-primary&quot;</span>&gt;</span>标签<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span><br></code></pre></td></tr></table></figure>
+                <h3 id="一、问题介绍"><a href="#一、问题介绍" class="headerlink" title="一、问题介绍"></a>一、问题介绍</h3><p>在使用explode进行炸列操作时，发现炸列后有的行消失了。</p>
+<h3 id="二、模拟场景"><a href="#二、模拟场景" class="headerlink" title="二、模拟场景"></a>二、模拟场景</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs hive">建表语句<br>drop table test.shyl_explode_test;<br>create table test.shyl_explode_test(<br>    `id` string comment &#x27;id&#x27;,<br>    `list` ARRAY&lt;string&gt; comment &#x27;列表&#x27;<br>)comment&#x27;测试炸列函数所使用的字段为空时，该行数据如何处理&#x27;<br>stored as orc;<br>插入数据<br>INSERT INTO TABLE shyl_explode_test VALUES<br>  (&#x27;1&#x27;, array(&#x27;A&#x27;, &#x27;B&#x27;, &#x27;C&#x27;)),<br>  (&#x27;2&#x27;, array(&#x27;X&#x27;, &#x27;Y&#x27;)),<br>  (&#x27;3&#x27;, array(&quot;&quot;))<br>  (&#x27;4&#x27;, null)<br>  (&#x27;5&#x27;, array(null));<br></code></pre></td></tr></table></figure>
 
-<p>使用效果图如下：</p>
-<p><img src="https://note.youdao.com/yws/api/personal/file/WEBaefe0d8151326e6297d0a1c2604201a5?method=download&shareKey=e76161d555ba41618cd18f07fda59b2e" srcset="/img/loading.gif" lazyload alt="效果图"></p>
-<h3 id="2-文章中链接其它文章"><a href="#2-文章中链接其它文章" class="headerlink" title="2.文章中链接其它文章"></a>2.文章中链接其它文章</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;&#123;% post_path 文章名 %&#125;&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;display: block;text-align: right;&quot;</span>&gt;</span>转到【文章名】<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<p>当插入数据(‘4’, null)报错<code>[42000][40000] Error while compiling statement: FAILED: SemanticException 0:0 Expected 2 columns for insclause-0/test@shyl_explode_test; select produces 1 columns. Error encountered near token &#39;TOK_NULL&#39;</code></p>
+<p>大概的意思是说这个list字段的数据类型是array，现在要插入一个null类型的，类型不匹配,</p>
+<p>但是在实际情况中，表中数据类型为array，其值为null的情况不少见，比如我们是通过上传文件到hdfs，再通过hive建表关联数据，得到的表【具体过程没有验证，不确定是是否可以创建成功】；执行连接操作时，没有关联上的使用null填充【未验证】;或者只插入一个列的值，【本文就采取这种方式】，得到list字段为空的情况：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs HIVE">INSERT INTO TABLE shyl_explode_test(id) VALUES (&#x27;4&#x27;);<br></code></pre></td></tr></table></figure>
 
-<p>示例：<a href="/2023/10/08/md%E8%AF%AD%E6%B3%95/" style="display: block;text-align: right;">转到【md语法】</a></p>
-<h3 id="3-摘要的处理"><a href="#3-摘要的处理" class="headerlink" title="3.摘要的处理"></a>3.摘要的处理</h3><p>手动指定摘要，使用 <code>&lt;!-- more --&gt;</code> MD文档里划分，如：</p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs markdown">正文的一部分作为摘要<br>&lt;!-- more --&gt;<br>余下的正文<br></code></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs hive">查看表中的数据<br>select * from test.shyl_explode_test;<br></code></pre></td></tr></table></figure>
 
-<p>或者在 <a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/front-matter">front-matter (opens new window)</a>里设置 <code>excerpt</code> 字段，如：</p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-meta">---</span><br><span class="hljs-attr">title:</span> <span class="hljs-string">这是标题</span><br><span class="hljs-attr">excerpt:</span> <span class="hljs-string">这是摘要</span><br><span class="hljs-meta">---</span><br></code></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th align="left">id</th>
+<th align="left">list</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">1</td>
+<td align="left">[“A”,”B”,”C”]</td>
+</tr>
+<tr>
+<td align="left">2</td>
+<td align="left">[“X”,”Y”]</td>
+</tr>
+<tr>
+<td align="left">3</td>
+<td align="left">[“”]</td>
+</tr>
+<tr>
+<td align="left">4</td>
+<td align="left">null</td>
+</tr>
+<tr>
+<td align="left">5</td>
+<td align="left">[null]</td>
+</tr>
+</tbody></table>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs hive">现根据list字段为null，查询出指定数据<br>select * from test.shyl_explode_test where list is null;<br></code></pre></td></tr></table></figure>
 
-<p class="note note-primary">Tips:<br>
-    优先级: 手动摘要 > 自动摘要<br>
-    如果关闭自动摘要，并且没有设置手动摘要，摘要区域空白<br>
-    无论哪种摘要都最多显示 3 行，当屏幕宽度不足时会隐藏部分摘要。</p>
+<table>
+<thead>
+<tr>
+<th>id</th>
+<th>list</th>
+</tr>
+</thead>
+</table>
+<p>发现数据为空，原因可能与字段类型为array有关</p>
+<p>现提供一个其它的方式查询</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs hive">因为size(map/array)返回 -1 作为特殊的值，通常表示一个无效或异常的情况，而不是实际的大小或长度,所以利用它来查询空值<br>select size(null);<br>-1<br>select * from test.shyl_explode_test where size(list)=-1;<br></code></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th align="left">id</th>
+<th align="left">list</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">4</td>
+<td align="left">null</td>
+</tr>
+</tbody></table>
+<p>有关sql中的null参考此文：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/82434024">原文地址</a></p>
+<h3 id="三、执行explode"><a href="#三、执行explode" class="headerlink" title="三、执行explode"></a>三、执行explode</h3><figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs pgsql"><span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> test.shyl_explode_test<br><span class="hljs-keyword">lateral</span> <span class="hljs-keyword">view</span> explode(list)t1 <span class="hljs-keyword">as</span> a;<br></code></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th align="left">id</th>
+<th align="left">list</th>
+<th align="left">a</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">1</td>
+<td align="left">[“A”,”B”,”C”]</td>
+<td align="left">A</td>
+</tr>
+<tr>
+<td align="left">1</td>
+<td align="left">[“A”,”B”,”C”]</td>
+<td align="left">B</td>
+</tr>
+<tr>
+<td align="left">1</td>
+<td align="left">[“A”,”B”,”C”]</td>
+<td align="left">C</td>
+</tr>
+<tr>
+<td align="left">2</td>
+<td align="left">[“X”,”Y”]</td>
+<td align="left">X</td>
+</tr>
+<tr>
+<td align="left">2</td>
+<td align="left">[“X”,”Y”]</td>
+<td align="left">Y</td>
+</tr>
+<tr>
+<td align="left">3</td>
+<td align="left">[“”]</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">5</td>
+<td align="left">[null]</td>
+<td align="left">null</td>
+</tr>
+</tbody></table>
+<p>我们发现id为4的那一行数据缺失，现在是有两列，当我的列数多，且其它列的数据重要时，会发生丢失一些重要数据的情况。</p>
+<p>所以在执行explode的时候添加一些保护机制，附上一些不影响结果的默认值。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs hive">select * from test.shyl_explode_test<br>lateral view explode(nvl(list,array(NULL)))t1 as a;<br></code></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th align="left">id</th>
+<th align="left">list</th>
+<th align="left">a</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">1</td>
+<td align="left">[“A”,”B”,”C”]</td>
+<td align="left">A</td>
+</tr>
+<tr>
+<td align="left">1</td>
+<td align="left">[“A”,”B”,”C”]</td>
+<td align="left">B</td>
+</tr>
+<tr>
+<td align="left">1</td>
+<td align="left">[“A”,”B”,”C”]</td>
+<td align="left">C</td>
+</tr>
+<tr>
+<td align="left">2</td>
+<td align="left">[“X”,”Y”]</td>
+<td align="left">X</td>
+</tr>
+<tr>
+<td align="left">2</td>
+<td align="left">[“X”,”Y”]</td>
+<td align="left">Y</td>
+</tr>
+<tr>
+<td align="left">3</td>
+<td align="left">[“”]</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left"><font style="color:red">4</font></td>
+<td align="left"><font style="color:red">null</font></td>
+<td align="left"><font style="color:red">null</font></td>
+</tr>
+<tr>
+<td align="left">5</td>
+<td align="left">[null]</td>
+<td align="left">null</td>
+</tr>
+</tbody></table>
+<h3 id="四、explode-lateral-view源码剖析"><a href="#四、explode-lateral-view源码剖析" class="headerlink" title="四、explode+lateral view源码剖析"></a>四、explode+lateral view源码剖析</h3><p>【目前不会看源码】，之后有能力补上，从结果反推，像是炸列后执行的inner join。</p>
 
                 
               </div>
@@ -384,13 +533,20 @@
     
       <span class="category-chain">
         
-  <a href="/categories/%E6%95%99%E7%A8%8B/" class="category-chain-item">教程</a>
+  <a href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/" class="category-chain-item">大数据</a>
   
   
     <span>></span>
     
-  <a href="/categories/%E6%95%99%E7%A8%8B/Fluid%E4%B8%BB%E9%A2%98/" class="category-chain-item">Fluid主题</a>
+  <a href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/Hive/" class="category-chain-item">Hive</a>
   
+  
+    <span>></span>
+    
+  <a href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/Hive/Bug/" class="category-chain-item">Bug</a>
+  
+  
+
   
 
   
@@ -403,6 +559,13 @@
     </div>
   
   
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/Bug/" class="print-no-link">#Bug</a>
+      
+    </div>
+  
 </div>
 
 
@@ -411,8 +574,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>fluid使用指南</div>
-      <div>http://example.com/2023/10/13/fluid使用指南/</div>
+      <div>Hive中的explode</div>
+      <div>http://example.com/2023/11/03/Hive中的explode/</div>
     </div>
     <div class="license-meta">
       
@@ -424,7 +587,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2023年10月13日</div>
+          <div>2023年11月3日</div>
         </div>
       
       
@@ -456,9 +619,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/10/19/%E6%95%B0%E4%BB%93%E6%90%AD%E5%BB%BA%E7%9A%84%E6%95%B0%E6%8D%AE%E8%B7%A8%E5%A4%A9%E9%97%AE%E9%A2%98/" title="数仓搭建的数据跨天问题">
+                      <a href="/2023/12/14/Flink%E7%9A%84%E4%B8%8D%E5%90%8Csource/" title="Flink的不同source">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">数仓搭建的数据跨天问题</span>
+                        <span class="hidden-mobile">Flink的不同source</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -466,8 +629,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/10/13/%E6%B5%8B%E8%AF%95%E5%9B%BE%E5%BA%8A/" title="测试图床">
-                        <span class="hidden-mobile">测试图床</span>
+                      <a href="/2023/11/03/Hive%E4%B8%AD%E7%9A%84Struct%E7%B1%BB%E5%9E%8BBug/" title="Hive中的Struct类型Bug">
+                        <span class="hidden-mobile">Hive中的Struct类型Bug</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

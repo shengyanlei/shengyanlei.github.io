@@ -4,6 +4,71 @@
   
   
   <entry>
+    <title>Flink的不同source</title>
+    <link href="/2023/12/14/Flink%E7%9A%84%E4%B8%8D%E5%90%8Csource/"/>
+    <url>/2023/12/14/Flink%E7%9A%84%E4%B8%8D%E5%90%8Csource/</url>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Hive中的explode</title>
+    <link href="/2023/11/03/Hive%E4%B8%AD%E7%9A%84explode/"/>
+    <url>/2023/11/03/Hive%E4%B8%AD%E7%9A%84explode/</url>
+    
+    
+    <categories>
+      
+      <category>大数据</category>
+      
+      <category>Hive</category>
+      
+      <category>Bug</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Bug</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Hive中的Struct类型Bug</title>
+    <link href="/2023/11/03/Hive%E4%B8%AD%E7%9A%84Struct%E7%B1%BB%E5%9E%8BBug/"/>
+    <url>/2023/11/03/Hive%E4%B8%AD%E7%9A%84Struct%E7%B1%BB%E5%9E%8BBug/</url>
+    
+    
+    <categories>
+      
+      <category>大数据</category>
+      
+      <category>Hive</category>
+      
+      <category>Bug</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Bug</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Python网络爬虫（二）</title>
     <link href="/2023/10/24/Python%E7%BD%91%E7%BB%9C%E7%88%AC%E8%99%AB%EF%BC%88%E4%BA%8C%EF%BC%89/"/>
     <url>/2023/10/24/Python%E7%BD%91%E7%BB%9C%E7%88%AC%E8%99%AB%EF%BC%88%E4%BA%8C%EF%BC%89/</url>
