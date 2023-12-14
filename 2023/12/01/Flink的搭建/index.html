@@ -16,26 +16,27 @@
   <meta name="author" content="shyl">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Hive的Explode使用讲解">
+    <meta name="description" content="flink1.14.0的安装">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hive中的explode">
-<meta property="og:url" content="http://example.com/2023/11/03/Hive%E4%B8%AD%E7%9A%84explode/index.html">
+<meta property="og:title" content="Flink的搭建">
+<meta property="og:url" content="http://example.com/2023/12/01/Flink%E7%9A%84%E6%90%AD%E5%BB%BA/index.html">
 <meta property="og:site_name" content="碎念随风">
-<meta property="og:description" content="Hive的Explode使用讲解">
+<meta property="og:description" content="flink1.14.0的安装">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://note.youdao.com/yws/api/personal/file/WEB19e4464dc9e219637ab74610afecca12?method=download&shareKey=b6ff8e0d1625f1e55caad6bdd5aafd3a">
-<meta property="article:published_time" content="2023-11-03T02:22:29.000Z">
-<meta property="article:modified_time" content="2023-11-03T09:27:20.769Z">
+<meta property="og:image" content="https://note.youdao.com/yws/api/personal/file/WEB7cb43194bf5147d5b846ceb145588791?method=download&shareKey=a69b14f96302a21c8fd6ac4dca67754a">
+<meta property="article:published_time" content="2023-12-01T01:33:02.000Z">
+<meta property="article:modified_time" content="2023-12-14T07:41:55.659Z">
 <meta property="article:author" content="shyl">
-<meta property="article:tag" content="Bug">
+<meta property="article:tag" content="教程">
+<meta property="article:tag" content="Flink">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://note.youdao.com/yws/api/personal/file/WEB19e4464dc9e219637ab74610afecca12?method=download&shareKey=b6ff8e0d1625f1e55caad6bdd5aafd3a">
+<meta name="twitter:image" content="https://note.youdao.com/yws/api/personal/file/WEB7cb43194bf5147d5b846ceb145588791?method=download&shareKey=a69b14f96302a21c8fd6ac4dca67754a">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>Hive中的explode - 碎念随风</title>
+  <title>Flink的搭建 - 碎念随风</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -240,7 +241,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Hive中的explode"></span>
+            <span id="subtitle" data-typed-text="Flink的搭建"></span>
           
         </div>
 
@@ -256,8 +257,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-11-03 10:22" pubdate>
-          2023年11月3日 上午
+        <time datetime="2023-12-01 09:33" pubdate>
+          2023年12月1日 上午
         </time>
       </span>
     
@@ -268,7 +269,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.9k 字
+          2.4k 字
         
       </span>
     
@@ -279,7 +280,7 @@
         
         
         
-          16 分钟
+          21 分钟
         
       </span>
     
@@ -337,12 +338,12 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">Hive中的explode</h1>
+            <h1 id="seo-header">Flink的搭建</h1>
             
               <p class="note note-info">
                 
                   
-                    本文最后更新于：1 个月前
+                    本文最后更新于：3 分钟前
                   
                 
               </p>
@@ -350,172 +351,136 @@
             
               <div class="markdown-body">
                 
-                <h3 id="一、问题介绍"><a href="#一、问题介绍" class="headerlink" title="一、问题介绍"></a>一、问题介绍</h3><p>在使用explode进行炸列操作时，发现炸列后有的行消失了。</p>
-<h3 id="二、模拟场景"><a href="#二、模拟场景" class="headerlink" title="二、模拟场景"></a>二、模拟场景</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs hive">建表语句<br>drop table test.shyl_explode_test;<br>create table test.shyl_explode_test(<br>    `id` string comment &#x27;id&#x27;,<br>    `list` ARRAY&lt;string&gt; comment &#x27;列表&#x27;<br>)comment&#x27;测试炸列函数所使用的字段为空时，该行数据如何处理&#x27;<br>stored as orc;<br>插入数据<br>INSERT INTO TABLE shyl_explode_test VALUES<br>  (&#x27;1&#x27;, array(&#x27;A&#x27;, &#x27;B&#x27;, &#x27;C&#x27;)),<br>  (&#x27;2&#x27;, array(&#x27;X&#x27;, &#x27;Y&#x27;)),<br>  (&#x27;3&#x27;, array(&quot;&quot;))<br>  (&#x27;4&#x27;, null)<br>  (&#x27;5&#x27;, array(null));<br></code></pre></td></tr></table></figure>
-
-<p>当插入数据(‘4’, null)报错<code>[42000][40000] Error while compiling statement: FAILED: SemanticException 0:0 Expected 2 columns for insclause-0/test@shyl_explode_test; select produces 1 columns. Error encountered near token &#39;TOK_NULL&#39;</code></p>
-<p>大概的意思是说这个list字段的数据类型是array，现在要插入一个null类型的，类型不匹配,</p>
-<p>但是在实际情况中，表中数据类型为array，其值为null的情况不少见，比如我们是通过上传文件到hdfs，再通过hive建表关联数据，得到的表【具体过程没有验证，不确定是是否可以创建成功】；执行连接操作时，没有关联上的使用null填充【未验证】;或者只插入一个列的值，【本文就采取这种方式】，得到list字段为空的情况：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs HIVE">INSERT INTO TABLE shyl_explode_test(id) VALUES (&#x27;4&#x27;);<br></code></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs hive">查看表中的数据<br>select * from test.shyl_explode_test;<br></code></pre></td></tr></table></figure>
-
-<table>
+                <h3 id="一、集群规划"><a href="#一、集群规划" class="headerlink" title="一、集群规划"></a>一、集群规划</h3><table>
 <thead>
 <tr>
-<th align="left">id</th>
-<th align="left">list</th>
+<th>nodev2001</th>
+<th>nodev2002</th>
+<th>nodev2003</th>
+<th>nodev2004</th>
 </tr>
 </thead>
 <tbody><tr>
-<td align="left">1</td>
-<td align="left">[“A”,”B”,”C”]</td>
-</tr>
-<tr>
-<td align="left">2</td>
-<td align="left">[“X”,”Y”]</td>
-</tr>
-<tr>
-<td align="left">3</td>
-<td align="left">[“”]</td>
-</tr>
-<tr>
-<td align="left">4</td>
-<td align="left">null</td>
-</tr>
-<tr>
-<td align="left">5</td>
-<td align="left">[null]</td>
+<td>master</td>
+<td>worker</td>
+<td>worker</td>
+<td></td>
 </tr>
 </tbody></table>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs hive">现根据list字段为null，查询出指定数据<br>select * from test.shyl_explode_test where list is null;<br></code></pre></td></tr></table></figure>
+<p><strong><a target="_blank" rel="noopener" href="https://nightlies.apache.org/flink/flink-docs-release-1.18/zh/docs/deployment/java_compatibility/">适配的java版本</a></strong></p>
+<h3 id="二、安装流程"><a href="#二、安装流程" class="headerlink" title="二、安装流程"></a>二、安装流程</h3><p>前往 <a target="_blank" rel="noopener" href="https://flink.apache.org/zh/downloads.html">下载页面</a> 获取可运行的软件包。</p>
+<p>在下载完最新的发布版本后，复制压缩文件到 master 节点并解压：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">tar xzf flink-1.14.0-bin-scala_2.12.tgz<br><span class="hljs-built_in">mv</span> flink-1.14.0-bin-scala_2.12.tgz /opt/module<br></code></pre></td></tr></table></figure>
 
+<p>配置 Flink：</p>
+<p>在解压完文件后，编辑 <em>conf&#x2F;flink-conf.yaml</em> 文件来为集群配置 Flink。</p>
+<ol>
+<li><p>设置 <code>jobmanager.rpc.address</code> 配置项指向 master 节点</p>
+</li>
+<li><p>设置 <code>jobmanager.memory.process.size</code> 和 <code>taskmanager.memory.process.size</code> 配置项来定义 Flink 允许在每个节点上分配的最大内存值。</p>
+</li>
+<li><p>如果 worker 节点上有你想分配到 Flink 系统的多余内存，你可以在这些特定节点的 <em>conf&#x2F;flink-conf.yaml</em> 文件中重写 <code>taskmanager.memory.process.size</code> 或 <code>taskmanager.memory.flink.size</code> 的默认值。s</p>
+</li>
+<li><p>编辑文件 <em>conf&#x2F;masters</em> 并输入 master 节点的 IP 或主机名。</p>
+</li>
+<li><p>编辑文件 <em>conf&#x2F;workers</em> 并输入每个 worker 节点的 IP 或主机名。</p>
+</li>
+<li><p>Flink 目录复制到每个 worker 节点上。</p>
+</li>
+<li><p><strong>参考 <a target="_blank" rel="noopener" href="https://nightlies.apache.org/flink/flink-docs-release-1.14/zh/docs/deployment/config/">配置参数页面</a> 获取更多细节以及额外的配置项。</strong></p>
+</li>
+<li><p>特别地，</p>
+<ul>
+<li>每个 JobManager 的可用内存值（<code>jobmanager.memory.process.size</code>），</li>
+<li>每个 TaskManager 的可用内存值 （<code>taskmanager.memory.process.size</code>，并检查 <a target="_blank" rel="noopener" href="https://nightlies.apache.org/flink/flink-docs-release-1.14/zh/docs/deployment/memory/mem_tuning/#configure-memory-for-standalone-deployment">内存调优指南</a>），</li>
+<li>每台机器的可用 CPU 数（<code>taskmanager.numberOfTaskSlots</code>），</li>
+<li>集群中所有 CPU 数（<code>parallelism.default</code>）和</li>
+<li>临时目录（<code>io.tmp.dirs</code>）</li>
+</ul>
+<p>的值都是非常重要的配置项。</p>
+</li>
+</ol>
+<h3 id="三、启动Flink集群"><a href="#三、启动Flink集群" class="headerlink" title="三、启动Flink集群"></a>三、启动Flink集群</h3><ol>
+<li>本地节点启动了一个 JobManager 并通过 SSH 连接到 <em>workers</em> 文件中所有的 worker 节点,master节点的flink目录下</li>
+</ol>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh">bin/start-cluster.sh<br></code></pre></td></tr></table></figure>
+
+<ol start="2">
+<li><p>关闭 Flink，这里同样有一个 <code>stop-cluster.sh</code> 脚本。</p>
+</li>
+<li><p>为集群添加 JobManager<sup id="fnref:1" class="footnote-ref"><a href="#fn:1" rel="footnote"><span class="hint--top hint--rounded" aria-label="JobManager">[1]</span></a></sup>&#x2F;TaskManager<sup id="fnref:2" class="footnote-ref"><a href="#fn:2" rel="footnote"><span class="hint--top hint--rounded" aria-label="TaskManagers">[2]</span></a></sup> 实例</p>
+<p><strong>添加 JobManager</strong> </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">bin/jobmanager.sh ((start|start-foreground) [host] [webui-port])|stop|stop-all<br></code></pre></td></tr></table></figure>
+
+<p><strong>添加 TaskManager</strong> </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">bin/taskmanager.sh start|start-foreground|stop|stop-all<br></code></pre></td></tr></table></figure>
+
+<p>确保在你想启动&#x2F;关闭相应实例的主机上执行这些脚本。</p>
+</li>
+</ol>
+<h3 id="四、使用Yarn管理集群"><a href="#四、使用Yarn管理集群" class="headerlink" title="四、使用Yarn管理集群"></a>四、使用Yarn管理集群</h3><p><a target="_blank" rel="noopener" href="https://nightlies.apache.org/flink/flink-docs-release-1.14/docs/deployment/overview/#application-mode">Flink的3种部署模式</a></p>
+<ol>
+<li>应用程序模式：</li>
+<li>作业模式：<em>Per-Job</em> 模式使用可用的资源提供程序 框架（例如 YARN、Kubernetes）为每个提交的作业启动一个集群。此群集可用于 只有那份工作。作业完成后，群集将被拆除，任何延迟的资源（文件等）都会被拆除 清除了。</li>
+<li>会话模式：多个flink Application 向同一个JobManager提交，相互之间竞争资源；好处：不需要重复的启动集群。</li>
+</ol>
 <table>
 <thead>
 <tr>
-<th>id</th>
-<th>list</th>
-</tr>
-</thead>
-</table>
-<p>发现数据为空，原因可能与字段类型为array有关</p>
-<p>现提供一个其它的方式查询</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs hive">因为size(map/array)返回 -1 作为特殊的值，通常表示一个无效或异常的情况，而不是实际的大小或长度,所以利用它来查询空值<br>select size(null);<br>-1<br>select * from test.shyl_explode_test where size(list)=-1;<br></code></pre></td></tr></table></figure>
-
-<table>
-<thead>
-<tr>
-<th align="left">id</th>
-<th align="left">list</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">4</td>
-<td align="left">null</td>
-</tr>
-</tbody></table>
-<p>有关sql中的null参考此文：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/82434024">原文地址</a></p>
-<h3 id="三、执行explode"><a href="#三、执行explode" class="headerlink" title="三、执行explode"></a>三、执行explode</h3><figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs pgsql"><span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> test.shyl_explode_test<br><span class="hljs-keyword">lateral</span> <span class="hljs-keyword">view</span> explode(list)t1 <span class="hljs-keyword">as</span> a;<br></code></pre></td></tr></table></figure>
-
-<table>
-<thead>
-<tr>
-<th align="left">id</th>
-<th align="left">list</th>
-<th align="left">a</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">1</td>
-<td align="left">[“A”,”B”,”C”]</td>
-<td align="left">A</td>
-</tr>
-<tr>
-<td align="left">1</td>
-<td align="left">[“A”,”B”,”C”]</td>
-<td align="left">B</td>
-</tr>
-<tr>
-<td align="left">1</td>
-<td align="left">[“A”,”B”,”C”]</td>
-<td align="left">C</td>
-</tr>
-<tr>
-<td align="left">2</td>
-<td align="left">[“X”,”Y”]</td>
-<td align="left">X</td>
-</tr>
-<tr>
-<td align="left">2</td>
-<td align="left">[“X”,”Y”]</td>
-<td align="left">Y</td>
-</tr>
-<tr>
-<td align="left">3</td>
-<td align="left">[“”]</td>
-<td align="left"></td>
-</tr>
-<tr>
-<td align="left">5</td>
-<td align="left">[null]</td>
-<td align="left">null</td>
-</tr>
-</tbody></table>
-<p>我们发现id为4的那一行数据缺失，现在是有两列，当我的列数多，且其它列的数据重要时，会发生丢失一些重要数据的情况。</p>
-<p>所以在执行explode的时候添加一些保护机制，附上一些不影响结果的默认值。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs hive">select * from test.shyl_explode_test<br>lateral view explode(nvl(list,array(NULL)))t1 as a;<br></code></pre></td></tr></table></figure>
-
-<table>
-<thead>
-<tr>
-<th align="left">id</th>
-<th align="left">list</th>
-<th align="left">a</th>
+<th>部署模式</th>
+<th>启动集群</th>
+<th>资源隔离</th>
+<th>JM数量</th>
+<th>应用程序的方法</th>
+<th>适合情况</th>
 </tr>
 </thead>
 <tbody><tr>
-<td align="left">1</td>
-<td align="left">[“A”,”B”,”C”]</td>
-<td align="left">A</td>
+<td>应用程序模式</td>
+<td>1次</td>
+<td>隔离</td>
+<td>1&#x2F;per job</td>
+<td>jM</td>
+<td>【作业模式，会话模式折中】</td>
 </tr>
 <tr>
-<td align="left">1</td>
-<td align="left">[“A”,”B”,”C”]</td>
-<td align="left">B</td>
+<td>作业模式</td>
+<td>1&#x2F;per job</td>
+<td>隔离</td>
+<td>1&#x2F;per job</td>
+<td>client</td>
+<td>长时间运行的作业</td>
 </tr>
 <tr>
-<td align="left">1</td>
-<td align="left">[“A”,”B”,”C”]</td>
-<td align="left">C</td>
-</tr>
-<tr>
-<td align="left">2</td>
-<td align="left">[“X”,”Y”]</td>
-<td align="left">X</td>
-</tr>
-<tr>
-<td align="left">2</td>
-<td align="left">[“X”,”Y”]</td>
-<td align="left">Y</td>
-</tr>
-<tr>
-<td align="left">3</td>
-<td align="left">[“”]</td>
-<td align="left"></td>
-</tr>
-<tr>
-<td align="left"><font style="color:red">4</font></td>
-<td align="left"><font style="color:red">null</font></td>
-<td align="left"><font style="color:red">null</font></td>
-</tr>
-<tr>
-<td align="left">5</td>
-<td align="left">[null]</td>
-<td align="left">null</td>
+<td>会话模式</td>
+<td>1次</td>
+<td>不隔离</td>
+<td>1</td>
+<td>client</td>
+<td>低延迟，运行时间短</td>
 </tr>
 </tbody></table>
-<h3 id="四、explode-lateral-view源码剖析"><a href="#四、explode-lateral-view源码剖析" class="headerlink" title="四、explode+lateral view源码剖析"></a>四、explode+lateral view源码剖析</h3><p>【目前不会看源码】，之后有能力补上，从结果反推，像是炸列后执行的inner join。</p>
-
+<h3 id="五、使用问题"><a href="#五、使用问题" class="headerlink" title="五、使用问题"></a>五、使用问题</h3><ol>
+<li>会话模式，per-job模式启动两个任务会失败</li>
+</ol>
+<h3 id="脚注"><a href="#脚注" class="headerlink" title="脚注"></a>脚注</h3><p><em>JobManager</em> 具有许多与协调 Flink 应用程序的分布式执行有关的职责：它决定何时调度下一个 task（或一组 task）、对完成的 task 或执行失败做出反应、协调 checkpoint、并且协调从失败中恢复等等。这个进程由三个不同的组件组成：</p>
+<ul>
+<li><p><strong>ResourceManager</strong></p>
+<p><em>ResourceManager</em> 负责 Flink 集群中的资源提供、回收、分配 - 它管理 <strong>task slots</strong>，这是 Flink 集群中资源调度的单位（请参考<a target="_blank" rel="noopener" href="https://nightlies.apache.org/flink/flink-docs-release-1.14/zh/docs/concepts/flink-architecture/#taskmanagers">TaskManagers</a>）。Flink 为不同的环境和资源提供者（例如 YARN、Kubernetes 和 standalone 部署）实现了对应的 ResourceManager。在 standalone 设置中，ResourceManager 只能分配可用 TaskManager 的 slots，而不能自行启动新的 TaskManager。</p>
+</li>
+<li><p><strong>Dispatcher</strong></p>
+<p><em>Dispatcher</em> 提供了一个 REST 接口，用来提交 Flink 应用程序执行，并为每个提交的作业启动一个新的 JobMaster。它还运行 Flink WebUI 用来提供作业执行信息。</p>
+</li>
+<li><p><strong>JobMaster</strong></p>
+<p><em>JobMaster</em> 负责管理单个<a target="_blank" rel="noopener" href="https://nightlies.apache.org/flink/flink-docs-release-1.14/zh/docs/concepts/glossary/#logical-graph">JobGraph</a>的执行。Flink 集群中可以同时运行多个作业，每个作业都有自己的 JobMaster。</p>
+</li>
+</ul>
+<p>始终至少有一个 JobManager。高可用（HA）设置中可能有多个 JobManager，其中一个始终是 <em>leader</em>，其他的则是 <em>standby</em>（请参考 <a target="_blank" rel="noopener" href="https://nightlies.apache.org/flink/flink-docs-release-1.14/zh/docs/deployment/ha/overview/">高可用（HA）</a>）。</p>
+<p><em>TaskManager</em>（也称为 <em>worker</em>）执行作业流的 task，并且缓存和交换数据流。</p>
+<p>必须始终至少有一个 TaskManager。在 TaskManager 中资源调度的最小单位是 task <em>slot</em>。TaskManager 中 task slot 的数量表示并发处理 task 的数量。请注意一个 task slot 中可以执行多个算子（请参考<a target="_blank" rel="noopener" href="https://nightlies.apache.org/flink/flink-docs-release-1.14/zh/docs/concepts/flink-architecture/#tasks-and-operator-chains">Tasks 和算子链</a>）。</p>
+<section class="footnotes"><div class="footnote-list"><ol><li><span id="fn:1" class="footnote-text"><span>JobManager
+<a href="#fnref:1" rev="footnote" class="footnote-backref"> ↩</a></span></span></li><li><span id="fn:2" class="footnote-text"><span>TaskManagers
+<a href="#fnref:2" rev="footnote" class="footnote-backref"> ↩</a></span></span></li></ol></div></section>
                 
               </div>
             
@@ -533,20 +498,13 @@
     
       <span class="category-chain">
         
-  <a href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/" class="category-chain-item">大数据</a>
+  <a href="/categories/%E6%95%99%E7%A8%8B/" class="category-chain-item">教程</a>
   
   
     <span>></span>
     
-  <a href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/Hive/" class="category-chain-item">Hive</a>
+  <a href="/categories/%E6%95%99%E7%A8%8B/Flink/" class="category-chain-item">Flink</a>
   
-  
-    <span>></span>
-    
-  <a href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/Hive/Bug/" class="category-chain-item">Bug</a>
-  
-  
-
   
 
   
@@ -562,7 +520,9 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/Bug/" class="print-no-link">#Bug</a>
+        <a href="/tags/%E6%95%99%E7%A8%8B/" class="print-no-link">#教程</a>
+      
+        <a href="/tags/Flink/" class="print-no-link">#Flink</a>
       
     </div>
   
@@ -574,8 +534,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Hive中的explode</div>
-      <div>http://example.com/2023/11/03/Hive中的explode/</div>
+      <div>Flink的搭建</div>
+      <div>http://example.com/2023/12/01/Flink的搭建/</div>
     </div>
     <div class="license-meta">
       
@@ -587,7 +547,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2023年11月3日</div>
+          <div>2023年12月1日</div>
         </div>
       
       
@@ -619,9 +579,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/11/16/hive3-13%E6%B7%BB%E5%8A%A0spark%E5%BC%95%E6%93%8E/" title="hive3.13添加spark引擎">
+                      <a href="/2023/12/06/Flink%E5%AD%A6%E4%B9%A0-%E4%B8%80/" title="Flink学习(一)">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">hive3.13添加spark引擎</span>
+                        <span class="hidden-mobile">Flink学习(一)</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -629,8 +589,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/11/03/Hive%E4%B8%AD%E7%9A%84Struct%E7%B1%BB%E5%9E%8BBug/" title="Hive中的Struct类型Bug">
-                        <span class="hidden-mobile">Hive中的Struct类型Bug</span>
+                      <a href="/2023/11/16/hive3-13%E6%B7%BB%E5%8A%A0spark%E5%BC%95%E6%93%8E/" title="hive3.13添加spark引擎">
+                        <span class="hidden-mobile">hive3.13添加spark引擎</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
