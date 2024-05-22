@@ -23,14 +23,14 @@
 <meta property="og:site_name" content="碎念随风">
 <meta property="og:description" content="系统总结flink各个算子的作用">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/img/article_index/default1.png">
+<meta property="og:image" content="https://note.youdao.com/yws/api/personal/file/WEB83283f24c95afd3095782564a1b2c85b?method=download&shareKey=4340b43b1cf36093e9776693df84ba96">
 <meta property="article:published_time" content="2024-05-17T02:25:29.000Z">
-<meta property="article:modified_time" content="2024-05-20T08:27:20.969Z">
+<meta property="article:modified_time" content="2024-05-22T09:36:07.953Z">
 <meta property="article:author" content="shyl">
 <meta property="article:tag" content="教程">
 <meta property="article:tag" content="Flink">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://example.com/img/article_index/default1.png">
+<meta name="twitter:image" content="https://note.youdao.com/yws/api/personal/file/WEB83283f24c95afd3095782564a1b2c85b?method=download&shareKey=4340b43b1cf36093e9776693df84ba96">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
@@ -235,7 +235,7 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/img/article_index/default.png') no-repeat center center; background-size: cover;">
+     style="background: url('https://note.youdao.com/yws/api/personal/file/WEB83283f24c95afd3095782564a1b2c85b?method=download&shareKey=4340b43b1cf36093e9776693df84ba96') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
@@ -269,7 +269,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          0 字
+          7.3k 字
         
       </span>
     
@@ -280,7 +280,7 @@
         
         
         
-          1 分钟
+          61 分钟
         
       </span>
     
@@ -343,7 +343,7 @@
               <p class="note note-info">
                 
                   
-                    本文最后更新于：1 天前
+                    本文最后更新于：24 分钟前
                   
                 
               </p>
@@ -351,7 +351,177 @@
             
               <div class="markdown-body">
                 
-                
+                <p>前言： Flink提供了丰富的算子来方便开发者处理各种应用场景。</p>
+<h4 id="一、基本转换类算子"><a href="#一、基本转换类算子" class="headerlink" title="一、基本转换类算子"></a>一、基本转换类算子</h4><ol>
+<li><h5 id="Map："><a href="#Map：" class="headerlink" title="Map："></a>Map：</h5><ol>
+<li><strong>作用</strong>：将用户定义的MapFunction函数应用于数据流中的每个元素。数据流中的每个元素将作为输入元素进入用户定义的MapFunction函数，MapFunction函数将对输入的元素进行转换并产生一个结果元素输出到新的数据流中。</li>
+<li><strong>数据流转换：</strong>DataStream -&gt; DataStream。</li>
+<li><strong>应用场景：</strong>解析元素，转换数据类型。</li>
+<li><strong>代码举例：</strong></li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs java">   <br></code></pre></td></tr></table></figure>
+</li>
+<li><h5 id="FlatMap："><a href="#FlatMap：" class="headerlink" title="FlatMap："></a>FlatMap：</h5><ol>
+<li><strong>作用：</strong>将用户定义的FlatMapFunction函数应用于数据流中的每一个元素，数据流中的每个元素将作为输入元素进入FlatMapFunction函数，FlatMapFunction函数将对输入的元素进行转换并产生0个，1个，或者多个结果元素输出到新的数据流中。</li>
+<li><strong>数据流转换：</strong>DataStream -&gt; DataStream。</li>
+<li><strong>应用场景：</strong>拆分不需要的列表和数组。</li>
+<li><strong>代码举例：</strong></li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs java">   <br></code></pre></td></tr></table></figure>
+
+</li>
+<li><h5 id="Filter："><a href="#Filter：" class="headerlink" title="Filter："></a>Filter：</h5><ol>
+<li><strong>作用：</strong>将用户定义的FilterFunction函数应用于数据流中的每个元素。数据流中的每个元素将作为输入元素进入FilterFunction函数，FilterFunction函数对输入的元素进行判断来决定保留该元素还是丢弃该元素，返回true代表保留，返回false代表丢弃。</li>
+<li><strong>数据流转换：</strong>DataStream -&gt; DataStream。</li>
+<li><strong>应用场景：</strong>数据去重</li>
+<li><strong>代码举例：</strong></li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs java">   <br></code></pre></td></tr></table></figure>
+</li>
+<li><h5 id="KeyBy："><a href="#KeyBy：" class="headerlink" title="KeyBy："></a>KeyBy：</h5><ol>
+<li><strong>作用：</strong>KeyBy操作符的执行逻辑是将一个数据流分成不相交的流分区（分区数量和并行度一致），所有具有相同Key的元素都被分配到相同的流分区，在keyby操作符内部通过散列算法来划分元素到对应的流分区。</li>
+<li><strong>数据流转换：</strong>DataStream -&gt; KeyedStream。</li>
+<li><strong>应用场景：</strong>聚合、状态管理、窗口操作</li>
+<li><strong>代码举例：</strong></li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs java">   <br></code></pre></td></tr></table></figure></li>
+<li><h5 id="Reduce："><a href="#Reduce：" class="headerlink" title="Reduce："></a>Reduce：</h5><ol>
+<li><strong>作用：</strong>Reduce操作符应用用户定义的ReduceFunction函数将KeyedStream中具有相同Key元素合并为单个值，而且总是将两个元素合并为一个元素，具体细节为将上一个合并过的值和当前输入的元素结合，产生新的值发出。Reduce操作符将ReduceFunction函数连续应用于同一个组的所有值，直到仅剩一个值为止。</li>
+<li><strong>数据流转换：</strong>KeyedStream -&gt; DataStream。</li>
+<li><strong>应用场景：</strong>聚合计算</li>
+<li><strong>代码举例：</strong></li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs java">   <br></code></pre></td></tr></table></figure></li>
+</ol>
+<h4 id="二、聚合算子"><a href="#二、聚合算子" class="headerlink" title="二、聚合算子"></a>二、聚合算子</h4><ol>
+<li><h5 id="aggregations"><a href="#aggregations" class="headerlink" title="aggregations"></a>aggregations</h5><ol>
+<li><p><strong>作用：</strong>提供一系列内置的聚合逻辑，可以对KeyStream中具有相同Key的元素进行求和，求最大值或最小值等。提供两种方式对具有相同key的元素进行聚合计算。对于POJO类型的元素可以通过指定字段名称来指定聚合字段，对于元组类型的元素可以通过指定元素的索引来指定聚合字段。</p>
+</li>
+<li><p><strong>数据流转换：</strong>KeyedStream-&gt; DataStream</p>
+</li>
+<li><p><strong>分类：</strong></p>
+<ol>
+<li><strong>sum：</strong>返回同一个Key分组下指定字段的和。</li>
+<li><strong>min：</strong>返回同一个key分组下指定字段的最小值。</li>
+<li><strong>minby：</strong>返回同一个key分组下指定字段中具有最小值的元素。</li>
+<li><strong>max：</strong>返回同一个key分组下指定字段的最大值。</li>
+<li><strong>maxby：</strong>返回同一个key分组下指定字段中具有最大值的元素。</li>
+</ol>
+<p><font color="red">注：类似关系型数据的SQL语法，Min是取字段的最小值，MinBy是取字段最小的一整行数据（max同理）。</font></p>
+</li>
+<li><p><strong>应用场景：</strong></p>
+</li>
+<li><p><strong>代码举例：</strong></p>
+</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs java">   <br></code></pre></td></tr></table></figure></li>
+</ol>
+<h4 id="三、数据流操作算子"><a href="#三、数据流操作算子" class="headerlink" title="三、数据流操作算子"></a>三、数据流操作算子</h4><ol>
+<li><h5 id="keyBY（前面介绍过）"><a href="#keyBY（前面介绍过）" class="headerlink" title="keyBY（前面介绍过）"></a>keyBY（前面介绍过）</h5></li>
+<li><p><strong>Split和Select（后续版本删除，作者使用版本为1.14）：</strong></p>
+<ol>
+<li><p><strong>作用：</strong>这两个操作符通常是组合使用的，Split操作符根据用户定义的标准将数据流拆分为两个或者更多的数据流，Select操作符根据用户定义的标准获取对应的数据流，以便在获取的数据流中执行后续的转换操作。</p>
+</li>
+<li><p><strong>数据流转换：</strong>split：DataStream -&gt; SplitStream <br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;select：SplitStream -&gt; DataStream</p>
+</li>
+<li><p><strong>应用场景：</strong>切分数据流，获取数据流</p>
+</li>
+<li><p><strong>代码示例：</strong></p>
+</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs java">      <br></code></pre></td></tr></table></figure>
+</li>
+<li><h5 id="Project"><a href="#Project" class="headerlink" title="Project"></a>Project</h5><ol>
+<li><strong>作用：</strong>Project操作符作用在元素的数据类型是元组的数据流中，它根据指定的索引从元组中选择对应的字段组成一个子集。该操作符的参数是一个变长参数，类型为Int。参数指定保留的输入元组的字段索引，输出元组的字段顺序与字段索引的顺序相对应。</li>
+<li><strong>数据流转换：</strong>DataStream -&gt;DataStream</li>
+<li><strong>应用场景：</strong>按元组索引创建新流</li>
+<li><strong>代码示例：</strong></li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs java">   <br></code></pre></td></tr></table></figure>
+</li>
+<li><h5 id="Union"><a href="#Union" class="headerlink" title="Union"></a>Union</h5><ol>
+<li><strong>作用：</strong>Union操作符负责将两个或者多个<font color="red">相同类型的数据流</font>进行合并来创建一个包含数据流中所有元素的新数据流。该操作符的参数是一个变长参数，可以支持合并多个相同类型的数据流.</li>
+<li><strong>数据流转换：</strong>DataStream -&gt; DataStream</li>
+<li><strong>应用场景：</strong>合并不同数据源相同数据类型的数据流</li>
+<li><strong>代码示例：</strong></li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs java">   <br></code></pre></td></tr></table></figure>
+</li>
+<li><h5 id="Connect"><a href="#Connect" class="headerlink" title="Connect"></a>Connect</h5><ol>
+<li><strong>作用：</strong>连接两个保留其类型的数据流创建新的连接流，从而允许这两个数据流共享状态。</li>
+<li><strong>数据流转化：</strong>DataStream+DataStream -&gt; ConnectedStream</li>
+<li><strong>应用场景：</strong></li>
+<li><strong>代码示例：</strong></li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs java">   <br></code></pre></td></tr></table></figure>
+</li>
+<li><h5 id="CoMap-CoFlatMap"><a href="#CoMap-CoFlatMap" class="headerlink" title="CoMap,CoFlatMap"></a>CoMap,CoFlatMap</h5><ol>
+<li><strong>作用：</strong><ol>
+<li>CoMap：在connectStream中使用Map操作符将用户定义的CoMapFunction函数应用于ConnectedStream中的每个元素。数据流中的每个元素将作为输入元素进入CoMapFunction函数，对输入的元素进行转换并产生一个结果元素输出到新的数据流中。CoMapFunction函数提供了map1，map2两种转换方式分别处理connectStream的两个不同类型的数据流。</li>
+<li>CoFlatMap：在connectStream中使用FlatMap操作符将用户定义的CoFlatMapFunction函数应用于ConnectedStream中的每个元素。数据流中的每个元素将作为输入元素进入CoMapFunction函数，对输入的元素进行转换并产生0个，1个，或多个结果元素输出到新的数据流中。CoFlatMapFunction函数提供了flatmap1，flatmap2两种转换方式分别处理connectStream的两个不同类型的数据流。</li>
+</ol>
+</li>
+<li><strong>数据流转换：</strong>ConnectedStream -&gt; DataStream</li>
+<li><strong>应用场景：</strong></li>
+<li><strong>代码示例：</strong></li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs java">   <br></code></pre></td></tr></table></figure>
+
+
+</li>
+<li><h5 id="Iterate"><a href="#Iterate" class="headerlink" title="Iterate"></a>Iterate</h5><ol>
+<li><strong>作用：</strong>流处理程序的迭代计算实现了一个Step函数并将其嵌入IterativeStream类型的数据流，由于流处理程序可能永远不会完成，所以没有最大迭代次数。相反需要开发者指定数据流的那一部分被反馈回迭代操作中，以及那一部分使用split操作符或filter操作符转发到下游数据流。迭代操作将一个操作符的输出重定向到某个先前的操作符，在数据流中创建“反馈”循环。</li>
+<li><strong>数据流转换：</strong>DataStream -&gt; IterativeStream -&gt;DataStream</li>
+<li><strong>应用场景：</strong>更新模型算法</li>
+<li><strong>代码示例：</strong></li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs java">   <br></code></pre></td></tr></table></figure></li>
+</ol>
+<h4 id="四、窗口算子"><a href="#四、窗口算子" class="headerlink" title="四、窗口算子"></a>四、窗口算子</h4><ol>
+<li><h5 id="为什么需要窗口？"><a href="#为什么需要窗口？" class="headerlink" title="为什么需要窗口？"></a>为什么需要窗口？</h5></li>
+</ol>
+<p>在Flink中，流是一个无界数据集，当我们需要在流中进行一些聚合运算时，比如统计最近30秒的请求量或者异常次数，然后根据请求或者异常次数采取相应措施。无论是从时间还是空间上，在流中做聚合计算都不现实。所以必须将聚合计算回归到有界数据集上，因此Flink引入了窗口来作为框定一个有限数据集，窗口将流拆分成有限大小的“桶”，允许开发者在这些桶中做聚合计算。Flink的窗口可以是时间驱动（Time Window），也可以是事件驱动(Event Window)。</p>
+<ol start="2">
+<li><h5 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h5></li>
+</ol>
+<p>窗口化的流处理程序一般有两种结构，第一种结构是基于分组的窗口化数据流，第二种结构基于非分组的窗口化数据流。这两种结构的唯一区别是分组的数据流调用KeyBy操作符和Window操作符，而非分组的窗口化数据流仅调用WindowAll操作符。</p>
+<ol start="3">
+<li><h5 id="Window（分组），WindowAll（非分组）对比"><a href="#Window（分组），WindowAll（非分组）对比" class="headerlink" title="Window（分组），WindowAll（非分组）对比"></a>Window（分组），WindowAll（非分组）对比</h5><ol>
+<li><strong>Window：</strong>将在已经分区的KeyedStream中定义一个窗口，窗口根据某些特征将具有相同key的数据分为一组，（例如最近5秒到达的数据）。</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs java">stream<br>    .keyby(...)                    &lt;- 根据指定的key将数据流中的数据进行分区<br>    .window(...)                   &lt;- 必选：“窗口分配器”<br>    [.trigger(...)]                &lt;- 可选：“窗口触发器”（默认使用各窗口分配器内置的触发器实现）<br>    [.evictor(...)]                &lt;- 可选：“窗口剔除器”（默认没有实现）<br>    [.allowedLateness(...)]        &lt;- 可选：“窗口接受迟到的元素的最大时间”（默认为<span class="hljs-number">0</span>）<br>    [.sideOutputLateData(...)]     &lt;- 可选：“侧端输出标签”<br>(将窗口中迟到的数据发送到给定的OutPutTag标识的侧端输出，默认窗口中迟到元素没有侧端输出)<br>    .reduce/aggregate/fold/apply() &lt;- 必选：“窗口函数”<br>    [.getSideOutput()]             &lt;- 可选：“侧端输出”<br>(使用给定的OutputTag获取一个DataStream，其中包含操作符发送到侧端输出的元素)<br></code></pre></td></tr></table></figure>
+
+<ol start="2">
+<li><strong>WindowAll：</strong>在常规的DataStream中调用WIndowAll操作符来定义一个窗口，窗口会根据某些特征对所有流数据进行分组。注：在大部分情况下使用WIndowAll操作符并不是并行转换，所有上游操作符发送的元素都将被收集在WindowAll操作符的任务中。</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs java">stream<br>    .WindowAll(...)                &lt;- 必选：“窗口分配器”<br>    [.trigger(...)]                &lt;- 可选：“窗口触发器”（默认使用各窗口分配器内置的触发器实现）<br>    [.evictor(...)]                &lt;- 可选：“窗口剔除器”（默认没有实现）<br>    [.allowedLateness(...)]        &lt;- 可选：“窗口接受迟到的元素的最大时间”（默认为<span class="hljs-number">0</span>）<br>    [.sideOutputLateData(...)]     &lt;- 可选：“侧端输出标签”<br>(将窗口中迟到的数据发送到给定的OutPutTag标识的侧端输出，默认窗口中迟到元素没有侧端输出)<br>    .reduce/aggregate/fold/apply() &lt;- 必选：“窗口函数”<br>    [.getSideOutput()]             &lt;- 可选：“侧端输出”<br>(使用给定的OutputTag获取一个DataStream，其中包含操作符发送到侧端输出的元素)<br></code></pre></td></tr></table></figure>
+</li>
+<li><h5 id="窗口的生命周期"><a href="#窗口的生命周期" class="headerlink" title="窗口的生命周期"></a>窗口的生命周期</h5></li>
+</ol>
+<p>在数据流中定义好一个窗口后，当属于某个窗口的第一元素到达时，该窗口就会创建，当时间（事件时间或处理时间）超过该窗口的结束时间戳加用户指定的允许延迟时间的总和后，该窗口将被完全删除。此外每个窗口都带有一个trigger（触发器）和一个窗口函数ProcessWindowFunction、ReduceFunction、AggregateFunction等。窗口函数包含要应用于窗口中元素的计算逻辑，而触发器则是确定窗口何时该被窗口函数处理。触发的策略可能类似于“当元素超过4个” 或者 “当水印经过窗口末端”等。</p>
+<p>初此之外，Flink还允许开发者指定一个Evictor，它能够在触发器触发之后，窗口函数应用于窗口之前和&#x2F;或之后从窗口中删除某些元素。</p>
+<ol start="5">
+<li><h5 id="窗口分配器"><a href="#窗口分配器" class="headerlink" title="窗口分配器"></a>窗口分配器</h5><ol>
+<li><strong>作用：</strong>窗口分配器负责将每个传入的元素按照某种方式分配给一个或多个窗口。Flink为最常见的几种应用场景（滚动窗口，滑动窗口，会话窗口，全局窗口）提供了预定义的以简化流处理程序的开发。还可以实现windowAssigner抽象类实现自定义窗口分配器。</li>
+<li></li>
+</ol>
+</li>
+</ol>
+<h5 id="6-代码示例"><a href="#6-代码示例" class="headerlink" title="6.代码示例"></a>6.代码示例</h5><ol>
+<li>自定义数据源(1秒发送一条数据)</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.shyl.bean;<br><br><span class="hljs-keyword">import</span> org.apache.flink.api.java.tuple.Tuple3;<br><span class="hljs-keyword">import</span> org.apache.flink.streaming.api.datastream.DataStreamSource;<br><span class="hljs-keyword">import</span> org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;<br><span class="hljs-keyword">import</span> org.apache.flink.streaming.api.functions.source.SourceFunction;<br><span class="hljs-keyword">import</span> org.slf4j.Logger;<br><span class="hljs-keyword">import</span> org.slf4j.LoggerFactory;<br><br><span class="hljs-keyword">import</span> java.text.SimpleDateFormat;<br><span class="hljs-keyword">import</span> java.util.Date;<br><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">SourceForWindow</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">SourceFunction</span>&lt;Tuple3&lt;String, Integer, String&gt;&gt; &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-type">Logger</span> <span class="hljs-variable">LOG</span> <span class="hljs-operator">=</span> LoggerFactory.getLogger(SourceForWindow.class);<br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">volatile</span> <span class="hljs-type">boolean</span> <span class="hljs-variable">isRunning</span> <span class="hljs-operator">=</span> <span class="hljs-literal">true</span>;<br>    <span class="hljs-comment">// 发送元素间隔时间</span><br>    <span class="hljs-keyword">private</span> <span class="hljs-type">long</span> sleepTime;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> String[] WORDS = <span class="hljs-keyword">new</span> <span class="hljs-title class_">String</span>[]&#123;<br>            <span class="hljs-string">&quot;shyl&quot;</span>,<br>            <span class="hljs-string">&quot;shyl&quot;</span>,<br>            <span class="hljs-string">&quot;shyl&quot;</span>,<br>            <span class="hljs-string">&quot;shyl&quot;</span>,<br>            <span class="hljs-string">&quot;shyl&quot;</span>,<br>            <span class="hljs-string">&quot;java&quot;</span>,<br>            <span class="hljs-string">&quot;flink&quot;</span>,<br>            <span class="hljs-string">&quot;flink&quot;</span>,<br>            <span class="hljs-string">&quot;flink&quot;</span>,<br>            <span class="hljs-string">&quot;shyl&quot;</span>,<br>            <span class="hljs-string">&quot;shyl&quot;</span>,<br>            <span class="hljs-string">&quot;hadoop&quot;</span>,<br>            <span class="hljs-string">&quot;hadoop&quot;</span>,<br>            <span class="hljs-string">&quot;spark&quot;</span><br>    &#125;;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-title function_">SourceForWindow</span><span class="hljs-params">(<span class="hljs-type">long</span> sleepTime)</span> &#123;<br>        <span class="hljs-built_in">this</span>.sleepTime = sleepTime;<br>    &#125;<br><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">run</span><span class="hljs-params">(SourceContext&lt;Tuple3&lt;String, Integer, String&gt;&gt; ctx)</span> <span class="hljs-keyword">throws</span> Exception &#123;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">count</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">while</span> (isRunning) &#123;<br>            <span class="hljs-type">String</span> <span class="hljs-variable">word</span> <span class="hljs-operator">=</span> WORDS[count % WORDS.length];<br>            <span class="hljs-type">String</span> <span class="hljs-variable">time</span> <span class="hljs-operator">=</span> getHHmmss(System.currentTimeMillis());<br>            Tuple3&lt;String, Integer, String&gt; tuple2 = Tuple3.of(word, count, time);<br>            ctx.collect(tuple2);<br>            LOG.info(<span class="hljs-string">&quot;send data :&quot;</span> + tuple2);<br>            Thread.sleep(sleepTime);<br>            count++;<br>        &#125;<br>    &#125;<br><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">cancel</span><span class="hljs-params">()</span> &#123;<br>        isRunning = <span class="hljs-literal">false</span>;<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> String <span class="hljs-title function_">getHHmmss</span><span class="hljs-params">(Long time)</span> &#123;<br>        <span class="hljs-type">SimpleDateFormat</span> <span class="hljs-variable">sdf</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">SimpleDateFormat</span>(<span class="hljs-string">&quot;HH:mm:ss&quot;</span>);<br>        <span class="hljs-type">String</span> <span class="hljs-variable">str</span> <span class="hljs-operator">=</span> sdf.format(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Date</span>(time));<br>        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;时间:&quot;</span> + str;<br>    &#125;<br><br>&#125;<br><br></code></pre></td></tr></table></figure>
+
+<p><img src="https://note.youdao.com/yws/api/personal/file/WEB784f05b36e6fdd6006e67f3f701aa53b?method=download&shareKey=07beb93234958c59db0138ad9d34bbdf" srcset="/img/loading.gif" lazyload alt="数据源截图"></p>
+<p>2. </p>
+<hr>
+<p class="note note-primary">富函数:是Flink的高级操作符，将RichFunction接口成为富函数。所有的操作符上应用的函数都有富函数版本，只需要在各种函数类名前面加上Rich前缀即可。富函数在基本函数提供的操作方法之外额外提供了一系列方法方便开发者丰富自己的业务逻辑。<br>
+1.🔴void open():执行基本操作方法前的初始化方法，它在基本的操作方法第一次被调用之前调用，因此适合在方法中进行编写初始化资源等一次性设置工作。该方法可能会转发运行时捕获的异常，当运行时捕获异常时，它将中止任务，并根据指定的重启策略决定是否重试任务。<br>
+2.🔴void close():在最后一次调用基本的操作方法之后调用它，换句话说就是在Flink程序结束前被调用，主要用于释放程序中的资源，该方法也可能转发运行时捕获的异常。<br>
+3.🔴RuntimeContext getRuntimeContext():获取有关用户定义的函数运行时的上下文信息，例如函数的并行度，函数的子任务索引或者执行函数的任务名称。RuntimeContext还提供对累加器，分布式缓存，计数器，当前配置信息，<font color='red'>状态</font>等对象的访问。<br>
+4.IterationRuntimeContext getIterationRuntimeContext():获取RuntimeContext的专用版本，该版本具有有关执行函数迭代的其他信息。仅当函数是迭代的一部分时，此IterationRuntimeContext才可用，否则调用此方法将引发异常。<br>
+5.void setRuntimeContext(RuntimeContext t):设置函数运行时的上下文，将用户定义的函数应用于操作符的并行实例时由Flink框架自动调用。</p>
+
                 
               </div>
             
