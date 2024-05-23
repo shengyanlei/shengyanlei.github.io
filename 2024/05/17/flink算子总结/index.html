@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://note.youdao.com/yws/api/personal/file/WEB83283f24c95afd3095782564a1b2c85b?method=download&shareKey=4340b43b1cf36093e9776693df84ba96">
 <meta property="article:published_time" content="2024-05-17T02:25:29.000Z">
-<meta property="article:modified_time" content="2024-05-22T09:36:07.953Z">
+<meta property="article:modified_time" content="2024-05-23T02:53:29.641Z">
 <meta property="article:author" content="shyl">
 <meta property="article:tag" content="教程">
 <meta property="article:tag" content="Flink">
@@ -269,7 +269,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          7.3k 字
+          5.4k 字
         
       </span>
     
@@ -280,7 +280,7 @@
         
         
         
-          61 分钟
+          46 分钟
         
       </span>
     
@@ -343,7 +343,7 @@
               <p class="note note-info">
                 
                   
-                    本文最后更新于：24 分钟前
+                    本文最后更新于：7 小时前
                   
                 
               </p>
@@ -477,36 +477,7 @@
 </ol>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs java">   <br></code></pre></td></tr></table></figure></li>
 </ol>
-<h4 id="四、窗口算子"><a href="#四、窗口算子" class="headerlink" title="四、窗口算子"></a>四、窗口算子</h4><ol>
-<li><h5 id="为什么需要窗口？"><a href="#为什么需要窗口？" class="headerlink" title="为什么需要窗口？"></a>为什么需要窗口？</h5></li>
-</ol>
-<p>在Flink中，流是一个无界数据集，当我们需要在流中进行一些聚合运算时，比如统计最近30秒的请求量或者异常次数，然后根据请求或者异常次数采取相应措施。无论是从时间还是空间上，在流中做聚合计算都不现实。所以必须将聚合计算回归到有界数据集上，因此Flink引入了窗口来作为框定一个有限数据集，窗口将流拆分成有限大小的“桶”，允许开发者在这些桶中做聚合计算。Flink的窗口可以是时间驱动（Time Window），也可以是事件驱动(Event Window)。</p>
-<ol start="2">
-<li><h5 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h5></li>
-</ol>
-<p>窗口化的流处理程序一般有两种结构，第一种结构是基于分组的窗口化数据流，第二种结构基于非分组的窗口化数据流。这两种结构的唯一区别是分组的数据流调用KeyBy操作符和Window操作符，而非分组的窗口化数据流仅调用WindowAll操作符。</p>
-<ol start="3">
-<li><h5 id="Window（分组），WindowAll（非分组）对比"><a href="#Window（分组），WindowAll（非分组）对比" class="headerlink" title="Window（分组），WindowAll（非分组）对比"></a>Window（分组），WindowAll（非分组）对比</h5><ol>
-<li><strong>Window：</strong>将在已经分区的KeyedStream中定义一个窗口，窗口根据某些特征将具有相同key的数据分为一组，（例如最近5秒到达的数据）。</li>
-</ol>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs java">stream<br>    .keyby(...)                    &lt;- 根据指定的key将数据流中的数据进行分区<br>    .window(...)                   &lt;- 必选：“窗口分配器”<br>    [.trigger(...)]                &lt;- 可选：“窗口触发器”（默认使用各窗口分配器内置的触发器实现）<br>    [.evictor(...)]                &lt;- 可选：“窗口剔除器”（默认没有实现）<br>    [.allowedLateness(...)]        &lt;- 可选：“窗口接受迟到的元素的最大时间”（默认为<span class="hljs-number">0</span>）<br>    [.sideOutputLateData(...)]     &lt;- 可选：“侧端输出标签”<br>(将窗口中迟到的数据发送到给定的OutPutTag标识的侧端输出，默认窗口中迟到元素没有侧端输出)<br>    .reduce/aggregate/fold/apply() &lt;- 必选：“窗口函数”<br>    [.getSideOutput()]             &lt;- 可选：“侧端输出”<br>(使用给定的OutputTag获取一个DataStream，其中包含操作符发送到侧端输出的元素)<br></code></pre></td></tr></table></figure>
-
-<ol start="2">
-<li><strong>WindowAll：</strong>在常规的DataStream中调用WIndowAll操作符来定义一个窗口，窗口会根据某些特征对所有流数据进行分组。注：在大部分情况下使用WIndowAll操作符并不是并行转换，所有上游操作符发送的元素都将被收集在WindowAll操作符的任务中。</li>
-</ol>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs java">stream<br>    .WindowAll(...)                &lt;- 必选：“窗口分配器”<br>    [.trigger(...)]                &lt;- 可选：“窗口触发器”（默认使用各窗口分配器内置的触发器实现）<br>    [.evictor(...)]                &lt;- 可选：“窗口剔除器”（默认没有实现）<br>    [.allowedLateness(...)]        &lt;- 可选：“窗口接受迟到的元素的最大时间”（默认为<span class="hljs-number">0</span>）<br>    [.sideOutputLateData(...)]     &lt;- 可选：“侧端输出标签”<br>(将窗口中迟到的数据发送到给定的OutPutTag标识的侧端输出，默认窗口中迟到元素没有侧端输出)<br>    .reduce/aggregate/fold/apply() &lt;- 必选：“窗口函数”<br>    [.getSideOutput()]             &lt;- 可选：“侧端输出”<br>(使用给定的OutputTag获取一个DataStream，其中包含操作符发送到侧端输出的元素)<br></code></pre></td></tr></table></figure>
-</li>
-<li><h5 id="窗口的生命周期"><a href="#窗口的生命周期" class="headerlink" title="窗口的生命周期"></a>窗口的生命周期</h5></li>
-</ol>
-<p>在数据流中定义好一个窗口后，当属于某个窗口的第一元素到达时，该窗口就会创建，当时间（事件时间或处理时间）超过该窗口的结束时间戳加用户指定的允许延迟时间的总和后，该窗口将被完全删除。此外每个窗口都带有一个trigger（触发器）和一个窗口函数ProcessWindowFunction、ReduceFunction、AggregateFunction等。窗口函数包含要应用于窗口中元素的计算逻辑，而触发器则是确定窗口何时该被窗口函数处理。触发的策略可能类似于“当元素超过4个” 或者 “当水印经过窗口末端”等。</p>
-<p>初此之外，Flink还允许开发者指定一个Evictor，它能够在触发器触发之后，窗口函数应用于窗口之前和&#x2F;或之后从窗口中删除某些元素。</p>
-<ol start="5">
-<li><h5 id="窗口分配器"><a href="#窗口分配器" class="headerlink" title="窗口分配器"></a>窗口分配器</h5><ol>
-<li><strong>作用：</strong>窗口分配器负责将每个传入的元素按照某种方式分配给一个或多个窗口。Flink为最常见的几种应用场景（滚动窗口，滑动窗口，会话窗口，全局窗口）提供了预定义的以简化流处理程序的开发。还可以实现windowAssigner抽象类实现自定义窗口分配器。</li>
-<li></li>
-</ol>
-</li>
-</ol>
+<h4 id="四、窗口算子"><a href="#四、窗口算子" class="headerlink" title="四、窗口算子"></a>四、窗口算子</h4><p>有关窗口的介绍请参考文章<a href="" style="display: inline;white-space: nowrap;">Flink的窗口</a></p>
 <h5 id="6-代码示例"><a href="#6-代码示例" class="headerlink" title="6.代码示例"></a>6.代码示例</h5><ol>
 <li>自定义数据源(1秒发送一条数据)</li>
 </ol>
@@ -619,6 +590,12 @@
                 <div class="post-prevnext my-3">
                   <article class="post-prev col-6">
                     
+                    
+                      <a href="/2024/05/23/Flink%E7%9A%84%E7%AA%97%E5%8F%A3/" title="Flink的窗口">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Flink的窗口</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
                     
                   </article>
                   <article class="post-next col-6">
