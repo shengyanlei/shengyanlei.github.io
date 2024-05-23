@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/img/article_index/default1.png">
 <meta property="article:published_time" content="2024-05-23T02:36:44.000Z">
-<meta property="article:modified_time" content="2024-05-23T09:59:29.365Z">
+<meta property="article:modified_time" content="2024-05-23T14:50:27.456Z">
 <meta property="article:author" content="shyl">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="http://example.com/img/article_index/default1.png">
@@ -267,7 +267,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          5.5k 字
+          5.6k 字
         
       </span>
     
@@ -278,7 +278,7 @@
         
         
         
-          46 分钟
+          47 分钟
         
       </span>
     
@@ -341,7 +341,7 @@
               <p class="note note-info">
                 
                   
-                    本文最后更新于：几秒前
+                    本文最后更新于：25 分钟前
                   
                 
               </p>
@@ -387,16 +387,15 @@
 <p><img src="https://note.youdao.com/yws/api/personal/file/WEB0f96c93e39bd90b3e06560e4e7c5172e?method=download&shareKey=e81c3788e7db5aa0252200082778abf8" srcset="/img/loading.gif" lazyload alt="会话窗口（官网截图）"></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs java">DataStream&lt;T&gt; input = ...;<br><br><span class="hljs-comment">// event-time session windows with static gap</span><br>input<br>    .keyBy(&lt;key selector&gt;)<br>    .window(EventTimeSessionWindows.withGap(Time.minutes(<span class="hljs-number">10</span>)))<br>    .&lt;windowed transformation&gt;(&lt;window function&gt;);<br>    <br><span class="hljs-comment">// event-time session windows with dynamic gap</span><br>input<br>    .keyBy(&lt;key selector&gt;)<br>    .window(EventTimeSessionWindows.withDynamicGap((element) -&gt; &#123;<br>        <span class="hljs-comment">// determine and return session gap</span><br>    &#125;))<br>    .&lt;windowed transformation&gt;(&lt;window function&gt;);<br><br><span class="hljs-comment">// processing-time session windows with static gap</span><br>input<br>    .keyBy(&lt;key selector&gt;)<br>    .window(ProcessingTimeSessionWindows.withGap(Time.minutes(<span class="hljs-number">10</span>)))<br>    .&lt;windowed transformation&gt;(&lt;window function&gt;);<br>    <br><span class="hljs-comment">// processing-time session windows with dynamic gap</span><br>input<br>    .keyBy(&lt;key selector&gt;)<br>    .window(ProcessingTimeSessionWindows.withDynamicGap((element) -&gt; &#123;<br>        <span class="hljs-comment">// determine and return session gap</span><br>    &#125;))<br>    .&lt;windowed transformation&gt;(&lt;window function&gt;);<br></code></pre></td></tr></table></figure>
 
-
-
+<p>示例代码参考<a target="_blank" rel="noopener" href="https://github.com/shengyanlei/Flink-demo/blob/master/src/main/java/com/shyl/window/SessionWindow.java">github地址</a></p>
 <ol start="4">
-<li>全局窗口（Global Window)：Flink中的窗口既可以是时间驱动的，也可以是事件驱动的。全局窗口分配器将具有相同key的所有元素分配给一个全局窗口。要使全局窗口模式可用，还必须为该窗口指定触发器，否则触发器不执行任何计算，这是因为全局窗口没有可以处理聚合元素的自然终点。例如指定一个大小为3个元素的窗口，每当窗口中的元素达到3个就会开启一个新的窗口。</li>
+<li>全局窗口（Global Window)：Flink中的窗口既可以是时间驱动的，也可以是事件驱动的。全局窗口就是被事件驱动的（这里不太准确，你可以实现自定义的触发器支持时间）全局窗口分配器将具有相同key的所有元素分配给一个全局窗口。要使全局窗口模式可用，还必须为该窗口指定触发器，否则触发器不执行任何计算，这是因为全局窗口没有可以处理聚合元素的自然终点。例如指定一个大小为3个元素的窗口，每当窗口中的元素达到3个就会开启一个新的窗口。</li>
 </ol>
 <p><img src="https://note.youdao.com/yws/api/personal/file/WEBaa23b8a0d4d83796122798ba80b61a89?method=download&shareKey=e81c3788e7db5aa0252200082778abf8" srcset="/img/loading.gif" lazyload alt="全局窗口（官网截图）"></p>
 </li>
 </ol>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs java">DataStream&lt;T&gt; input = ...;<br><br>input<br>    .keyBy(&lt;key selector&gt;)<br>    .window(GlobalWindows.create())<br>    .&lt;windowed transformation&gt;(&lt;window function&gt;);<br></code></pre></td></tr></table></figure>
-
+<p>示例代码参考<a target="_blank" rel="noopener" href="https://github.com/shengyanlei/Flink-demo/blob/master/src/main/java/com/shyl/window/GlobalWindow.java">github地址</a></p>
 <h4 id="六、窗口函数"><a href="#六、窗口函数" class="headerlink" title="六、窗口函数"></a>六、窗口函数</h4><p>在窗口分配器生成窗口后，需要为每个窗口指定在该窗口中执行的计算策略。这就是窗口函数的职责。一旦系统确定一个窗口以准备好进行处理，窗口函数将用于处理每个（也可能是键控）的窗口中的每个元素。</p>
 <ol>
 <li><h5 id="RecuceFunction："><a href="#RecuceFunction：" class="headerlink" title="RecuceFunction："></a>RecuceFunction：</h5><ol>
