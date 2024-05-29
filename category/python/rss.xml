@@ -1,0 +1,391 @@
+<?xml version="1.0"?>
+<rss version="2.0">
+    <channel>
+        <title>碎念随风 • Posts by &#34;python&#34; category</title>
+        <link>http://example.com</link>
+        <description>人海未见之时，我亦独行在这城市。 料峭，春醒，酷暑，骤雨，寒意四起，大雁南飞，而后，大雪，寒风， 斗转星移，人间寒暑。</description>
+        <language>zh-CN</language>
+        <pubDate>Tue, 24 Oct 2023 15:34:44 +0800</pubDate>
+        <lastBuildDate>Tue, 24 Oct 2023 15:34:44 +0800</lastBuildDate>
+        <category>大数据</category>
+        <category>Flink</category>
+        <category>Bug</category>
+        <category>Python</category>
+        <category>爬虫</category>
+        <category>升级</category>
+        <category>笔记</category>
+        <category>Markdown</category>
+        <category>总结</category>
+        <category>数仓搭建</category>
+        <category>test</category>
+        <category>图床</category>
+        <item>
+            <guid isPermalink="true">http://example.com/2023/10/24/Python%E7%BD%91%E7%BB%9C%E7%88%AC%E8%99%AB%EF%BC%88%E4%BA%8C%EF%BC%89/</guid>
+            <title>Python网络爬虫（二）</title>
+            <link>http://example.com/2023/10/24/Python%E7%BD%91%E7%BB%9C%E7%88%AC%E8%99%AB%EF%BC%88%E4%BA%8C%EF%BC%89/</link>
+            <category>Python</category>
+            <category>爬虫</category>
+            <pubDate>Tue, 24 Oct 2023 15:34:44 +0800</pubDate>
+            <description><![CDATA[ &lt;h3 id=&#34;一-request库&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#一-request库&#34;&gt;#&lt;/a&gt; 一、request 库&lt;/h3&gt;
+&lt;p&gt;Requests 是一个常用的 HTTP 请求库，可以方便地向网站发送 HTTP 请求，并获取响应结果。这是官方的文档：&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9yZXF1ZXN0cy5yZWFkdGhlZG9jcy5pby9lbi9sYXRlc3Qv&#34;&gt;request 官方文档&lt;/span&gt;（官方文档不太容易看懂😹）可以选择菜鸟教程里面的 requests 库讲解&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly93d3cucnVub29iLmNvbS9weXRob24zL3B5dGhvbi1yZXF1ZXN0cy5odG1s&#34;&gt;菜鸟教程&lt;/span&gt;。&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;属性或方法&lt;/th&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;说明&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;apparent_encoding&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;编码方式&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;close()&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;关闭与服务器的连接&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;content&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;返回响应的内容，以字节为单位&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;cookies&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;返回一个 CookieJar 对象，包含了从服务器发回的 cookie&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;elapsed&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;返回一个 timedelta 对象，包含了从发送请求到响应到达之间经过的时间量，可以用于测试响应速度。比如 r.elapsed.microseconds 表示响应到达需要多少微秒。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;encoding&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;解码 r.text 的编码方式&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;headers&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;返回响应头，字典格式&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;history&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;返回包含请求历史的响应对象列表（url）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;is_permanent_redirect&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;如果响应是永久重定向的 url，则返回 True，否则返回 False&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;is_redirect&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;如果响应被重定向，则返回 True，否则返回 False&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;iter_content()&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;迭代响应&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;iter_lines()&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;迭代响应的行&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;json()&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;返回结果的 JSON 对象 (结果需要以 JSON 格式编写的，否则会引发错误)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;links&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;返回响应的解析头链接&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;next&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;返回重定向链中下一个请求的 PreparedRequest 对象&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;ok&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;检查 “status_code” 的值，如果小于 400，则返回 True，如果不小于 400，则返回 False&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;raise_for_status()&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;如果发生错误，方法返回一个 HTTPError 对象&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;reason&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;响应状态的描述，比如 “Not Found” 或 “OK”&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;request&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;返回请求此响应的请求对象&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;status_code&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;返回 http 的状态码，比如 404 和 200（200 是 OK，404 是 Not Found）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;text&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;返回响应的内容，unicode 类型数据&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;url&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;返回响应的 URL&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3 id=&#34;二-beautiful-soup库&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#二-beautiful-soup库&#34;&gt;#&lt;/a&gt; 二、Beautiful soup 库&lt;/h3&gt;
+&lt;p&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9iZWF1dGlmdWxzb3VwLmNuLw==&#34;&gt;Beautiful Soup&lt;/span&gt; 是一个可以从 HTML 或 XML 文件中提取数据的 Python 库。它能够通过你喜欢的转换器实现惯用的文档导航，查找，修改文档的方式.Beautiful Soup 会帮你节省数小时甚至数天的工作时间.&lt;/p&gt;
+&lt;p&gt;下表列出了主要的解析器，以及它们的优缺点:&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;解析器&lt;/th&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;使用方法&lt;/th&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;优势&lt;/th&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;劣势&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;Python 标准库&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;code&gt;BeautifulSoup(markup, &amp;quot;html.parser&amp;quot;)&lt;/code&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;Python 的内置标准库执行速度适中文档容错能力强&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;Python 2.7.3 or 3.2.2) 前 的版本中文档容错能力差&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;lxml HTML 解析器&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;code&gt;BeautifulSoup(markup, &amp;quot;lxml&amp;quot;)&lt;/code&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;速度快文档容错能力强&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;需要安装 C 语言库&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;lxml XML 解析器&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;code&gt;BeautifulSoup(markup, [&amp;quot;lxml-xml&amp;quot;])``BeautifulSoup(markup, &amp;quot;xml&amp;quot;)&lt;/code&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;速度快唯一支持 XML 的解析器&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;需要安装 C 语言库&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;html5lib&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;code&gt;BeautifulSoup(markup, &amp;quot;html5lib&amp;quot;)&lt;/code&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;最好的容错性以浏览器的方式解析文档生成 HTML5 格式的文档&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;速度慢不依赖外部扩展&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;将一段文档传入 BeautifulSoup 的构造方法，就能得到一个文档的对象，可以传入一段字符串或一个文件句柄.&lt;/p&gt;
+&lt;figure class=&#34;highlight python&#34;&gt;&lt;figcaption data-lang=&#34;python&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token keyword&#34;&gt;from&lt;/span&gt; bs4 &lt;span class=&#34;token keyword&#34;&gt;import&lt;/span&gt; BeautifulSoup&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;3&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;soup &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; BeautifulSoup&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token builtin&#34;&gt;open&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token string&#34;&gt;&#34;index.html&#34;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;4&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;5&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;soup &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; BeautifulSoup&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token string&#34;&gt;&#34;&amp;lt;html&gt;data&amp;lt;/html&gt;&#34;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;h4 id=&#34;beautiful-soup的4种对象&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#beautiful-soup的4种对象&#34;&gt;#&lt;/a&gt; Beautiful Soup 的 4 种对象&lt;/h4&gt;
+&lt;p&gt;Beautiful Soup 将复杂 HTML 文档转换成一个复杂的树形结构，每个节点都是 Python 对象，所有对象可以归纳为 4 种:  &lt;code&gt;Tag&lt;/code&gt;  ,  &lt;code&gt;NavigableString&lt;/code&gt;  ,  &lt;code&gt;BeautifulSoup&lt;/code&gt;  ,  &lt;code&gt;Comment&lt;/code&gt;  .&lt;/p&gt;
+&lt;figure class=&#34;highlight python&#34;&gt;&lt;figcaption data-lang=&#34;python&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;html_doc &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;token triple-quoted-string string&#34;&gt;&#34;&#34;&#34;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&amp;lt;html&gt;&amp;lt;head&gt;&amp;lt;title&gt;The Dormouse&#39;s story&amp;lt;/title&gt;&amp;lt;/head&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;3&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&amp;lt;body&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;4&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&amp;lt;p class=&#34;title&#34;&gt;&amp;lt;b&gt;The Dormouse&#39;s story&amp;lt;/b&gt;&amp;lt;/p&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;5&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;6&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&amp;lt;p class=&#34;story&#34;&gt;Once upon a time there were three little sisters; and their names were&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;7&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&amp;lt;a href=&#34;http://example.com/elsie&#34; class=&#34;sister&#34; id=&#34;link1&#34;&gt;Elsie&amp;lt;/a&gt;,&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;8&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&amp;lt;a href=&#34;http://example.com/lacie&#34; class=&#34;sister&#34; id=&#34;link2&#34;&gt;Lacie&amp;lt;/a&gt; and&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;9&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&amp;lt;a href=&#34;http://example.com/tillie&#34; class=&#34;sister&#34; id=&#34;link3&#34;&gt;Tillie&amp;lt;/a&gt;;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;10&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;and they lived at the bottom of a well.&amp;lt;/p&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;11&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;12&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&amp;lt;p class=&#34;story&#34;&gt;...&amp;lt;/p&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;13&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&#34;&#34;&#34;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p class=&#34;note note-danger&#34;&gt;以下代码块中  `#` 后面的内容一般代指输出结果&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;em&gt;&lt;strong&gt;Tag&lt;/strong&gt;&lt;/em&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;code&gt;Tag&lt;/code&gt;  对象与 XML 或 HTML 原生文档中的 tag 相同:&lt;/p&gt;
+&lt;figure class=&#34;highlight python&#34;&gt;&lt;figcaption data-lang=&#34;python&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;soup &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; BeautifulSoup&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token string&#34;&gt;&#39;&amp;lt;b class=&#34;boldest&#34;&gt;Extremely bold&amp;lt;/b&gt;&#39;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;tag &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; soup&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;b&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;3&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token builtin&#34;&gt;type&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;tag&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;4&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token comment&#34;&gt;# &amp;lt;class &#39;bs4.element.Tag&#39;&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;&lt;font style=&#39;color:red&#39;&gt;tag 中最重要的属性: name 和 attributes&lt;/font&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Name: 每个 tag 都有自己的名字，通过  &lt;code&gt;.name&lt;/code&gt;  来获取:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&#34;highlight python&#34;&gt;&lt;figcaption data-lang=&#34;python&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;soup&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;a&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;name&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token comment&#34;&gt;# a&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;如果改变了 tag 的 name, 那将影响所有通过当前 Beautiful Soup 对象生成的 HTML 文档:&lt;/p&gt;
+&lt;figure class=&#34;highlight python&#34;&gt;&lt;figcaption data-lang=&#34;python&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;soup&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;a&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;name&lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;token string&#34;&gt;&#39;你好&#39;&lt;/span&gt; &lt;span class=&#34;token comment&#34;&gt;#只会修改第一个 a 标签&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token keyword&#34;&gt;print&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;soup&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;你好&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;3&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token comment&#34;&gt;#&amp;lt; 你好 class=&#34;sister&#34; href=&#34;http://example.com/elsie&#34; id=&#34;link1&#34;&gt;Elsie&amp;lt;/ 你好 &gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;ul&gt;
+&lt;li&gt;Attributes: 一个 tag 可能有很多个属性. tag  &lt;code&gt;&amp;lt;a href=&amp;quot;http://example.com/elsie&amp;quot; class=&amp;quot;sister&amp;quot; id=&amp;quot;link1&amp;quot;&amp;gt;Elsie&amp;lt;/a&amp;gt;,&lt;/code&gt;  有一个 “class” 的属性，值为 “sister” .&lt;font style=&#39;color:red&#39;&gt; tag 的属性的操作方法与字典相同；可以使用 &lt;code&gt;.attrs&lt;/code&gt;  老获取全部属性 &lt;/font&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&#34;highlight python&#34;&gt;&lt;figcaption data-lang=&#34;python&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;soup&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;a&lt;span class=&#34;token punctuation&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;token string&#34;&gt;&#39;class&#39;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;]&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token comment&#34;&gt;#[&#39;sister&#39;]&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;3&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;soup&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;a&lt;span class=&#34;token punctuation&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;token string&#34;&gt;&#39;id&#39;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;]&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;4&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token comment&#34;&gt;# link1&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;5&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;soup&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;a&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;attrs&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;6&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token comment&#34;&gt;# &amp;#123;&#39;href&#39;: &#39;http://example.com/elsie&#39;, &#39;class&#39;: [&#39;sister&#39;], &#39;id&#39;: &#39;link1&#39;&amp;#125;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p class=&#34;note note-primary&#34;&gt;tag的属性可以被添加,删除或修改.tag的属性操作方法与字典一样&lt;br&gt;以下方法 只针对遇到的第一个标签的属性&lt;/p&gt;
+&lt;figure class=&#34;highlight python&#34;&gt;&lt;figcaption data-lang=&#34;python&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token comment&#34;&gt;#新增&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;soup&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;a&lt;span class=&#34;token punctuation&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;token string&#34;&gt;&#39;insert&#39;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;token string&#34;&gt;&#39;增加&#39;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;3&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token keyword&#34;&gt;print&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;soup&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;a&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;4&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token comment&#34;&gt;# &amp;lt;a class=&#34;sister&#34; href=&#34;http://example.com/elsie&#34; id=&#34;link1&#34; insert=&#34;增加&#34;&gt;Elsie&amp;lt;/a&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;5&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;6&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token comment&#34;&gt;#删除&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;7&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token keyword&#34;&gt;del&lt;/span&gt; soup&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;a&lt;span class=&#34;token punctuation&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;token string&#34;&gt;&#39;class&#39;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;]&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;8&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token keyword&#34;&gt;print&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;soup&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;a&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;9&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token comment&#34;&gt;# &amp;lt;a href=&#34;http://example.com/elsie&#34; id=&#34;link1&#34;&gt;Elsie&amp;lt;/a&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;10&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;11&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token comment&#34;&gt;# 修改&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;12&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;soup&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;a&lt;span class=&#34;token punctuation&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;token string&#34;&gt;&#39;class&#39;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;token string&#34;&gt;&#39;brother&#39;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;13&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token keyword&#34;&gt;print&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;soup&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;a&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;attrs&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;14&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token comment&#34;&gt;# &amp;#123;&#39;href&#39;: &#39;http://example.com/elsie&#39;, &#39;class&#39;: &#39;brother&#39;, &#39;id&#39;: &#39;link1&#39;&amp;#125;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;&lt;em&gt;&lt;strong&gt;NavigableString&lt;/strong&gt;&lt;/em&gt;（可以遍历的字符串）&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;字符串常被包含在 tag 内.Beautiful Soup 用  &lt;code&gt;NavigableString&lt;/code&gt;  类来包装 tag 中的字符串:&lt;/p&gt;
+&lt;figure class=&#34;highlight python&#34;&gt;&lt;figcaption data-lang=&#34;python&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;soup&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;a&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;string&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token comment&#34;&gt;# Elsie&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;3&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token builtin&#34;&gt;type&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;soup&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;a&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;string&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;4&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token operator&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;token keyword&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;token string&#34;&gt;&#39;bs4.element.NavigableString&#39;&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;&lt;font style=&#39;color:red&#39;&gt;tag 中包含的字符串不能编辑，但是可以被替换成其它的字符串，用 replace_with () 方法&lt;/font&gt;&lt;/p&gt;
+&lt;figure class=&#34;highlight python&#34;&gt;&lt;figcaption data-lang=&#34;python&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;soup&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;a&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;string&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;replace_with&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token string&#34;&gt;&#39;你好&#39;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token keyword&#34;&gt;print&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;soup&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;a&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;3&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token comment&#34;&gt;# &amp;lt;a class=&#34;sister&#34; href=&#34;http://example.com/elsie&#34; id=&#34;link1&#34;&gt; 你好 &amp; lt;/a&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;&lt;em&gt;&lt;strong&gt;BeautifulSoup&lt;/strong&gt;&lt;/em&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;code&gt;BeautifulSoup&lt;/code&gt;  对象表示的是一个文档的全部内容。大部分时候，可以把它当作  &lt;code&gt;Tag&lt;/code&gt;  对象，它支持 遍历文档树 和 搜索文档树中描述的大部分的方法。&lt;/p&gt;
+&lt;ol start=&#34;4&#34;&gt;
+&lt;li&gt;&lt;em&gt;&lt;strong&gt;comment&lt;/strong&gt;&lt;/em&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;code&gt;Tag&lt;/code&gt;  ,  &lt;code&gt;NavigableString&lt;/code&gt;  ,  &lt;code&gt;BeautifulSoup&lt;/code&gt;  几乎覆盖了 html 和 xml 中的所有内容，但是还有一些特殊对象。容易让人担心的内容是文档的注释部分:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Coment 对象是一个特殊类型的 NavigableString 对象。&lt;/li&gt;
+&lt;li&gt;如果标签内部的内容是注释，例如： &lt;code&gt;&amp;lt;!-- Elsie --&amp;gt;&lt;/code&gt; 。那么该 NavigableSring 对象会转换成 Comment 对象，并且会把注释符号去掉。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&#34;highlight python&#34;&gt;&lt;figcaption data-lang=&#34;python&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;markup &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;token string&#34;&gt;&#34;&amp;lt;b&gt;&amp;lt;!--Hey, buddy. Want to buy a used parser?--&gt;&amp;lt;/b&gt;&#34;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;soup &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; BeautifulSoup&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;markup&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;token string&#34;&gt;&#39;lxml&#39;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;3&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token keyword&#34;&gt;print&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;soup&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;b&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;text&lt;span class=&#34;token operator&#34;&gt;+&lt;/span&gt;&lt;span class=&#34;token string&#34;&gt;&#39;输出为空&#39;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;4&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token comment&#34;&gt;#输出为空&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;5&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;comment &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; soup&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;b&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;string&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;6&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token keyword&#34;&gt;print&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;comment&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;7&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token comment&#34;&gt;# Hey, buddy. Want to buy a used parser?&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;8&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token keyword&#34;&gt;print&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token builtin&#34;&gt;type&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;comment&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;9&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token comment&#34;&gt;# &amp;lt;class &#39;bs4.element.Comment&#39;&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;h4 id=&#34;遍历文档树&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#遍历文档树&#34;&gt;#&lt;/a&gt; 遍历文档树&lt;/h4&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;em&gt;&lt;strong&gt;子结点&lt;/strong&gt;&lt;/em&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;一个 Tag 可能包含多个字符串或其它的 Tag, 这些都是这个 Tag 的子节点.Beautiful Soup 提供了许多操作和遍历子节点的属性.&lt;/p&gt;
+&lt;p&gt;&lt;font style=&#34;color:red&#34;&gt;注意: Beautiful Soup 中字符串节点不支持这些属性，因为字符串没有子节点&lt;/font&gt;&lt;/p&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;&lt;em&gt;&lt;strong&gt;tag 的名字&lt;/strong&gt;&lt;/em&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;操作文档树最简单的方法就是告诉它你想获取的 tag 的 name. 如果想获取 &lt;head&gt; 标签，只要用  &lt;code&gt;soup.head&lt;/code&gt;  :&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-Python&#34;&gt;soup.head
+# &amp;lt;head&amp;gt;&amp;lt;title&amp;gt;The Dormouse&#39;s story&amp;lt;/title&amp;gt;&amp;lt;/head&amp;gt;
+
+soup.title
+# &amp;lt;title&amp;gt;The Dormouse&#39;s story&amp;lt;/title&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;这是个获取 tag 的小窍门，可以在文档树的 tag 中多次调用这个方法。下面的代码可以获取 &lt;code&gt;&amp;lt;body&amp;gt;&lt;/code&gt;  标签中的第一个 &lt;code&gt;&amp;lt;b&amp;gt;&lt;/code&gt;  标签:&lt;/p&gt;
+&lt;figure class=&#34;highlight python&#34;&gt;&lt;figcaption data-lang=&#34;python&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;soup&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;body&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;b&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token comment&#34;&gt;# &amp;lt;b&gt;The Dormouse&#39;s story&amp;lt;/b&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p class=&#34;note note-info&#34;&gt;Tip:通过点取属性的方式只能获得当前名字的第一个tag:&lt;/p&gt;
+&lt;p&gt;如果想要得到所有的 &lt;code&gt;&amp;lt;a&amp;gt;&lt;/code&gt;  标签，或是通过名字得到比一个 tag 更多的内容的时候，就需要用到 Searching the tree 中描述的方法，比如: find_all ()&lt;/p&gt;
+&lt;figure class=&#34;highlight python&#34;&gt;&lt;figcaption data-lang=&#34;python&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;soup&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;find_all&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token string&#34;&gt;&#39;a&#39;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token comment&#34;&gt;# [&amp;lt;a class=&#34;sister&#34; href=&#34;http://example.com/elsie&#34; id=&#34;link1&#34;&gt;Elsie&amp;lt;/a&gt;, &amp;lt;a class=&#34;sister&#34; href=&#34;http://example.com/lacie&#34; id=&#34;link2&#34;&gt;Lacie&amp;lt;/a&gt;, &amp;lt;a class=&#34;sister&#34; href=&#34;http://example.com/tillie&#34; id=&#34;link3&#34;&gt;Tillie&amp;lt;/a&gt;]&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;3&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;4&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token builtin&#34;&gt;type&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;soup&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;find_all&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token string&#34;&gt;&#39;a&#39;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;5&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token comment&#34;&gt;# &amp;lt;class &#39;bs4.element.ResultSet&#39;&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;&lt;em&gt;&lt;strong&gt;.contents 和 .children&lt;/strong&gt;&lt;/em&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;tag 的  &lt;code&gt;.contents&lt;/code&gt;  属性可以将 tag 的子节点以列表的方式输出:&lt;/p&gt;
+&lt;figure class=&#34;highlight python&#34;&gt;&lt;figcaption data-lang=&#34;python&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;soup&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;body&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;contents&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token comment&#34;&gt;# [&#39;\n&#39;, &amp;lt;p class=&#34;title&#34;&gt;&amp;lt;b&gt;The Dormouse&#39;s story&amp;lt;/b&gt;&amp;lt;/p&gt;, &#39;\n&#39;, &amp;lt;p class=&#34;story&#34;&gt;Once upon a time there were three little sisters; and their names were &amp;lt;a class=&#34;sister&#34; href=&#34;http://example.com/elsie&#34; id=&#34;link1&#34;&gt;Elsie&amp;lt;/a&gt;, &amp;lt;a class=&#34;sister&#34; href=&#34;http://example.com/lacie&#34; id=&#34;link2&#34;&gt;Lacie&amp;lt;/a&gt; and &amp;lt;a class=&#34;sister&#34; href=&#34;http://example.com/tillie&#34; id=&#34;link3&#34;&gt;Tillie&amp;lt;/a&gt;; and they lived at the bottom of a well.&amp;lt;/p&gt;, &#39;\n&#39;, &amp;lt;p class=&#34;story&#34;&gt;...&amp;lt;/p&gt;, &#39;\n&#39;]&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;通过 tag 的  &lt;code&gt;.children&lt;/code&gt;  生成器，可以对 tag 的子节点进行循环:&lt;/p&gt;
+&lt;figure class=&#34;highlight python&#34;&gt;&lt;figcaption data-lang=&#34;python&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token keyword&#34;&gt;print&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token builtin&#34;&gt;type&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;soup&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;body&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;children&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token comment&#34;&gt;# &amp;lt;class &#39;list_iterator&#39;&gt; 迭代器&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;3&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token keyword&#34;&gt;for&lt;/span&gt; child &lt;span class=&#34;token keyword&#34;&gt;in&lt;/span&gt; soup&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;body&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;children&lt;span class=&#34;token punctuation&#34;&gt;:&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;4&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;    &lt;span class=&#34;token keyword&#34;&gt;print&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;child&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;5&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;    &lt;span class=&#34;token keyword&#34;&gt;print&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token builtin&#34;&gt;type&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;child&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;6&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;7&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token comment&#34;&gt;#                      &amp;lt; 第一行数据为空 &gt;    &lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;8&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token comment&#34;&gt;# &amp;lt;class &#39;bs4.element.NavigableString&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;9&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;10&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token comment&#34;&gt;#&amp;lt;p class=&#34;title&#34;&gt;&amp;lt;b&gt;The Dormouse&#39;s story&amp;lt;/b&gt;&amp;lt;/p&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;11&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token comment&#34;&gt;#&amp;lt;class &#39;bs4.element.Tag&#39;&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;12&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;13&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token comment&#34;&gt;# &amp;lt;p class=&#34;story&#34;&gt;Once upon a time there were three little sisters; and their names were&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;14&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token comment&#34;&gt;# &amp;lt;a class=&#34;sister&#34; href=&#34;http://example.com/elsie&#34; id=&#34;link1&#34;&gt;Elsie&amp;lt;/a&gt;,&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;15&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token comment&#34;&gt;# &amp;lt;a class=&#34;sister&#34; href=&#34;http://example.com/lacie&#34; id=&#34;link2&#34;&gt;Lacie&amp;lt;/a&gt; and&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;16&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token comment&#34;&gt;# &amp;lt;a class=&#34;sister&#34; href=&#34;http://example.com/tillie&#34; id=&#34;link3&#34;&gt;Tillie&amp;lt;/a&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;17&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token comment&#34;&gt;# and they lived at the bottom of a well.&amp;lt;/p&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;18&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token comment&#34;&gt;# &amp;lt;class &#39;bs4.element.Tag&#39;&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;ol start=&#34;4&#34;&gt;
+&lt;li&gt;&lt;em&gt;&lt;strong&gt;.descendants&lt;/strong&gt;&lt;/em&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;code&gt;.contents&lt;/code&gt;  和  &lt;code&gt;.children&lt;/code&gt;  属性仅包含 tag 的直接子节点。例如，&lt;head&gt;标签只有一个直接子节点&lt;title&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;head_tag.contents
+# [&amp;lt;title&amp;gt;The Dormouse&#39;s story&amp;lt;/title&amp;gt;]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;但是&lt;title&gt;标签也包含一个子节点：字符串 “The Dormouse’s story”, 这种情况下字符串 “The Dormouse’s story” 也属于&lt;head&gt;标签的子孙节点.  &lt;code&gt;.descendants&lt;/code&gt;  属性可以对所有 tag 的子孙节点进行递归循环&lt;/p&gt;
+ ]]></description>
+        </item>
+        <item>
+            <guid isPermalink="true">http://example.com/2023/10/24/Python%E7%BD%91%E7%BB%9C%E7%88%AC%E8%99%AB%E4%B8%80/</guid>
+            <title>Python网络爬虫（一）</title>
+            <link>http://example.com/2023/10/24/Python%E7%BD%91%E7%BB%9C%E7%88%AC%E8%99%AB%E4%B8%80/</link>
+            <category>Python</category>
+            <category>爬虫</category>
+            <pubDate>Tue, 24 Oct 2023 09:21:16 +0800</pubDate>
+            <description><![CDATA[ &lt;h3 id=&#34;一-爬虫简介&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#一-爬虫简介&#34;&gt;#&lt;/a&gt; 一、爬虫简介&lt;/h3&gt;
+&lt;p&gt;网络爬虫（又称为网页蜘蛛，网络机器人，在 FOAF 社区中间，更经常的称为网页追逐者），是一种按照一定的规则，自动地抓取万维网信息的程序或者脚本。另外一些不常使用的名字还有蚂蚁、自动索引、模拟程序或者蠕虫。&lt;/p&gt;
+&lt;h3 id=&#34;二-网站robots协议&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#二-网站robots协议&#34;&gt;#&lt;/a&gt; 二、网站 robots 协议&lt;/h3&gt;
+&lt;p&gt;robots 是搜索引擎爬虫协议，也就是你网站和爬虫的协议。&lt;/p&gt;
+&lt;p&gt;** 简单的理解：**robots 是告诉搜索引擎，你可以爬取收录我的什么页面，你不可以爬取和收录我的那些页面。robots 很好的控制网站那些页面可以被爬取，那些页面不可以被爬取。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;主流的搜索引擎都会遵守 robots 协议&lt;/strong&gt;。并且 robots 协议是爬虫爬取网站第一个需要爬取的文件。爬虫爬取 robots 文件后，会读取上面的协议，并准守协议爬取网站，收录网站。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;robots 文件是一个纯文本文件，也就是常见的.txt 文件&lt;/strong&gt;。在这个文件中网站管理者可以声明该网站中不想被 robots 访问的部分，或者指定搜索引擎只收录指定的内容。因此，robots 的优化会直接影响到搜索引擎对网站的收录情况。&lt;/p&gt;
+&lt;h5 id=&#34;存放目录&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#存放目录&#34;&gt;#&lt;/a&gt; 存放目录&lt;/h5&gt;
+&lt;p&gt;&lt;strong&gt;robots 文件必须要存放在网站的根目录下&lt;/strong&gt;。也就是 域名 /robots.txt 是可以访问文件的。你们也可以尝试访问别人网站的 robots 文件。 输入域名 /robots.txt 即可访问。示例：知乎&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly96aHVhbmxhbi56aGlodS5jb20vcm9ib3RzLnR4dA==&#34;&gt;知乎的 robots 文件&lt;/span&gt;&lt;/p&gt;
+&lt;h5 id=&#34;robots写作语法&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#robots写作语法&#34;&gt;#&lt;/a&gt; robots 写作语法&lt;/h5&gt;
+&lt;figure class=&#34;highlight txt&#34;&gt;&lt;figcaption data-lang=&#34;txt&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;User-agent: Googlebot&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;Disallow: /appview/&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;3&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;Disallow: /login&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;4&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;Disallow: /logout&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;5&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;Disallow: /resetpassword&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;6&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;Disallow: /terms&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;7&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;Disallow: /search&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;8&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;Allow: /search-special&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;9&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;Disallow: /notifications&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;10&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;Disallow: /settings&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;11&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;Disallow: /inbox&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;12&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;Disallow: /admin_inbox&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;13&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;Disallow: /*?guide*&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;14&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;15&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;User-agent: Googlebot-Image&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;16&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;Disallow: /appview/&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;17&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;Disallow: /login&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;18&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;Disallow: /logout&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;19&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;Disallow: /resetpassword&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;20&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;Disallow: /terms&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;21&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;Disallow: /search&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;22&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;Allow: /search-special&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;23&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;Disallow: /notifications&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;24&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;Disallow: /settings&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;25&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;Disallow: /inbox&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;26&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;Disallow: /admin_inbox&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;27&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;Disallow: /*?guide*&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;28&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;29&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;User-agent: Baiduspider-news&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;30&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;Disallow: /appview/&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;31&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;Disallow: /login&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;32&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;Disallow: /logout&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;33&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;Disallow: /resetpassword&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;34&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;Disallow: /terms&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;35&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;Disallow: /search&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;36&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;Allow: /search-special&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;37&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;Disallow: /notifications&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;38&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;Disallow: /settings&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;39&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;Disallow: /inbox&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;40&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;Disallow: /admin_inbox&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;41&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;Disallow: /*?guide*&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;42&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;43&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;User-agent: Baiduspider&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;44&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;Disallow: /appview/&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;45&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;Disallow: /login&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;46&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;Disallow: /logout&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;47&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;Disallow: /resetpassword&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;48&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;Disallow: /terms&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;49&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;Disallow: /search&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;50&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;Allow: /search-special&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;51&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;Disallow: /notifications&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;52&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;Disallow: /settings&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;53&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;Disallow: /inbox&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;54&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;Disallow: /admin_inbox&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;55&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;Disallow: /*?guide*&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;56&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;57&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;User-agent: Baiduspider-render&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;58&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;Disallow: /appview/&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;59&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;Disallow: /login&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;60&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;Disallow: /logout&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;61&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;Disallow: /resetpassword&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;62&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;Disallow: /terms&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;63&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;Disallow: /search&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;64&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;Allow: /search-special&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;65&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;Disallow: /notifications&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;66&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;Disallow: /settings&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;67&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;Disallow: /inbox&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;68&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;Disallow: /admin_inbox&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;69&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;Disallow: /*?guide*&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;70&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;71&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;User-agent: Baiduspider-image&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;72&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;Disallow: /appview/&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;73&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;Disallow: /login&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;74&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;Disallow: /logout&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;75&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;Disallow: /resetpassword&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;76&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;Disallow: /terms&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;77&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;Disallow: /search&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;78&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;Allow: /search-special&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;79&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;Disallow: /notifications&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;80&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;Disallow: /settings&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;81&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;Disallow: /inbox&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;82&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;Disallow: /admin_inbox&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;83&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;Disallow: /*?guide*&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;84&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;85&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;User-agent: bingbot&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;86&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;Disallow: /appview/&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;87&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;Disallow: /login&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;88&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;Disallow: /logout&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;89&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;Disallow: /resetpassword&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;90&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;Disallow: /terms&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;91&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;Disallow: /search&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;92&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;Allow: /search-special&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;93&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;Disallow: /notifications&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;94&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;Disallow: /settings&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;95&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;Disallow: /inbox&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;96&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;Disallow: /admin_inbox&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;97&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;Disallow: /*?guide*&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;98&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;99&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;User-Agent: *&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;100&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;Disallow: /&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;user-agent 这句代码表示那个搜索引擎准守协议。user-agent 后面为搜索机器人名称，如果是 “*” 号，则泛指所有的搜索引擎机器人；案例中显示 “User-agent: *” 表示所有搜索引擎准守，* 号表示所有。&lt;/p&gt;
+&lt;p&gt;Disallow 是禁止爬取的意思。Disallow 后面是不允许访问文件目录（你可以理解为路径中包含改字符、都不会爬取）。案例中显示 “Disallow: /?s*” 表示路径中带有 “/?s” 的路径都不能爬取。 * 代表匹配所有。 这里需要主机。 Disallow 空格一个，/ 必须为开头。&lt;/p&gt;
+&lt;p&gt;如果 “Disallow: /” 因为所有路径都包含 / ，所以这表示禁止爬取网站所有内容。&lt;/p&gt;
+&lt;p&gt;&lt;font style=&#34;color:red&#34;&gt;如果没有被禁止到的路径，默认为可以被爬取。&lt;/font&gt;&lt;/p&gt;
+&lt;h5 id=&#34;关于robots的注意事项&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#关于robots的注意事项&#34;&gt;#&lt;/a&gt; 关于 robots 的注意事项&lt;/h5&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;不要禁止爬虫爬取网站的所有，因为从经验来看，如果屏蔽一次，解封后好一段时间爬虫都不会来你网站，收录成为问题。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;代码后需要【冒号 + 空格 + 斜杆】 ，比如 “Disallow: /&lt;em&gt;?&lt;/em&gt; ”&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;当网站为静态路径时，需要屏蔽掉所有动态链接。网站中存在一种链接被收录即可，避免一个页面 2 个链接。代码如下 “Disallow: /&lt;em&gt;?&lt;/em&gt; ” 表示禁止所有带？号的网址被爬取。通常动态网址带有 “?”“=” 等。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;根据自己网站情况定，屏蔽不需要收录的网址。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;三-爬虫语言的选择&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#三-爬虫语言的选择&#34;&gt;#&lt;/a&gt; 三、爬虫语言的选择&lt;/h3&gt;
+&lt;p&gt;很多人提到爬虫就会想到 Python，其实除了 Python，其他的语言诸如 C，PHP，Java 等等都可以写爬虫，而且一般来说这些语言的执行效率还要比 Python 要高，但为什么目前来说，Python 渐渐成为了写很多人写爬虫的第一选择，简单总结了以下几点：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;em&gt;&lt;strong&gt;开发效率高&lt;/strong&gt;&lt;/em&gt;，代码简洁，一行代码就可完成请求，100 行可以完成一个复杂的爬虫任务；&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;em&gt;&lt;strong&gt;爬虫对于代码执行效率要求不高&lt;/strong&gt;&lt;/em&gt;，网站 IO 才是最影响爬虫效率的。如一个网页请求可能需要 100ms，数据处理 10ms 还是 1ms 影响不大；&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;em&gt;&lt;strong&gt;非常多优秀的第三方库&lt;/strong&gt;&lt;/em&gt;，如 requests，beautifulsoup，selenium 等等；&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;四-http请求类型&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#四-http请求类型&#34;&gt;#&lt;/a&gt; 四、HTTP 请求类型&lt;/h3&gt;
+&lt;p&gt;根据 HTTP 标准，HTTP 请求可以使用多种请求方法。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;HTTP1.0 定义了三种请求方法&lt;/strong&gt;： GET, POST 和 HEAD 方法。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;HTTP1.1 新增了六种请求方法&lt;/strong&gt;：OPTIONS、PUT、PATCH、DELETE、TRACE 和 CONNECT 方法。&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;序号&lt;/th&gt;
+&lt;th&gt;方法&lt;/th&gt;
+&lt;th&gt;描述&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;1&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt;GET&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;请求指定的页面信息，并返回实体主体。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;2&lt;/td&gt;
+&lt;td&gt;HEAD&lt;/td&gt;
+&lt;td&gt;类似于 GET 请求，只不过返回的响应中没有具体的内容，用于获取报头&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;3&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt;POST&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;向指定资源提交数据进行处理请求（例如提交表单或者上传文件）。数据被包含在请求体中。POST 请求可能会导致新的资源的建立和 / 或已有资源的修改。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;4&lt;/td&gt;
+&lt;td&gt;PUT&lt;/td&gt;
+&lt;td&gt;从客户端向服务器传送的数据取代指定的文档的内容。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;5&lt;/td&gt;
+&lt;td&gt;DELETE&lt;/td&gt;
+&lt;td&gt;请求服务器删除指定的页面。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;6&lt;/td&gt;
+&lt;td&gt;CONNECT&lt;/td&gt;
+&lt;td&gt;HTTP/1.1 协议中预留给能够将连接改为管道方式的代理服务器。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;7&lt;/td&gt;
+&lt;td&gt;OPTIONS&lt;/td&gt;
+&lt;td&gt;允许客户端查看服务器的性能。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;8&lt;/td&gt;
+&lt;td&gt;TRACE&lt;/td&gt;
+&lt;td&gt;回显服务器收到的请求，主要用于测试或诊断。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;9&lt;/td&gt;
+&lt;td&gt;PATCH&lt;/td&gt;
+&lt;td&gt;是对 PUT 方法的补充，用来对已知资源进行局部更新 。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3 id=&#34;五-http-状态码&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#五-http-状态码&#34;&gt;#&lt;/a&gt; 五、HTTP 状态码&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;200 - 请求成功&lt;/li&gt;
+&lt;li&gt;301 - 资源（网页等）被永久转移到其它 URL&lt;/li&gt;
+&lt;li&gt;404 - 请求的资源（网页等）不存在&lt;/li&gt;
+&lt;li&gt;500 - 内部服务器错误&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;所有的状态代码的取值一般在 100-599 之间，超出这个范围的响应状态码就不是标准的状态响应码了。&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9saW5rLnpoaWh1LmNvbS8/dGFyZ2V0PWh0dHBzJTNBLy9kZXZlbG9wZXIubW96aWxsYS5vcmcvZW4tVVMvZG9jcy9XZWIvSFRUUC9TdGF0dXM=&#34;&gt;所有的状态码&lt;/span&gt;可以分成 5 类：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;100–199：信息反馈（Informational responses）；&lt;/li&gt;
+&lt;li&gt;200–299：成功反馈（Successful responses），上面的代码的 200 status code 就属于这里；&lt;/li&gt;
+&lt;li&gt;300–399：重定向消息（Redirection messages）；&lt;/li&gt;
+&lt;li&gt;400–499：客户端错误响应（Client error responses），这个区间包含了我们常见的 403 和 404 错误响应码&lt;/li&gt;
+&lt;li&gt;500–599：服务器错误响应（Server error responses）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;六-requests-中-get-与-post-的-headers-参数&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#六-requests-中-get-与-post-的-headers-参数&#34;&gt;#&lt;/a&gt; 六、requests 中 get 与 post 的 headers 参数&lt;/h3&gt;
+&lt;p&gt;在编写爬虫的过程中，有些网站会设置反爬机制，对不是来源于浏览器的访问进行拒绝，此时我们会收到 403 错误响应码，或者收到 “抱歉，无法访问 “等字眼，这就需要在爬虫程序中修改请求的 headers 伪装浏览器访问，从而绕开网站的反爬机制获取正确的页面。&lt;/p&gt;
+&lt;h5 id=&#34;1了解-requests-中-get-与-post-的-headers-参数&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#1了解-requests-中-get-与-post-的-headers-参数&#34;&gt;#&lt;/a&gt; 1. 了解 requests 中 get 与 post 的 headers 参数&lt;/h5&gt;
+&lt;figure class=&#34;highlight html&#34;&gt;&lt;figcaption data-lang=&#34;HTML&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&amp;#123;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;  &#34;headers&#34;: &amp;#123;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;3&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;    &#34;Accept&#34;: &#34;*/*&#34;, &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;4&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;    &#34;Accept-Encoding&#34;: &#34;gzip, deflate&#34;, &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;5&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;    &#34;Host&#34;: &#34;httpbin.org&#34;, &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;6&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;    &#34;User-Agent&#34;: &#34;python-requests/2.31.0&#34;, &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;7&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;    &#34;X-Amzn-Trace-Id&#34;: &#34;Root=1-65373fd4-71bd6a663234e7c4749aa450&#34;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;8&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;  &amp;#125;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;9&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&amp;#125;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p class=&#34;note note-success&#34;&gt;User-Agent: 用户代理（英语：User Agent）指的是代表用户行为的软件代理程序所提供的对自己的一个标识符。用于标识浏览器类型及版本、操作系统及版本、浏览器内核、等信息的标识&lt;/p&gt;
+&lt;p&gt;我们直接用 request 包，上来就调用 get 或者 post 方法，对方的服务器会根据我们发送的 **“User-Agent”: “python-requests/2.31.0”** 了解到，你是用 python 调用的 request 包来访问他们的服务器的。由于这种行为仅仅是消耗服务器资源带来成本，但是不会给对方带来任何好处（搜索引擎的爬虫除外），所以有一些网站会加入反爬机制，通过识别 headers 来拒绝对你的请求进行响应。&lt;/p&gt;
+&lt;p&gt;&lt;font style=&#39;color:red&#39;&gt;因此，我们需要在发送的请求中加入自定义的 headers，将我们的请求伪装成利用浏览器进行的请求。&lt;/font&gt;&lt;/p&gt;
+&lt;h5 id=&#34;2查看浏览器headers的常用方法&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#2查看浏览器headers的常用方法&#34;&gt;#&lt;/a&gt; 2. 查看浏览器 headers 的常用方法&lt;/h5&gt;
+&lt;p&gt;在浏览器的网页上：F12 打开检查 ——&amp;gt; Network ——&amp;gt; Doc ——&amp;gt; 在 Name 里找到对应的请求文件 ——&amp;gt; 在右边选择标头 标签页，找到 “请求标头”，就可以看到我们发送给服务器的 headers。&lt;/p&gt;
+&lt;img data-src=&#39;https://note.youdao.com/yws/api/personal/file/WEB0ac4a14cf94a00e27fc74a8ca69b6de8?method=download&amp;shareKey=5942d087f7e28642d8ef3cb59bc1b2e1&#39;&gt;
+&lt;p&gt;同理，服务器在发给我们信息的时候，也会发送 Headers。我们同样在上面的选择路径，可以看到 “Response Headers”。&lt;/p&gt;
+&lt;img data-src=&#39;https://note.youdao.com/yws/api/personal/file/WEBa24eee38235b2443609b6227b8e57e22?method=download&amp;shareKey=23a40e0611844ba2d9c900dad3abcaf7&#39;&gt;
+&lt;p&gt;我们可以查看到服务器响应返回的头信息知道响应结果的编码是 utf-8，有的还可以看到服务器所用是 apache 或是其他 web 服务器。&lt;/p&gt;
+&lt;h5 id=&#34;3headers-的解读&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#3headers-的解读&#34;&gt;#&lt;/a&gt; 3.Headers 的解读&lt;/h5&gt;
+&lt;ol&gt;
+&lt;li&gt;User-Agent 的格式解读&lt;/li&gt;
+&lt;/ol&gt;
+&lt;figure class=&#34;highlight html&#34;&gt;&lt;figcaption data-lang=&#34;HTML&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/118.0.0.0 Safari/537.36 Edg/118.0.2088.61&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;ul&gt;
+&lt;li&gt;Mozilla/5.0 (WindowsNT 10.0; Win64; x64)：表示代理服务器的操作系统和版本。这里表示代理服务器是在 Windows 10 64 位操作系统上运行的。&lt;/li&gt;
+&lt;li&gt;AppleWebKit/537.36 (KHTML, like Gecko)：表示代理服务器使用的浏览器引擎。这里表示代理服务器使用的是 AppleWebKit 引擎，它是一个开源的浏览器引擎，类似于 Gecko 引擎。&lt;/li&gt;
+&lt;li&gt;Chrome/118.0.0.0 Safari/537.36：表示代理服务器使用的浏览器版本。这里表示代理服务器使用的是 Chrome 浏览器版本 118.0.0.0，以及 Safari 浏览器版本 537.36。&lt;/li&gt;
+&lt;li&gt;Edg/118.0.2088.61：表示代理服务器使用的 Edge 浏览器版本。这里表示代理服务器使用的是 Edge 浏览器版本 118.0.2088.61。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;Cookie&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;cookie，有时也用其复数形式 Cookies。类型为 “&lt;strong&gt;小型文本文件&lt;/strong&gt;”，是某些网站为了辨别用户身份，进行 Session 跟踪而储存在用户本地终端上的数据（通常经过加密），由用户客户端计算机暂时或永久保存的信息 。具体信息见&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9iYWlrZS5iYWlkdS5jb20vaXRlbS9DT09LSUUvMTExOQ==&#34;&gt; cookies 百度百科&lt;/span&gt;。&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;/2023/10/24/Python%E7%BD%91%E7%BB%9C%E7%88%AC%E8%99%AB%EF%BC%88%E4%BA%8C%EF%BC%89/&#34; style=&#34;display: block;text-align: right;&#34;&gt;转到 Python 网络爬虫（二）&lt;/a&gt;&lt;/p&gt;
+ ]]></description>
+        </item>
+    </channel>
+</rss>

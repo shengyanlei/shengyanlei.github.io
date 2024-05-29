@@ -1,8 +1,792 @@
-<!-- build time:Wed May 29 2024 10:21:37 GMT+0800 (中国标准时间) --><!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=2"><meta name="theme-color" content="#FFF"><link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png"><link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><link rel="alternate" type="application/rss+xml" title="碎念随风" href="http://example.com/rss.xml"><link rel="alternate" type="application/atom+xml" title="碎念随风" href="http://example.com/atom.xml"><link rel="alternate" type="application/json" title="碎念随风" href="http://example.com/feed.json"><link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CInconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext"><link rel="stylesheet" href="/css/app.css?v=0.2.5"><meta name="keywords" content="Python,爬虫"><link rel="canonical" href="http://example.com/2023/10/24/Python%E7%BD%91%E7%BB%9C%E7%88%AC%E8%99%AB%EF%BC%88%E4%BA%8C%EF%BC%89/"><title>Python网络爬虫（二） - 爬虫 - Python - 教程 | Shyl = 碎念随风</title><meta name="generator" content="Hexo 6.3.0"></head><body itemscope itemtype="http://schema.org/WebPage"><div id="loading"><div class="cat"><div class="body"></div><div class="head"><div class="face"></div></div><div class="foot"><div class="tummy-end"></div><div class="bottom"></div><div class="legs left"></div><div class="legs right"></div></div><div class="paw"><div class="hands left"></div><div class="hands right"></div></div></div></div><div id="container"><header id="header" itemscope itemtype="http://schema.org/WPHeader"><div class="inner"><div id="brand"><div class="pjax"><h1 itemprop="name headline">Python网络爬虫（二）</h1><div class="meta"><span class="item" title="创建时间：2023-10-24 15:34:44"><span class="icon"><i class="ic i-calendar"></i> </span><span class="text">发表于</span> <time itemprop="dateCreated datePublished" datetime="2023-10-24T15:34:44+08:00">2023-10-24</time> </span><span class="item" title="本文字数"><span class="icon"><i class="ic i-pen"></i> </span><span class="text">本文字数</span> <span>6.8k</span> <span class="text">字</span> </span><span class="item" title="阅读时长"><span class="icon"><i class="ic i-clock"></i> </span><span class="text">阅读时长</span> <span>6 分钟</span></span></div></div></div><nav id="nav"><div class="inner"><div class="toggle"><div class="lines" aria-label="切换导航栏"><span class="line"></span> <span class="line"></span> <span class="line"></span></div></div><ul class="menu"><li class="item title"><a href="/" rel="start">Shyl</a></li></ul><ul class="right"><li class="item theme"><i class="ic i-sun"></i></li><li class="item search"><i class="ic i-search"></i></li></ul></div></nav></div><div id="imgs" class="pjax"><ul><li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1giclil3m4ej20zk0m8tn8.jpg"></li><li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1giclj61ylzj20zk0m8b29.jpg"></li><li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gicis3attqj20zk0m8k7l.jpg"></li><li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gipeuv80yoj20zk0m8kjl.jpg"></li><li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gipewr8iypj20zk0m8b29.jpg"></li><li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1giclfdu6exj20zk0m87hw.jpg"></li></ul></div></header><div id="waves"><svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z"/></defs><g class="parallax"><use xlink:href="#gentle-wave" x="48" y="0"/><use xlink:href="#gentle-wave" x="48" y="3"/><use xlink:href="#gentle-wave" x="48" y="5"/><use xlink:href="#gentle-wave" x="48" y="7"/></g></svg></div><main><div class="inner"><div id="main" class="pjax"><div class="article wrap"><div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList"><i class="ic i-home"></i> <span><a href="/">首页</a></span><i class="ic i-angle-right"></i> <span itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/%E6%95%99%E7%A8%8B/" itemprop="item" rel="index" title="分类于 教程"><span itemprop="name">教程</span></a><meta itemprop="position" content="1"></span><i class="ic i-angle-right"></i> <span itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/%E6%95%99%E7%A8%8B/Python/" itemprop="item" rel="index" title="分类于 Python"><span itemprop="name">Python</span></a><meta itemprop="position" content="2"></span><i class="ic i-angle-right"></i> <span class="current" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/%E6%95%99%E7%A8%8B/Python/%E7%88%AC%E8%99%AB/" itemprop="item" rel="index" title="分类于 爬虫"><span itemprop="name">爬虫</span></a><meta itemprop="position" content="3"></span></div><article itemscope itemtype="http://schema.org/Article" class="post block" lang="zh-CN"><link itemprop="mainEntityOfPage" href="http://example.com/2023/10/24/Python%E7%BD%91%E7%BB%9C%E7%88%AC%E8%99%AB%EF%BC%88%E4%BA%8C%EF%BC%89/"><span hidden itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="image" content="/images/avatar.jpg"><meta itemprop="name" content="shyl"><meta itemprop="description" content=", 人海未见之时，我亦独行在这城市。 料峭，春醒，酷暑，骤雨，寒意四起，大雁南飞，而后，大雪，寒风， 斗转星移，人间寒暑。"></span><span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization"><meta itemprop="name" content="碎念随风"></span><div class="body md" itemprop="articleBody"><h3 id="一-request库"><a class="anchor" href="#一-request库">#</a> 一、request 库</h3><p>Requests 是一个常用的 HTTP 请求库，可以方便地向网站发送 HTTP 请求，并获取响应结果。这是官方的文档：<span class="exturl" data-url="aHR0cHM6Ly9yZXF1ZXN0cy5yZWFkdGhlZG9jcy5pby9lbi9sYXRlc3Qv">request 官方文档</span>（官方文档不太容易看懂😹）可以选择菜鸟教程里面的 requests 库讲解<span class="exturl" data-url="aHR0cHM6Ly93d3cucnVub29iLmNvbS9weXRob24zL3B5dGhvbi1yZXF1ZXN0cy5odG1s">菜鸟教程</span>。</p><table><thead><tr><th style="text-align:left">属性或方法</th><th style="text-align:left">说明</th></tr></thead><tbody><tr><td style="text-align:left">apparent_encoding</td><td style="text-align:left">编码方式</td></tr><tr><td style="text-align:left">close()</td><td style="text-align:left">关闭与服务器的连接</td></tr><tr><td style="text-align:left">content</td><td style="text-align:left">返回响应的内容，以字节为单位</td></tr><tr><td style="text-align:left">cookies</td><td style="text-align:left">返回一个 CookieJar 对象，包含了从服务器发回的 cookie</td></tr><tr><td style="text-align:left">elapsed</td><td style="text-align:left">返回一个 timedelta 对象，包含了从发送请求到响应到达之间经过的时间量，可以用于测试响应速度。比如 r.elapsed.microseconds 表示响应到达需要多少微秒。</td></tr><tr><td style="text-align:left">encoding</td><td style="text-align:left">解码 r.text 的编码方式</td></tr><tr><td style="text-align:left">headers</td><td style="text-align:left">返回响应头，字典格式</td></tr><tr><td style="text-align:left">history</td><td style="text-align:left">返回包含请求历史的响应对象列表（url）</td></tr><tr><td style="text-align:left">is_permanent_redirect</td><td style="text-align:left">如果响应是永久重定向的 url，则返回 True，否则返回 False</td></tr><tr><td style="text-align:left">is_redirect</td><td style="text-align:left">如果响应被重定向，则返回 True，否则返回 False</td></tr><tr><td style="text-align:left">iter_content()</td><td style="text-align:left">迭代响应</td></tr><tr><td style="text-align:left">iter_lines()</td><td style="text-align:left">迭代响应的行</td></tr><tr><td style="text-align:left">json()</td><td style="text-align:left">返回结果的 JSON 对象 (结果需要以 JSON 格式编写的，否则会引发错误)</td></tr><tr><td style="text-align:left">links</td><td style="text-align:left">返回响应的解析头链接</td></tr><tr><td style="text-align:left">next</td><td style="text-align:left">返回重定向链中下一个请求的 PreparedRequest 对象</td></tr><tr><td style="text-align:left">ok</td><td style="text-align:left">检查 &quot;status_code&quot; 的值，如果小于 400，则返回 True，如果不小于 400，则返回 False</td></tr><tr><td style="text-align:left">raise_for_status()</td><td style="text-align:left">如果发生错误，方法返回一个 HTTPError 对象</td></tr><tr><td style="text-align:left">reason</td><td style="text-align:left">响应状态的描述，比如 &quot;Not Found&quot; 或 &quot;OK&quot;</td></tr><tr><td style="text-align:left">request</td><td style="text-align:left">返回请求此响应的请求对象</td></tr><tr><td style="text-align:left">status_code</td><td style="text-align:left">返回 http 的状态码，比如 404 和 200（200 是 OK，404 是 Not Found）</td></tr><tr><td style="text-align:left">text</td><td style="text-align:left">返回响应的内容，unicode 类型数据</td></tr><tr><td style="text-align:left">url</td><td style="text-align:left">返回响应的 URL</td></tr></tbody></table><h3 id="二-beautiful-soup库"><a class="anchor" href="#二-beautiful-soup库">#</a> 二、Beautiful soup 库</h3><p><span class="exturl" data-url="aHR0cHM6Ly9iZWF1dGlmdWxzb3VwLmNuLw==">Beautiful Soup</span> 是一个可以从 HTML 或 XML 文件中提取数据的 Python 库。它能够通过你喜欢的转换器实现惯用的文档导航，查找，修改文档的方式.Beautiful Soup 会帮你节省数小时甚至数天的工作时间.</p><p>下表列出了主要的解析器，以及它们的优缺点:</p><table><thead><tr><th style="text-align:left">解析器</th><th style="text-align:left">使用方法</th><th style="text-align:left">优势</th><th style="text-align:left">劣势</th></tr></thead><tbody><tr><td style="text-align:left">Python 标准库</td><td style="text-align:left"><code>BeautifulSoup(markup, &quot;html.parser&quot;)</code></td><td style="text-align:left">Python 的内置标准库执行速度适中文档容错能力强</td><td style="text-align:left">Python 2.7.3 or 3.2.2) 前 的版本中文档容错能力差</td></tr><tr><td style="text-align:left">lxml HTML 解析器</td><td style="text-align:left"><code>BeautifulSoup(markup, &quot;lxml&quot;)</code></td><td style="text-align:left">速度快文档容错能力强</td><td style="text-align:left">需要安装 C 语言库</td></tr><tr><td style="text-align:left">lxml XML 解析器</td><td style="text-align:left"><code>BeautifulSoup(markup, [&quot;lxml-xml&quot;])``BeautifulSoup(markup, &quot;xml&quot;)</code></td><td style="text-align:left">速度快唯一支持 XML 的解析器</td><td style="text-align:left">需要安装 C 语言库</td></tr><tr><td style="text-align:left">html5lib</td><td style="text-align:left"><code>BeautifulSoup(markup, &quot;html5lib&quot;)</code></td><td style="text-align:left">最好的容错性以浏览器的方式解析文档生成 HTML5 格式的文档</td><td style="text-align:left">速度慢不依赖外部扩展</td></tr></tbody></table><p>将一段文档传入 BeautifulSoup 的构造方法，就能得到一个文档的对象，可以传入一段字符串或一个文件句柄.</p><figure class="highlight python"><figcaption data-lang="python"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token keyword">from</span> bs4 <span class="token keyword">import</span> BeautifulSoup</pre></td></tr><tr><td data-num="2"></td><td><pre></pre></td></tr><tr><td data-num="3"></td><td><pre>soup <span class="token operator">=</span> BeautifulSoup<span class="token punctuation">(</span><span class="token builtin">open</span><span class="token punctuation">(</span><span class="token string">"index.html"</span><span class="token punctuation">)</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="4"></td><td><pre></pre></td></tr><tr><td data-num="5"></td><td><pre>soup <span class="token operator">=</span> BeautifulSoup<span class="token punctuation">(</span><span class="token string">"&lt;html>data&lt;/html>"</span><span class="token punctuation">)</span></pre></td></tr></table></figure><h4 id="beautiful-soup的4种对象"><a class="anchor" href="#beautiful-soup的4种对象">#</a> Beautiful Soup 的 4 种对象</h4><p>Beautiful Soup 将复杂 HTML 文档转换成一个复杂的树形结构，每个节点都是 Python 对象，所有对象可以归纳为 4 种: <code>Tag</code> , <code>NavigableString</code> , <code>BeautifulSoup</code> , <code>Comment</code> .</p><figure class="highlight python"><figcaption data-lang="python"></figcaption><table><tr><td data-num="1"></td><td><pre>html_doc <span class="token operator">=</span> <span class="token triple-quoted-string string">"""</span></pre></td></tr><tr><td data-num="2"></td><td><pre>&lt;html>&lt;head>&lt;title>The Dormouse's story&lt;/title>&lt;/head></pre></td></tr><tr><td data-num="3"></td><td><pre>&lt;body></pre></td></tr><tr><td data-num="4"></td><td><pre>&lt;p class="title">&lt;b>The Dormouse's story&lt;/b>&lt;/p></pre></td></tr><tr><td data-num="5"></td><td><pre></pre></td></tr><tr><td data-num="6"></td><td><pre>&lt;p class="story">Once upon a time there were three little sisters; and their names were</pre></td></tr><tr><td data-num="7"></td><td><pre>&lt;a href="http://example.com/elsie" class="sister" id="link1">Elsie&lt;/a>,</pre></td></tr><tr><td data-num="8"></td><td><pre>&lt;a href="http://example.com/lacie" class="sister" id="link2">Lacie&lt;/a> and</pre></td></tr><tr><td data-num="9"></td><td><pre>&lt;a href="http://example.com/tillie" class="sister" id="link3">Tillie&lt;/a>;</pre></td></tr><tr><td data-num="10"></td><td><pre>and they lived at the bottom of a well.&lt;/p></pre></td></tr><tr><td data-num="11"></td><td><pre></pre></td></tr><tr><td data-num="12"></td><td><pre>&lt;p class="story">...&lt;/p></pre></td></tr><tr><td data-num="13"></td><td><pre>"""</pre></td></tr></table></figure><p>&lt;p class=&quot;note note-danger&quot;&gt; 以下代码块中 <code>#</code> 后面的内容一般代指输出结果 &lt;/p&gt;</p><ol><li><em><strong>Tag</strong></em></li></ol><p><code>Tag</code> 对象与 XML 或 HTML 原生文档中的 tag 相同:</p><figure class="highlight python"><figcaption data-lang="python"></figcaption><table><tr><td data-num="1"></td><td><pre>soup <span class="token operator">=</span> BeautifulSoup<span class="token punctuation">(</span><span class="token string">'&lt;b class="boldest">Extremely bold&lt;/b>'</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="2"></td><td><pre>tag <span class="token operator">=</span> soup<span class="token punctuation">.</span>b</pre></td></tr><tr><td data-num="3"></td><td><pre><span class="token builtin">type</span><span class="token punctuation">(</span>tag<span class="token punctuation">)</span></pre></td></tr><tr><td data-num="4"></td><td><pre><span class="token comment"># &lt;class 'bs4.element.Tag'></span></pre></td></tr></table></figure><p>&lt;font style='color:red'&gt;tag 中最重要的属性: name 和 attributes&lt;/font&gt;</p><ul><li>Name: 每个 tag 都有自己的名字，通过 <code>.name</code> 来获取:</li></ul><figure class="highlight python"><figcaption data-lang="python"></figcaption><table><tr><td data-num="1"></td><td><pre>soup<span class="token punctuation">.</span>a<span class="token punctuation">.</span>name</pre></td></tr><tr><td data-num="2"></td><td><pre><span class="token comment"># a</span></pre></td></tr></table></figure><p>如果改变了 tag 的 name, 那将影响所有通过当前 Beautiful Soup 对象生成的 HTML 文档:</p><figure class="highlight python"><figcaption data-lang="python"></figcaption><table><tr><td data-num="1"></td><td><pre>soup<span class="token punctuation">.</span>a<span class="token punctuation">.</span>name<span class="token operator">=</span><span class="token string">'你好'</span> <span class="token comment">#只会修改第一个 a 标签</span></pre></td></tr><tr><td data-num="2"></td><td><pre><span class="token keyword">print</span><span class="token punctuation">(</span>soup<span class="token punctuation">.</span>你好<span class="token punctuation">)</span></pre></td></tr><tr><td data-num="3"></td><td><pre><span class="token comment">#&lt; 你好 class="sister" href="http://example.com/elsie" id="link1">Elsie&lt;/ 你好 ></span></pre></td></tr></table></figure><ul><li>Attributes: 一个 tag 可能有很多个属性. tag <code>&lt;a href=&quot;http://example.com/elsie&quot; class=&quot;sister&quot; id=&quot;link1&quot;&gt;Elsie&lt;/a&gt;,</code> 有一个 “class” 的属性，值为 “sister” .&lt;font style='color:red'&gt; tag 的属性的操作方法与字典相同；可以使用 <code>.attrs</code> 老获取全部属性 &lt;/font&gt;</li></ul><figure class="highlight python"><figcaption data-lang="python"></figcaption><table><tr><td data-num="1"></td><td><pre>soup<span class="token punctuation">.</span>a<span class="token punctuation">[</span><span class="token string">'class'</span><span class="token punctuation">]</span></pre></td></tr><tr><td data-num="2"></td><td><pre><span class="token comment">#['sister']</span></pre></td></tr><tr><td data-num="3"></td><td><pre>soup<span class="token punctuation">.</span>a<span class="token punctuation">[</span><span class="token string">'id'</span><span class="token punctuation">]</span></pre></td></tr><tr><td data-num="4"></td><td><pre><span class="token comment"># link1</span></pre></td></tr><tr><td data-num="5"></td><td><pre>soup<span class="token punctuation">.</span>a<span class="token punctuation">.</span>attrs</pre></td></tr><tr><td data-num="6"></td><td><pre><span class="token comment"># &#123;'href': 'http://example.com/elsie', 'class': ['sister'], 'id': 'link1'&#125;</span></pre></td></tr></table></figure><p>&lt;p class=&quot;note note-primary&quot;&gt;tag 的属性可以被添加，删除或修改.tag 的属性操作方法与字典一样 &lt; br &gt; 以下方法 只针对遇到的第一个标签的属性 &lt;/p&gt;</p><figure class="highlight python"><figcaption data-lang="python"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token comment">#新增</span></pre></td></tr><tr><td data-num="2"></td><td><pre>soup<span class="token punctuation">.</span>a<span class="token punctuation">[</span><span class="token string">'insert'</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token string">'增加'</span></pre></td></tr><tr><td data-num="3"></td><td><pre><span class="token keyword">print</span><span class="token punctuation">(</span>soup<span class="token punctuation">.</span>a<span class="token punctuation">)</span></pre></td></tr><tr><td data-num="4"></td><td><pre><span class="token comment"># &lt;a class="sister" href="http://example.com/elsie" id="link1" insert="增加">Elsie&lt;/a></span></pre></td></tr><tr><td data-num="5"></td><td><pre></pre></td></tr><tr><td data-num="6"></td><td><pre><span class="token comment">#删除</span></pre></td></tr><tr><td data-num="7"></td><td><pre><span class="token keyword">del</span> soup<span class="token punctuation">.</span>a<span class="token punctuation">[</span><span class="token string">'class'</span><span class="token punctuation">]</span></pre></td></tr><tr><td data-num="8"></td><td><pre><span class="token keyword">print</span><span class="token punctuation">(</span>soup<span class="token punctuation">.</span>a<span class="token punctuation">)</span></pre></td></tr><tr><td data-num="9"></td><td><pre><span class="token comment"># &lt;a href="http://example.com/elsie" id="link1">Elsie&lt;/a></span></pre></td></tr><tr><td data-num="10"></td><td><pre></pre></td></tr><tr><td data-num="11"></td><td><pre><span class="token comment"># 修改</span></pre></td></tr><tr><td data-num="12"></td><td><pre>soup<span class="token punctuation">.</span>a<span class="token punctuation">[</span><span class="token string">'class'</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token string">'brother'</span></pre></td></tr><tr><td data-num="13"></td><td><pre><span class="token keyword">print</span><span class="token punctuation">(</span>soup<span class="token punctuation">.</span>a<span class="token punctuation">.</span>attrs<span class="token punctuation">)</span></pre></td></tr><tr><td data-num="14"></td><td><pre><span class="token comment"># &#123;'href': 'http://example.com/elsie', 'class': 'brother', 'id': 'link1'&#125;</span></pre></td></tr></table></figure><ol start="2"><li><em><strong>NavigableString</strong></em>（可以遍历的字符串）</li></ol><p>字符串常被包含在 tag 内.Beautiful Soup 用 <code>NavigableString</code> 类来包装 tag 中的字符串:</p><figure class="highlight python"><figcaption data-lang="python"></figcaption><table><tr><td data-num="1"></td><td><pre>soup<span class="token punctuation">.</span>a<span class="token punctuation">.</span>string</pre></td></tr><tr><td data-num="2"></td><td><pre><span class="token comment"># Elsie</span></pre></td></tr><tr><td data-num="3"></td><td><pre><span class="token builtin">type</span><span class="token punctuation">(</span>soup<span class="token punctuation">.</span>a<span class="token punctuation">.</span>string<span class="token punctuation">)</span></pre></td></tr><tr><td data-num="4"></td><td><pre><span class="token operator">&lt;</span><span class="token keyword">class</span> <span class="token string">'bs4.element.NavigableString'</span><span class="token operator">></span></pre></td></tr></table></figure><p>&lt;font style='color:red'&gt;tag 中包含的字符串不能编辑，但是可以被替换成其它的字符串，用 replace_with () 方法 &lt;/font&gt;</p><figure class="highlight python"><figcaption data-lang="python"></figcaption><table><tr><td data-num="1"></td><td><pre>soup<span class="token punctuation">.</span>a<span class="token punctuation">.</span>string<span class="token punctuation">.</span>replace_with<span class="token punctuation">(</span><span class="token string">'你好'</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="2"></td><td><pre><span class="token keyword">print</span><span class="token punctuation">(</span>soup<span class="token punctuation">.</span>a<span class="token punctuation">)</span></pre></td></tr><tr><td data-num="3"></td><td><pre><span class="token comment"># &lt;a class="sister" href="http://example.com/elsie" id="link1"> 你好 & lt;/a></span></pre></td></tr></table></figure><ol start="3"><li><em><strong>BeautifulSoup</strong></em></li></ol><p><code>BeautifulSoup</code> 对象表示的是一个文档的全部内容。大部分时候，可以把它当作 <code>Tag</code> 对象，它支持 遍历文档树 和 搜索文档树中描述的大部分的方法。</p><ol start="4"><li><em><strong>comment</strong></em></li></ol><p><code>Tag</code> , <code>NavigableString</code> , <code>BeautifulSoup</code> 几乎覆盖了 html 和 xml 中的所有内容，但是还有一些特殊对象。容易让人担心的内容是文档的注释部分:</p><ul><li>Coment 对象是一个特殊类型的 NavigableString 对象。</li><li>如果标签内部的内容是注释，例如： <code>&lt;!-- Elsie --&gt;</code> 。那么该 NavigableSring 对象会转换成 Comment 对象，并且会把注释符号去掉。</li></ul><figure class="highlight python"><figcaption data-lang="python"></figcaption><table><tr><td data-num="1"></td><td><pre>markup <span class="token operator">=</span> <span class="token string">"&lt;b>&lt;!--Hey, buddy. Want to buy a used parser?-->&lt;/b>"</span></pre></td></tr><tr><td data-num="2"></td><td><pre>soup <span class="token operator">=</span> BeautifulSoup<span class="token punctuation">(</span>markup<span class="token punctuation">,</span><span class="token string">'lxml'</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="3"></td><td><pre><span class="token keyword">print</span><span class="token punctuation">(</span>soup<span class="token punctuation">.</span>b<span class="token punctuation">.</span>text<span class="token operator">+</span><span class="token string">'输出为空'</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="4"></td><td><pre><span class="token comment">#输出为空</span></pre></td></tr><tr><td data-num="5"></td><td><pre>comment <span class="token operator">=</span> soup<span class="token punctuation">.</span>b<span class="token punctuation">.</span>string</pre></td></tr><tr><td data-num="6"></td><td><pre><span class="token keyword">print</span><span class="token punctuation">(</span>comment<span class="token punctuation">)</span></pre></td></tr><tr><td data-num="7"></td><td><pre><span class="token comment"># Hey, buddy. Want to buy a used parser?</span></pre></td></tr><tr><td data-num="8"></td><td><pre><span class="token keyword">print</span><span class="token punctuation">(</span><span class="token builtin">type</span><span class="token punctuation">(</span>comment<span class="token punctuation">)</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="9"></td><td><pre><span class="token comment"># &lt;class 'bs4.element.Comment'></span></pre></td></tr></table></figure><h4 id="遍历文档树"><a class="anchor" href="#遍历文档树">#</a> 遍历文档树</h4><ol><li><em><strong>子结点</strong></em></li></ol><p>一个 Tag 可能包含多个字符串或其它的 Tag, 这些都是这个 Tag 的子节点.Beautiful Soup 提供了许多操作和遍历子节点的属性.</p><p>&lt;font style=&quot;color:red&quot;&gt; 注意: Beautiful Soup 中字符串节点不支持这些属性，因为字符串没有子节点 &lt;/font&gt;</p><ol start="2"><li><em><strong>tag 的名字</strong></em></li></ol><p>操作文档树最简单的方法就是告诉它你想获取的 tag 的 name. 如果想获取 &lt;head&gt; 标签，只要用 <code>soup.head</code> :</p><pre><code class="language-Python">soup.head
+
+
+
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="碎念随风" href="http://example.com/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="碎念随风" href="http://example.com/atom.xml" />
+<link rel="alternate" type="application/json" title="碎念随风" href="http://example.com/feed.json" />
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CInconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="/css/app.css?v=0.2.5">
+
+  
+  <meta name="keywords" content="Python,爬虫" />
+
+
+<link rel="canonical" href="http://example.com/2023/10/24/Python%E7%BD%91%E7%BB%9C%E7%88%AC%E8%99%AB%EF%BC%88%E4%BA%8C%EF%BC%89/">
+
+
+
+  <title>
+Python 网络爬虫（二） - 爬虫 - Python - 教程 |
+碎念随风 = 碎念随风</title>
+<meta name="generator" content="Hexo 6.3.0"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
+    </div>
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">Python 网络爬虫（二）
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="创建时间：2023-10-24 15:34:44">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">发表于</span>
+    <time itemprop="dateCreated datePublished" datetime="2023-10-24T15:34:44+08:00">2023-10-24</time>
+  </span>
+  <span class="item" title="本文字数">
+    <span class="icon">
+      <i class="ic i-pen"></i>
+    </span>
+    <span class="text">本文字数</span>
+    <span>6.4k</span>
+    <span class="text">字</span>
+  </span>
+  <span class="item" title="阅读时长">
+    <span class="icon">
+      <i class="ic i-clock"></i>
+    </span>
+    <span class="text">阅读时长</span>
+    <span>6 分钟</span>
+  </span>
+</div>
+
+
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="切换导航栏">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/" rel="start">碎念随风</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </div>
+      <div id="imgs" class="pjax">
+        <ul>
+          <li class="item" data-background-image="https://note.youdao.com/yws/api/personal/file/WEB57d27a8b096d17972a07bb5fffa62d87?method=download&shareKey=2a2660353b6a204aa269c33680c88a99"></li>
+          <li class="item" data-background-image="https://note.youdao.com/yws/api/personal/file/WEB1fd2d4ba2433a4df1e4e5041254f8fa7?method=download&shareKey=2a2660353b6a204aa269c33680c88a99"></li>
+          <li class="item" data-background-image="https://note.youdao.com/yws/api/personal/file/WEB404811a801dc7b0a162cc7faba8a223d?method=download&shareKey=2a2660353b6a204aa269c33680c88a99"></li>
+          <li class="item" data-background-image="https://note.youdao.com/yws/api/personal/file/WEB07469cb09ce3aa804e5a4559d801d46e?method=download&shareKey=2a2660353b6a204aa269c33680c88a99"></li>
+          <li class="item" data-background-image="https://note.youdao.com/yws/api/personal/file/WEB4e2bec4915a56323bc68b73e8e8472b5?method=download&shareKey=2a2660353b6a204aa269c33680c88a99"></li>
+          <li class="item" data-background-image="https://note.youdao.com/yws/api/personal/file/WEB0d21f2118bac78b3a749f568899e3e6f?method=download&shareKey=2a2660353b6a204aa269c33680c88a99"></li>
+        </ul>
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">首页</a></span><i class="ic i-angle-right"></i>
+<span  itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/Java/" itemprop="item" rel="index" title="分类于 教程"><span itemprop="name">教程</span></a>
+<meta itemprop="position" content="1" /></span>
+<i class="ic i-angle-right"></i>
+<span  itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/Java/Python/" itemprop="item" rel="index" title="分类于 Python"><span itemprop="name">Python</span></a>
+<meta itemprop="position" content="2" /></span>
+<i class="ic i-angle-right"></i>
+<span  class="current" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/Java/Python/%E7%88%AC%E8%99%AB/" itemprop="item" rel="index" title="分类于 爬虫"><span itemprop="name">爬虫</span></a>
+<meta itemprop="position" content="3" /></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="zh-CN">
+  <link itemprop="mainEntityOfPage" href="http://example.com/2023/10/24/Python%E7%BD%91%E7%BB%9C%E7%88%AC%E8%99%AB%EF%BC%88%E4%BA%8C%EF%BC%89/">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/images/avatar.jpg">
+    <meta itemprop="name" content="shyl">
+    <meta itemprop="description" content=", 人海未见之时，我亦独行在这城市。 料峭，春醒，酷暑，骤雨，寒意四起，大雁南飞，而后，大雪，寒风， 斗转星移，人间寒暑。">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="碎念随风">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <h3 id="一-request库"><a class="markdownIt-Anchor" href="#一-request库">#</a> 一、request 库</h3>
+<p>Requests 是一个常用的 HTTP 请求库，可以方便地向网站发送 HTTP 请求，并获取响应结果。这是官方的文档：<span class="exturl" data-url="aHR0cHM6Ly9yZXF1ZXN0cy5yZWFkdGhlZG9jcy5pby9lbi9sYXRlc3Qv">request 官方文档</span>（官方文档不太容易看懂😹）可以选择菜鸟教程里面的 requests 库讲解<span class="exturl" data-url="aHR0cHM6Ly93d3cucnVub29iLmNvbS9weXRob24zL3B5dGhvbi1yZXF1ZXN0cy5odG1s">菜鸟教程</span>。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">属性或方法</th>
+<th style="text-align:left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">apparent_encoding</td>
+<td style="text-align:left">编码方式</td>
+</tr>
+<tr>
+<td style="text-align:left">close()</td>
+<td style="text-align:left">关闭与服务器的连接</td>
+</tr>
+<tr>
+<td style="text-align:left">content</td>
+<td style="text-align:left">返回响应的内容，以字节为单位</td>
+</tr>
+<tr>
+<td style="text-align:left">cookies</td>
+<td style="text-align:left">返回一个 CookieJar 对象，包含了从服务器发回的 cookie</td>
+</tr>
+<tr>
+<td style="text-align:left">elapsed</td>
+<td style="text-align:left">返回一个 timedelta 对象，包含了从发送请求到响应到达之间经过的时间量，可以用于测试响应速度。比如 r.elapsed.microseconds 表示响应到达需要多少微秒。</td>
+</tr>
+<tr>
+<td style="text-align:left">encoding</td>
+<td style="text-align:left">解码 r.text 的编码方式</td>
+</tr>
+<tr>
+<td style="text-align:left">headers</td>
+<td style="text-align:left">返回响应头，字典格式</td>
+</tr>
+<tr>
+<td style="text-align:left">history</td>
+<td style="text-align:left">返回包含请求历史的响应对象列表（url）</td>
+</tr>
+<tr>
+<td style="text-align:left">is_permanent_redirect</td>
+<td style="text-align:left">如果响应是永久重定向的 url，则返回 True，否则返回 False</td>
+</tr>
+<tr>
+<td style="text-align:left">is_redirect</td>
+<td style="text-align:left">如果响应被重定向，则返回 True，否则返回 False</td>
+</tr>
+<tr>
+<td style="text-align:left">iter_content()</td>
+<td style="text-align:left">迭代响应</td>
+</tr>
+<tr>
+<td style="text-align:left">iter_lines()</td>
+<td style="text-align:left">迭代响应的行</td>
+</tr>
+<tr>
+<td style="text-align:left">json()</td>
+<td style="text-align:left">返回结果的 JSON 对象 (结果需要以 JSON 格式编写的，否则会引发错误)</td>
+</tr>
+<tr>
+<td style="text-align:left">links</td>
+<td style="text-align:left">返回响应的解析头链接</td>
+</tr>
+<tr>
+<td style="text-align:left">next</td>
+<td style="text-align:left">返回重定向链中下一个请求的 PreparedRequest 对象</td>
+</tr>
+<tr>
+<td style="text-align:left">ok</td>
+<td style="text-align:left">检查 “status_code” 的值，如果小于 400，则返回 True，如果不小于 400，则返回 False</td>
+</tr>
+<tr>
+<td style="text-align:left">raise_for_status()</td>
+<td style="text-align:left">如果发生错误，方法返回一个 HTTPError 对象</td>
+</tr>
+<tr>
+<td style="text-align:left">reason</td>
+<td style="text-align:left">响应状态的描述，比如 “Not Found” 或 “OK”</td>
+</tr>
+<tr>
+<td style="text-align:left">request</td>
+<td style="text-align:left">返回请求此响应的请求对象</td>
+</tr>
+<tr>
+<td style="text-align:left">status_code</td>
+<td style="text-align:left">返回 http 的状态码，比如 404 和 200（200 是 OK，404 是 Not Found）</td>
+</tr>
+<tr>
+<td style="text-align:left">text</td>
+<td style="text-align:left">返回响应的内容，unicode 类型数据</td>
+</tr>
+<tr>
+<td style="text-align:left">url</td>
+<td style="text-align:left">返回响应的 URL</td>
+</tr>
+</tbody>
+</table>
+<h3 id="二-beautiful-soup库"><a class="markdownIt-Anchor" href="#二-beautiful-soup库">#</a> 二、Beautiful soup 库</h3>
+<p><span class="exturl" data-url="aHR0cHM6Ly9iZWF1dGlmdWxzb3VwLmNuLw==">Beautiful Soup</span> 是一个可以从 HTML 或 XML 文件中提取数据的 Python 库。它能够通过你喜欢的转换器实现惯用的文档导航，查找，修改文档的方式.Beautiful Soup 会帮你节省数小时甚至数天的工作时间.</p>
+<p>下表列出了主要的解析器，以及它们的优缺点:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">解析器</th>
+<th style="text-align:left">使用方法</th>
+<th style="text-align:left">优势</th>
+<th style="text-align:left">劣势</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Python 标准库</td>
+<td style="text-align:left"><code>BeautifulSoup(markup, &quot;html.parser&quot;)</code></td>
+<td style="text-align:left">Python 的内置标准库执行速度适中文档容错能力强</td>
+<td style="text-align:left">Python 2.7.3 or 3.2.2) 前 的版本中文档容错能力差</td>
+</tr>
+<tr>
+<td style="text-align:left">lxml HTML 解析器</td>
+<td style="text-align:left"><code>BeautifulSoup(markup, &quot;lxml&quot;)</code></td>
+<td style="text-align:left">速度快文档容错能力强</td>
+<td style="text-align:left">需要安装 C 语言库</td>
+</tr>
+<tr>
+<td style="text-align:left">lxml XML 解析器</td>
+<td style="text-align:left"><code>BeautifulSoup(markup, [&quot;lxml-xml&quot;])``BeautifulSoup(markup, &quot;xml&quot;)</code></td>
+<td style="text-align:left">速度快唯一支持 XML 的解析器</td>
+<td style="text-align:left">需要安装 C 语言库</td>
+</tr>
+<tr>
+<td style="text-align:left">html5lib</td>
+<td style="text-align:left"><code>BeautifulSoup(markup, &quot;html5lib&quot;)</code></td>
+<td style="text-align:left">最好的容错性以浏览器的方式解析文档生成 HTML5 格式的文档</td>
+<td style="text-align:left">速度慢不依赖外部扩展</td>
+</tr>
+</tbody>
+</table>
+<p>将一段文档传入 BeautifulSoup 的构造方法，就能得到一个文档的对象，可以传入一段字符串或一个文件句柄.</p>
+<figure class="highlight python"><figcaption data-lang="python"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token keyword">from</span> bs4 <span class="token keyword">import</span> BeautifulSoup</pre></td></tr><tr><td data-num="2"></td><td><pre></pre></td></tr><tr><td data-num="3"></td><td><pre>soup <span class="token operator">=</span> BeautifulSoup<span class="token punctuation">(</span><span class="token builtin">open</span><span class="token punctuation">(</span><span class="token string">"index.html"</span><span class="token punctuation">)</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="4"></td><td><pre></pre></td></tr><tr><td data-num="5"></td><td><pre>soup <span class="token operator">=</span> BeautifulSoup<span class="token punctuation">(</span><span class="token string">"&lt;html>data&lt;/html>"</span><span class="token punctuation">)</span></pre></td></tr></table></figure><h4 id="beautiful-soup的4种对象"><a class="markdownIt-Anchor" href="#beautiful-soup的4种对象">#</a> Beautiful Soup 的 4 种对象</h4>
+<p>Beautiful Soup 将复杂 HTML 文档转换成一个复杂的树形结构，每个节点都是 Python 对象，所有对象可以归纳为 4 种:  <code>Tag</code>  ,  <code>NavigableString</code>  ,  <code>BeautifulSoup</code>  ,  <code>Comment</code>  .</p>
+<figure class="highlight python"><figcaption data-lang="python"></figcaption><table><tr><td data-num="1"></td><td><pre>html_doc <span class="token operator">=</span> <span class="token triple-quoted-string string">"""</pre></td></tr><tr><td data-num="2"></td><td><pre>&lt;html>&lt;head>&lt;title>The Dormouse's story&lt;/title>&lt;/head></pre></td></tr><tr><td data-num="3"></td><td><pre>&lt;body></pre></td></tr><tr><td data-num="4"></td><td><pre>&lt;p class="title">&lt;b>The Dormouse's story&lt;/b>&lt;/p></pre></td></tr><tr><td data-num="5"></td><td><pre></pre></td></tr><tr><td data-num="6"></td><td><pre>&lt;p class="story">Once upon a time there were three little sisters; and their names were</pre></td></tr><tr><td data-num="7"></td><td><pre>&lt;a href="http://example.com/elsie" class="sister" id="link1">Elsie&lt;/a>,</pre></td></tr><tr><td data-num="8"></td><td><pre>&lt;a href="http://example.com/lacie" class="sister" id="link2">Lacie&lt;/a> and</pre></td></tr><tr><td data-num="9"></td><td><pre>&lt;a href="http://example.com/tillie" class="sister" id="link3">Tillie&lt;/a>;</pre></td></tr><tr><td data-num="10"></td><td><pre>and they lived at the bottom of a well.&lt;/p></pre></td></tr><tr><td data-num="11"></td><td><pre></pre></td></tr><tr><td data-num="12"></td><td><pre>&lt;p class="story">...&lt;/p></pre></td></tr><tr><td data-num="13"></td><td><pre>"""</span></pre></td></tr></table></figure><p class="note note-danger">以下代码块中  `#` 后面的内容一般代指输出结果</p>
+<ol>
+<li><em><strong>Tag</strong></em></li>
+</ol>
+<p><code>Tag</code>  对象与 XML 或 HTML 原生文档中的 tag 相同:</p>
+<figure class="highlight python"><figcaption data-lang="python"></figcaption><table><tr><td data-num="1"></td><td><pre>soup <span class="token operator">=</span> BeautifulSoup<span class="token punctuation">(</span><span class="token string">'&lt;b class="boldest">Extremely bold&lt;/b>'</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="2"></td><td><pre>tag <span class="token operator">=</span> soup<span class="token punctuation">.</span>b</pre></td></tr><tr><td data-num="3"></td><td><pre><span class="token builtin">type</span><span class="token punctuation">(</span>tag<span class="token punctuation">)</span></pre></td></tr><tr><td data-num="4"></td><td><pre><span class="token comment"># &lt;class 'bs4.element.Tag'></span></pre></td></tr></table></figure><p><font style='color:red'>tag 中最重要的属性: name 和 attributes</font></p>
+<ul>
+<li>Name: 每个 tag 都有自己的名字，通过  <code>.name</code>  来获取:</li>
+</ul>
+<figure class="highlight python"><figcaption data-lang="python"></figcaption><table><tr><td data-num="1"></td><td><pre>soup<span class="token punctuation">.</span>a<span class="token punctuation">.</span>name</pre></td></tr><tr><td data-num="2"></td><td><pre><span class="token comment"># a</span></pre></td></tr></table></figure><p>如果改变了 tag 的 name, 那将影响所有通过当前 Beautiful Soup 对象生成的 HTML 文档:</p>
+<figure class="highlight python"><figcaption data-lang="python"></figcaption><table><tr><td data-num="1"></td><td><pre>soup<span class="token punctuation">.</span>a<span class="token punctuation">.</span>name<span class="token operator">=</span><span class="token string">'你好'</span> <span class="token comment">#只会修改第一个 a 标签</span></pre></td></tr><tr><td data-num="2"></td><td><pre><span class="token keyword">print</span><span class="token punctuation">(</span>soup<span class="token punctuation">.</span>你好<span class="token punctuation">)</span></pre></td></tr><tr><td data-num="3"></td><td><pre><span class="token comment">#&lt; 你好 class="sister" href="http://example.com/elsie" id="link1">Elsie&lt;/ 你好 ></span></pre></td></tr></table></figure><ul>
+<li>Attributes: 一个 tag 可能有很多个属性. tag  <code>&lt;a href=&quot;http://example.com/elsie&quot; class=&quot;sister&quot; id=&quot;link1&quot;&gt;Elsie&lt;/a&gt;,</code>  有一个 “class” 的属性，值为 “sister” .<font style='color:red'> tag 的属性的操作方法与字典相同；可以使用 <code>.attrs</code>  老获取全部属性 </font></li>
+</ul>
+<figure class="highlight python"><figcaption data-lang="python"></figcaption><table><tr><td data-num="1"></td><td><pre>soup<span class="token punctuation">.</span>a<span class="token punctuation">[</span><span class="token string">'class'</span><span class="token punctuation">]</span></pre></td></tr><tr><td data-num="2"></td><td><pre><span class="token comment">#['sister']</span></pre></td></tr><tr><td data-num="3"></td><td><pre>soup<span class="token punctuation">.</span>a<span class="token punctuation">[</span><span class="token string">'id'</span><span class="token punctuation">]</span></pre></td></tr><tr><td data-num="4"></td><td><pre><span class="token comment"># link1</span></pre></td></tr><tr><td data-num="5"></td><td><pre>soup<span class="token punctuation">.</span>a<span class="token punctuation">.</span>attrs</pre></td></tr><tr><td data-num="6"></td><td><pre><span class="token comment"># &#123;'href': 'http://example.com/elsie', 'class': ['sister'], 'id': 'link1'&#125;</span></pre></td></tr></table></figure><p class="note note-primary">tag的属性可以被添加,删除或修改.tag的属性操作方法与字典一样<br>以下方法 只针对遇到的第一个标签的属性</p>
+<figure class="highlight python"><figcaption data-lang="python"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token comment">#新增</span></pre></td></tr><tr><td data-num="2"></td><td><pre>soup<span class="token punctuation">.</span>a<span class="token punctuation">[</span><span class="token string">'insert'</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token string">'增加'</span></pre></td></tr><tr><td data-num="3"></td><td><pre><span class="token keyword">print</span><span class="token punctuation">(</span>soup<span class="token punctuation">.</span>a<span class="token punctuation">)</span></pre></td></tr><tr><td data-num="4"></td><td><pre><span class="token comment"># &lt;a class="sister" href="http://example.com/elsie" id="link1" insert="增加">Elsie&lt;/a></span></pre></td></tr><tr><td data-num="5"></td><td><pre></pre></td></tr><tr><td data-num="6"></td><td><pre><span class="token comment">#删除</span></pre></td></tr><tr><td data-num="7"></td><td><pre><span class="token keyword">del</span> soup<span class="token punctuation">.</span>a<span class="token punctuation">[</span><span class="token string">'class'</span><span class="token punctuation">]</span></pre></td></tr><tr><td data-num="8"></td><td><pre><span class="token keyword">print</span><span class="token punctuation">(</span>soup<span class="token punctuation">.</span>a<span class="token punctuation">)</span></pre></td></tr><tr><td data-num="9"></td><td><pre><span class="token comment"># &lt;a href="http://example.com/elsie" id="link1">Elsie&lt;/a></span></pre></td></tr><tr><td data-num="10"></td><td><pre></pre></td></tr><tr><td data-num="11"></td><td><pre><span class="token comment"># 修改</span></pre></td></tr><tr><td data-num="12"></td><td><pre>soup<span class="token punctuation">.</span>a<span class="token punctuation">[</span><span class="token string">'class'</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token string">'brother'</span></pre></td></tr><tr><td data-num="13"></td><td><pre><span class="token keyword">print</span><span class="token punctuation">(</span>soup<span class="token punctuation">.</span>a<span class="token punctuation">.</span>attrs<span class="token punctuation">)</span></pre></td></tr><tr><td data-num="14"></td><td><pre><span class="token comment"># &#123;'href': 'http://example.com/elsie', 'class': 'brother', 'id': 'link1'&#125;</span></pre></td></tr></table></figure><ol start="2">
+<li><em><strong>NavigableString</strong></em>（可以遍历的字符串）</li>
+</ol>
+<p>字符串常被包含在 tag 内.Beautiful Soup 用  <code>NavigableString</code>  类来包装 tag 中的字符串:</p>
+<figure class="highlight python"><figcaption data-lang="python"></figcaption><table><tr><td data-num="1"></td><td><pre>soup<span class="token punctuation">.</span>a<span class="token punctuation">.</span>string</pre></td></tr><tr><td data-num="2"></td><td><pre><span class="token comment"># Elsie</span></pre></td></tr><tr><td data-num="3"></td><td><pre><span class="token builtin">type</span><span class="token punctuation">(</span>soup<span class="token punctuation">.</span>a<span class="token punctuation">.</span>string<span class="token punctuation">)</span></pre></td></tr><tr><td data-num="4"></td><td><pre><span class="token operator">&lt;</span><span class="token keyword">class</span> <span class="token string">'bs4.element.NavigableString'</span><span class="token operator">></span></pre></td></tr></table></figure><p><font style='color:red'>tag 中包含的字符串不能编辑，但是可以被替换成其它的字符串，用 replace_with () 方法</font></p>
+<figure class="highlight python"><figcaption data-lang="python"></figcaption><table><tr><td data-num="1"></td><td><pre>soup<span class="token punctuation">.</span>a<span class="token punctuation">.</span>string<span class="token punctuation">.</span>replace_with<span class="token punctuation">(</span><span class="token string">'你好'</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="2"></td><td><pre><span class="token keyword">print</span><span class="token punctuation">(</span>soup<span class="token punctuation">.</span>a<span class="token punctuation">)</span></pre></td></tr><tr><td data-num="3"></td><td><pre><span class="token comment"># &lt;a class="sister" href="http://example.com/elsie" id="link1"> 你好 & lt;/a></span></pre></td></tr></table></figure><ol start="3">
+<li><em><strong>BeautifulSoup</strong></em></li>
+</ol>
+<p><code>BeautifulSoup</code>  对象表示的是一个文档的全部内容。大部分时候，可以把它当作  <code>Tag</code>  对象，它支持 遍历文档树 和 搜索文档树中描述的大部分的方法。</p>
+<ol start="4">
+<li><em><strong>comment</strong></em></li>
+</ol>
+<p><code>Tag</code>  ,  <code>NavigableString</code>  ,  <code>BeautifulSoup</code>  几乎覆盖了 html 和 xml 中的所有内容，但是还有一些特殊对象。容易让人担心的内容是文档的注释部分:</p>
+<ul>
+<li>Coment 对象是一个特殊类型的 NavigableString 对象。</li>
+<li>如果标签内部的内容是注释，例如： <code>&lt;!-- Elsie --&gt;</code> 。那么该 NavigableSring 对象会转换成 Comment 对象，并且会把注释符号去掉。</li>
+</ul>
+<figure class="highlight python"><figcaption data-lang="python"></figcaption><table><tr><td data-num="1"></td><td><pre>markup <span class="token operator">=</span> <span class="token string">"&lt;b>&lt;!--Hey, buddy. Want to buy a used parser?-->&lt;/b>"</span></pre></td></tr><tr><td data-num="2"></td><td><pre>soup <span class="token operator">=</span> BeautifulSoup<span class="token punctuation">(</span>markup<span class="token punctuation">,</span><span class="token string">'lxml'</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="3"></td><td><pre><span class="token keyword">print</span><span class="token punctuation">(</span>soup<span class="token punctuation">.</span>b<span class="token punctuation">.</span>text<span class="token operator">+</span><span class="token string">'输出为空'</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="4"></td><td><pre><span class="token comment">#输出为空</span></pre></td></tr><tr><td data-num="5"></td><td><pre>comment <span class="token operator">=</span> soup<span class="token punctuation">.</span>b<span class="token punctuation">.</span>string</pre></td></tr><tr><td data-num="6"></td><td><pre><span class="token keyword">print</span><span class="token punctuation">(</span>comment<span class="token punctuation">)</span></pre></td></tr><tr><td data-num="7"></td><td><pre><span class="token comment"># Hey, buddy. Want to buy a used parser?</span></pre></td></tr><tr><td data-num="8"></td><td><pre><span class="token keyword">print</span><span class="token punctuation">(</span><span class="token builtin">type</span><span class="token punctuation">(</span>comment<span class="token punctuation">)</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="9"></td><td><pre><span class="token comment"># &lt;class 'bs4.element.Comment'></span></pre></td></tr></table></figure><h4 id="遍历文档树"><a class="markdownIt-Anchor" href="#遍历文档树">#</a> 遍历文档树</h4>
+<ol>
+<li><em><strong>子结点</strong></em></li>
+</ol>
+<p>一个 Tag 可能包含多个字符串或其它的 Tag, 这些都是这个 Tag 的子节点.Beautiful Soup 提供了许多操作和遍历子节点的属性.</p>
+<p><font style="color:red">注意: Beautiful Soup 中字符串节点不支持这些属性，因为字符串没有子节点</font></p>
+<ol start="2">
+<li><em><strong>tag 的名字</strong></em></li>
+</ol>
+<p>操作文档树最简单的方法就是告诉它你想获取的 tag 的 name. 如果想获取 <head> 标签，只要用  <code>soup.head</code>  :</p>
+<pre><code class="language-Python">soup.head
 # &lt;head&gt;&lt;title&gt;The Dormouse's story&lt;/title&gt;&lt;/head&gt;
 
 soup.title
 # &lt;title&gt;The Dormouse's story&lt;/title&gt;
-</code></pre><p>这是个获取 tag 的小窍门，可以在文档树的 tag 中多次调用这个方法。下面的代码可以获取 <code>&lt;body&gt;</code> 标签中的第一个 <code>&lt;b&gt;</code> 标签:</p><figure class="highlight python"><figcaption data-lang="python"></figcaption><table><tr><td data-num="1"></td><td><pre>soup<span class="token punctuation">.</span>body<span class="token punctuation">.</span>b</pre></td></tr><tr><td data-num="2"></td><td><pre><span class="token comment"># &lt;b>The Dormouse's story&lt;/b></span></pre></td></tr></table></figure><p>&lt;p class=&quot;note note-info&quot;&gt;Tip: 通过点取属性的方式只能获得当前名字的第一个 tag:&lt;/p&gt;</p><p>如果想要得到所有的 <code>&lt;a&gt;</code> 标签，或是通过名字得到比一个 tag 更多的内容的时候，就需要用到 Searching the tree 中描述的方法，比如: find_all ()</p><figure class="highlight python"><figcaption data-lang="python"></figcaption><table><tr><td data-num="1"></td><td><pre>soup<span class="token punctuation">.</span>find_all<span class="token punctuation">(</span><span class="token string">'a'</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="2"></td><td><pre><span class="token comment"># [&lt;a class="sister" href="http://example.com/elsie" id="link1">Elsie&lt;/a>, &lt;a class="sister" href="http://example.com/lacie" id="link2">Lacie&lt;/a>, &lt;a class="sister" href="http://example.com/tillie" id="link3">Tillie&lt;/a>]</span></pre></td></tr><tr><td data-num="3"></td><td><pre></pre></td></tr><tr><td data-num="4"></td><td><pre><span class="token builtin">type</span><span class="token punctuation">(</span>soup<span class="token punctuation">.</span>find_all<span class="token punctuation">(</span><span class="token string">'a'</span><span class="token punctuation">)</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="5"></td><td><pre><span class="token comment"># &lt;class 'bs4.element.ResultSet'></span></pre></td></tr></table></figure><ol start="3"><li><em><strong>.contents 和 .children</strong></em></li></ol><p>tag 的 <code>.contents</code> 属性可以将 tag 的子节点以列表的方式输出:</p><figure class="highlight python"><figcaption data-lang="python"></figcaption><table><tr><td data-num="1"></td><td><pre>soup<span class="token punctuation">.</span>body<span class="token punctuation">.</span>contents</pre></td></tr><tr><td data-num="2"></td><td><pre><span class="token comment"># ['\n', &lt;p class="title">&lt;b>The Dormouse's story&lt;/b>&lt;/p>, '\n', &lt;p class="story">Once upon a time there were three little sisters; and their names were &lt;a class="sister" href="http://example.com/elsie" id="link1">Elsie&lt;/a>, &lt;a class="sister" href="http://example.com/lacie" id="link2">Lacie&lt;/a> and &lt;a class="sister" href="http://example.com/tillie" id="link3">Tillie&lt;/a>; and they lived at the bottom of a well.&lt;/p>, '\n', &lt;p class="story">...&lt;/p>, '\n']</span></pre></td></tr></table></figure><p>通过 tag 的 <code>.children</code> 生成器，可以对 tag 的子节点进行循环:</p><figure class="highlight python"><figcaption data-lang="python"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token keyword">print</span><span class="token punctuation">(</span><span class="token builtin">type</span><span class="token punctuation">(</span>soup<span class="token punctuation">.</span>body<span class="token punctuation">.</span>children<span class="token punctuation">)</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="2"></td><td><pre><span class="token comment"># &lt;class 'list_iterator'> 迭代器</span></pre></td></tr><tr><td data-num="3"></td><td><pre><span class="token keyword">for</span> child <span class="token keyword">in</span> soup<span class="token punctuation">.</span>body<span class="token punctuation">.</span>children<span class="token punctuation">:</span></pre></td></tr><tr><td data-num="4"></td><td><pre>    <span class="token keyword">print</span><span class="token punctuation">(</span>child<span class="token punctuation">)</span></pre></td></tr><tr><td data-num="5"></td><td><pre>    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token builtin">type</span><span class="token punctuation">(</span>child<span class="token punctuation">)</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="6"></td><td><pre></pre></td></tr><tr><td data-num="7"></td><td><pre><span class="token comment">#                      &lt; 第一行数据为空 >    </span></pre></td></tr><tr><td data-num="8"></td><td><pre><span class="token comment"># &lt;class 'bs4.element.NavigableString</span></pre></td></tr><tr><td data-num="9"></td><td><pre></pre></td></tr><tr><td data-num="10"></td><td><pre><span class="token comment">#&lt;p class="title">&lt;b>The Dormouse's story&lt;/b>&lt;/p></span></pre></td></tr><tr><td data-num="11"></td><td><pre><span class="token comment">#&lt;class 'bs4.element.Tag'></span></pre></td></tr><tr><td data-num="12"></td><td><pre></pre></td></tr><tr><td data-num="13"></td><td><pre><span class="token comment"># &lt;p class="story">Once upon a time there were three little sisters; and their names were</span></pre></td></tr><tr><td data-num="14"></td><td><pre><span class="token comment"># &lt;a class="sister" href="http://example.com/elsie" id="link1">Elsie&lt;/a>,</span></pre></td></tr><tr><td data-num="15"></td><td><pre><span class="token comment"># &lt;a class="sister" href="http://example.com/lacie" id="link2">Lacie&lt;/a> and</span></pre></td></tr><tr><td data-num="16"></td><td><pre><span class="token comment"># &lt;a class="sister" href="http://example.com/tillie" id="link3">Tillie&lt;/a>;</span></pre></td></tr><tr><td data-num="17"></td><td><pre><span class="token comment"># and they lived at the bottom of a well.&lt;/p></span></pre></td></tr><tr><td data-num="18"></td><td><pre><span class="token comment"># &lt;class 'bs4.element.Tag'></span></pre></td></tr></table></figure><ol start="4"><li><em><strong>.descendants</strong></em></li></ol><p><code>.contents</code> 和 <code>.children</code> 属性仅包含 tag 的直接子节点。例如，&lt;head&gt; 标签只有一个直接子节点 &lt; title&gt;</p><pre><code>head_tag.contents
+</code></pre>
+<p>这是个获取 tag 的小窍门，可以在文档树的 tag 中多次调用这个方法。下面的代码可以获取 <code>&lt;body&gt;</code>  标签中的第一个 <code>&lt;b&gt;</code>  标签:</p>
+<figure class="highlight python"><figcaption data-lang="python"></figcaption><table><tr><td data-num="1"></td><td><pre>soup<span class="token punctuation">.</span>body<span class="token punctuation">.</span>b</pre></td></tr><tr><td data-num="2"></td><td><pre><span class="token comment"># &lt;b>The Dormouse's story&lt;/b></span></pre></td></tr></table></figure><p class="note note-info">Tip:通过点取属性的方式只能获得当前名字的第一个tag:</p>
+<p>如果想要得到所有的 <code>&lt;a&gt;</code>  标签，或是通过名字得到比一个 tag 更多的内容的时候，就需要用到 Searching the tree 中描述的方法，比如: find_all ()</p>
+<figure class="highlight python"><figcaption data-lang="python"></figcaption><table><tr><td data-num="1"></td><td><pre>soup<span class="token punctuation">.</span>find_all<span class="token punctuation">(</span><span class="token string">'a'</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="2"></td><td><pre><span class="token comment"># [&lt;a class="sister" href="http://example.com/elsie" id="link1">Elsie&lt;/a>, &lt;a class="sister" href="http://example.com/lacie" id="link2">Lacie&lt;/a>, &lt;a class="sister" href="http://example.com/tillie" id="link3">Tillie&lt;/a>]</span></pre></td></tr><tr><td data-num="3"></td><td><pre></pre></td></tr><tr><td data-num="4"></td><td><pre><span class="token builtin">type</span><span class="token punctuation">(</span>soup<span class="token punctuation">.</span>find_all<span class="token punctuation">(</span><span class="token string">'a'</span><span class="token punctuation">)</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="5"></td><td><pre><span class="token comment"># &lt;class 'bs4.element.ResultSet'></span></pre></td></tr></table></figure><ol start="3">
+<li><em><strong>.contents 和 .children</strong></em></li>
+</ol>
+<p>tag 的  <code>.contents</code>  属性可以将 tag 的子节点以列表的方式输出:</p>
+<figure class="highlight python"><figcaption data-lang="python"></figcaption><table><tr><td data-num="1"></td><td><pre>soup<span class="token punctuation">.</span>body<span class="token punctuation">.</span>contents</pre></td></tr><tr><td data-num="2"></td><td><pre><span class="token comment"># ['\n', &lt;p class="title">&lt;b>The Dormouse's story&lt;/b>&lt;/p>, '\n', &lt;p class="story">Once upon a time there were three little sisters; and their names were &lt;a class="sister" href="http://example.com/elsie" id="link1">Elsie&lt;/a>, &lt;a class="sister" href="http://example.com/lacie" id="link2">Lacie&lt;/a> and &lt;a class="sister" href="http://example.com/tillie" id="link3">Tillie&lt;/a>; and they lived at the bottom of a well.&lt;/p>, '\n', &lt;p class="story">...&lt;/p>, '\n']</span></pre></td></tr></table></figure><p>通过 tag 的  <code>.children</code>  生成器，可以对 tag 的子节点进行循环:</p>
+<figure class="highlight python"><figcaption data-lang="python"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token keyword">print</span><span class="token punctuation">(</span><span class="token builtin">type</span><span class="token punctuation">(</span>soup<span class="token punctuation">.</span>body<span class="token punctuation">.</span>children<span class="token punctuation">)</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="2"></td><td><pre><span class="token comment"># &lt;class 'list_iterator'> 迭代器</span></pre></td></tr><tr><td data-num="3"></td><td><pre><span class="token keyword">for</span> child <span class="token keyword">in</span> soup<span class="token punctuation">.</span>body<span class="token punctuation">.</span>children<span class="token punctuation">:</span></pre></td></tr><tr><td data-num="4"></td><td><pre>    <span class="token keyword">print</span><span class="token punctuation">(</span>child<span class="token punctuation">)</span></pre></td></tr><tr><td data-num="5"></td><td><pre>    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token builtin">type</span><span class="token punctuation">(</span>child<span class="token punctuation">)</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="6"></td><td><pre></pre></td></tr><tr><td data-num="7"></td><td><pre><span class="token comment">#                      &lt; 第一行数据为空 >    </span></pre></td></tr><tr><td data-num="8"></td><td><pre><span class="token comment"># &lt;class 'bs4.element.NavigableString</span></pre></td></tr><tr><td data-num="9"></td><td><pre></pre></td></tr><tr><td data-num="10"></td><td><pre><span class="token comment">#&lt;p class="title">&lt;b>The Dormouse's story&lt;/b>&lt;/p></span></pre></td></tr><tr><td data-num="11"></td><td><pre><span class="token comment">#&lt;class 'bs4.element.Tag'></span></pre></td></tr><tr><td data-num="12"></td><td><pre></pre></td></tr><tr><td data-num="13"></td><td><pre><span class="token comment"># &lt;p class="story">Once upon a time there were three little sisters; and their names were</span></pre></td></tr><tr><td data-num="14"></td><td><pre><span class="token comment"># &lt;a class="sister" href="http://example.com/elsie" id="link1">Elsie&lt;/a>,</span></pre></td></tr><tr><td data-num="15"></td><td><pre><span class="token comment"># &lt;a class="sister" href="http://example.com/lacie" id="link2">Lacie&lt;/a> and</span></pre></td></tr><tr><td data-num="16"></td><td><pre><span class="token comment"># &lt;a class="sister" href="http://example.com/tillie" id="link3">Tillie&lt;/a>;</span></pre></td></tr><tr><td data-num="17"></td><td><pre><span class="token comment"># and they lived at the bottom of a well.&lt;/p></span></pre></td></tr><tr><td data-num="18"></td><td><pre><span class="token comment"># &lt;class 'bs4.element.Tag'></span></pre></td></tr></table></figure><ol start="4">
+<li><em><strong>.descendants</strong></em></li>
+</ol>
+<p><code>.contents</code>  和  <code>.children</code>  属性仅包含 tag 的直接子节点。例如，<head>标签只有一个直接子节点<title></p>
+<pre><code>head_tag.contents
 # [&lt;title&gt;The Dormouse's story&lt;/title&gt;]
-</code></pre><p>但是 &lt;title&gt; 标签也包含一个子节点：字符串 “The Dormouse’s story”, 这种情况下字符串 “The Dormouse’s story” 也属于 &lt; head &gt; 标签的子孙节点. <code>.descendants</code> 属性可以对所有 tag 的子孙节点进行递归循环</p><div class="tags"><a href="/tags/Python/" rel="tag"><i class="ic i-tag"></i> Python</a> <a href="/tags/%E7%88%AC%E8%99%AB/" rel="tag"><i class="ic i-tag"></i> 爬虫</a></div></div><footer><div class="meta"><span class="item"><span class="icon"><i class="ic i-calendar-check"></i> </span><span class="text">更新于</span> <time title="修改时间：2023-10-27 18:02:40" itemprop="dateModified" datetime="2023-10-27T18:02:40+08:00">2023-10-27</time> </span><span id="2023/10/24/Python网络爬虫（二）/" class="item leancloud_visitors" data-flag-title="Python网络爬虫（二）" title="阅读次数"><span class="icon"><i class="ic i-eye"></i> </span><span class="text">阅读次数</span> <span class="leancloud-visitors-count"></span> <span class="text">次</span></span></div><div class="reward"><button><i class="ic i-heartbeat"></i> 赞赏</button><p>请我喝[茶]~(￣▽￣)~*</p><div id="qr"><div><img data-src="/images/wechatpay.png" alt="shyl 微信支付"><p>微信支付</p></div><div><img data-src="/images/alipay.png" alt="shyl 支付宝"><p>支付宝</p></div><div><img data-src="/images/paypal.png" alt="shyl 贝宝"><p>贝宝</p></div></div></div><div id="copyright"><ul><li class="author"><strong>本文作者： </strong>shyl <i class="ic i-at"><em>@</em></i>碎念随风</li><li class="link"><strong>本文链接：</strong> <a href="http://example.com/2023/10/24/Python%E7%BD%91%E7%BB%9C%E7%88%AC%E8%99%AB%EF%BC%88%E4%BA%8C%EF%BC%89/" title="Python网络爬虫（二）">http://example.com/2023/10/24/Python网络爬虫（二）/</a></li><li class="license"><strong>版权声明： </strong>本站所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> 许可协议。转载请注明出处！</li></ul></div></footer></article></div><div class="post-nav"><div class="item left"><a href="/2023/10/24/Python%E7%BD%91%E7%BB%9C%E7%88%AC%E8%99%AB%E4%B8%80/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva3.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gipew8gmvyj20zk0m87wh.jpg" title="Python网络爬虫（一）"><span class="type">上一篇</span> <span class="category"><i class="ic i-flag"></i> 爬虫</span><h3>Python网络爬虫（一）</h3></a></div><div class="item right"><a href="/2023/11/03/Hive%E4%B8%AD%E7%9A%84Struct%E7%B1%BB%E5%9E%8BBug/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva3.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gipetfk5zwj20zk0m8e81.jpg" title="Hive中的Struct类型Bug"><span class="type">下一篇</span> <span class="category"><i class="ic i-flag"></i> Bug</span><h3>Hive中的Struct类型Bug</h3></a></div></div><div class="wrap" id="comments"></div></div><div id="sidebar"><div class="inner"><div class="panels"><div class="inner"><div class="contents panel pjax" data-title="文章目录"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80-request%E5%BA%93"><span class="toc-number">1.</span> <span class="toc-text">一、request 库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C-beautiful-soup%E5%BA%93"><span class="toc-number">2.</span> <span class="toc-text">二、Beautiful soup 库</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#beautiful-soup%E7%9A%844%E7%A7%8D%E5%AF%B9%E8%B1%A1"><span class="toc-number">2.1.</span> <span class="toc-text">Beautiful Soup 的 4 种对象</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%81%8D%E5%8E%86%E6%96%87%E6%A1%A3%E6%A0%91"><span class="toc-number">2.2.</span> <span class="toc-text">遍历文档树</span></a></li></ol></li></ol></div><div class="related panel pjax" data-title="系列文章"><ul><li><a href="/2023/10/24/Python%E7%BD%91%E7%BB%9C%E7%88%AC%E8%99%AB%E4%B8%80/" rel="bookmark" title="Python网络爬虫（一）">Python网络爬虫（一）</a></li><li class="active"><a href="/2023/10/24/Python%E7%BD%91%E7%BB%9C%E7%88%AC%E8%99%AB%EF%BC%88%E4%BA%8C%EF%BC%89/" rel="bookmark" title="Python网络爬虫（二）">Python网络爬虫（二）</a></li></ul></div><div class="overview panel" data-title="站点概览"><div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person"><img class="image" itemprop="image" alt="shyl" data-src="/images/avatar.jpg"><p class="name" itemprop="name">shyl</p><div class="description" itemprop="description">人海未见之时，我亦独行在这城市。 料峭，春醒，酷暑，骤雨，寒意四起，大雁南飞，而后，大雪，寒风， 斗转星移，人间寒暑。</div></div><nav class="state"><div class="item posts"><a href="/archives/"><span class="count">16</span> <span class="name">文章</span></a></div><div class="item categories"><a href="/categories/"><span class="count">15</span> <span class="name">分类</span></a></div><div class="item tags"><a href="/tags/"><span class="count">12</span> <span class="name">标签</span></a></div></nav><div class="social"><span class="exturl item github" data-url="aHR0cHM6Ly9naXRodWIuY29tL3NoZW5neWFubGVp" title="https:&#x2F;&#x2F;github.com&#x2F;shengyanlei"><i class="ic i-github"></i></span> <span class="exturl item email" data-url="bWFpbHRvOnMxMzkzNDczODE2NUAxNjMuY29t" title="mailto:s13934738165@163.com"><i class="ic i-envelope"></i></span></div><ul class="menu"><li class="item"><a href="/" rel="section"><i class="ic i-home"></i>首页</a></li><li class="item"><a href="/about/" rel="section"><i class="ic i-user"></i>关于</a></li><li class="item dropdown"><a href="javascript:void(0);"><i class="ic i-feather"></i>文章</a><ul class="submenu"><li class="item"><a href="/archives/" rel="section"><i class="ic i-list-alt"></i>归档</a></li><li class="item"><a href="/categories/" rel="section"><i class="ic i-th"></i>分类</a></li><li class="item"><a href="/tags/" rel="section"><i class="ic i-tags"></i>标签</a></li></ul></li></ul></div></div></div><ul id="quick"><li class="prev pjax"><a href="/2023/10/24/Python%E7%BD%91%E7%BB%9C%E7%88%AC%E8%99%AB%E4%B8%80/" rel="prev" title="上一篇"><i class="ic i-chevron-left"></i></a></li><li class="up"><i class="ic i-arrow-up"></i></li><li class="down"><i class="ic i-arrow-down"></i></li><li class="next pjax"><a href="/2023/11/03/Hive%E4%B8%AD%E7%9A%84Struct%E7%B1%BB%E5%9E%8BBug/" rel="next" title="下一篇"><i class="ic i-chevron-right"></i></a></li><li class="percent"></li></ul></div></div><div class="dimmer"></div></div></main><footer id="footer"><div class="inner"><div class="widgets"><div class="rpost pjax"><h2>随机文章</h2><ul><li class="item"><div class="breadcrumb"><a href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/" title="分类于 大数据">大数据</a> <i class="ic i-angle-right"></i> <a href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/%E5%AE%9E%E6%97%B6%E6%95%B0%E4%BB%93/" title="分类于 实时数仓">实时数仓</a></div><span><a href="/2024/03/07/%E5%AE%9E%E6%97%B6%E6%95%B0%E4%BB%93%E6%90%AD%E5%BB%BA/" title="实时数仓搭建">实时数仓搭建</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/%E6%95%99%E7%A8%8B/" title="分类于 教程">教程</a> <i class="ic i-angle-right"></i> <a href="/categories/%E6%95%99%E7%A8%8B/Python/" title="分类于 Python">Python</a> <i class="ic i-angle-right"></i> <a href="/categories/%E6%95%99%E7%A8%8B/Python/%E7%88%AC%E8%99%AB/" title="分类于 爬虫">爬虫</a></div><span><a href="/2023/10/24/Python%E7%BD%91%E7%BB%9C%E7%88%AC%E8%99%AB%E4%B8%80/" title="Python网络爬虫（一）">Python网络爬虫（一）</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/%E6%95%99%E7%A8%8B/" title="分类于 教程">教程</a> <i class="ic i-angle-right"></i> <a href="/categories/%E6%95%99%E7%A8%8B/Fluid%E4%B8%BB%E9%A2%98/" title="分类于 Fluid主题">Fluid主题</a></div><span><a href="/2023/10/13/fluid%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/" title="fluid使用指南">fluid使用指南</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/%E6%95%99%E7%A8%8B/" title="分类于 教程">教程</a> <i class="ic i-angle-right"></i> <a href="/categories/%E6%95%99%E7%A8%8B/Python/" title="分类于 Python">Python</a> <i class="ic i-angle-right"></i> <a href="/categories/%E6%95%99%E7%A8%8B/Python/%E7%88%AC%E8%99%AB/" title="分类于 爬虫">爬虫</a></div><span><a href="/2023/10/24/Python%E7%BD%91%E7%BB%9C%E7%88%AC%E8%99%AB%EF%BC%88%E4%BA%8C%EF%BC%89/" title="Python网络爬虫（二）">Python网络爬虫（二）</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/%E6%B5%8B%E8%AF%95/" title="分类于 测试">测试</a> <i class="ic i-angle-right"></i> <a href="/categories/%E6%B5%8B%E8%AF%95/Markdown/" title="分类于 Markdown">Markdown</a></div><span><a href="/2023/10/13/%E6%B5%8B%E8%AF%95%E5%9B%BE%E5%BA%8A/" title="测试图床">测试图床</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/" title="分类于 大数据">大数据</a> <i class="ic i-angle-right"></i> <a href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/Hive/" title="分类于 Hive">Hive</a> <i class="ic i-angle-right"></i> <a href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/Hive/Bug/" title="分类于 Bug">Bug</a></div><span><a href="/2023/11/03/Hive%E4%B8%AD%E7%9A%84Struct%E7%B1%BB%E5%9E%8BBug/" title="Hive中的Struct类型Bug">Hive中的Struct类型Bug</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/" title="分类于 大数据">大数据</a> <i class="ic i-angle-right"></i> <a href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/Hive/" title="分类于 Hive">Hive</a> <i class="ic i-angle-right"></i> <a href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/Hive/Bug/" title="分类于 Bug">Bug</a></div><span><a href="/2023/11/03/Hive%E4%B8%AD%E7%9A%84explode/" title="Hive中的explode">Hive中的explode</a></span></li><li class="item"><div class="breadcrumb"></div><span><a href="/2023/10/07/hello-world/" title="Hello World">Hello World</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/%E6%95%99%E7%A8%8B/" title="分类于 教程">教程</a> <i class="ic i-angle-right"></i> <a href="/categories/%E6%95%99%E7%A8%8B/Flink/" title="分类于 Flink">Flink</a></div><span><a href="/2023/12/06/Flink%E5%AD%A6%E4%B9%A0-%E4%B8%80/" title="Flink学习(一)">Flink学习(一)</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/Flink/" title="分类于 Flink">Flink</a></div><span><a href="/2024/05/23/Flink%E7%9A%84%E7%AA%97%E5%8F%A3/" title="Flink的窗口">Flink的窗口</a></span></li></ul></div><div><h2>最新评论</h2><ul class="leancloud-recent-comment"></ul></div></div><div class="status"><div class="copyright">&copy; 2023 – <span itemprop="copyrightYear">2024</span> <span class="with-love"><i class="ic i-shyl"></i> </span><span class="author" itemprop="copyrightHolder">shyl @ Shyl</span></div><div class="count"><span class="post-meta-item-icon"><i class="ic i-chart-area"></i> </span><span title="站点总字数">57k 字</span> <span class="post-meta-divider">|</span> <span class="post-meta-item-icon"><i class="ic i-coffee"></i> </span><span title="站点阅读时长">52 分钟</span></div><div class="powered-by">基于 <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span></div></div></div></footer></div><script data-config type="text/javascript">var LOCAL={path:"2023/10/24/Python网络爬虫（二）/",favicon:{show:"（●´3｀●）やれやれだぜ",hide:"(´Д｀)大変だ！"},search:{placeholder:"文章搜索",empty:"关于 「 ${query} 」，什么也没搜到",stats:"${time} ms 内找到 ${hits} 条结果"},valine:!0,fancybox:!0,copyright:'复制成功，转载请遵守 <i class="ic i-creative-commons"></i>BY-NC-SA 协议。',ignores:[function(e){return e.includes("#")},function(e){return new RegExp(LOCAL.path+"$").test(e)}]}</script><script src="https://cdn.polyfill.io/v2/polyfill.js"></script><script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script><script src="/js/app.js?v=0.2.5"></script><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({pluginRootPath:"live2dw/",pluginJsPath:"lib/",pluginModelPath:"assets/",tagMode:!1,debug:!1,model:{jsonPath:"/live2dw/assets/koharu.model.json"},display:{position:"right",width:150,height:300},mobile:{show:!1},log:!1})</script></body></html><!-- rebuild by hrmmi -->
+</code></pre>
+<p>但是<title>标签也包含一个子节点：字符串 “The Dormouse’s story”, 这种情况下字符串 “The Dormouse’s story” 也属于<head>标签的子孙节点.  <code>.descendants</code>  属性可以对所有 tag 的子孙节点进行递归循环</p>
+
+      <div class="tags">
+          <a href="/tags/Python/" rel="tag"><i class="ic i-tag"></i> Python</a>
+          <a href="/tags/%E7%88%AC%E8%99%AB/" rel="tag"><i class="ic i-tag"></i> 爬虫</a>
+      </div>
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">更新于</span>
+    <time title="修改时间：2023-10-27 18:02:40" itemprop="dateModified" datetime="2023-10-27T18:02:40+08:00">2023-10-27</time>
+  </span>
+  <span id="2023/10/24/Python网络爬虫（二）/" class="item leancloud_visitors" data-flag-title="Python 网络爬虫（二）" title="阅读次数">
+      <span class="icon">
+        <i class="ic i-eye"></i>
+      </span>
+      <span class="text">阅读次数</span>
+      <span class="leancloud-visitors-count"></span>
+      <span class="text">次</span>
+  </span>
+</div>
+
+      
+<div class="reward">
+  <button><i class="ic i-heartbeat"></i> 赞赏</button>
+  <p>请我喝[茶]~(￣▽￣)~*</p>
+  <div id="qr">
+      
+      <div>
+        <img data-src="/images/wechatpay.png" alt="shyl 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div>
+        <img data-src="/images/alipay.png" alt="shyl 支付宝">
+        <p>支付宝</p>
+      </div>
+      
+      <div>
+        <img data-src="/images/paypal.png" alt="shyl 贝宝">
+        <p>贝宝</p>
+      </div>
+  </div>
+</div>
+
+      
+
+<div id="copyright">
+<ul>
+  <li class="author">
+    <strong>本文作者： </strong>shyl <i class="ic i-at"><em>@</em></i>碎念随风
+  </li>
+  <li class="link">
+    <strong>本文链接：</strong>
+    <a href="http://example.com/2023/10/24/Python%E7%BD%91%E7%BB%9C%E7%88%AC%E8%99%AB%EF%BC%88%E4%BA%8C%EF%BC%89/" title="Python 网络爬虫（二）">http://example.com/2023/10/24/Python网络爬虫（二）/</a>
+  </li>
+  <li class="license">
+    <strong>版权声明： </strong>本站所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/2023/10/24/Python%E7%BD%91%E7%BB%9C%E7%88%AC%E8%99%AB%E4%B8%80/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;note.youdao.com&#x2F;yws&#x2F;api&#x2F;personal&#x2F;file&#x2F;WEBb8e69d14cac8dc81440e754cac258664?method&#x3D;download&amp;shareKey&#x3D;2a2660353b6a204aa269c33680c88a99" title="Python网络爬虫（一）">
+  <span class="type">上一篇</span>
+  <span class="category"><i class="ic i-flag"></i> 爬虫</span>
+  <h3>Python网络爬虫（一）</h3>
+  </a>
+
+    </div>
+    <div class="item right">
+      
+
+  <a href="/2023/11/03/Hive%E4%B8%AD%E7%9A%84Struct%E7%B1%BB%E5%9E%8BBug/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;note.youdao.com&#x2F;yws&#x2F;api&#x2F;personal&#x2F;file&#x2F;WEB404811a801dc7b0a162cc7faba8a223d?method&#x3D;download&amp;shareKey&#x3D;2a2660353b6a204aa269c33680c88a99" title="Hive中的Struct类型Bug">
+  <span class="type">下一篇</span>
+  <span class="category"><i class="ic i-flag"></i> Bug</span>
+  <h3>Hive中的Struct类型Bug</h3>
+  </a>
+
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
+
+        </div>
+        <div id="sidebar">
+          
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="文章目录">
+          <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80-request%E5%BA%93"><span class="toc-number">1.</span> <span class="toc-text"> 一、request 库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C-beautiful-soup%E5%BA%93"><span class="toc-number">2.</span> <span class="toc-text"> 二、Beautiful soup 库</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#beautiful-soup%E7%9A%844%E7%A7%8D%E5%AF%B9%E8%B1%A1"><span class="toc-number">2.1.</span> <span class="toc-text"> Beautiful Soup 的 4 种对象</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%81%8D%E5%8E%86%E6%96%87%E6%A1%A3%E6%A0%91"><span class="toc-number">2.2.</span> <span class="toc-text"> 遍历文档树</span></a></li></ol></li></ol>
+      </div>
+      <div class="related panel pjax" data-title="系列文章">
+        <ul>
+          <li><a href="/2023/10/24/Python%E7%BD%91%E7%BB%9C%E7%88%AC%E8%99%AB%E4%B8%80/" rel="bookmark" title="Python网络爬虫（一）">Python网络爬虫（一）</a></li><li class="active"><a href="/2023/10/24/Python%E7%BD%91%E7%BB%9C%E7%88%AC%E8%99%AB%EF%BC%88%E4%BA%8C%EF%BC%89/" rel="bookmark" title="Python网络爬虫（二）">Python网络爬虫（二）</a></li>
+        </ul>
+      </div>
+      <div class="overview panel" data-title="站点概览">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="shyl"
+      data-src="/images/avatar.jpg">
+  <p class="name" itemprop="name">shyl</p>
+  <div class="description" itemprop="description">人海未见之时，我亦独行在这城市。 料峭，春醒，酷暑，骤雨，寒意四起，大雁南飞，而后，大雪，寒风， 斗转星移，人间寒暑。</div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">16</span>
+        <span class="name">文章</span>
+      </a>
+    </div>
+    <div class="item categories">
+      <a href="/categories/">
+        <span class="count">14</span>
+        <span class="name">分类</span>
+      </a>
+    </div>
+    <div class="item tags">
+      <a href="/tags/">
+        <span class="count">12</span>
+        <span class="name">标签</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+      <span class="exturl item github" data-url="aHR0cHM6Ly9naXRodWIuY29tL3NoZW5neWFubGVp" title="https:&#x2F;&#x2F;github.com&#x2F;shengyanlei"><i class="ic i-github"></i></span>
+      <span class="exturl item email" data-url="bWFpbHRvOnMxMzkzNDczODE2NUAxNjMuY29t" title="mailto:s13934738165@163.com"><i class="ic i-envelope"></i></span>
+</div>
+
+<ul class="menu">
+  
+    
+  <li class="item">
+    <a href="/" rel="section"><i class="ic i-home"></i>首页</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/about/" rel="section"><i class="ic i-user"></i>关于</a>
+  </li>
+
+        
+  <li class="item dropdown">
+      <a href="javascript:void(0);"><i class="ic i-feather"></i>文章</a>
+    <ul class="submenu">
+
+        
+  <li class="item">
+    <a href="/archives/" rel="section"><i class="ic i-list-alt"></i>归档</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/categories/" rel="section"><i class="ic i-th"></i>分类</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/tags/" rel="section"><i class="ic i-tags"></i>标签</a>
+  </li>
+
+  </ul>
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+        <a href="/2023/10/24/Python%E7%BD%91%E7%BB%9C%E7%88%AC%E8%99%AB%E4%B8%80/" rel="prev" title="上一篇"><i class="ic i-chevron-left"></i></a>
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+        <a href="/2023/11/03/Hive%E4%B8%AD%E7%9A%84Struct%E7%B1%BB%E5%9E%8BBug/" rel="next" title="下一篇"><i class="ic i-chevron-right"></i></a>
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+<div class="rpost pjax">
+  <h2>随机文章</h2>
+  <ul>
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/bigData/" title="分类于 大数据">大数据</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/bigData/%E5%AE%9E%E6%97%B6%E6%95%B0%E4%BB%93/" title="分类于 实时数仓">实时数仓</a>
+</div>
+
+    <span><a href="/2024/03/07/%E5%AE%9E%E6%97%B6%E6%95%B0%E4%BB%93%E6%90%AD%E5%BB%BA/" title="实时数仓搭建">实时数仓搭建</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/bigData/" title="分类于 大数据">大数据</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/bigData/Hive/" title="分类于 Hive">Hive</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/bigData/Hive/Bug/" title="分类于 Bug">Bug</a>
+</div>
+
+    <span><a href="/2023/11/03/Hive%E4%B8%AD%E7%9A%84Struct%E7%B1%BB%E5%9E%8BBug/" title="Hive中的Struct类型Bug">Hive中的Struct类型Bug</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/bigData/" title="分类于 大数据">大数据</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/bigData/Flink/" title="分类于 Flink">Flink</a>
+</div>
+
+    <span><a href="/2023/12/14/Flink%E7%9A%84%E4%B8%8D%E5%90%8Csource/" title="Flink的不同source">Flink的不同source</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/Java/" title="分类于 教程">教程</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/Java/Fluid%E4%B8%BB%E9%A2%98/" title="分类于 Fluid 主题">Fluid 主题</a>
+</div>
+
+    <span><a href="/2023/10/13/fluid%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/" title="fluid使用指南">fluid使用指南</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2023/10/07/hello-world/" title="Hello World">Hello World</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E6%B5%8B%E8%AF%95/" title="分类于 测试">测试</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/%E6%B5%8B%E8%AF%95/Markdown/" title="分类于 Markdown">Markdown</a>
+</div>
+
+    <span><a href="/2023/10/13/%E6%B5%8B%E8%AF%95%E5%9B%BE%E5%BA%8A/" title="测试图床">测试图床</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/bigData/" title="分类于 大数据">大数据</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/bigData/Flink/" title="分类于 Flink">Flink</a>
+</div>
+
+    <span><a href="/2023/12/06/Flink%E5%AD%A6%E4%B9%A0-%E4%B8%80/" title="Flink学习(一)">Flink学习(一)</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/bigData/" title="分类于 大数据">大数据</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/bigData/%E7%A6%BB%E7%BA%BF%E6%95%B0%E4%BB%93/" title="分类于 离线数仓">离线数仓</a>
+</div>
+
+    <span><a href="/2023/10/19/%E6%95%B0%E4%BB%93%E6%90%AD%E5%BB%BA%E7%9A%84%E6%95%B0%E6%8D%AE%E8%B7%A8%E5%A4%A9%E9%97%AE%E9%A2%98/" title="数仓搭建的数据跨天问题">数仓搭建的数据跨天问题</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/bigData/" title="分类于 大数据">大数据</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/bigData/Flink/" title="分类于 Flink">Flink</a>
+</div>
+
+    <span><a href="/2024/05/23/Flink%E7%9A%84%E7%AA%97%E5%8F%A3/" title="Flink的窗口">Flink的窗口</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/Java/" title="分类于 教程">教程</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/Java/Python/" title="分类于 Python">Python</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/Java/Python/%E7%88%AC%E8%99%AB/" title="分类于 爬虫">爬虫</a>
+</div>
+
+    <span><a href="/2023/10/24/Python%E7%BD%91%E7%BB%9C%E7%88%AC%E8%99%AB%E4%B8%80/" title="Python网络爬虫（一）">Python网络爬虫（一）</a></span>
+  </li>
+
+  </ul>
+</div>
+<div>
+  <h2>最新评论</h2>
+  <ul class="leancloud-recent-comment"></ul>
+</div>
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 2023 – 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="ic i-shyl"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">shyl @ 碎念随风</span>
+  </div>
+  <div class="count">
+    <span class="post-meta-item-icon">
+      <i class="ic i-chart-area"></i>
+    </span>
+    <span title="站点总字数">53k 字</span>
+
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="ic i-coffee"></i>
+    </span>
+    <span title="站点阅读时长">49 分钟</span>
+  </div>
+  <div class="powered-by">
+    基于 <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: '2023/10/24/Python网络爬虫（二）/',
+    favicon: {
+      show: "（●´3｀●）やれやれだぜ",
+      hide: "(´Д｀)大変だ！"
+    },
+    search : {
+      placeholder: "文章搜索",
+      empty: "关于 「 ${query} 」，什么也没搜到",
+      stats: "${time} ms 内找到 ${hits} 条结果"
+    },
+    valine: true,fancybox: true,
+    copyright: '复制成功，转载请遵守 <i class="ic i-creative-commons"></i>BY-NC-SA 协议。',
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/js/app.js?v=0.2.5"></script>
+
+
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/koharu.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":false},"log":false});</script></body>
+</html>

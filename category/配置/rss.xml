@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<rss version="2.0">
+    <channel>
+        <title>碎念随风 • Posts by &#34;配置&#34; category</title>
+        <link>http://example.com</link>
+        <description>人海未见之时，我亦独行在这城市。 料峭，春醒，酷暑，骤雨，寒意四起，大雁南飞，而后，大雪，寒风， 斗转星移，人间寒暑。</description>
+        <language>zh-CN</language>
+        <pubDate>Thu, 16 Nov 2023 10:39:42 +0800</pubDate>
+        <lastBuildDate>Thu, 16 Nov 2023 10:39:42 +0800</lastBuildDate>
+        <category>大数据</category>
+        <category>Flink</category>
+        <category>Bug</category>
+        <category>Python</category>
+        <category>爬虫</category>
+        <category>升级</category>
+        <category>笔记</category>
+        <category>Markdown</category>
+        <category>总结</category>
+        <category>数仓搭建</category>
+        <category>test</category>
+        <category>图床</category>
+        <item>
+            <guid isPermalink="true">http://example.com/2023/11/16/hive3-13%E6%B7%BB%E5%8A%A0spark%E5%BC%95%E6%93%8E/</guid>
+            <title>hive3.13添加spark引擎</title>
+            <link>http://example.com/2023/11/16/hive3-13%E6%B7%BB%E5%8A%A0spark%E5%BC%95%E6%93%8E/</link>
+            <category>升级</category>
+            <pubDate>Thu, 16 Nov 2023 10:39:42 +0800</pubDate>
+            <description><![CDATA[ &lt;p&gt;&lt;em&gt;&lt;strong&gt;大数据架构 :lambda 架构，hsap 架构，流批一体&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9jd2lraS5hcGFjaGUub3JnL2NvbmZsdWVuY2UvZGlzcGxheS9IaXZlL0hpdmUrb24rU3BhcmslM0ErR2V0dGluZytTdGFydGVk&#34;&gt;Hive 官网关于 spark on hive&lt;/span&gt;&lt;/p&gt;
+&lt;h3 id=&#34;一-spark-on-hive-和-hive-on-spark-的区别和联系&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#一-spark-on-hive-和-hive-on-spark-的区别和联系&#34;&gt;#&lt;/a&gt; 一、spark on hive 和 hive on spark 的区别和联系&lt;/h3&gt;
+&lt;p&gt;&lt;em&gt;&lt;strong&gt;spark on hive&lt;/strong&gt;&lt;/em&gt;：Spark on Hive 是 Hive 只作为存储角色，Spark 负责 sql 解析优化，执行&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;&lt;strong&gt;hive on spark：&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id=&#34;二-版本选择&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#二-版本选择&#34;&gt;#&lt;/a&gt; 二、版本选择&lt;/h3&gt;
+&lt;h3 id=&#34;三-修改后运行时长对比&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#三-修改后运行时长对比&#34;&gt;#&lt;/a&gt; 三、修改后运行时长对比&lt;/h3&gt;
+ ]]></description>
+        </item>
+    </channel>
+</rss>

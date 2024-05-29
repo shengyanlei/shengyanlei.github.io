@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>http://example.com</id>
+    <title>碎念随风 • Posts by &#34;离线数仓&#34; category</title>
+    <link href="http://example.com" />
+    <updated>2023-10-19T09:19:32.000Z</updated>
+    <category term="大数据" />
+    <category term="Flink" />
+    <category term="Bug" />
+    <category term="Python" />
+    <category term="爬虫" />
+    <category term="升级" />
+    <category term="笔记" />
+    <category term="Markdown" />
+    <category term="总结" />
+    <category term="数仓搭建" />
+    <category term="test" />
+    <category term="图床" />
+    <entry>
+        <id>http://example.com/2023/10/19/%E6%95%B0%E4%BB%93%E6%90%AD%E5%BB%BA%E7%9A%84%E6%95%B0%E6%8D%AE%E8%B7%A8%E5%A4%A9%E9%97%AE%E9%A2%98/</id>
+        <title>数仓搭建的数据跨天问题</title>
+        <link rel="alternate" href="http://example.com/2023/10/19/%E6%95%B0%E4%BB%93%E6%90%AD%E5%BB%BA%E7%9A%84%E6%95%B0%E6%8D%AE%E8%B7%A8%E5%A4%A9%E9%97%AE%E9%A2%98/"/>
+        <content type="html">&lt;h3 id=&#34;一-问题背景&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#一-问题背景&#34;&gt;#&lt;/a&gt; 一、问题背景&lt;/h3&gt;
+&lt;p&gt;在电商的离线数仓搭建中，进行 dwd 层订单域的设计中，普遍会出现订单数据跨天的情况，对于边界数据该如何处理。&lt;/p&gt;
+&lt;h3 id=&#34;二-业务背景&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#二-业务背景&#34;&gt;#&lt;/a&gt; 二、业务背景&lt;/h3&gt;
+&lt;p&gt;业务表的关系如下图所示：&lt;/p&gt;
+&lt;img data-src=&#39;https://note.youdao.com/yws/api/personal/file/WEBe8594c5b923fa1ad10c34399375740d0?method=download&amp;shareKey=709a969272424f2a2da8e4550013b845&#39;&gt;
+&lt;h5 id=&#34;举例说明&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#举例说明&#34;&gt;#&lt;/a&gt; 举例说明：&lt;/h5&gt;
+&lt;p&gt;​		假设某用户在 2023-08-18 23:59 分下单，在 2023-08-19 0：01 完成支付。在业务系统的中数据的流转是：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;下单会在 order_info【订单信息表】,order_detail【订单详情表】，order_detail_coupon【订单明细优惠券关联表】,order_detail_activity【订单明细活动关联表】会新增一条订单相关数据。&lt;/li&gt;
+&lt;li&gt;order_info【订单信息表】是一张状态表，数据发生变化，会 update 相关数据，比如订单状态【从未支付到已支付】而 order_detail【订单详情表】只记录了订单的详细信息，基本上都是维度信息，不会发生变动。&lt;/li&gt;
+&lt;li&gt;我们搭建离线数仓中，增量数据同步使用的 maxwell，全量数据同步使用的是 datax，订单相关的表我们选择的是 maxwell，众所周知，maxwell 同步数据基本上分为两类，insert【新增的数据】和 update【更新的数据】。&lt;/li&gt;
+&lt;li&gt;现想要制作一张用户下单成功的事务事实表，由于用户订单成功状态是在 19 日更新的，所以计算该条下单成功是在 19 日，而订单的详细信息是 18 日的时候插入订单详细表中的，在数仓中数据 18 日的分区。&lt;/li&gt;
+&lt;li&gt;所以我们加工 19 日分区的下单成功表，需要关联的是 18 日，19 日的订单详情表。&lt;/li&gt;
+&lt;li&gt;一般数仓的加工是 T+1, 所以 2023-08-20 计算 2023-08-19 的数据，插入 2023-08-19 分区。 内部需要关联 2023-08-18,2023-08-19 的数据。、&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;问题总结&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#问题总结&#34;&gt;#&lt;/a&gt; 问题总结&lt;/h3&gt;
+&lt;p&gt;数仓中的业务过程要仔细理解，根据表的更新逻辑，数据同步的方式，选择出合理的数据加工方式。&lt;/p&gt;
+</content>
+        <category term="总结" />
+        <category term="数仓搭建" />
+        <updated>2023-10-19T09:19:32.000Z</updated>
+    </entry>
+</feed>

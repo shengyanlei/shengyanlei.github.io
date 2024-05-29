@@ -1,0 +1,19 @@
+{
+    "version": "https://jsonfeed.org/version/1",
+    "title": "碎念随风 • All posts by \"离线数仓\" category",
+    "description": "人海未见之时，我亦独行在这城市。 料峭，春醒，酷暑，骤雨，寒意四起，大雁南飞，而后，大雪，寒风， 斗转星移，人间寒暑。",
+    "home_page_url": "http://example.com",
+    "items": [
+        {
+            "id": "http://example.com/2023/10/19/%E6%95%B0%E4%BB%93%E6%90%AD%E5%BB%BA%E7%9A%84%E6%95%B0%E6%8D%AE%E8%B7%A8%E5%A4%A9%E9%97%AE%E9%A2%98/",
+            "url": "http://example.com/2023/10/19/%E6%95%B0%E4%BB%93%E6%90%AD%E5%BB%BA%E7%9A%84%E6%95%B0%E6%8D%AE%E8%B7%A8%E5%A4%A9%E9%97%AE%E9%A2%98/",
+            "title": "数仓搭建的数据跨天问题",
+            "date_published": "2023-10-19T09:19:32.000Z",
+            "content_html": "<h3 id=\"一-问题背景\"><a class=\"markdownIt-Anchor\" href=\"#一-问题背景\">#</a> 一、问题背景</h3>\n<p>在电商的离线数仓搭建中，进行 dwd 层订单域的设计中，普遍会出现订单数据跨天的情况，对于边界数据该如何处理。</p>\n<h3 id=\"二-业务背景\"><a class=\"markdownIt-Anchor\" href=\"#二-业务背景\">#</a> 二、业务背景</h3>\n<p>业务表的关系如下图所示：</p>\n<img data-src='https://note.youdao.com/yws/api/personal/file/WEBe8594c5b923fa1ad10c34399375740d0?method=download&shareKey=709a969272424f2a2da8e4550013b845'>\n<h5 id=\"举例说明\"><a class=\"markdownIt-Anchor\" href=\"#举例说明\">#</a> 举例说明：</h5>\n<p>​\t\t假设某用户在 2023-08-18 23:59 分下单，在 2023-08-19 0：01 完成支付。在业务系统的中数据的流转是：</p>\n<ol>\n<li>下单会在 order_info【订单信息表】,order_detail【订单详情表】，order_detail_coupon【订单明细优惠券关联表】,order_detail_activity【订单明细活动关联表】会新增一条订单相关数据。</li>\n<li>order_info【订单信息表】是一张状态表，数据发生变化，会 update 相关数据，比如订单状态【从未支付到已支付】而 order_detail【订单详情表】只记录了订单的详细信息，基本上都是维度信息，不会发生变动。</li>\n<li>我们搭建离线数仓中，增量数据同步使用的 maxwell，全量数据同步使用的是 datax，订单相关的表我们选择的是 maxwell，众所周知，maxwell 同步数据基本上分为两类，insert【新增的数据】和 update【更新的数据】。</li>\n<li>现想要制作一张用户下单成功的事务事实表，由于用户订单成功状态是在 19 日更新的，所以计算该条下单成功是在 19 日，而订单的详细信息是 18 日的时候插入订单详细表中的，在数仓中数据 18 日的分区。</li>\n<li>所以我们加工 19 日分区的下单成功表，需要关联的是 18 日，19 日的订单详情表。</li>\n<li>一般数仓的加工是 T+1, 所以 2023-08-20 计算 2023-08-19 的数据，插入 2023-08-19 分区。 内部需要关联 2023-08-18,2023-08-19 的数据。、</li>\n</ol>\n<h3 id=\"问题总结\"><a class=\"markdownIt-Anchor\" href=\"#问题总结\">#</a> 问题总结</h3>\n<p>数仓中的业务过程要仔细理解，根据表的更新逻辑，数据同步的方式，选择出合理的数据加工方式。</p>\n",
+            "tags": [
+                "总结",
+                "数仓搭建"
+            ]
+        }
+    ]
+}

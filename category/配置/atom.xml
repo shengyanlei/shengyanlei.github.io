@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>http://example.com</id>
+    <title>碎念随风 • Posts by &#34;配置&#34; category</title>
+    <link href="http://example.com" />
+    <updated>2023-11-16T02:39:42.000Z</updated>
+    <category term="大数据" />
+    <category term="Flink" />
+    <category term="Bug" />
+    <category term="Python" />
+    <category term="爬虫" />
+    <category term="升级" />
+    <category term="笔记" />
+    <category term="Markdown" />
+    <category term="总结" />
+    <category term="数仓搭建" />
+    <category term="test" />
+    <category term="图床" />
+    <entry>
+        <id>http://example.com/2023/11/16/hive3-13%E6%B7%BB%E5%8A%A0spark%E5%BC%95%E6%93%8E/</id>
+        <title>hive3.13添加spark引擎</title>
+        <link rel="alternate" href="http://example.com/2023/11/16/hive3-13%E6%B7%BB%E5%8A%A0spark%E5%BC%95%E6%93%8E/"/>
+        <content type="html">&lt;p&gt;&lt;em&gt;&lt;strong&gt;大数据架构 :lambda 架构，hsap 架构，流批一体&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9jd2lraS5hcGFjaGUub3JnL2NvbmZsdWVuY2UvZGlzcGxheS9IaXZlL0hpdmUrb24rU3BhcmslM0ErR2V0dGluZytTdGFydGVk&#34;&gt;Hive 官网关于 spark on hive&lt;/span&gt;&lt;/p&gt;
+&lt;h3 id=&#34;一-spark-on-hive-和-hive-on-spark-的区别和联系&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#一-spark-on-hive-和-hive-on-spark-的区别和联系&#34;&gt;#&lt;/a&gt; 一、spark on hive 和 hive on spark 的区别和联系&lt;/h3&gt;
+&lt;p&gt;&lt;em&gt;&lt;strong&gt;spark on hive&lt;/strong&gt;&lt;/em&gt;：Spark on Hive 是 Hive 只作为存储角色，Spark 负责 sql 解析优化，执行&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;&lt;strong&gt;hive on spark：&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id=&#34;二-版本选择&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#二-版本选择&#34;&gt;#&lt;/a&gt; 二、版本选择&lt;/h3&gt;
+&lt;h3 id=&#34;三-修改后运行时长对比&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#三-修改后运行时长对比&#34;&gt;#&lt;/a&gt; 三、修改后运行时长对比&lt;/h3&gt;
+</content>
+        <category term="升级" />
+        <updated>2023-11-16T02:39:42.000Z</updated>
+    </entry>
+</feed>

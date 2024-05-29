@@ -1,1 +1,976 @@
-<!-- build time:Wed May 29 2024 10:21:37 GMT+0800 (中国标准时间) --><!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=2"><meta name="theme-color" content="#FFF"><link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png"><link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><link rel="alternate" type="application/rss+xml" title="碎念随风" href="http://example.com/rss.xml"><link rel="alternate" type="application/atom+xml" title="碎念随风" href="http://example.com/atom.xml"><link rel="alternate" type="application/json" title="碎念随风" href="http://example.com/feed.json"><link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CInconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext"><link rel="stylesheet" href="/css/app.css?v=0.2.5"><link rel="canonical" href="http://example.com/"><title>Shyl = 碎念随风</title><meta name="generator" content="Hexo 6.3.0"></head><body itemscope itemtype="http://schema.org/WebPage"><div id="loading"><div class="cat"><div class="body"></div><div class="head"><div class="face"></div></div><div class="foot"><div class="tummy-end"></div><div class="bottom"></div><div class="legs left"></div><div class="legs right"></div></div><div class="paw"><div class="hands left"></div><div class="hands right"></div></div></div></div><div id="container"><header id="header" itemscope itemtype="http://schema.org/WPHeader"><div class="inner"><div id="brand"><div class="pjax"><a href="/" class="logo" rel="start"><p class="artboard">Shyl</p><h1 itemprop="name headline" class="title">碎念随风</h1></a></div></div><nav id="nav"><div class="inner"><div class="toggle"><div class="lines" aria-label="切换导航栏"><span class="line"></span> <span class="line"></span> <span class="line"></span></div></div><ul class="menu"><li class="item title"><a href="/" rel="start">Shyl</a></li></ul><ul class="right"><li class="item theme"><i class="ic i-sun"></i></li><li class="item search"><i class="ic i-search"></i></li></ul></div></nav></div><div id="imgs" class="pjax"><ul><li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1giph47e9vtj20zk0m8x6l.jpg"></li><li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1giclh3brzpj20zk0m8ann.jpg"></li><li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gicitht3xtj20zk0m8k5v.jpg"></li><li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1giclhpw3lwj20zk0m8gvw.jpg"></li><li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gicit31ffoj20zk0m8naf.jpg"></li><li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1giclwrdwyaj20zk0m8are.jpg"></li></ul></div></header><div id="waves"><svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z"/></defs><g class="parallax"><use xlink:href="#gentle-wave" x="48" y="0"/><use xlink:href="#gentle-wave" x="48" y="3"/><use xlink:href="#gentle-wave" x="48" y="5"/><use xlink:href="#gentle-wave" x="48" y="7"/></g></svg></div><main><div class="inner"><div id="main" class="pjax"><div class="index wrap"><h2 class="divider">置顶文章</h2><div class="segments sticky"><article class="item"><div class="cover"><a href="/2024/05/23/Flink%E7%9A%84%E7%AA%97%E5%8F%A3/" itemprop="url" title="Flink的窗口"><img data-src="https://note.youdao.com/yws/api/personal/file/WEB83283f24c95afd3095782564a1b2c85b?method=download&shareKey=4340b43b1cf36093e9776693df84ba96"></a></div><div class="info"><div class="meta"><span class="item" title="创建时间：2024-05-23 10:36:44"><span class="icon"><i class="ic i-calendar"></i> </span><time itemprop="dateCreated datePublished" datetime="2024-05-23T10:36:44+08:00">2024-05-23</time> </span><span class="item" title="本文字数"><span class="icon"><i class="ic i-pen"></i> </span><span>7.6k</span> <span class="text">字</span> </span><span class="item" title="阅读时长"><span class="icon"><i class="ic i-clock"></i> </span><span>7 分钟</span></span></div><h3><a href="/2024/05/23/Flink%E7%9A%84%E7%AA%97%E5%8F%A3/" itemprop="url" title="Flink的窗口">Flink的窗口</a></h3><div class="excerpt">摘要</div><div class="meta footer"><span><a href="/categories/Flink/" itemprop="url" title="Flink"><i class="ic i-flag"></i>Flink</a></span></div><a href="/2024/05/23/Flink%E7%9A%84%E7%AA%97%E5%8F%A3/" itemprop="url" title="Flink的窗口" class="btn">more...</a></div></article></div><h2 class="divider">文章列表</h2><div class="segments posts"><article class="item"><div class="cover"><a href="/2024/05/17/flink%E7%AE%97%E5%AD%90%E6%80%BB%E7%BB%93/" itemprop="url" title="flink算子总结"><img data-src="https://tva3.sinaimg.cn/mw690/6833939bly1giclx6phq6j20zk0m8e36.jpg"></a></div><div class="info"><div class="meta"><span class="item" title="创建时间：2024-05-17 10:25:29"><span class="icon"><i class="ic i-calendar"></i> </span><time itemprop="dateCreated datePublished" datetime="2024-05-17T10:25:29+08:00">2024-05-17</time> </span><span class="item" title="本文字数"><span class="icon"><i class="ic i-pen"></i> </span><span>5.5k</span> <span class="text">字</span> </span><span class="item" title="阅读时长"><span class="icon"><i class="ic i-clock"></i> </span><span>5 分钟</span></span></div><h3><a href="/2024/05/17/flink%E7%AE%97%E5%AD%90%E6%80%BB%E7%BB%93/" itemprop="url" title="flink算子总结">flink算子总结</a></h3><div class="excerpt">系统总结flink各个算子的作用</div><div class="meta footer"><span><a href="/categories/%E6%95%99%E7%A8%8B/Flink/" itemprop="url" title="Flink"><i class="ic i-flag"></i>Flink</a></span></div><a href="/2024/05/17/flink%E7%AE%97%E5%AD%90%E6%80%BB%E7%BB%93/" itemprop="url" title="flink算子总结" class="btn">more...</a></div></article><article class="item"><div class="cover"><a href="/2024/03/07/%E5%AE%9E%E6%97%B6%E6%95%B0%E4%BB%93%E6%90%AD%E5%BB%BA/" itemprop="url" title="实时数仓搭建"><img data-src="https://tva3.sinaimg.cn/mw690/6833939bly1gipevo9j1jj20zk0m8e81.jpg"></a></div><div class="info"><div class="meta"><span class="item" title="创建时间：2024-03-07 13:52:09"><span class="icon"><i class="ic i-calendar"></i> </span><time itemprop="dateCreated datePublished" datetime="2024-03-07T13:52:09+08:00">2024-03-07</time> </span><span class="item" title="本文字数"><span class="icon"><i class="ic i-pen"></i> </span><span>0</span> <span class="text">字</span> </span><span class="item" title="阅读时长"><span class="icon"><i class="ic i-clock"></i> </span><span>1 分钟</span></span></div><h3><a href="/2024/03/07/%E5%AE%9E%E6%97%B6%E6%95%B0%E4%BB%93%E6%90%AD%E5%BB%BA/" itemprop="url" title="实时数仓搭建">实时数仓搭建</a></h3><div class="excerpt">这是摘要</div><div class="meta footer"><span><a href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/%E5%AE%9E%E6%97%B6%E6%95%B0%E4%BB%93/" itemprop="url" title="实时数仓"><i class="ic i-flag"></i>实时数仓</a></span></div><a href="/2024/03/07/%E5%AE%9E%E6%97%B6%E6%95%B0%E4%BB%93%E6%90%AD%E5%BB%BA/" itemprop="url" title="实时数仓搭建" class="btn">more...</a></div></article><article class="item"><div class="cover"><a href="/2023/12/14/Flink%E7%9A%84%E4%B8%8D%E5%90%8Csource/" itemprop="url" title="Flink的不同source"><img data-src="https://tva3.sinaimg.cn/mw690/6833939bly1gipev1x5e4j20zk0m8b29.jpg"></a></div><div class="info"><div class="meta"><span class="item" title="创建时间：2023-12-14 15:31:33"><span class="icon"><i class="ic i-calendar"></i> </span><time itemprop="dateCreated datePublished" datetime="2023-12-14T15:31:33+08:00">2023-12-14</time> </span><span class="item" title="本文字数"><span class="icon"><i class="ic i-pen"></i> </span><span>9.8k</span> <span class="text">字</span> </span><span class="item" title="阅读时长"><span class="icon"><i class="ic i-clock"></i> </span><span>9 分钟</span></span></div><h3><a href="/2023/12/14/Flink%E7%9A%84%E4%B8%8D%E5%90%8Csource/" itemprop="url" title="Flink的不同source">Flink的不同source</a></h3><div class="excerpt">Flink的不同的source源demo</div><div class="meta footer"><span><a href="/categories/%E6%95%99%E7%A8%8B/Flink/" itemprop="url" title="Flink"><i class="ic i-flag"></i>Flink</a></span></div><a href="/2023/12/14/Flink%E7%9A%84%E4%B8%8D%E5%90%8Csource/" itemprop="url" title="Flink的不同source" class="btn">more...</a></div></article><article class="item"><div class="cover"><a href="/2023/12/06/Flink%E5%AD%A6%E4%B9%A0-%E4%B8%80/" itemprop="url" title="Flink学习(一)"><img data-src="https://tva3.sinaimg.cn/mw690/6833939bly1giclg5ms2rj20zk0m8u0x.jpg"></a></div><div class="info"><div class="meta"><span class="item" title="创建时间：2023-12-06 11:36:08"><span class="icon"><i class="ic i-calendar"></i> </span><time itemprop="dateCreated datePublished" datetime="2023-12-06T11:36:08+08:00">2023-12-06</time> </span><span class="item" title="本文字数"><span class="icon"><i class="ic i-pen"></i> </span><span>5.4k</span> <span class="text">字</span> </span><span class="item" title="阅读时长"><span class="icon"><i class="ic i-clock"></i> </span><span>5 分钟</span></span></div><h3><a href="/2023/12/06/Flink%E5%AD%A6%E4%B9%A0-%E4%B8%80/" itemprop="url" title="Flink学习(一)">Flink学习(一)</a></h3><div class="excerpt">这是摘要</div><div class="meta footer"><span><a href="/categories/%E6%95%99%E7%A8%8B/Flink/" itemprop="url" title="Flink"><i class="ic i-flag"></i>Flink</a></span></div><a href="/2023/12/06/Flink%E5%AD%A6%E4%B9%A0-%E4%B8%80/" itemprop="url" title="Flink学习(一)" class="btn">more...</a></div></article><article class="item"><div class="cover"><a href="/2023/12/01/Flink%E7%9A%84%E6%90%AD%E5%BB%BA/" itemprop="url" title="Flink的搭建"><img data-src="https://tva3.sinaimg.cn/mw690/6833939bly1giclffsa1cj20zk0m811l.jpg"></a></div><div class="info"><div class="meta"><span class="item" title="创建时间：2023-12-01 09:33:02"><span class="icon"><i class="ic i-calendar"></i> </span><time itemprop="dateCreated datePublished" datetime="2023-12-01T09:33:02+08:00">2023-12-01</time> </span><span class="item" title="本文字数"><span class="icon"><i class="ic i-pen"></i> </span><span>2.4k</span> <span class="text">字</span> </span><span class="item" title="阅读时长"><span class="icon"><i class="ic i-clock"></i> </span><span>2 分钟</span></span></div><h3><a href="/2023/12/01/Flink%E7%9A%84%E6%90%AD%E5%BB%BA/" itemprop="url" title="Flink的搭建">Flink的搭建</a></h3><div class="excerpt">flink1.14.0的安装</div><div class="meta footer"><span><a href="/categories/%E6%95%99%E7%A8%8B/Flink/" itemprop="url" title="Flink"><i class="ic i-flag"></i>Flink</a></span></div><a href="/2023/12/01/Flink%E7%9A%84%E6%90%AD%E5%BB%BA/" itemprop="url" title="Flink的搭建" class="btn">more...</a></div></article><article class="item"><div class="cover"><a href="/2023/11/16/hive3-13%E6%B7%BB%E5%8A%A0spark%E5%BC%95%E6%93%8E/" itemprop="url" title="hive3.13添加spark引擎"><img data-src="https://tva3.sinaimg.cn/mw690/6833939bly1gipexoj0moj20zk0m8kgu.jpg"></a></div><div class="info"><div class="meta"><span class="item" title="创建时间：2023-11-16 10:39:42"><span class="icon"><i class="ic i-calendar"></i> </span><time itemprop="dateCreated datePublished" datetime="2023-11-16T10:39:42+08:00">2023-11-16</time> </span><span class="item" title="本文字数"><span class="icon"><i class="ic i-pen"></i> </span><span>161</span> <span class="text">字</span> </span><span class="item" title="阅读时长"><span class="icon"><i class="ic i-clock"></i> </span><span>1 分钟</span></span></div><h3><a href="/2023/11/16/hive3-13%E6%B7%BB%E5%8A%A0spark%E5%BC%95%E6%93%8E/" itemprop="url" title="hive3.13添加spark引擎">hive3.13添加spark引擎</a></h3><div class="excerpt">hive3.13添加spark引擎</div><div class="meta footer"><span><a href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/Hive/%E9%85%8D%E7%BD%AE/" itemprop="url" title="配置"><i class="ic i-flag"></i>配置</a></span></div><a href="/2023/11/16/hive3-13%E6%B7%BB%E5%8A%A0spark%E5%BC%95%E6%93%8E/" itemprop="url" title="hive3.13添加spark引擎" class="btn">more...</a></div></article><article class="item"><div class="cover"><a href="/2023/11/03/Hive%E4%B8%AD%E7%9A%84explode/" itemprop="url" title="Hive中的explode"><img data-src="https://tva3.sinaimg.cn/mw690/6833939bly1gipexj2jgzj20zk0m8b09.jpg"></a></div><div class="info"><div class="meta"><span class="item" title="创建时间：2023-11-03 10:22:29"><span class="icon"><i class="ic i-calendar"></i> </span><time itemprop="dateCreated datePublished" datetime="2023-11-03T10:22:29+08:00">2023-11-03</time> </span><span class="item" title="本文字数"><span class="icon"><i class="ic i-pen"></i> </span><span>2.2k</span> <span class="text">字</span> </span><span class="item" title="阅读时长"><span class="icon"><i class="ic i-clock"></i> </span><span>2 分钟</span></span></div><h3><a href="/2023/11/03/Hive%E4%B8%AD%E7%9A%84explode/" itemprop="url" title="Hive中的explode">Hive中的explode</a></h3><div class="excerpt">Hive的Explode使用讲解</div><div class="meta footer"><span><a href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/Hive/Bug/" itemprop="url" title="Bug"><i class="ic i-flag"></i>Bug</a></span></div><a href="/2023/11/03/Hive%E4%B8%AD%E7%9A%84explode/" itemprop="url" title="Hive中的explode" class="btn">more...</a></div></article><article class="item"><div class="cover"><a href="/2023/11/03/Hive%E4%B8%AD%E7%9A%84Struct%E7%B1%BB%E5%9E%8BBug/" itemprop="url" title="Hive中的Struct类型Bug"><img data-src="https://tva3.sinaimg.cn/mw690/6833939bly1gipewr8iypj20zk0m8b29.jpg"></a></div><div class="info"><div class="meta"><span class="item" title="创建时间：2023-11-03 10:21:17"><span class="icon"><i class="ic i-calendar"></i> </span><time itemprop="dateCreated datePublished" datetime="2023-11-03T10:21:17+08:00">2023-11-03</time> </span><span class="item" title="本文字数"><span class="icon"><i class="ic i-pen"></i> </span><span>118</span> <span class="text">字</span> </span><span class="item" title="阅读时长"><span class="icon"><i class="ic i-clock"></i> </span><span>1 分钟</span></span></div><h3><a href="/2023/11/03/Hive%E4%B8%AD%E7%9A%84Struct%E7%B1%BB%E5%9E%8BBug/" itemprop="url" title="Hive中的Struct类型Bug">Hive中的Struct类型Bug</a></h3><div class="excerpt">Hive的Struct类型使用注意事项</div><div class="meta footer"><span><a href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/Hive/Bug/" itemprop="url" title="Bug"><i class="ic i-flag"></i>Bug</a></span></div><a href="/2023/11/03/Hive%E4%B8%AD%E7%9A%84Struct%E7%B1%BB%E5%9E%8BBug/" itemprop="url" title="Hive中的Struct类型Bug" class="btn">more...</a></div></article><article class="item"><div class="cover"><a href="/2023/10/24/Python%E7%BD%91%E7%BB%9C%E7%88%AC%E8%99%AB%EF%BC%88%E4%BA%8C%EF%BC%89/" itemprop="url" title="Python网络爬虫（二）"><img data-src="https://tva3.sinaimg.cn/mw690/6833939bly1giph47e9vtj20zk0m8x6l.jpg"></a></div><div class="info"><div class="meta"><span class="item" title="创建时间：2023-10-24 15:34:44"><span class="icon"><i class="ic i-calendar"></i> </span><time itemprop="dateCreated datePublished" datetime="2023-10-24T15:34:44+08:00">2023-10-24</time> </span><span class="item" title="本文字数"><span class="icon"><i class="ic i-pen"></i> </span><span>6.8k</span> <span class="text">字</span> </span><span class="item" title="阅读时长"><span class="icon"><i class="ic i-clock"></i> </span><span>6 分钟</span></span></div><h3><a href="/2023/10/24/Python%E7%BD%91%E7%BB%9C%E7%88%AC%E8%99%AB%EF%BC%88%E4%BA%8C%EF%BC%89/" itemprop="url" title="Python网络爬虫（二）">Python网络爬虫（二）</a></h3><div class="excerpt">爬虫相关库学习</div><div class="meta footer"><span><a href="/categories/%E6%95%99%E7%A8%8B/Python/%E7%88%AC%E8%99%AB/" itemprop="url" title="爬虫"><i class="ic i-flag"></i>爬虫</a></span></div><a href="/2023/10/24/Python%E7%BD%91%E7%BB%9C%E7%88%AC%E8%99%AB%EF%BC%88%E4%BA%8C%EF%BC%89/" itemprop="url" title="Python网络爬虫（二）" class="btn">more...</a></div></article><article class="item"><div class="cover"><a href="/2023/10/24/Python%E7%BD%91%E7%BB%9C%E7%88%AC%E8%99%AB%E4%B8%80/" itemprop="url" title="Python网络爬虫（一）"><img data-src="https://tva3.sinaimg.cn/mw690/6833939bly1gipevo9j1jj20zk0m8e81.jpg"></a></div><div class="info"><div class="meta"><span class="item" title="创建时间：2023-10-24 09:21:16"><span class="icon"><i class="ic i-calendar"></i> </span><time itemprop="dateCreated datePublished" datetime="2023-10-24T09:21:16+08:00">2023-10-24</time> </span><span class="item" title="本文字数"><span class="icon"><i class="ic i-pen"></i> </span><span>6.2k</span> <span class="text">字</span> </span><span class="item" title="阅读时长"><span class="icon"><i class="ic i-clock"></i> </span><span>6 分钟</span></span></div><h3><a href="/2023/10/24/Python%E7%BD%91%E7%BB%9C%E7%88%AC%E8%99%AB%E4%B8%80/" itemprop="url" title="Python网络爬虫（一）">Python网络爬虫（一）</a></h3><div class="excerpt">爬虫简介</div><div class="meta footer"><span><a href="/categories/%E6%95%99%E7%A8%8B/Python/%E7%88%AC%E8%99%AB/" itemprop="url" title="爬虫"><i class="ic i-flag"></i>爬虫</a></span></div><a href="/2023/10/24/Python%E7%BD%91%E7%BB%9C%E7%88%AC%E8%99%AB%E4%B8%80/" itemprop="url" title="Python网络爬虫（一）" class="btn">more...</a></div></article></div></div><nav class="pagination"><div class="inner"><span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="ic i-angle-right" aria-label="下一页"></i></a></div></nav></div><div id="sidebar"><div class="inner"><div class="panels"><div class="inner"><div class="contents panel pjax" data-title="文章目录"></div><div class="related panel pjax" data-title="系列文章"></div><div class="overview panel" data-title="站点概览"><div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person"><img class="image" itemprop="image" alt="shyl" data-src="/images/avatar.jpg"><p class="name" itemprop="name">shyl</p><div class="description" itemprop="description">人海未见之时，我亦独行在这城市。 料峭，春醒，酷暑，骤雨，寒意四起，大雁南飞，而后，大雪，寒风， 斗转星移，人间寒暑。</div></div><nav class="state"><div class="item posts"><a href="/archives/"><span class="count">16</span> <span class="name">文章</span></a></div><div class="item categories"><a href="/categories/"><span class="count">15</span> <span class="name">分类</span></a></div><div class="item tags"><a href="/tags/"><span class="count">12</span> <span class="name">标签</span></a></div></nav><div class="social"><span class="exturl item github" data-url="aHR0cHM6Ly9naXRodWIuY29tL3NoZW5neWFubGVp" title="https:&#x2F;&#x2F;github.com&#x2F;shengyanlei"><i class="ic i-github"></i></span> <span class="exturl item email" data-url="bWFpbHRvOnMxMzkzNDczODE2NUAxNjMuY29t" title="mailto:s13934738165@163.com"><i class="ic i-envelope"></i></span></div><ul class="menu"><li class="item"><a href="/" rel="section"><i class="ic i-home"></i>首页</a></li><li class="item"><a href="/about/" rel="section"><i class="ic i-user"></i>关于</a></li><li class="item dropdown"><a href="javascript:void(0);"><i class="ic i-feather"></i>文章</a><ul class="submenu"><li class="item"><a href="/archives/" rel="section"><i class="ic i-list-alt"></i>归档</a></li><li class="item"><a href="/categories/" rel="section"><i class="ic i-th"></i>分类</a></li><li class="item"><a href="/tags/" rel="section"><i class="ic i-tags"></i>标签</a></li></ul></li></ul></div></div></div><ul id="quick"><li class="prev pjax"></li><li class="up"><i class="ic i-arrow-up"></i></li><li class="down"><i class="ic i-arrow-down"></i></li><li class="next pjax"><a href="/page/2/" rel="next" title="下一篇"><i class="ic i-chevron-right"></i></a></li><li class="percent"></li></ul></div></div><div class="dimmer"></div></div></main><footer id="footer"><div class="inner"><div class="widgets"><div class="rpost pjax"><h2>随机文章</h2><ul><li class="item"><div class="breadcrumb"><a href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/" title="分类于 大数据">大数据</a> <i class="ic i-angle-right"></i> <a href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/%E5%AE%9E%E6%97%B6%E6%95%B0%E4%BB%93/" title="分类于 实时数仓">实时数仓</a></div><span><a href="/2024/03/07/%E5%AE%9E%E6%97%B6%E6%95%B0%E4%BB%93%E6%90%AD%E5%BB%BA/" title="实时数仓搭建">实时数仓搭建</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/%E6%95%99%E7%A8%8B/" title="分类于 教程">教程</a> <i class="ic i-angle-right"></i> <a href="/categories/%E6%95%99%E7%A8%8B/Flink/" title="分类于 Flink">Flink</a></div><span><a href="/2023/12/06/Flink%E5%AD%A6%E4%B9%A0-%E4%B8%80/" title="Flink学习(一)">Flink学习(一)</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/%E6%95%99%E7%A8%8B/" title="分类于 教程">教程</a> <i class="ic i-angle-right"></i> <a href="/categories/%E6%95%99%E7%A8%8B/Flink/" title="分类于 Flink">Flink</a></div><span><a href="/2024/05/17/flink%E7%AE%97%E5%AD%90%E6%80%BB%E7%BB%93/" title="flink算子总结">flink算子总结</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/%E6%95%99%E7%A8%8B/" title="分类于 教程">教程</a> <i class="ic i-angle-right"></i> <a href="/categories/%E6%95%99%E7%A8%8B/Python/" title="分类于 Python">Python</a> <i class="ic i-angle-right"></i> <a href="/categories/%E6%95%99%E7%A8%8B/Python/%E7%88%AC%E8%99%AB/" title="分类于 爬虫">爬虫</a></div><span><a href="/2023/10/24/Python%E7%BD%91%E7%BB%9C%E7%88%AC%E8%99%AB%EF%BC%88%E4%BA%8C%EF%BC%89/" title="Python网络爬虫（二）">Python网络爬虫（二）</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/%E6%95%99%E7%A8%8B/" title="分类于 教程">教程</a> <i class="ic i-angle-right"></i> <a href="/categories/%E6%95%99%E7%A8%8B/Fluid%E4%B8%BB%E9%A2%98/" title="分类于 Fluid主题">Fluid主题</a></div><span><a href="/2023/10/13/fluid%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/" title="fluid使用指南">fluid使用指南</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/" title="分类于 大数据">大数据</a> <i class="ic i-angle-right"></i> <a href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/Hive/" title="分类于 Hive">Hive</a> <i class="ic i-angle-right"></i> <a href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/Hive/Bug/" title="分类于 Bug">Bug</a></div><span><a href="/2023/11/03/Hive%E4%B8%AD%E7%9A%84explode/" title="Hive中的explode">Hive中的explode</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/%E6%95%99%E7%A8%8B/" title="分类于 教程">教程</a> <i class="ic i-angle-right"></i> <a href="/categories/%E6%95%99%E7%A8%8B/Markdown/" title="分类于 Markdown">Markdown</a></div><span><a href="/2023/10/08/md%E8%AF%AD%E6%B3%95/" title="Markdown模版">Markdown模版</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/" title="分类于 大数据">大数据</a> <i class="ic i-angle-right"></i> <a href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/%E7%A6%BB%E7%BA%BF%E6%95%B0%E4%BB%93/" title="分类于 离线数仓">离线数仓</a></div><span><a href="/2023/10/19/%E6%95%B0%E4%BB%93%E6%90%AD%E5%BB%BA%E7%9A%84%E6%95%B0%E6%8D%AE%E8%B7%A8%E5%A4%A9%E9%97%AE%E9%A2%98/" title="数仓搭建的数据跨天问题">数仓搭建的数据跨天问题</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/%E6%95%99%E7%A8%8B/" title="分类于 教程">教程</a> <i class="ic i-angle-right"></i> <a href="/categories/%E6%95%99%E7%A8%8B/Flink/" title="分类于 Flink">Flink</a></div><span><a href="/2023/12/01/Flink%E7%9A%84%E6%90%AD%E5%BB%BA/" title="Flink的搭建">Flink的搭建</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/%E6%B5%8B%E8%AF%95/" title="分类于 测试">测试</a> <i class="ic i-angle-right"></i> <a href="/categories/%E6%B5%8B%E8%AF%95/Markdown/" title="分类于 Markdown">Markdown</a></div><span><a href="/2023/10/13/%E6%B5%8B%E8%AF%95%E5%9B%BE%E5%BA%8A/" title="测试图床">测试图床</a></span></li></ul></div><div><h2>最新评论</h2><ul class="leancloud-recent-comment"></ul></div></div><div class="status"><div class="copyright">&copy; 2023 – <span itemprop="copyrightYear">2024</span> <span class="with-love"><i class="ic i-shyl"></i> </span><span class="author" itemprop="copyrightHolder">shyl @ Shyl</span></div><div class="count"><span class="post-meta-item-icon"><i class="ic i-chart-area"></i> </span><span title="站点总字数">57k 字</span> <span class="post-meta-divider">|</span> <span class="post-meta-item-icon"><i class="ic i-coffee"></i> </span><span title="站点阅读时长">52 分钟</span></div><div class="powered-by">基于 <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span></div></div></div></footer></div><script data-config type="text/javascript">var LOCAL={path:"",favicon:{show:"（●´3｀●）やれやれだぜ",hide:"(´Д｀)大変だ！"},search:{placeholder:"文章搜索",empty:"关于 「 ${query} 」，什么也没搜到",stats:"${time} ms 内找到 ${hits} 条结果"},valine:!0,fancybox:!0,copyright:'复制成功，转载请遵守 <i class="ic i-creative-commons"></i>BY-NC-SA 协议。',ignores:[function(e){return e.includes("#")},function(e){return new RegExp(LOCAL.path+"$").test(e)}]}</script><script src="https://cdn.polyfill.io/v2/polyfill.js"></script><script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script><script src="/js/app.js?v=0.2.5"></script><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({pluginRootPath:"live2dw/",pluginJsPath:"lib/",pluginModelPath:"assets/",tagMode:!1,debug:!1,model:{jsonPath:"/live2dw/assets/koharu.model.json"},display:{position:"right",width:150,height:300},mobile:{show:!1},log:!1})</script></body></html><!-- rebuild by hrmmi -->
+
+
+
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="碎念随风" href="http://example.com/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="碎念随风" href="http://example.com/atom.xml" />
+<link rel="alternate" type="application/json" title="碎念随风" href="http://example.com/feed.json" />
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CInconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="/css/app.css?v=0.2.5">
+
+  
+
+<link rel="canonical" href="http://example.com/">
+
+
+
+  <title>碎念随风 = 碎念随风</title>
+<meta name="generator" content="Hexo 6.3.0"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
+    </div>
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+            <a href="/" class="logo" rel="start"><p class="artboard">碎念随风</p>
+              <h1 itemprop="name headline" class="title">碎念随风</h1>
+            </a>
+          
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="切换导航栏">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/" rel="start">碎念随风</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </div>
+      <div id="imgs" class="pjax">
+        <ul>
+          <li class="item" data-background-image="https://note.youdao.com/yws/api/personal/file/WEB57d27a8b096d17972a07bb5fffa62d87?method=download&shareKey=2a2660353b6a204aa269c33680c88a99"></li>
+          <li class="item" data-background-image="https://note.youdao.com/yws/api/personal/file/WEB530a3d03b43d1aa78e80ed558d4b8313?method=download&shareKey=2a2660353b6a204aa269c33680c88a99"></li>
+          <li class="item" data-background-image="https://note.youdao.com/yws/api/personal/file/WEB7b3f0302e0e4b3522f41828003fa9d24?method=download&shareKey=2a2660353b6a204aa269c33680c88a99"></li>
+          <li class="item" data-background-image="https://note.youdao.com/yws/api/personal/file/WEBc367c7151385c60805ef47cec5156844?method=download&shareKey=2a2660353b6a204aa269c33680c88a99"></li>
+          <li class="item" data-background-image="https://note.youdao.com/yws/api/personal/file/WEB3e5f6a0a17fb4b6896cad6db2a6e86d1?method=download&shareKey=2a2660353b6a204aa269c33680c88a99"></li>
+          <li class="item" data-background-image="https://note.youdao.com/yws/api/personal/file/WEB73ad47d9a9daca9b34151064f3396860?method=download&shareKey=2a2660353b6a204aa269c33680c88a99"></li>
+        </ul>
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="index wrap">
+      <h2 class="divider">置顶文章</h2>
+      <div class="segments sticky">
+          
+<article class="item">
+  <div class="cover">
+    <a href="/2023/10/08/md%E8%AF%AD%E6%B3%95/" itemprop="url" title="Markdown模版"><img data-src="https://note.youdao.com/yws/api/personal/file/WEBc367c7151385c60805ef47cec5156844?method=download&shareKey=2a2660353b6a204aa269c33680c88a99"></a>
+  </div>
+  <div class="info">
+    
+<div class="meta">
+  <span class="item" title="创建时间：2023-10-08 17:47:18">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <time itemprop="dateCreated datePublished" datetime="2023-10-08T17:47:18+08:00">2023-10-08</time>
+  </span>
+  <span class="item" title="本文字数">
+    <span class="icon">
+      <i class="ic i-pen"></i>
+    </span>
+    <span>7.4k</span>
+    <span class="text">字</span>
+  </span>
+  <span class="item" title="阅读时长">
+    <span class="icon">
+      <i class="ic i-clock"></i>
+    </span>
+    <span>7 分钟</span>
+  </span>
+</div>
+
+    <h3><a href="/2023/10/08/md%E8%AF%AD%E6%B3%95/" itemprop="url" title="Markdown模版">Markdown模版</a></h3>
+    <div class="excerpt">
+        # 一、Markdown 标题语法
+要创建标题，请在单词或短语前面添加井号 ( # ) 。 # 的数量代表了标题的级别。例如，添加三个 # 表示创建一个三级标题
+
+Markdown 语法
+HTML
+预览效果
+
+# Heading level 1
+&amp;lt;h1&amp;gt;Heading level 1&amp;lt;/h1&amp;gt;
+Heading level 1
+
+# 可选语法：
+还可以在文本下方添加任意数量的 == 号来标识一级标题，或者 – 号来标识二级标题。
+# 二、Markdown 段落语法
+​	要创建段落，请使用空白行将一行或多行文本进行分隔。
+
+Markdown...
+    </div>
+    <div class="meta footer">
+      <span>
+        <a href="/categories/Java/Markdown/" itemprop="url" title="Markdown"><i class="ic i-flag"></i>Markdown</a>
+      </span>
+    </div>
+    <a href="/2023/10/08/md%E8%AF%AD%E6%B3%95/" itemprop="url" title="Markdown模版" class="btn">more...</a>
+  </div>
+</article>
+
+      </div>
+      <h2 class="divider">精选分类</h2>
+      <div class="cards">
+          
+<section class="item">
+  <div class="cover" data-background-image="/bigData/cover.jpg">
+    <h2 class="title">大数据</h2>
+  </div>
+  <div class="info">
+    <div class="ribbon"><a href="/categories/bigData/" itemprop="url" title="大数据">大数据</a></div>
+    <div class="inner">
+        <ul class="posts">
+            <li><a title="Flink" href="/categories/bigData/Flink/">Flink</a></li>
+            <li><a title="Hive" href="/categories/bigData/Hive/">Hive</a></li>
+            <li><a title="实时数仓" href="/categories/bigData/%E5%AE%9E%E6%97%B6%E6%95%B0%E4%BB%93/">实时数仓</a></li>
+            <li><a title="离线数仓" href="/categories/bigData/%E7%A6%BB%E7%BA%BF%E6%95%B0%E4%BB%93/">离线数仓</a></li>
+        </ul>
+        <div class="meta footer">
+          <span>
+            <i class="ic i-file"></i>4 个子项，10 篇文章
+          </span>
+        </div>
+        <a href="/categories/bigData/" itemprop="url" title="大数据" class="btn">more...</a>
+    </div>
+  </div>
+</section>
+
+          
+<section class="item">
+  <div class="cover" data-background-image="/Java/cover.jpg">
+    <h2 class="title">教程</h2>
+  </div>
+  <div class="info">
+    <div class="ribbon"><a href="/categories/Java/" itemprop="url" title="教程">教程</a></div>
+    <div class="inner">
+        <ul class="posts">
+            <li><a title="Fluid主题" href="/categories/Java/Fluid%E4%B8%BB%E9%A2%98/">Fluid主题</a></li>
+            <li><a title="Markdown" href="/categories/Java/Markdown/">Markdown</a></li>
+            <li><a title="Python" href="/categories/Java/Python/">Python</a></li>
+        </ul>
+        <div class="meta footer">
+          <span>
+            <i class="ic i-file"></i>3 个子项，4 篇文章
+          </span>
+        </div>
+        <a href="/categories/Java/" itemprop="url" title="教程" class="btn">more...</a>
+    </div>
+  </div>
+</section>
+
+      </div>
+    <h2 class="divider">文章列表</h2>
+    <div class="segments posts">
+        
+<article class="item">
+  <div class="cover">
+    <a href="/2024/05/23/Flink%E7%9A%84%E7%AA%97%E5%8F%A3/" itemprop="url" title="Flink的窗口"><img data-src="https://note.youdao.com/yws/api/personal/file/WEB324e863bfeba544ca046252c60f05597?method=download&shareKey=2a2660353b6a204aa269c33680c88a99"></a>
+  </div>
+  <div class="info">
+    
+<div class="meta">
+  <span class="item" title="创建时间：2024-05-23 10:36:44">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <time itemprop="dateCreated datePublished" datetime="2024-05-23T10:36:44+08:00">2024-05-23</time>
+  </span>
+  <span class="item" title="本文字数">
+    <span class="icon">
+      <i class="ic i-pen"></i>
+    </span>
+    <span>7.5k</span>
+    <span class="text">字</span>
+  </span>
+  <span class="item" title="阅读时长">
+    <span class="icon">
+      <i class="ic i-clock"></i>
+    </span>
+    <span>7 分钟</span>
+  </span>
+</div>
+
+    <h3><a href="/2024/05/23/Flink%E7%9A%84%E7%AA%97%E5%8F%A3/" itemprop="url" title="Flink的窗口">Flink的窗口</a></h3>
+    <div class="excerpt">
+        摘要
+      
+    </div>
+    <div class="meta footer">
+      <span>
+        <a href="/categories/bigData/Flink/" itemprop="url" title="Flink"><i class="ic i-flag"></i>Flink</a>
+      </span>
+    </div>
+    <a href="/2024/05/23/Flink%E7%9A%84%E7%AA%97%E5%8F%A3/" itemprop="url" title="Flink的窗口" class="btn">more...</a>
+  </div>
+</article>
+
+        
+<article class="item">
+  <div class="cover">
+    <a href="/2024/05/17/flink%E7%AE%97%E5%AD%90%E6%80%BB%E7%BB%93/" itemprop="url" title="flink算子总结"><img data-src="https://note.youdao.com/yws/api/personal/file/WEB931010855fe5bdbb1b6b2f0215715a55?method=download&shareKey=2a2660353b6a204aa269c33680c88a99"></a>
+  </div>
+  <div class="info">
+    
+<div class="meta">
+  <span class="item" title="创建时间：2024-05-17 10:25:29">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <time itemprop="dateCreated datePublished" datetime="2024-05-17T10:25:29+08:00">2024-05-17</time>
+  </span>
+  <span class="item" title="本文字数">
+    <span class="icon">
+      <i class="ic i-pen"></i>
+    </span>
+    <span>5.1k</span>
+    <span class="text">字</span>
+  </span>
+  <span class="item" title="阅读时长">
+    <span class="icon">
+      <i class="ic i-clock"></i>
+    </span>
+    <span>5 分钟</span>
+  </span>
+</div>
+
+    <h3><a href="/2024/05/17/flink%E7%AE%97%E5%AD%90%E6%80%BB%E7%BB%93/" itemprop="url" title="flink算子总结">flink算子总结</a></h3>
+    <div class="excerpt">
+        系统总结flink各个算子的作用
+      
+    </div>
+    <div class="meta footer">
+      <span>
+        <a href="/categories/bigData/Flink/" itemprop="url" title="Flink"><i class="ic i-flag"></i>Flink</a>
+      </span>
+    </div>
+    <a href="/2024/05/17/flink%E7%AE%97%E5%AD%90%E6%80%BB%E7%BB%93/" itemprop="url" title="flink算子总结" class="btn">more...</a>
+  </div>
+</article>
+
+        
+<article class="item">
+  <div class="cover">
+    <a href="/2024/03/07/%E5%AE%9E%E6%97%B6%E6%95%B0%E4%BB%93%E6%90%AD%E5%BB%BA/" itemprop="url" title="实时数仓搭建"><img data-src="https://note.youdao.com/yws/api/personal/file/WEBf60c271ddfd0d9d05ed3754e09d6658e?method=download&shareKey=2a2660353b6a204aa269c33680c88a99"></a>
+  </div>
+  <div class="info">
+    
+<div class="meta">
+  <span class="item" title="创建时间：2024-03-07 13:52:09">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <time itemprop="dateCreated datePublished" datetime="2024-03-07T13:52:09+08:00">2024-03-07</time>
+  </span>
+  <span class="item" title="本文字数">
+    <span class="icon">
+      <i class="ic i-pen"></i>
+    </span>
+    <span>0</span>
+    <span class="text">字</span>
+  </span>
+  <span class="item" title="阅读时长">
+    <span class="icon">
+      <i class="ic i-clock"></i>
+    </span>
+    <span>1 分钟</span>
+  </span>
+</div>
+
+    <h3><a href="/2024/03/07/%E5%AE%9E%E6%97%B6%E6%95%B0%E4%BB%93%E6%90%AD%E5%BB%BA/" itemprop="url" title="实时数仓搭建">实时数仓搭建</a></h3>
+    <div class="excerpt">
+        这是摘要
+      
+    </div>
+    <div class="meta footer">
+      <span>
+        <a href="/categories/bigData/%E5%AE%9E%E6%97%B6%E6%95%B0%E4%BB%93/" itemprop="url" title="实时数仓"><i class="ic i-flag"></i>实时数仓</a>
+      </span>
+    </div>
+    <a href="/2024/03/07/%E5%AE%9E%E6%97%B6%E6%95%B0%E4%BB%93%E6%90%AD%E5%BB%BA/" itemprop="url" title="实时数仓搭建" class="btn">more...</a>
+  </div>
+</article>
+
+        
+<article class="item">
+  <div class="cover">
+    <a href="/2023/12/14/Flink%E7%9A%84%E4%B8%8D%E5%90%8Csource/" itemprop="url" title="Flink的不同source"><img data-src="https://note.youdao.com/yws/api/personal/file/WEBb40e172c3f472e0cac1d8d298e60fd7d?method=download&shareKey=2a2660353b6a204aa269c33680c88a99"></a>
+  </div>
+  <div class="info">
+    
+<div class="meta">
+  <span class="item" title="创建时间：2023-12-14 15:31:33">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <time itemprop="dateCreated datePublished" datetime="2023-12-14T15:31:33+08:00">2023-12-14</time>
+  </span>
+  <span class="item" title="本文字数">
+    <span class="icon">
+      <i class="ic i-pen"></i>
+    </span>
+    <span>9.8k</span>
+    <span class="text">字</span>
+  </span>
+  <span class="item" title="阅读时长">
+    <span class="icon">
+      <i class="ic i-clock"></i>
+    </span>
+    <span>9 分钟</span>
+  </span>
+</div>
+
+    <h3><a href="/2023/12/14/Flink%E7%9A%84%E4%B8%8D%E5%90%8Csource/" itemprop="url" title="Flink的不同source">Flink的不同source</a></h3>
+    <div class="excerpt">
+        Flink的不同的source源demo
+      
+    </div>
+    <div class="meta footer">
+      <span>
+        <a href="/categories/bigData/Flink/" itemprop="url" title="Flink"><i class="ic i-flag"></i>Flink</a>
+      </span>
+    </div>
+    <a href="/2023/12/14/Flink%E7%9A%84%E4%B8%8D%E5%90%8Csource/" itemprop="url" title="Flink的不同source" class="btn">more...</a>
+  </div>
+</article>
+
+        
+<article class="item">
+  <div class="cover">
+    <a href="/2023/12/06/Flink%E5%AD%A6%E4%B9%A0-%E4%B8%80/" itemprop="url" title="Flink学习(一)"><img data-src="https://note.youdao.com/yws/api/personal/file/WEB57a1385d1f6e12b149f6c33a457bf78d?method=download&shareKey=2a2660353b6a204aa269c33680c88a99"></a>
+  </div>
+  <div class="info">
+    
+<div class="meta">
+  <span class="item" title="创建时间：2023-12-06 11:36:08">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <time itemprop="dateCreated datePublished" datetime="2023-12-06T11:36:08+08:00">2023-12-06</time>
+  </span>
+  <span class="item" title="本文字数">
+    <span class="icon">
+      <i class="ic i-pen"></i>
+    </span>
+    <span>5.2k</span>
+    <span class="text">字</span>
+  </span>
+  <span class="item" title="阅读时长">
+    <span class="icon">
+      <i class="ic i-clock"></i>
+    </span>
+    <span>5 分钟</span>
+  </span>
+</div>
+
+    <h3><a href="/2023/12/06/Flink%E5%AD%A6%E4%B9%A0-%E4%B8%80/" itemprop="url" title="Flink学习(一)">Flink学习(一)</a></h3>
+    <div class="excerpt">
+        这是摘要
+      
+    </div>
+    <div class="meta footer">
+      <span>
+        <a href="/categories/bigData/Flink/" itemprop="url" title="Flink"><i class="ic i-flag"></i>Flink</a>
+      </span>
+    </div>
+    <a href="/2023/12/06/Flink%E5%AD%A6%E4%B9%A0-%E4%B8%80/" itemprop="url" title="Flink学习(一)" class="btn">more...</a>
+  </div>
+</article>
+
+        
+<article class="item">
+  <div class="cover">
+    <a href="/2023/12/01/Flink%E7%9A%84%E6%90%AD%E5%BB%BA/" itemprop="url" title="Flink的搭建"><img data-src="https://note.youdao.com/yws/api/personal/file/WEB807af07a1156a7441f2dad573c1f236b?method=download&shareKey=2a2660353b6a204aa269c33680c88a99"></a>
+  </div>
+  <div class="info">
+    
+<div class="meta">
+  <span class="item" title="创建时间：2023-12-01 09:33:02">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <time itemprop="dateCreated datePublished" datetime="2023-12-01T09:33:02+08:00">2023-12-01</time>
+  </span>
+  <span class="item" title="本文字数">
+    <span class="icon">
+      <i class="ic i-pen"></i>
+    </span>
+    <span>2.4k</span>
+    <span class="text">字</span>
+  </span>
+  <span class="item" title="阅读时长">
+    <span class="icon">
+      <i class="ic i-clock"></i>
+    </span>
+    <span>2 分钟</span>
+  </span>
+</div>
+
+    <h3><a href="/2023/12/01/Flink%E7%9A%84%E6%90%AD%E5%BB%BA/" itemprop="url" title="Flink的搭建">Flink的搭建</a></h3>
+    <div class="excerpt">
+        flink1.14.0的安装
+      
+    </div>
+    <div class="meta footer">
+      <span>
+        <a href="/categories/bigData/Flink/" itemprop="url" title="Flink"><i class="ic i-flag"></i>Flink</a>
+      </span>
+    </div>
+    <a href="/2023/12/01/Flink%E7%9A%84%E6%90%AD%E5%BB%BA/" itemprop="url" title="Flink的搭建" class="btn">more...</a>
+  </div>
+</article>
+
+        
+<article class="item">
+  <div class="cover">
+    <a href="/2023/11/16/hive3-13%E6%B7%BB%E5%8A%A0spark%E5%BC%95%E6%93%8E/" itemprop="url" title="hive3.13添加spark引擎"><img data-src="https://note.youdao.com/yws/api/personal/file/WEB4c0951d91ef14895e204fb5f673663fe?method=download&shareKey=2a2660353b6a204aa269c33680c88a99"></a>
+  </div>
+  <div class="info">
+    
+<div class="meta">
+  <span class="item" title="创建时间：2023-11-16 10:39:42">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <time itemprop="dateCreated datePublished" datetime="2023-11-16T10:39:42+08:00">2023-11-16</time>
+  </span>
+  <span class="item" title="本文字数">
+    <span class="icon">
+      <i class="ic i-pen"></i>
+    </span>
+    <span>161</span>
+    <span class="text">字</span>
+  </span>
+  <span class="item" title="阅读时长">
+    <span class="icon">
+      <i class="ic i-clock"></i>
+    </span>
+    <span>1 分钟</span>
+  </span>
+</div>
+
+    <h3><a href="/2023/11/16/hive3-13%E6%B7%BB%E5%8A%A0spark%E5%BC%95%E6%93%8E/" itemprop="url" title="hive3.13添加spark引擎">hive3.13添加spark引擎</a></h3>
+    <div class="excerpt">
+        hive3.13添加spark引擎
+      
+    </div>
+    <div class="meta footer">
+      <span>
+        <a href="/categories/bigData/Hive/%E9%85%8D%E7%BD%AE/" itemprop="url" title="配置"><i class="ic i-flag"></i>配置</a>
+      </span>
+    </div>
+    <a href="/2023/11/16/hive3-13%E6%B7%BB%E5%8A%A0spark%E5%BC%95%E6%93%8E/" itemprop="url" title="hive3.13添加spark引擎" class="btn">more...</a>
+  </div>
+</article>
+
+        
+<article class="item">
+  <div class="cover">
+    <a href="/2023/11/03/Hive%E4%B8%AD%E7%9A%84explode/" itemprop="url" title="Hive中的explode"><img data-src="https://note.youdao.com/yws/api/personal/file/WEB4d55b68465e6357d3a5173e42eded014?method=download&shareKey=2a2660353b6a204aa269c33680c88a99"></a>
+  </div>
+  <div class="info">
+    
+<div class="meta">
+  <span class="item" title="创建时间：2023-11-03 10:22:29">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <time itemprop="dateCreated datePublished" datetime="2023-11-03T10:22:29+08:00">2023-11-03</time>
+  </span>
+  <span class="item" title="本文字数">
+    <span class="icon">
+      <i class="ic i-pen"></i>
+    </span>
+    <span>1.7k</span>
+    <span class="text">字</span>
+  </span>
+  <span class="item" title="阅读时长">
+    <span class="icon">
+      <i class="ic i-clock"></i>
+    </span>
+    <span>2 分钟</span>
+  </span>
+</div>
+
+    <h3><a href="/2023/11/03/Hive%E4%B8%AD%E7%9A%84explode/" itemprop="url" title="Hive中的explode">Hive中的explode</a></h3>
+    <div class="excerpt">
+        Hive的Explode使用讲解
+      
+    </div>
+    <div class="meta footer">
+      <span>
+        <a href="/categories/bigData/Hive/Bug/" itemprop="url" title="Bug"><i class="ic i-flag"></i>Bug</a>
+      </span>
+    </div>
+    <a href="/2023/11/03/Hive%E4%B8%AD%E7%9A%84explode/" itemprop="url" title="Hive中的explode" class="btn">more...</a>
+  </div>
+</article>
+
+        
+<article class="item">
+  <div class="cover">
+    <a href="/2023/11/03/Hive%E4%B8%AD%E7%9A%84Struct%E7%B1%BB%E5%9E%8BBug/" itemprop="url" title="Hive中的Struct类型Bug"><img data-src="https://note.youdao.com/yws/api/personal/file/WEBc367c7151385c60805ef47cec5156844?method=download&shareKey=2a2660353b6a204aa269c33680c88a99"></a>
+  </div>
+  <div class="info">
+    
+<div class="meta">
+  <span class="item" title="创建时间：2023-11-03 10:21:17">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <time itemprop="dateCreated datePublished" datetime="2023-11-03T10:21:17+08:00">2023-11-03</time>
+  </span>
+  <span class="item" title="本文字数">
+    <span class="icon">
+      <i class="ic i-pen"></i>
+    </span>
+    <span>118</span>
+    <span class="text">字</span>
+  </span>
+  <span class="item" title="阅读时长">
+    <span class="icon">
+      <i class="ic i-clock"></i>
+    </span>
+    <span>1 分钟</span>
+  </span>
+</div>
+
+    <h3><a href="/2023/11/03/Hive%E4%B8%AD%E7%9A%84Struct%E7%B1%BB%E5%9E%8BBug/" itemprop="url" title="Hive中的Struct类型Bug">Hive中的Struct类型Bug</a></h3>
+    <div class="excerpt">
+        Hive的Struct类型使用注意事项
+      
+    </div>
+    <div class="meta footer">
+      <span>
+        <a href="/categories/bigData/Hive/Bug/" itemprop="url" title="Bug"><i class="ic i-flag"></i>Bug</a>
+      </span>
+    </div>
+    <a href="/2023/11/03/Hive%E4%B8%AD%E7%9A%84Struct%E7%B1%BB%E5%9E%8BBug/" itemprop="url" title="Hive中的Struct类型Bug" class="btn">more...</a>
+  </div>
+</article>
+
+        
+<article class="item">
+  <div class="cover">
+    <a href="/2023/10/24/Python%E7%BD%91%E7%BB%9C%E7%88%AC%E8%99%AB%EF%BC%88%E4%BA%8C%EF%BC%89/" itemprop="url" title="Python网络爬虫（二）"><img data-src="https://note.youdao.com/yws/api/personal/file/WEBaf65b64d33f717ed0b3fb0b1d5a225ef?method=download&shareKey=2a2660353b6a204aa269c33680c88a99"></a>
+  </div>
+  <div class="info">
+    
+<div class="meta">
+  <span class="item" title="创建时间：2023-10-24 15:34:44">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <time itemprop="dateCreated datePublished" datetime="2023-10-24T15:34:44+08:00">2023-10-24</time>
+  </span>
+  <span class="item" title="本文字数">
+    <span class="icon">
+      <i class="ic i-pen"></i>
+    </span>
+    <span>6.4k</span>
+    <span class="text">字</span>
+  </span>
+  <span class="item" title="阅读时长">
+    <span class="icon">
+      <i class="ic i-clock"></i>
+    </span>
+    <span>6 分钟</span>
+  </span>
+</div>
+
+    <h3><a href="/2023/10/24/Python%E7%BD%91%E7%BB%9C%E7%88%AC%E8%99%AB%EF%BC%88%E4%BA%8C%EF%BC%89/" itemprop="url" title="Python网络爬虫（二）">Python网络爬虫（二）</a></h3>
+    <div class="excerpt">
+        爬虫相关库学习
+      
+    </div>
+    <div class="meta footer">
+      <span>
+        <a href="/categories/Java/Python/%E7%88%AC%E8%99%AB/" itemprop="url" title="爬虫"><i class="ic i-flag"></i>爬虫</a>
+      </span>
+    </div>
+    <a href="/2023/10/24/Python%E7%BD%91%E7%BB%9C%E7%88%AC%E8%99%AB%EF%BC%88%E4%BA%8C%EF%BC%89/" itemprop="url" title="Python网络爬虫（二）" class="btn">more...</a>
+  </div>
+</article>
+
+    </div>
+
+  </div>
+
+  
+  <nav class="pagination">
+    <div class="inner">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="ic i-angle-right" aria-label="下一页"></i></a>
+    </div>
+  </nav>
+
+
+
+        </div>
+        <div id="sidebar">
+          
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="文章目录">
+      </div>
+      <div class="related panel pjax" data-title="系列文章">
+      </div>
+      <div class="overview panel" data-title="站点概览">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="shyl"
+      data-src="/images/avatar.jpg">
+  <p class="name" itemprop="name">shyl</p>
+  <div class="description" itemprop="description">人海未见之时，我亦独行在这城市。 料峭，春醒，酷暑，骤雨，寒意四起，大雁南飞，而后，大雪，寒风， 斗转星移，人间寒暑。</div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">16</span>
+        <span class="name">文章</span>
+      </a>
+    </div>
+    <div class="item categories">
+      <a href="/categories/">
+        <span class="count">14</span>
+        <span class="name">分类</span>
+      </a>
+    </div>
+    <div class="item tags">
+      <a href="/tags/">
+        <span class="count">12</span>
+        <span class="name">标签</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+      <span class="exturl item github" data-url="aHR0cHM6Ly9naXRodWIuY29tL3NoZW5neWFubGVp" title="https:&#x2F;&#x2F;github.com&#x2F;shengyanlei"><i class="ic i-github"></i></span>
+      <span class="exturl item email" data-url="bWFpbHRvOnMxMzkzNDczODE2NUAxNjMuY29t" title="mailto:s13934738165@163.com"><i class="ic i-envelope"></i></span>
+</div>
+
+<ul class="menu">
+  
+    
+  <li class="item">
+    <a href="/" rel="section"><i class="ic i-home"></i>首页</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/about/" rel="section"><i class="ic i-user"></i>关于</a>
+  </li>
+
+        
+  <li class="item dropdown">
+      <a href="javascript:void(0);"><i class="ic i-feather"></i>文章</a>
+    <ul class="submenu">
+
+        
+  <li class="item">
+    <a href="/archives/" rel="section"><i class="ic i-list-alt"></i>归档</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/categories/" rel="section"><i class="ic i-th"></i>分类</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/tags/" rel="section"><i class="ic i-tags"></i>标签</a>
+  </li>
+
+  </ul>
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+        <a href="/page/2/" rel="next" title="下一篇"><i class="ic i-chevron-right"></i></a>
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+<div class="rpost pjax">
+  <h2>随机文章</h2>
+  <ul>
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2023/10/07/hello-world/" title="Hello World">Hello World</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/Java/" title="分类于 教程">教程</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/Java/Markdown/" title="分类于 Markdown">Markdown</a>
+</div>
+
+    <span><a href="/2023/10/08/md%E8%AF%AD%E6%B3%95/" title="Markdown模版">Markdown模版</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/bigData/" title="分类于 大数据">大数据</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/bigData/Hive/" title="分类于 Hive">Hive</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/bigData/Hive/Bug/" title="分类于 Bug">Bug</a>
+</div>
+
+    <span><a href="/2023/11/03/Hive%E4%B8%AD%E7%9A%84explode/" title="Hive中的explode">Hive中的explode</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/bigData/" title="分类于 大数据">大数据</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/bigData/%E5%AE%9E%E6%97%B6%E6%95%B0%E4%BB%93/" title="分类于 实时数仓">实时数仓</a>
+</div>
+
+    <span><a href="/2024/03/07/%E5%AE%9E%E6%97%B6%E6%95%B0%E4%BB%93%E6%90%AD%E5%BB%BA/" title="实时数仓搭建">实时数仓搭建</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/Java/" title="分类于 教程">教程</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/Java/Fluid%E4%B8%BB%E9%A2%98/" title="分类于 Fluid 主题">Fluid 主题</a>
+</div>
+
+    <span><a href="/2023/10/13/fluid%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/" title="fluid使用指南">fluid使用指南</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/bigData/" title="分类于 大数据">大数据</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/bigData/Flink/" title="分类于 Flink">Flink</a>
+</div>
+
+    <span><a href="/2023/12/01/Flink%E7%9A%84%E6%90%AD%E5%BB%BA/" title="Flink的搭建">Flink的搭建</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/bigData/" title="分类于 大数据">大数据</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/bigData/Hive/" title="分类于 Hive">Hive</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/bigData/Hive/%E9%85%8D%E7%BD%AE/" title="分类于 配置">配置</a>
+</div>
+
+    <span><a href="/2023/11/16/hive3-13%E6%B7%BB%E5%8A%A0spark%E5%BC%95%E6%93%8E/" title="hive3.13添加spark引擎">hive3.13添加spark引擎</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/bigData/" title="分类于 大数据">大数据</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/bigData/Flink/" title="分类于 Flink">Flink</a>
+</div>
+
+    <span><a href="/2024/05/17/flink%E7%AE%97%E5%AD%90%E6%80%BB%E7%BB%93/" title="flink算子总结">flink算子总结</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/bigData/" title="分类于 大数据">大数据</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/bigData/%E7%A6%BB%E7%BA%BF%E6%95%B0%E4%BB%93/" title="分类于 离线数仓">离线数仓</a>
+</div>
+
+    <span><a href="/2023/10/19/%E6%95%B0%E4%BB%93%E6%90%AD%E5%BB%BA%E7%9A%84%E6%95%B0%E6%8D%AE%E8%B7%A8%E5%A4%A9%E9%97%AE%E9%A2%98/" title="数仓搭建的数据跨天问题">数仓搭建的数据跨天问题</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/bigData/" title="分类于 大数据">大数据</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/bigData/Flink/" title="分类于 Flink">Flink</a>
+</div>
+
+    <span><a href="/2024/05/23/Flink%E7%9A%84%E7%AA%97%E5%8F%A3/" title="Flink的窗口">Flink的窗口</a></span>
+  </li>
+
+  </ul>
+</div>
+<div>
+  <h2>最新评论</h2>
+  <ul class="leancloud-recent-comment"></ul>
+</div>
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 2023 – 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="ic i-shyl"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">shyl @ 碎念随风</span>
+  </div>
+  <div class="count">
+    <span class="post-meta-item-icon">
+      <i class="ic i-chart-area"></i>
+    </span>
+    <span title="站点总字数">53k 字</span>
+
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="ic i-coffee"></i>
+    </span>
+    <span title="站点阅读时长">49 分钟</span>
+  </div>
+  <div class="powered-by">
+    基于 <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: '',
+    favicon: {
+      show: "（●´3｀●）やれやれだぜ",
+      hide: "(´Д｀)大変だ！"
+    },
+    search : {
+      placeholder: "文章搜索",
+      empty: "关于 「 ${query} 」，什么也没搜到",
+      stats: "${time} ms 内找到 ${hits} 条结果"
+    },
+    valine: true,fancybox: true,
+    copyright: '复制成功，转载请遵守 <i class="ic i-creative-commons"></i>BY-NC-SA 协议。',
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/js/app.js?v=0.2.5"></script>
+
+
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/koharu.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":false},"log":false});</script></body>
+</html>

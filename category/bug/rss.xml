@@ -1,0 +1,241 @@
+<?xml version="1.0"?>
+<rss version="2.0">
+    <channel>
+        <title>碎念随风 • Posts by &#34;bug&#34; category</title>
+        <link>http://example.com</link>
+        <description>人海未见之时，我亦独行在这城市。 料峭，春醒，酷暑，骤雨，寒意四起，大雁南飞，而后，大雪，寒风， 斗转星移，人间寒暑。</description>
+        <language>zh-CN</language>
+        <pubDate>Fri, 03 Nov 2023 10:22:29 +0800</pubDate>
+        <lastBuildDate>Fri, 03 Nov 2023 10:22:29 +0800</lastBuildDate>
+        <category>大数据</category>
+        <category>Flink</category>
+        <category>Bug</category>
+        <category>Python</category>
+        <category>爬虫</category>
+        <category>升级</category>
+        <category>笔记</category>
+        <category>Markdown</category>
+        <category>总结</category>
+        <category>数仓搭建</category>
+        <category>test</category>
+        <category>图床</category>
+        <item>
+            <guid isPermalink="true">http://example.com/2023/11/03/Hive%E4%B8%AD%E7%9A%84explode/</guid>
+            <title>Hive中的explode</title>
+            <link>http://example.com/2023/11/03/Hive%E4%B8%AD%E7%9A%84explode/</link>
+            <category>Bug</category>
+            <pubDate>Fri, 03 Nov 2023 10:22:29 +0800</pubDate>
+            <description><![CDATA[ &lt;h3 id=&#34;一-问题介绍&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#一-问题介绍&#34;&gt;#&lt;/a&gt; 一、问题介绍&lt;/h3&gt;
+&lt;p&gt;在使用 explode 进行炸列操作时，发现炸列后有的行消失了。&lt;/p&gt;
+&lt;h3 id=&#34;二-模拟场景&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#二-模拟场景&#34;&gt;#&lt;/a&gt; 二、模拟场景&lt;/h3&gt;
+&lt;pre&gt;&lt;code class=&#34;language-hive&#34;&gt;建表语句
+drop table test.shyl_explode_test;
+create table test.shyl_explode_test(
+    `id` string comment &#39;id&#39;,
+    `list` ARRAY&amp;lt;string&amp;gt; comment &#39;列表&#39;
+)comment&#39;测试炸列函数所使用的字段为空时，该行数据如何处理&#39;
+stored as orc;
+插入数据
+INSERT INTO TABLE shyl_explode_test VALUES
+  (&#39;1&#39;, array(&#39;A&#39;, &#39;B&#39;, &#39;C&#39;)),
+  (&#39;2&#39;, array(&#39;X&#39;, &#39;Y&#39;)),
+  (&#39;3&#39;, array(&amp;quot;&amp;quot;))
+  (&#39;4&#39;, null)
+  (&#39;5&#39;, array(null));
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;当插入数据 (‘4’, null) 报错 &lt;code&gt;[42000][40000] Error while compiling statement: FAILED: SemanticException 0:0 Expected 2 columns for insclause-0/test@shyl_explode_test; select produces 1 columns. Error encountered near token &#39;TOK_NULL&#39;&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;大概的意思是说这个 list 字段的数据类型是 array，现在要插入一个 null 类型的，类型不匹配，&lt;/p&gt;
+&lt;p&gt;但是在实际情况中，表中数据类型为 array，其值为 null 的情况不少见，比如我们是通过上传文件到 hdfs，再通过 hive 建表关联数据，得到的表【具体过程没有验证，不确定是是否可以创建成功】；执行连接操作时，没有关联上的使用 null 填充【未验证】; 或者只插入一个列的值，【本文就采取这种方式】，得到 list 字段为空的情况：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-HIVE&#34;&gt;INSERT INTO TABLE shyl_explode_test(id) VALUES (&#39;4&#39;);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code class=&#34;language-hive&#34;&gt;查看表中的数据
+select * from test.shyl_explode_test;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;id&lt;/th&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;list&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;1&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;[“A”,“B”,“C”]&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;2&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;[“X”,“Y”]&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;3&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;[&amp;quot;&amp;quot;]&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;4&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;null&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;5&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;[null]&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;pre&gt;&lt;code class=&#34;language-hive&#34;&gt;现根据list字段为null，查询出指定数据
+select * from test.shyl_explode_test where list is null;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;id&lt;/th&gt;
+&lt;th&gt;list&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;/table&gt;
+&lt;p&gt;发现数据为空，原因可能与字段类型为 array 有关&lt;/p&gt;
+&lt;p&gt;现提供一个其它的方式查询&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-hive&#34;&gt;因为size(map/array)返回 -1 作为特殊的值，通常表示一个无效或异常的情况，而不是实际的大小或长度,所以利用它来查询空值
+select size(null);
+-1
+select * from test.shyl_explode_test where size(list)=-1;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;id&lt;/th&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;list&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;4&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;null&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;有关 sql 中的 null 参考此文：&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly96aHVhbmxhbi56aGlodS5jb20vcC84MjQzNDAyNA==&#34;&gt;原文地址&lt;/span&gt;&lt;/p&gt;
+&lt;h3 id=&#34;三-执行explode&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#三-执行explode&#34;&gt;#&lt;/a&gt; 三、执行 explode&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;select * from test.shyl_explode_test
+lateral view explode(list)t1 as a;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;id&lt;/th&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;list&lt;/th&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;a&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;1&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;[“A”,“B”,“C”]&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;A&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;1&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;[“A”,“B”,“C”]&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;B&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;1&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;[“A”,“B”,“C”]&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;C&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;2&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;[“X”,“Y”]&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;X&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;2&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;[“X”,“Y”]&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;Y&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;3&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;[&amp;quot;&amp;quot;]&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;5&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;[null]&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;null&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;我们发现 id 为 4 的那一行数据缺失，现在是有两列，当我的列数多，且其它列的数据重要时，会发生丢失一些重要数据的情况。&lt;/p&gt;
+&lt;p&gt;所以在执行 explode 的时候添加一些保护机制，附上一些不影响结果的默认值。&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-hive&#34;&gt;select * from test.shyl_explode_test
+lateral view explode(nvl(list,array(NULL)))t1 as a;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;id&lt;/th&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;list&lt;/th&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;a&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;1&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;[“A”,“B”,“C”]&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;A&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;1&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;[“A”,“B”,“C”]&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;B&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;1&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;[“A”,“B”,“C”]&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;C&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;2&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;[“X”,“Y”]&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;X&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;2&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;[“X”,“Y”]&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;Y&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;3&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;[&amp;quot;&amp;quot;]&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;font style=&#34;color:red&#34;&gt;4&lt;/font&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;font style=&#34;color:red&#34;&gt;null&lt;/font&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;font style=&#34;color:red&#34;&gt;null&lt;/font&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;5&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;[null]&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;null&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3 id=&#34;四-explodelateral-view源码剖析&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#四-explodelateral-view源码剖析&#34;&gt;#&lt;/a&gt; 四、explode+lateral view 源码剖析&lt;/h3&gt;
+&lt;p&gt;【目前不会看源码】，之后有能力补上，从结果反推，像是炸列后执行的 inner join。&lt;/p&gt;
+ ]]></description>
+        </item>
+        <item>
+            <guid isPermalink="true">http://example.com/2023/11/03/Hive%E4%B8%AD%E7%9A%84Struct%E7%B1%BB%E5%9E%8BBug/</guid>
+            <title>Hive中的Struct类型Bug</title>
+            <link>http://example.com/2023/11/03/Hive%E4%B8%AD%E7%9A%84Struct%E7%B1%BB%E5%9E%8BBug/</link>
+            <category>Bug</category>
+            <pubDate>Fri, 03 Nov 2023 10:21:17 +0800</pubDate>
+            <description><![CDATA[ &lt;p&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9pc3N1ZXMuYXBhY2hlLm9yZy9qaXJhL2Jyb3dzZS9ISVZFLTIxNzc4&#34;&gt;原文地址&lt;/span&gt;&lt;/p&gt;
+&lt;h3 id=&#34;一-hive的struct类型介绍&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#一-hive的struct类型介绍&#34;&gt;#&lt;/a&gt; 一、hive 的 Struct 类型介绍&lt;/h3&gt;
+&lt;p&gt;Struct 是 Hive 复杂数据类型的一种 ，声明方式  &lt;code&gt;STRUCT&amp;lt;col_name : data_type [COMMENT col_comment], ...&amp;gt;&lt;/code&gt;&lt;/p&gt;
+&lt;h3 id=&#34;二-cbo介绍&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#二-cbo介绍&#34;&gt;#&lt;/a&gt; 二、CBO 介绍&lt;/h3&gt;
+&lt;h3 id=&#34;三-解决方式&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#三-解决方式&#34;&gt;#&lt;/a&gt; 三、解决方式&lt;/h3&gt;
+ ]]></description>
+        </item>
+    </channel>
+</rss>
