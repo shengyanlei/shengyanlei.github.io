@@ -12,10 +12,10 @@
     <category term="升级" />
     <category term="笔记" />
     <category term="Markdown" />
-    <category term="总结" />
-    <category term="数仓搭建" />
     <category term="test" />
     <category term="图床" />
+    <category term="总结" />
+    <category term="数仓搭建" />
     <entry>
         <id>http://example.com/2023/11/03/Hive%E4%B8%AD%E7%9A%84explode/</id>
         <title>Hive中的explode</title>

@@ -15,10 +15,10 @@
         <category>升级</category>
         <category>笔记</category>
         <category>Markdown</category>
-        <category>总结</category>
-        <category>数仓搭建</category>
         <category>test</category>
         <category>图床</category>
+        <category>总结</category>
+        <category>数仓搭建</category>
         <item>
             <guid isPermalink="true">http://example.com/2024/05/23/Flink%E7%9A%84%E7%AA%97%E5%8F%A3/</guid>
             <title>Flink的窗口</title>

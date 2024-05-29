@@ -15,10 +15,10 @@
         <category>升级</category>
         <category>笔记</category>
         <category>Markdown</category>
-        <category>总结</category>
-        <category>数仓搭建</category>
         <category>test</category>
         <category>图床</category>
+        <category>总结</category>
+        <category>数仓搭建</category>
         <item>
             <guid isPermalink="true">http://example.com/2024/05/17/flink%E7%AE%97%E5%AD%90%E6%80%BB%E7%BB%93/</guid>
             <title>flink算子总结</title>

@@ -12,10 +12,10 @@
     <category term="升级" />
     <category term="笔记" />
     <category term="Markdown" />
-    <category term="总结" />
-    <category term="数仓搭建" />
     <category term="test" />
     <category term="图床" />
+    <category term="总结" />
+    <category term="数仓搭建" />
     <entry>
         <id>http://example.com/2024/03/07/%E5%AE%9E%E6%97%B6%E6%95%B0%E4%BB%93%E6%90%AD%E5%BB%BA/</id>
         <title>实时数仓搭建</title>

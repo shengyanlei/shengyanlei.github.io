@@ -12,10 +12,10 @@
     <category term="升级" />
     <category term="笔记" />
     <category term="Markdown" />
-    <category term="总结" />
-    <category term="数仓搭建" />
     <category term="test" />
     <category term="图床" />
+    <category term="总结" />
+    <category term="数仓搭建" />
     <entry>
         <id>http://example.com/2024/05/23/Flink%E7%9A%84%E7%AA%97%E5%8F%A3/</id>
         <title>Flink的窗口</title>

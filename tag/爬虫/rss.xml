@@ -15,10 +15,10 @@
         <category>升级</category>
         <category>笔记</category>
         <category>Markdown</category>
-        <category>总结</category>
-        <category>数仓搭建</category>
         <category>test</category>
         <category>图床</category>
+        <category>总结</category>
+        <category>数仓搭建</category>
         <item>
             <guid isPermalink="true">http://example.com/2023/10/24/Python%E7%BD%91%E7%BB%9C%E7%88%AC%E8%99%AB%EF%BC%88%E4%BA%8C%EF%BC%89/</guid>
             <title>Python网络爬虫（二）</title>

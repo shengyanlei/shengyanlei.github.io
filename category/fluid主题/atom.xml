@@ -12,10 +12,10 @@
     <category term="升级" />
     <category term="笔记" />
     <category term="Markdown" />
-    <category term="总结" />
-    <category term="数仓搭建" />
     <category term="test" />
     <category term="图床" />
+    <category term="总结" />
+    <category term="数仓搭建" />
     <entry>
         <id>http://example.com/2023/10/13/fluid%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/</id>
         <title>fluid使用指南</title>
