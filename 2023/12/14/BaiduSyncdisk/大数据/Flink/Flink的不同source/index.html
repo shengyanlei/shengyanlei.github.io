@@ -1,0 +1,595 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="碎念随风" href="http://example.com/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="碎念随风" href="http://example.com/atom.xml" />
+<link rel="alternate" type="application/json" title="碎念随风" href="http://example.com/feed.json" />
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CInconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="/css/app.css?v=0.2.5">
+
+  
+  <meta name="keywords" content="大数据,Flink" />
+
+
+<link rel="canonical" href="http://example.com/2023/12/14/BaiduSyncdisk/%E5%A4%A7%E6%95%B0%E6%8D%AE/Flink/Flink%E7%9A%84%E4%B8%8D%E5%90%8Csource/">
+
+
+
+  <title>
+Flink 的不同 source - Flink - 大数据 |
+碎念随风 = 碎念随风</title>
+<meta name="generator" content="Hexo 6.3.0"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
+    </div>
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">Flink 的不同 source
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="创建时间：2023-12-14 15:31:33">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">发表于</span>
+    <time itemprop="dateCreated datePublished" datetime="2023-12-14T15:31:33+08:00">2023-12-14</time>
+  </span>
+  <span class="item" title="本文字数">
+    <span class="icon">
+      <i class="ic i-pen"></i>
+    </span>
+    <span class="text">本文字数</span>
+    <span>9.8k</span>
+    <span class="text">字</span>
+  </span>
+  <span class="item" title="阅读时长">
+    <span class="icon">
+      <i class="ic i-clock"></i>
+    </span>
+    <span class="text">阅读时长</span>
+    <span>9 分钟</span>
+  </span>
+</div>
+
+
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="切换导航栏">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/" rel="start">碎念随风</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </div>
+      <div id="imgs" class="pjax">
+        <ul>
+          <li class="item" data-background-image="https://note.youdao.com/yws/api/personal/file/WEB17fe411ddebfee58e3f65aad8a35a4dc?method=download&shareKey=2a2660353b6a204aa269c33680c88a99"></li>
+          <li class="item" data-background-image="https://note.youdao.com/yws/api/personal/file/WEB551efd0f82c0ccac4dbeacd669cda8b2?method=download&shareKey=2a2660353b6a204aa269c33680c88a99"></li>
+          <li class="item" data-background-image="https://note.youdao.com/yws/api/personal/file/WEB86033829d174c0c2b545d4b56c53dd94?method=download&shareKey=2a2660353b6a204aa269c33680c88a99"></li>
+          <li class="item" data-background-image="https://note.youdao.com/yws/api/personal/file/WEB59d7b44a920f19c52dedf64086163b96?method=download&shareKey=2a2660353b6a204aa269c33680c88a99"></li>
+          <li class="item" data-background-image="https://note.youdao.com/yws/api/personal/file/WEBd4c44993d1a911901620e3bcb5a96ff7?method=download&shareKey=2a2660353b6a204aa269c33680c88a99"></li>
+          <li class="item" data-background-image="https://note.youdao.com/yws/api/personal/file/WEB0c2cec53e15082de93991e496940a216?method=download&shareKey=2a2660353b6a204aa269c33680c88a99"></li>
+        </ul>
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">首页</a></span><i class="ic i-angle-right"></i>
+<span  itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/bigData/" itemprop="item" rel="index" title="分类于 大数据"><span itemprop="name">大数据</span></a>
+<meta itemprop="position" content="1" /></span>
+<i class="ic i-angle-right"></i>
+<span  class="current" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/bigData/Flink/" itemprop="item" rel="index" title="分类于 Flink"><span itemprop="name">Flink</span></a>
+<meta itemprop="position" content="2" /></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="zh-CN">
+  <link itemprop="mainEntityOfPage" href="http://example.com/2023/12/14/BaiduSyncdisk/%E5%A4%A7%E6%95%B0%E6%8D%AE/Flink/Flink%E7%9A%84%E4%B8%8D%E5%90%8Csource/">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/images/avatar.jpg">
+    <meta itemprop="name" content="shyl">
+    <meta itemprop="description" content=", 人海未见之时，我亦独行在这城市。 料峭，春醒，酷暑，骤雨，寒意四起，大雁南飞，而后，大雪，寒风， 斗转星移，人间寒暑。">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="碎念随风">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <ol>
+<li><strong>Elements</strong></li>
+</ol>
+<figure class="highlight java"><figcaption data-lang="java"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token keyword">import</span> <span class="token import"><span class="token namespace">org<span class="token punctuation">.</span>apache<span class="token punctuation">.</span>flink<span class="token punctuation">.</span>streaming<span class="token punctuation">.</span>api<span class="token punctuation">.</span>datastream<span class="token punctuation">.</span></span><span class="token class-name">DataStreamSource</span></span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="2"></td><td><pre><span class="token keyword">import</span> <span class="token import"><span class="token namespace">org<span class="token punctuation">.</span>apache<span class="token punctuation">.</span>flink<span class="token punctuation">.</span>streaming<span class="token punctuation">.</span>api<span class="token punctuation">.</span>datastream<span class="token punctuation">.</span></span><span class="token class-name">SingleOutputStreamOperator</span></span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="3"></td><td><pre><span class="token keyword">import</span> <span class="token import"><span class="token namespace">org<span class="token punctuation">.</span>apache<span class="token punctuation">.</span>flink<span class="token punctuation">.</span>streaming<span class="token punctuation">.</span>api<span class="token punctuation">.</span>environment<span class="token punctuation">.</span></span><span class="token class-name">StreamExecutionEnvironment</span></span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="4"></td><td><pre></pre></td></tr><tr><td data-num="5"></td><td><pre></pre></td></tr><tr><td data-num="6"></td><td><pre><span class="token keyword">public</span> <span class="token keyword">class</span> elements <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="7"></td><td><pre>    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">Exception</span> <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="8"></td><td><pre>        <span class="token class-name">StreamExecutionEnvironment</span> env <span class="token operator">=</span> <span class="token class-name">StreamExecutionEnvironment</span><span class="token punctuation">.</span><span class="token function">getExecutionEnvironment</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="9"></td><td><pre>        env<span class="token punctuation">.</span><span class="token function">setParallelism</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="10"></td><td><pre></pre></td></tr><tr><td data-num="11"></td><td><pre>        <span class="token class-name">DataStreamSource</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">></span></span> listSource <span class="token operator">=</span> env<span class="token punctuation">.</span><span class="token function">fromElements</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="12"></td><td><pre>        <span class="token class-name">SingleOutputStreamOperator</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">></span></span> map <span class="token operator">=</span> listSource<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span>i <span class="token operator">-></span> i <span class="token operator">+</span> i <span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="13"></td><td><pre>        map<span class="token punctuation">.</span><span class="token function">print</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="14"></td><td><pre>        env<span class="token punctuation">.</span><span class="token function">execute</span><span class="token punctuation">(</span><span class="token string">"from_Elements"</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="15"></td><td><pre>    <span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="16"></td><td><pre><span class="token punctuation">&#125;</span></pre></td></tr></table></figure><ol start="2">
+<li><strong>TextFile</strong></li>
+</ol>
+<figure class="highlight java"><figcaption data-lang="java"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token keyword">package</span> <span class="token namespace">com<span class="token punctuation">.</span>shyl<span class="token punctuation">.</span>source</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="2"></td><td><pre></pre></td></tr><tr><td data-num="3"></td><td><pre><span class="token keyword">import</span> <span class="token import"><span class="token namespace">org<span class="token punctuation">.</span>apache<span class="token punctuation">.</span>flink<span class="token punctuation">.</span>api<span class="token punctuation">.</span>common<span class="token punctuation">.</span>functions<span class="token punctuation">.</span></span><span class="token class-name">FlatMapFunction</span></span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="4"></td><td><pre><span class="token keyword">import</span> <span class="token import"><span class="token namespace">org<span class="token punctuation">.</span>apache<span class="token punctuation">.</span>flink<span class="token punctuation">.</span>api<span class="token punctuation">.</span>java<span class="token punctuation">.</span>tuple<span class="token punctuation">.</span></span><span class="token class-name">Tuple2</span></span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="5"></td><td><pre><span class="token keyword">import</span> <span class="token import"><span class="token namespace">org<span class="token punctuation">.</span>apache<span class="token punctuation">.</span>flink<span class="token punctuation">.</span>configuration<span class="token punctuation">.</span></span><span class="token class-name">Configuration</span></span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="6"></td><td><pre><span class="token keyword">import</span> <span class="token import"><span class="token namespace">org<span class="token punctuation">.</span>apache<span class="token punctuation">.</span>flink<span class="token punctuation">.</span>streaming<span class="token punctuation">.</span>api<span class="token punctuation">.</span>datastream<span class="token punctuation">.</span></span><span class="token class-name">DataStreamSource</span></span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="7"></td><td><pre><span class="token keyword">import</span> <span class="token import"><span class="token namespace">org<span class="token punctuation">.</span>apache<span class="token punctuation">.</span>flink<span class="token punctuation">.</span>streaming<span class="token punctuation">.</span>api<span class="token punctuation">.</span>datastream<span class="token punctuation">.</span></span><span class="token class-name">SingleOutputStreamOperator</span></span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="8"></td><td><pre><span class="token keyword">import</span> <span class="token import"><span class="token namespace">org<span class="token punctuation">.</span>apache<span class="token punctuation">.</span>flink<span class="token punctuation">.</span>streaming<span class="token punctuation">.</span>api<span class="token punctuation">.</span>environment<span class="token punctuation">.</span></span><span class="token class-name">StreamExecutionEnvironment</span></span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="9"></td><td><pre><span class="token keyword">import</span> <span class="token import"><span class="token namespace">org<span class="token punctuation">.</span>apache<span class="token punctuation">.</span>flink<span class="token punctuation">.</span>util<span class="token punctuation">.</span></span><span class="token class-name">Collector</span></span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="10"></td><td><pre></pre></td></tr><tr><td data-num="11"></td><td><pre></pre></td></tr><tr><td data-num="12"></td><td><pre><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">TextFile</span> <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="13"></td><td><pre>    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">Exception</span> <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="14"></td><td><pre>        <span class="token class-name">StreamExecutionEnvironment</span> env <span class="token operator">=</span> <span class="token class-name">StreamExecutionEnvironment</span><span class="token punctuation">.</span><span class="token function">createLocalEnvironmentWithWebUI</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Configuration</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="15"></td><td><pre></pre></td></tr><tr><td data-num="16"></td><td><pre>        <span class="token class-name">DataStreamSource</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">></span></span> source <span class="token operator">=</span> env<span class="token punctuation">.</span><span class="token function">readTextFile</span><span class="token punctuation">(</span><span class="token string">"F:\\BigData\\Flink1.4\\input\\1.txt"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">setParallelism</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="17"></td><td><pre></pre></td></tr><tr><td data-num="18"></td><td><pre>        <span class="token class-name">SingleOutputStreamOperator</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Tuple2</span><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">,</span> <span class="token class-name">Integer</span><span class="token punctuation">></span><span class="token punctuation">></span></span> flatmap <span class="token operator">=</span> source<span class="token punctuation">.</span><span class="token function">flatMap</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">FlatMapFunction</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">,</span> <span class="token class-name">Tuple2</span><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">,</span> <span class="token class-name">Integer</span><span class="token punctuation">></span><span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="19"></td><td><pre>            <span class="token annotation punctuation">@Override</span></pre></td></tr><tr><td data-num="20"></td><td><pre>            <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">flatMap</span><span class="token punctuation">(</span><span class="token class-name">String</span> s<span class="token punctuation">,</span> <span class="token class-name">Collector</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Tuple2</span><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">,</span> <span class="token class-name">Integer</span><span class="token punctuation">></span><span class="token punctuation">></span></span> collector<span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">Exception</span> <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="21"></td><td><pre>                <span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> key <span class="token operator">=</span> s<span class="token punctuation">.</span><span class="token function">split</span><span class="token punctuation">(</span><span class="token string">" "</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="22"></td><td><pre>                <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token class-name">String</span> s1 <span class="token operator">:</span> key<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="23"></td><td><pre>                    collector<span class="token punctuation">.</span><span class="token function">collect</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Tuple2</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">,</span> <span class="token class-name">Integer</span><span class="token punctuation">></span></span><span class="token punctuation">(</span>s1<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="24"></td><td><pre>                <span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="25"></td><td><pre>            <span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="26"></td><td><pre>        <span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="27"></td><td><pre>        <span class="token class-name">SingleOutputStreamOperator</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Tuple2</span><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">,</span> <span class="token class-name">Integer</span><span class="token punctuation">></span><span class="token punctuation">></span></span> sum <span class="token operator">=</span> flatmap<span class="token punctuation">.</span><span class="token function">keyBy</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">sum</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="28"></td><td><pre>        sum<span class="token punctuation">.</span><span class="token function">print</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="29"></td><td><pre></pre></td></tr><tr><td data-num="30"></td><td><pre>        env<span class="token punctuation">.</span><span class="token function">execute</span><span class="token punctuation">(</span><span class="token string">"TextFile"</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="31"></td><td><pre></pre></td></tr><tr><td data-num="32"></td><td><pre>    <span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="33"></td><td><pre><span class="token punctuation">&#125;</span></pre></td></tr></table></figure><ol start="3">
+<li><strong>socket</strong></li>
+</ol>
+<figure class="highlight java"><figcaption data-lang="java"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token keyword">package</span> <span class="token namespace">com<span class="token punctuation">.</span>shyl<span class="token punctuation">.</span>source</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="2"></td><td><pre></pre></td></tr><tr><td data-num="3"></td><td><pre><span class="token keyword">import</span> <span class="token import"><span class="token namespace">org<span class="token punctuation">.</span>apache<span class="token punctuation">.</span>flink<span class="token punctuation">.</span>api<span class="token punctuation">.</span>common<span class="token punctuation">.</span>functions<span class="token punctuation">.</span></span><span class="token class-name">MapFunction</span></span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="4"></td><td><pre><span class="token keyword">import</span> <span class="token import"><span class="token namespace">org<span class="token punctuation">.</span>apache<span class="token punctuation">.</span>flink<span class="token punctuation">.</span>api<span class="token punctuation">.</span>java<span class="token punctuation">.</span>tuple<span class="token punctuation">.</span></span><span class="token class-name">Tuple2</span></span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="5"></td><td><pre><span class="token keyword">import</span> <span class="token import"><span class="token namespace">org<span class="token punctuation">.</span>apache<span class="token punctuation">.</span>flink<span class="token punctuation">.</span>streaming<span class="token punctuation">.</span>api<span class="token punctuation">.</span>datastream<span class="token punctuation">.</span></span><span class="token class-name">DataStreamSource</span></span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="6"></td><td><pre><span class="token keyword">import</span> <span class="token import"><span class="token namespace">org<span class="token punctuation">.</span>apache<span class="token punctuation">.</span>flink<span class="token punctuation">.</span>streaming<span class="token punctuation">.</span>api<span class="token punctuation">.</span>datastream<span class="token punctuation">.</span></span><span class="token class-name">SingleOutputStreamOperator</span></span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="7"></td><td><pre><span class="token keyword">import</span> <span class="token import"><span class="token namespace">org<span class="token punctuation">.</span>apache<span class="token punctuation">.</span>flink<span class="token punctuation">.</span>streaming<span class="token punctuation">.</span>api<span class="token punctuation">.</span>environment<span class="token punctuation">.</span></span><span class="token class-name">StreamExecutionEnvironment</span></span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="8"></td><td><pre></pre></td></tr><tr><td data-num="9"></td><td><pre><span class="token keyword">public</span> <span class="token keyword">class</span> socket <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="10"></td><td><pre>    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">Exception</span> <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="11"></td><td><pre>        <span class="token class-name">StreamExecutionEnvironment</span> env <span class="token operator">=</span> <span class="token class-name">StreamExecutionEnvironment</span><span class="token punctuation">.</span><span class="token function">getExecutionEnvironment</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="12"></td><td><pre></pre></td></tr><tr><td data-num="13"></td><td><pre>        <span class="token class-name">DataStreamSource</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">></span></span> source <span class="token operator">=</span> env<span class="token punctuation">.</span><span class="token function">socketTextStream</span><span class="token punctuation">(</span><span class="token string">"192.168.52.201"</span><span class="token punctuation">,</span> <span class="token number">9999</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="14"></td><td><pre></pre></td></tr><tr><td data-num="15"></td><td><pre>        <span class="token class-name">SingleOutputStreamOperator</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Object</span><span class="token punctuation">></span></span> map <span class="token operator">=</span> source<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">MapFunction</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">,</span> <span class="token class-name">Object</span><span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="16"></td><td><pre>            <span class="token annotation punctuation">@Override</span></pre></td></tr><tr><td data-num="17"></td><td><pre>            <span class="token keyword">public</span> <span class="token class-name">Object</span> <span class="token function">map</span><span class="token punctuation">(</span><span class="token class-name">String</span> s<span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">Exception</span> <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="18"></td><td><pre>                <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Tuple2</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">,</span> <span class="token class-name">Integer</span><span class="token punctuation">></span></span><span class="token punctuation">(</span>s<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="19"></td><td><pre>            <span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="20"></td><td><pre>        <span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="21"></td><td><pre>        map<span class="token punctuation">.</span><span class="token function">print</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="22"></td><td><pre></pre></td></tr><tr><td data-num="23"></td><td><pre>        env<span class="token punctuation">.</span><span class="token function">execute</span><span class="token punctuation">(</span><span class="token string">"new socket"</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="24"></td><td><pre>    <span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="25"></td><td><pre><span class="token punctuation">&#125;</span></pre></td></tr></table></figure><ol start="4">
+<li><strong>kafka</strong></li>
+</ol>
+<figure class="highlight java"><figcaption data-lang="java"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token keyword">package</span> <span class="token namespace">com<span class="token punctuation">.</span>shyl<span class="token punctuation">.</span>source</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="2"></td><td><pre></pre></td></tr><tr><td data-num="3"></td><td><pre><span class="token keyword">import</span> <span class="token import"><span class="token namespace">org<span class="token punctuation">.</span>apache<span class="token punctuation">.</span>flink<span class="token punctuation">.</span>api<span class="token punctuation">.</span>common<span class="token punctuation">.</span>eventtime<span class="token punctuation">.</span></span><span class="token class-name">WatermarkStrategy</span></span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="4"></td><td><pre><span class="token keyword">import</span> <span class="token import"><span class="token namespace">org<span class="token punctuation">.</span>apache<span class="token punctuation">.</span>flink<span class="token punctuation">.</span>api<span class="token punctuation">.</span>common<span class="token punctuation">.</span>functions<span class="token punctuation">.</span></span><span class="token class-name">MapFunction</span></span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="5"></td><td><pre><span class="token keyword">import</span> <span class="token import"><span class="token namespace">org<span class="token punctuation">.</span>apache<span class="token punctuation">.</span>flink<span class="token punctuation">.</span>api<span class="token punctuation">.</span>java<span class="token punctuation">.</span>tuple<span class="token punctuation">.</span></span><span class="token class-name">Tuple2</span></span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="6"></td><td><pre><span class="token keyword">import</span> <span class="token import"><span class="token namespace">org<span class="token punctuation">.</span>apache<span class="token punctuation">.</span>flink<span class="token punctuation">.</span>api<span class="token punctuation">.</span>java<span class="token punctuation">.</span>tuple<span class="token punctuation">.</span></span><span class="token class-name">Tuple3</span></span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="7"></td><td><pre><span class="token keyword">import</span> <span class="token import"><span class="token namespace">org<span class="token punctuation">.</span>apache<span class="token punctuation">.</span>flink<span class="token punctuation">.</span>streaming<span class="token punctuation">.</span>api<span class="token punctuation">.</span>datastream<span class="token punctuation">.</span></span><span class="token class-name">DataStreamSource</span></span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="8"></td><td><pre><span class="token keyword">import</span> <span class="token import"><span class="token namespace">org<span class="token punctuation">.</span>apache<span class="token punctuation">.</span>flink<span class="token punctuation">.</span>streaming<span class="token punctuation">.</span>api<span class="token punctuation">.</span>datastream<span class="token punctuation">.</span></span><span class="token class-name">SingleOutputStreamOperator</span></span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="9"></td><td><pre><span class="token keyword">import</span> <span class="token import"><span class="token namespace">org<span class="token punctuation">.</span>apache<span class="token punctuation">.</span>flink<span class="token punctuation">.</span>streaming<span class="token punctuation">.</span>api<span class="token punctuation">.</span>environment<span class="token punctuation">.</span></span><span class="token class-name">StreamExecutionEnvironment</span></span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="10"></td><td><pre><span class="token keyword">import</span> <span class="token import"><span class="token namespace">org<span class="token punctuation">.</span>apache<span class="token punctuation">.</span>flink<span class="token punctuation">.</span>streaming<span class="token punctuation">.</span>connectors<span class="token punctuation">.</span>kafka<span class="token punctuation">.</span></span><span class="token class-name">FlinkKafkaConsumer</span></span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="11"></td><td><pre><span class="token keyword">import</span> <span class="token import"><span class="token namespace">org<span class="token punctuation">.</span>apache<span class="token punctuation">.</span>flink<span class="token punctuation">.</span>streaming<span class="token punctuation">.</span>connectors<span class="token punctuation">.</span>kafka<span class="token punctuation">.</span></span><span class="token class-name">FlinkKafkaConsumerBase</span></span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="12"></td><td><pre><span class="token keyword">import</span> <span class="token import"><span class="token namespace">org<span class="token punctuation">.</span>apache<span class="token punctuation">.</span>flink<span class="token punctuation">.</span>streaming<span class="token punctuation">.</span>util<span class="token punctuation">.</span>serialization<span class="token punctuation">.</span></span><span class="token class-name">SimpleStringSchema</span></span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="13"></td><td><pre></pre></td></tr><tr><td data-num="14"></td><td><pre></pre></td></tr><tr><td data-num="15"></td><td><pre><span class="token keyword">import</span> <span class="token import"><span class="token namespace">java<span class="token punctuation">.</span>time<span class="token punctuation">.</span></span><span class="token class-name">Duration</span></span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="16"></td><td><pre><span class="token keyword">import</span> <span class="token import"><span class="token namespace">java<span class="token punctuation">.</span>util<span class="token punctuation">.</span></span><span class="token class-name">Properties</span></span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="17"></td><td><pre></pre></td></tr><tr><td data-num="18"></td><td><pre><span class="token keyword">public</span> <span class="token keyword">class</span> kafka <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="19"></td><td><pre>    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">Exception</span> <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="20"></td><td><pre>        <span class="token class-name">StreamExecutionEnvironment</span> env <span class="token operator">=</span> <span class="token class-name">StreamExecutionEnvironment</span><span class="token punctuation">.</span><span class="token function">getExecutionEnvironment</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="21"></td><td><pre></pre></td></tr><tr><td data-num="22"></td><td><pre><span class="token comment">//        创建 kafka 数据源的配置</span></pre></td></tr><tr><td data-num="23"></td><td><pre>        <span class="token class-name">Properties</span> properties <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Properties</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="24"></td><td><pre>        properties<span class="token punctuation">.</span><span class="token function">setProperty</span><span class="token punctuation">(</span><span class="token string">"bootstrap.servers"</span><span class="token punctuation">,</span><span class="token string">"192.168.52.201:9092"</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="25"></td><td><pre>        properties<span class="token punctuation">.</span><span class="token function">setProperty</span><span class="token punctuation">(</span><span class="token string">"group_id"</span><span class="token punctuation">,</span><span class="token string">"kafka_source"</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="26"></td><td><pre></pre></td></tr><tr><td data-num="27"></td><td><pre>        <span class="token comment">// 指定消费者读取的位置</span></pre></td></tr><tr><td data-num="28"></td><td><pre>        <span class="token class-name">FlinkKafkaConsumer</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">></span></span> consumer <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">FlinkKafkaConsumer</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token string">"test"</span><span class="token punctuation">,</span> <span class="token keyword">new</span> <span class="token class-name">SimpleStringSchema</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> properties<span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="29"></td><td><pre></pre></td></tr><tr><td data-num="30"></td><td><pre>        consumer<span class="token punctuation">.</span><span class="token function">setStartFromEarliest</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>     <span class="token comment">// 尽可能从最早的记录开始</span></pre></td></tr><tr><td data-num="31"></td><td><pre><span class="token comment">//        consumer.setStartFromLatest ();       // 从最新的记录开始</span></pre></td></tr><tr><td data-num="32"></td><td><pre><span class="token comment">//        consumer.setStartFromTimestamp (); // 从指定的时间开始（毫秒）</span></pre></td></tr><tr><td data-num="33"></td><td><pre><span class="token comment">//        consumer.setStartFromGroupOffsets (); // 默认的方法 从 Kafka brokers 中的 consumer 组（consumer 属性中的 group.id 设置）提交的偏移量中开始读取分区。 如果找不到分区的偏移量，那么将会使用配置中的 auto.offset.reset 设置。</span></pre></td></tr><tr><td data-num="34"></td><td><pre></pre></td></tr><tr><td data-num="35"></td><td><pre>        <span class="token class-name">DataStreamSource</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">></span></span> kafkasource <span class="token operator">=</span> env<span class="token punctuation">.</span><span class="token function">addSource</span><span class="token punctuation">(</span>consumer<span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="36"></td><td><pre></pre></td></tr><tr><td data-num="37"></td><td><pre>        <span class="token class-name">SingleOutputStreamOperator</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Object</span><span class="token punctuation">></span></span> map <span class="token operator">=</span> kafkasource<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">MapFunction</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">,</span> <span class="token class-name">Object</span><span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="38"></td><td><pre>            <span class="token annotation punctuation">@Override</span></pre></td></tr><tr><td data-num="39"></td><td><pre>            <span class="token keyword">public</span> <span class="token class-name">Object</span> <span class="token function">map</span><span class="token punctuation">(</span><span class="token class-name">String</span> s<span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">Exception</span> <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="40"></td><td><pre>                <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Tuple2</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">></span></span><span class="token punctuation">(</span>s<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="41"></td><td><pre>            <span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="42"></td><td><pre>        <span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="43"></td><td><pre>        map<span class="token punctuation">.</span><span class="token function">print</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="44"></td><td><pre></pre></td></tr><tr><td data-num="45"></td><td><pre>        env<span class="token punctuation">.</span><span class="token function">execute</span><span class="token punctuation">(</span><span class="token string">"kafka_source"</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="46"></td><td><pre>    <span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="47"></td><td><pre><span class="token punctuation">&#125;</span></pre></td></tr></table></figure><ol start="5">
+<li><strong>jdbc</strong>：flink 没有对 mysql 直接提供支持 ，需要自定义数据源。</li>
+</ol>
+<figure class="highlight java"><figcaption data-lang="java"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token keyword">package</span> <span class="token namespace">com<span class="token punctuation">.</span>shyl<span class="token punctuation">.</span>source</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="2"></td><td><pre></pre></td></tr><tr><td data-num="3"></td><td><pre><span class="token keyword">import</span> <span class="token import"><span class="token namespace">org<span class="token punctuation">.</span>apache<span class="token punctuation">.</span>flink<span class="token punctuation">.</span>configuration<span class="token punctuation">.</span></span><span class="token class-name">Configuration</span></span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="4"></td><td><pre><span class="token keyword">import</span> <span class="token import"><span class="token namespace">org<span class="token punctuation">.</span>apache<span class="token punctuation">.</span>flink<span class="token punctuation">.</span>streaming<span class="token punctuation">.</span>api<span class="token punctuation">.</span>functions<span class="token punctuation">.</span>source<span class="token punctuation">.</span></span><span class="token class-name">RichParallelSourceFunction</span></span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="5"></td><td><pre></pre></td></tr><tr><td data-num="6"></td><td><pre><span class="token keyword">import</span> <span class="token import"><span class="token namespace">java<span class="token punctuation">.</span>sql<span class="token punctuation">.</span></span><span class="token operator">*</span></span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="7"></td><td><pre></pre></td></tr><tr><td data-num="8"></td><td><pre><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">JDBCSourceFromMysql</span> <span class="token keyword">extends</span> <span class="token class-name">RichParallelSourceFunction</span><span class="token generics"><span class="token punctuation">&lt;</span>base_dic<span class="token punctuation">></span></span> <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="9"></td><td><pre>    <span class="token keyword">private</span> <span class="token class-name">PreparedStatement</span> ps <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="10"></td><td><pre>    <span class="token keyword">private</span> <span class="token class-name">Connection</span> connection <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="11"></td><td><pre></pre></td></tr><tr><td data-num="12"></td><td><pre>    <span class="token annotation punctuation">@Override</span></pre></td></tr><tr><td data-num="13"></td><td><pre>    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token keyword">open</span><span class="token punctuation">(</span><span class="token class-name">Configuration</span> parameters<span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">Exception</span> <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="14"></td><td><pre>        <span class="token keyword">super</span><span class="token punctuation">.</span><span class="token keyword">open</span><span class="token punctuation">(</span>parameters<span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="15"></td><td><pre>        connection <span class="token operator">=</span> <span class="token function">getConnetion</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="16"></td><td><pre>        <span class="token class-name">String</span> sql <span class="token operator">=</span> <span class="token string">"select * from base_dic"</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="17"></td><td><pre>        ps <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>connection<span class="token punctuation">.</span><span class="token function">prepareStatement</span><span class="token punctuation">(</span>sql<span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="18"></td><td><pre>        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token function">getRuntimeContext</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getJobId</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="19"></td><td><pre>    <span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="20"></td><td><pre></pre></td></tr><tr><td data-num="21"></td><td><pre>    <span class="token annotation punctuation">@Override</span></pre></td></tr><tr><td data-num="22"></td><td><pre>    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">Exception</span> <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="23"></td><td><pre>        <span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="24"></td><td><pre></pre></td></tr><tr><td data-num="25"></td><td><pre>        <span class="token keyword">if</span> <span class="token punctuation">(</span>connection <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="26"></td><td><pre>            connection<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="27"></td><td><pre>        <span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="28"></td><td><pre>        <span class="token keyword">if</span> <span class="token punctuation">(</span>ps <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="29"></td><td><pre>            ps<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="30"></td><td><pre>        <span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="31"></td><td><pre>    <span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="32"></td><td><pre></pre></td></tr><tr><td data-num="33"></td><td><pre>    <span class="token annotation punctuation">@Override</span></pre></td></tr><tr><td data-num="34"></td><td><pre>    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">run</span><span class="token punctuation">(</span><span class="token class-name">SourceContext</span><span class="token generics"><span class="token punctuation">&lt;</span>base_dic<span class="token punctuation">></span></span> sourceContext<span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">Exception</span> <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="35"></td><td><pre>        <span class="token class-name">ResultSet</span> resultSet <span class="token operator">=</span> ps<span class="token punctuation">.</span><span class="token function">executeQuery</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="36"></td><td><pre>        <span class="token keyword">while</span> <span class="token punctuation">(</span>resultSet<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="37"></td><td><pre>            base_dic basedic <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">base_dic</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="38"></td><td><pre>            basedic<span class="token punctuation">.</span><span class="token function">setDic_code</span><span class="token punctuation">(</span>resultSet<span class="token punctuation">.</span><span class="token function">getString</span><span class="token punctuation">(</span><span class="token string">"dic_code"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="39"></td><td><pre>            basedic<span class="token punctuation">.</span><span class="token function">setDic_name</span><span class="token punctuation">(</span>resultSet<span class="token punctuation">.</span><span class="token function">getString</span><span class="token punctuation">(</span><span class="token string">"dic_name"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="40"></td><td><pre>            basedic<span class="token punctuation">.</span><span class="token function">setParent_code</span><span class="token punctuation">(</span>resultSet<span class="token punctuation">.</span><span class="token function">getString</span><span class="token punctuation">(</span><span class="token string">"parent_code"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="41"></td><td><pre>            basedic<span class="token punctuation">.</span><span class="token function">setCreate_time</span><span class="token punctuation">(</span>resultSet<span class="token punctuation">.</span><span class="token function">getString</span><span class="token punctuation">(</span><span class="token string">"create_time"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="42"></td><td><pre>            basedic<span class="token punctuation">.</span><span class="token function">setOperate_time</span><span class="token punctuation">(</span>resultSet<span class="token punctuation">.</span><span class="token function">getString</span><span class="token punctuation">(</span><span class="token string">"operate_time"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="43"></td><td><pre></pre></td></tr><tr><td data-num="44"></td><td><pre>            sourceContext<span class="token punctuation">.</span><span class="token function">collect</span><span class="token punctuation">(</span>basedic<span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="45"></td><td><pre>        <span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="46"></td><td><pre>    <span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="47"></td><td><pre></pre></td></tr><tr><td data-num="48"></td><td><pre>    <span class="token annotation punctuation">@Override</span></pre></td></tr><tr><td data-num="49"></td><td><pre>    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">cancel</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="50"></td><td><pre>    <span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="51"></td><td><pre></pre></td></tr><tr><td data-num="52"></td><td><pre>    <span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token class-name">Connection</span> <span class="token function">getConnetion</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="53"></td><td><pre>        <span class="token class-name">String</span> driver <span class="token operator">=</span> <span class="token string">"com.mysql.cj.jdbc.Driver"</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="54"></td><td><pre>        <span class="token class-name">String</span> url <span class="token operator">=</span> <span class="token string">"jdbc:mysql://192.168.52.201:3306/gmall"</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="55"></td><td><pre>        <span class="token class-name">String</span> username <span class="token operator">=</span> <span class="token string">"root"</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="56"></td><td><pre>        <span class="token class-name">String</span> password <span class="token operator">=</span> <span class="token string">"1234kxmall!@#ABC"</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="57"></td><td><pre>        <span class="token class-name">Connection</span> con <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="58"></td><td><pre></pre></td></tr><tr><td data-num="59"></td><td><pre>        <span class="token keyword">try</span> <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="60"></td><td><pre>            <span class="token class-name">Class</span><span class="token punctuation">.</span><span class="token function">forName</span><span class="token punctuation">(</span>driver<span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="61"></td><td><pre>            <span class="token keyword">try</span> <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="62"></td><td><pre>                con <span class="token operator">=</span> <span class="token class-name">DriverManager</span><span class="token punctuation">.</span><span class="token function">getConnection</span><span class="token punctuation">(</span>url<span class="token punctuation">,</span> username<span class="token punctuation">,</span> password<span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="63"></td><td><pre>            <span class="token punctuation">&#125;</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">SQLException</span> e<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="64"></td><td><pre>                <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">RuntimeException</span><span class="token punctuation">(</span>e<span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="65"></td><td><pre>            <span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="66"></td><td><pre>        <span class="token punctuation">&#125;</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">ClassNotFoundException</span> e<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="67"></td><td><pre>            <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">RuntimeException</span><span class="token punctuation">(</span>e<span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="68"></td><td><pre>        <span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="69"></td><td><pre>        <span class="token keyword">return</span> con<span class="token punctuation">;</span></pre></td></tr><tr><td data-num="70"></td><td><pre>    <span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="71"></td><td><pre><span class="token punctuation">&#125;</span></pre></td></tr></table></figure><p>​	<strong>basc_inc 类</strong></p>
+<figure class="highlight java"><figcaption data-lang="java"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token keyword">package</span> <span class="token namespace">com<span class="token punctuation">.</span>shyl<span class="token punctuation">.</span>source</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="2"></td><td><pre></pre></td></tr><tr><td data-num="3"></td><td><pre><span class="token keyword">public</span> <span class="token keyword">class</span> base_dic <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="4"></td><td><pre>    <span class="token keyword">private</span> <span class="token class-name">String</span> dic_code<span class="token punctuation">;</span></pre></td></tr><tr><td data-num="5"></td><td><pre>    <span class="token keyword">private</span> <span class="token class-name">String</span> dic_name<span class="token punctuation">;</span></pre></td></tr><tr><td data-num="6"></td><td><pre>    <span class="token keyword">private</span> <span class="token class-name">String</span> parent_code<span class="token punctuation">;</span></pre></td></tr><tr><td data-num="7"></td><td><pre>    <span class="token keyword">private</span> <span class="token class-name">String</span> create_time<span class="token punctuation">;</span></pre></td></tr><tr><td data-num="8"></td><td><pre>    <span class="token keyword">private</span> <span class="token class-name">String</span> operate_time<span class="token punctuation">;</span></pre></td></tr><tr><td data-num="9"></td><td><pre></pre></td></tr><tr><td data-num="10"></td><td><pre>    <span class="token keyword">public</span> <span class="token function">base_dic</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="11"></td><td><pre>    <span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="12"></td><td><pre></pre></td></tr><tr><td data-num="13"></td><td><pre>    <span class="token keyword">public</span> <span class="token class-name">String</span> <span class="token function">getDic_code</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="14"></td><td><pre>        <span class="token keyword">return</span> dic_code<span class="token punctuation">;</span></pre></td></tr><tr><td data-num="15"></td><td><pre>    <span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="16"></td><td><pre></pre></td></tr><tr><td data-num="17"></td><td><pre>    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">setDic_code</span><span class="token punctuation">(</span><span class="token class-name">String</span> dic_code<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="18"></td><td><pre>        <span class="token keyword">this</span><span class="token punctuation">.</span>dic_code <span class="token operator">=</span> dic_code<span class="token punctuation">;</span></pre></td></tr><tr><td data-num="19"></td><td><pre>    <span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="20"></td><td><pre></pre></td></tr><tr><td data-num="21"></td><td><pre>    <span class="token keyword">public</span> <span class="token class-name">String</span> <span class="token function">getDic_name</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="22"></td><td><pre>        <span class="token keyword">return</span> dic_name<span class="token punctuation">;</span></pre></td></tr><tr><td data-num="23"></td><td><pre>    <span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="24"></td><td><pre></pre></td></tr><tr><td data-num="25"></td><td><pre>    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">setDic_name</span><span class="token punctuation">(</span><span class="token class-name">String</span> dic_name<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="26"></td><td><pre>        <span class="token keyword">this</span><span class="token punctuation">.</span>dic_name <span class="token operator">=</span> dic_name<span class="token punctuation">;</span></pre></td></tr><tr><td data-num="27"></td><td><pre>    <span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="28"></td><td><pre></pre></td></tr><tr><td data-num="29"></td><td><pre>    <span class="token keyword">public</span> <span class="token class-name">String</span> <span class="token function">getParent_code</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="30"></td><td><pre>        <span class="token keyword">return</span> parent_code<span class="token punctuation">;</span></pre></td></tr><tr><td data-num="31"></td><td><pre>    <span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="32"></td><td><pre></pre></td></tr><tr><td data-num="33"></td><td><pre>    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">setParent_code</span><span class="token punctuation">(</span><span class="token class-name">String</span> parent_code<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="34"></td><td><pre>        <span class="token keyword">this</span><span class="token punctuation">.</span>parent_code <span class="token operator">=</span> parent_code<span class="token punctuation">;</span></pre></td></tr><tr><td data-num="35"></td><td><pre>    <span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="36"></td><td><pre></pre></td></tr><tr><td data-num="37"></td><td><pre>    <span class="token keyword">public</span> <span class="token class-name">String</span> <span class="token function">getCreate_time</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="38"></td><td><pre>        <span class="token keyword">return</span> create_time<span class="token punctuation">;</span></pre></td></tr><tr><td data-num="39"></td><td><pre>    <span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="40"></td><td><pre></pre></td></tr><tr><td data-num="41"></td><td><pre>    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">setCreate_time</span><span class="token punctuation">(</span><span class="token class-name">String</span> create_time<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="42"></td><td><pre>        <span class="token keyword">this</span><span class="token punctuation">.</span>create_time <span class="token operator">=</span> create_time<span class="token punctuation">;</span></pre></td></tr><tr><td data-num="43"></td><td><pre>    <span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="44"></td><td><pre></pre></td></tr><tr><td data-num="45"></td><td><pre>    <span class="token keyword">public</span> <span class="token class-name">String</span> <span class="token function">getOperate_time</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="46"></td><td><pre>        <span class="token keyword">return</span> operate_time<span class="token punctuation">;</span></pre></td></tr><tr><td data-num="47"></td><td><pre>    <span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="48"></td><td><pre></pre></td></tr><tr><td data-num="49"></td><td><pre>    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">setOperate_time</span><span class="token punctuation">(</span><span class="token class-name">String</span> operate_time<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="50"></td><td><pre>        <span class="token keyword">this</span><span class="token punctuation">.</span>operate_time <span class="token operator">=</span> operate_time<span class="token punctuation">;</span></pre></td></tr><tr><td data-num="51"></td><td><pre>    <span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="52"></td><td><pre></pre></td></tr><tr><td data-num="53"></td><td><pre>    <span class="token annotation punctuation">@Override</span></pre></td></tr><tr><td data-num="54"></td><td><pre>    <span class="token keyword">public</span> <span class="token class-name">String</span> <span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="55"></td><td><pre>        <span class="token keyword">return</span> <span class="token string">"base_inc&#123;"</span> <span class="token operator">+</span></pre></td></tr><tr><td data-num="56"></td><td><pre>                <span class="token string">"dic_code='"</span> <span class="token operator">+</span> dic_code <span class="token operator">+</span> <span class="token char">'\''</span> <span class="token operator">+</span></pre></td></tr><tr><td data-num="57"></td><td><pre>                <span class="token string">", dic_name='"</span> <span class="token operator">+</span> dic_name <span class="token operator">+</span> <span class="token char">'\''</span> <span class="token operator">+</span></pre></td></tr><tr><td data-num="58"></td><td><pre>                <span class="token string">", parent_code='"</span> <span class="token operator">+</span> parent_code <span class="token operator">+</span> <span class="token char">'\''</span> <span class="token operator">+</span></pre></td></tr><tr><td data-num="59"></td><td><pre>                <span class="token string">", create_time='"</span> <span class="token operator">+</span> create_time <span class="token operator">+</span> <span class="token char">'\''</span> <span class="token operator">+</span></pre></td></tr><tr><td data-num="60"></td><td><pre>                <span class="token string">", operate_time='"</span> <span class="token operator">+</span> operate_time <span class="token operator">+</span> <span class="token char">'\''</span> <span class="token operator">+</span></pre></td></tr><tr><td data-num="61"></td><td><pre>                <span class="token char">'&#125;'</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="62"></td><td><pre>    <span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="63"></td><td><pre><span class="token punctuation">&#125;</span></pre></td></tr></table></figure><p>​	<strong>jdbcSource</strong></p>
+<figure class="highlight java"><figcaption data-lang="java"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token keyword">package</span> <span class="token namespace">com<span class="token punctuation">.</span>shyl<span class="token punctuation">.</span>source</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="2"></td><td><pre></pre></td></tr><tr><td data-num="3"></td><td><pre><span class="token keyword">import</span> <span class="token import"><span class="token namespace">org<span class="token punctuation">.</span>apache<span class="token punctuation">.</span>flink<span class="token punctuation">.</span>api<span class="token punctuation">.</span>common<span class="token punctuation">.</span>functions<span class="token punctuation">.</span></span><span class="token class-name">MapFunction</span></span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="4"></td><td><pre><span class="token keyword">import</span> <span class="token import"><span class="token namespace">org<span class="token punctuation">.</span>apache<span class="token punctuation">.</span>flink<span class="token punctuation">.</span>streaming<span class="token punctuation">.</span>api<span class="token punctuation">.</span>datastream<span class="token punctuation">.</span></span><span class="token class-name">DataStreamSource</span></span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="5"></td><td><pre><span class="token keyword">import</span> <span class="token import"><span class="token namespace">org<span class="token punctuation">.</span>apache<span class="token punctuation">.</span>flink<span class="token punctuation">.</span>streaming<span class="token punctuation">.</span>api<span class="token punctuation">.</span>datastream<span class="token punctuation">.</span></span><span class="token class-name">SingleOutputStreamOperator</span></span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="6"></td><td><pre><span class="token keyword">import</span> <span class="token import"><span class="token namespace">org<span class="token punctuation">.</span>apache<span class="token punctuation">.</span>flink<span class="token punctuation">.</span>streaming<span class="token punctuation">.</span>api<span class="token punctuation">.</span>environment<span class="token punctuation">.</span></span><span class="token class-name">StreamExecutionEnvironment</span></span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="7"></td><td><pre></pre></td></tr><tr><td data-num="8"></td><td><pre><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">JDBC</span> <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="9"></td><td><pre>    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">Exception</span> <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="10"></td><td><pre></pre></td></tr><tr><td data-num="11"></td><td><pre>        <span class="token class-name">StreamExecutionEnvironment</span> env <span class="token operator">=</span> <span class="token class-name">StreamExecutionEnvironment</span><span class="token punctuation">.</span><span class="token function">getExecutionEnvironment</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="12"></td><td><pre></pre></td></tr><tr><td data-num="13"></td><td><pre>        env<span class="token punctuation">.</span><span class="token function">setParallelism</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="14"></td><td><pre></pre></td></tr><tr><td data-num="15"></td><td><pre>        <span class="token class-name">DataStreamSource</span><span class="token generics"><span class="token punctuation">&lt;</span>base_dic<span class="token punctuation">></span></span> mysqlSource <span class="token operator">=</span> env<span class="token punctuation">.</span><span class="token function">addSource</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">JDBCSourceFromMysql</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="16"></td><td><pre></pre></td></tr><tr><td data-num="17"></td><td><pre>        <span class="token class-name">SingleOutputStreamOperator</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Object</span><span class="token punctuation">></span></span> map <span class="token operator">=</span> mysqlSource<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">MapFunction</span><span class="token generics"><span class="token punctuation">&lt;</span>base_dic<span class="token punctuation">,</span> <span class="token class-name">Object</span><span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="18"></td><td><pre>            <span class="token annotation punctuation">@Override</span></pre></td></tr><tr><td data-num="19"></td><td><pre>            <span class="token keyword">public</span> <span class="token class-name">Object</span> <span class="token function">map</span><span class="token punctuation">(</span>base_dic value<span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">Exception</span> <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="20"></td><td><pre>                <span class="token keyword">return</span> value<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="21"></td><td><pre>            <span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="22"></td><td><pre>        <span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="23"></td><td><pre></pre></td></tr><tr><td data-num="24"></td><td><pre>        map<span class="token punctuation">.</span><span class="token function">print</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="25"></td><td><pre></pre></td></tr><tr><td data-num="26"></td><td><pre>        env<span class="token punctuation">.</span><span class="token function">execute</span><span class="token punctuation">(</span><span class="token string">"mysql_source"</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="27"></td><td><pre></pre></td></tr><tr><td data-num="28"></td><td><pre>    <span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="29"></td><td><pre><span class="token punctuation">&#125;</span></pre></td></tr></table></figure><h3 id="备注"><a class="markdownIt-Anchor" href="#备注">#</a> 备注</h3>
+<p>以 flink1.4.4 版本为例，以下是 pom 文件</p>
+<figure class="highlight xml"><figcaption data-lang="XML"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span></pre></td></tr><tr><td data-num="2"></td><td><pre>        <span class="token comment">&lt;!-- https://mvnrepository.com/artifact/org.apache.flink/flink-clients --></span></pre></td></tr><tr><td data-num="3"></td><td><pre>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span></pre></td></tr><tr><td data-num="4"></td><td><pre>            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>org.apache.flink<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span></pre></td></tr><tr><td data-num="5"></td><td><pre>            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>flink-clients_2.12<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span></pre></td></tr><tr><td data-num="6"></td><td><pre>            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">></span></span>1.14.4<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">></span></span></pre></td></tr><tr><td data-num="7"></td><td><pre>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span></pre></td></tr><tr><td data-num="8"></td><td><pre></pre></td></tr><tr><td data-num="9"></td><td><pre>        <span class="token comment">&lt;!-- https://mvnrepository.com/artifact/org.apache.flink/flink-streaming-java --></span></pre></td></tr><tr><td data-num="10"></td><td><pre>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span></pre></td></tr><tr><td data-num="11"></td><td><pre>            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>org.apache.flink<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span></pre></td></tr><tr><td data-num="12"></td><td><pre>            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>flink-streaming-java_2.12<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span></pre></td></tr><tr><td data-num="13"></td><td><pre>            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">></span></span>1.14.4<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">></span></span></pre></td></tr><tr><td data-num="14"></td><td><pre><span class="token comment">&lt;!--            &lt;scope>provided&lt;/scope>--></span></pre></td></tr><tr><td data-num="15"></td><td><pre>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span></pre></td></tr><tr><td data-num="16"></td><td><pre></pre></td></tr><tr><td data-num="17"></td><td><pre>        <span class="token comment">&lt;!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-api --></span></pre></td></tr><tr><td data-num="18"></td><td><pre>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span></pre></td></tr><tr><td data-num="19"></td><td><pre>            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>org.slf4j<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span></pre></td></tr><tr><td data-num="20"></td><td><pre>            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>slf4j-api<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span></pre></td></tr><tr><td data-num="21"></td><td><pre>            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">></span></span>1.7.12<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">></span></span></pre></td></tr><tr><td data-num="22"></td><td><pre>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span></pre></td></tr><tr><td data-num="23"></td><td><pre>        <span class="token comment">&lt;!-- https://mvnrepository.com/artifact/org.apache.flink/flink-runtime-web --></span></pre></td></tr><tr><td data-num="24"></td><td><pre>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span></pre></td></tr><tr><td data-num="25"></td><td><pre>            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>org.apache.flink<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span></pre></td></tr><tr><td data-num="26"></td><td><pre>            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>flink-runtime-web_2.12<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span></pre></td></tr><tr><td data-num="27"></td><td><pre>            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">></span></span>1.14.4<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">></span></span></pre></td></tr><tr><td data-num="28"></td><td><pre><span class="token comment">&lt;!--            &lt;scope>test&lt;/scope>--></span></pre></td></tr><tr><td data-num="29"></td><td><pre>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span></pre></td></tr><tr><td data-num="30"></td><td><pre>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span></pre></td></tr><tr><td data-num="31"></td><td><pre>            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>org.apache.flink<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span></pre></td></tr><tr><td data-num="32"></td><td><pre>            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>flink-connector-kafka_2.11<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span></pre></td></tr><tr><td data-num="33"></td><td><pre>            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">></span></span>1.14.4<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">></span></span></pre></td></tr><tr><td data-num="34"></td><td><pre>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span></pre></td></tr><tr><td data-num="35"></td><td><pre>        <span class="token comment">&lt;!-- https://mvnrepository.com/artifact/org.apache.flink/flink-connector-jdbc --></span></pre></td></tr><tr><td data-num="36"></td><td><pre>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span></pre></td></tr><tr><td data-num="37"></td><td><pre>            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>org.apache.flink<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span></pre></td></tr><tr><td data-num="38"></td><td><pre>            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>flink-connector-jdbc_2.12<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span></pre></td></tr><tr><td data-num="39"></td><td><pre>            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">></span></span>1.14.4<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">></span></span></pre></td></tr><tr><td data-num="40"></td><td><pre><span class="token comment">&lt;!--            &lt;scope>provided&lt;/scope>--></span></pre></td></tr><tr><td data-num="41"></td><td><pre>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span></pre></td></tr><tr><td data-num="42"></td><td><pre>        <span class="token comment">&lt;!-- https://mvnrepository.com/artifact/com.mysql/mysql-connector-j --></span></pre></td></tr><tr><td data-num="43"></td><td><pre>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span></pre></td></tr><tr><td data-num="44"></td><td><pre>            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>com.mysql<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span></pre></td></tr><tr><td data-num="45"></td><td><pre>            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>mysql-connector-j<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span></pre></td></tr><tr><td data-num="46"></td><td><pre>            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">></span></span>8.0.31<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">></span></span></pre></td></tr><tr><td data-num="47"></td><td><pre>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span></pre></td></tr></table></figure>
+      <div class="tags">
+          <a href="/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/" rel="tag"><i class="ic i-tag"></i> 大数据</a>
+          <a href="/tags/Flink/" rel="tag"><i class="ic i-tag"></i> Flink</a>
+      </div>
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">更新于</span>
+    <time title="修改时间：2024-05-29 16:35:48" itemprop="dateModified" datetime="2024-05-29T16:35:48+08:00">2024-05-29</time>
+  </span>
+  <span id="2023/12/14/BaiduSyncdisk/大数据/Flink/Flink的不同source/" class="item leancloud_visitors" data-flag-title="Flink 的不同 source" title="阅读次数">
+      <span class="icon">
+        <i class="ic i-eye"></i>
+      </span>
+      <span class="text">阅读次数</span>
+      <span class="leancloud-visitors-count"></span>
+      <span class="text">次</span>
+  </span>
+</div>
+
+      
+<div class="reward">
+  <button><i class="ic i-heartbeat"></i> 赞赏</button>
+  <p>请我喝[茶]~(￣▽￣)~*</p>
+  <div id="qr">
+      
+      <div>
+        <img data-src="/images/wechatpay.png" alt="shyl 微信支付">
+        <p>微信支付</p>
+      </div>
+  </div>
+</div>
+
+      
+
+<div id="copyright">
+<ul>
+  <li class="author">
+    <strong>本文作者： </strong>shyl <i class="ic i-at"><em>@</em></i>碎念随风
+  </li>
+  <li class="link">
+    <strong>本文链接：</strong>
+    <a href="http://example.com/2023/12/14/BaiduSyncdisk/%E5%A4%A7%E6%95%B0%E6%8D%AE/Flink/Flink%E7%9A%84%E4%B8%8D%E5%90%8Csource/" title="Flink 的不同 source">http://example.com/2023/12/14/BaiduSyncdisk/大数据/Flink/Flink的不同source/</a>
+  </li>
+  <li class="license">
+    <strong>版权声明： </strong>本站所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/2023/12/06/BaiduSyncdisk/%E5%A4%A7%E6%95%B0%E6%8D%AE/Flink/Flink%E5%AD%A6%E4%B9%A0-%E4%B8%80/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;note.youdao.com&#x2F;yws&#x2F;api&#x2F;personal&#x2F;file&#x2F;WEB4e2bec4915a56323bc68b73e8e8472b5?method&#x3D;download&amp;shareKey&#x3D;2a2660353b6a204aa269c33680c88a99" title="Flink学习(一)">
+  <span class="type">上一篇</span>
+  <span class="category"><i class="ic i-flag"></i> Flink</span>
+  <h3>Flink学习(一)</h3>
+  </a>
+
+    </div>
+    <div class="item right">
+      
+
+  <a href="/2024/03/07/BaiduSyncdisk/%E5%A4%A7%E6%95%B0%E6%8D%AE/%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93/%E5%AE%9E%E6%97%B6%E6%95%B0%E4%BB%93%E6%90%AD%E5%BB%BA/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;note.youdao.com&#x2F;yws&#x2F;api&#x2F;personal&#x2F;file&#x2F;WEB404811a801dc7b0a162cc7faba8a223d?method&#x3D;download&amp;shareKey&#x3D;2a2660353b6a204aa269c33680c88a99" title="实时数仓搭建">
+  <span class="type">下一篇</span>
+  <span class="category"><i class="ic i-flag"></i> 实时数仓</span>
+  <h3>实时数仓搭建</h3>
+  </a>
+
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
+
+        </div>
+        <div id="sidebar">
+          
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="文章目录">
+          <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%87%E6%B3%A8"><span class="toc-number">1.</span> <span class="toc-text"> 备注</span></a></li></ol>
+      </div>
+      <div class="related panel pjax" data-title="系列文章">
+        <ul>
+          <li><a href="/2023/12/01/BaiduSyncdisk/%E5%A4%A7%E6%95%B0%E6%8D%AE/Flink/Flink%E7%9A%84%E6%90%AD%E5%BB%BA/" rel="bookmark" title="Flink的搭建">Flink的搭建</a></li><li><a href="/2023/12/06/BaiduSyncdisk/%E5%A4%A7%E6%95%B0%E6%8D%AE/Flink/Flink%E5%AD%A6%E4%B9%A0-%E4%B8%80/" rel="bookmark" title="Flink学习(一)">Flink学习(一)</a></li><li class="active"><a href="/2023/12/14/BaiduSyncdisk/%E5%A4%A7%E6%95%B0%E6%8D%AE/Flink/Flink%E7%9A%84%E4%B8%8D%E5%90%8Csource/" rel="bookmark" title="Flink的不同source">Flink的不同source</a></li><li><a href="/2024/05/17/BaiduSyncdisk/%E5%A4%A7%E6%95%B0%E6%8D%AE/Flink/flink%E7%AE%97%E5%AD%90%E6%80%BB%E7%BB%93/" rel="bookmark" title="flink算子总结">flink算子总结</a></li><li><a href="/2024/05/23/BaiduSyncdisk/%E5%A4%A7%E6%95%B0%E6%8D%AE/Flink/Flink%E7%9A%84%E7%AA%97%E5%8F%A3/" rel="bookmark" title="Flink的窗口">Flink的窗口</a></li>
+        </ul>
+      </div>
+      <div class="overview panel" data-title="站点概览">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="shyl"
+      data-src="/images/avatar.jpg">
+  <p class="name" itemprop="name">shyl</p>
+  <div class="description" itemprop="description">人海未见之时，我亦独行在这城市。 料峭，春醒，酷暑，骤雨，寒意四起，大雁南飞，而后，大雪，寒风， 斗转星移，人间寒暑。</div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">16</span>
+        <span class="name">文章</span>
+      </a>
+    </div>
+    <div class="item categories">
+      <a href="/categories/">
+        <span class="count">14</span>
+        <span class="name">分类</span>
+      </a>
+    </div>
+    <div class="item tags">
+      <a href="/tags/">
+        <span class="count">12</span>
+        <span class="name">标签</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+      <span class="exturl item github" data-url="aHR0cHM6Ly9naXRodWIuY29tL3NoZW5neWFubGVp" title="https:&#x2F;&#x2F;github.com&#x2F;shengyanlei"><i class="ic i-github"></i></span>
+      <span class="exturl item email" data-url="bWFpbHRvOnMxMzkzNDczODE2NUAxNjMuY29t" title="mailto:s13934738165@163.com"><i class="ic i-envelope"></i></span>
+</div>
+
+<ul class="menu">
+  
+    
+  <li class="item">
+    <a href="/" rel="section"><i class="ic i-home"></i>首页</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/about/" rel="section"><i class="ic i-user"></i>关于</a>
+  </li>
+
+        
+  <li class="item dropdown">
+      <a href="javascript:void(0);"><i class="ic i-feather"></i>文章</a>
+    <ul class="submenu">
+
+        
+  <li class="item">
+    <a href="/archives/" rel="section"><i class="ic i-list-alt"></i>归档</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/categories/" rel="section"><i class="ic i-th"></i>分类</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/tags/" rel="section"><i class="ic i-tags"></i>标签</a>
+  </li>
+
+  </ul>
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+        <a href="/2023/12/06/BaiduSyncdisk/%E5%A4%A7%E6%95%B0%E6%8D%AE/Flink/Flink%E5%AD%A6%E4%B9%A0-%E4%B8%80/" rel="prev" title="上一篇"><i class="ic i-chevron-left"></i></a>
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+        <a href="/2024/03/07/BaiduSyncdisk/%E5%A4%A7%E6%95%B0%E6%8D%AE/%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93/%E5%AE%9E%E6%97%B6%E6%95%B0%E4%BB%93%E6%90%AD%E5%BB%BA/" rel="next" title="下一篇"><i class="ic i-chevron-right"></i></a>
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+<div class="rpost pjax">
+  <h2>随机文章</h2>
+  <ul>
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/bigData/" title="分类于 大数据">大数据</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/bigData/Hive/" title="分类于 Hive">Hive</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/bigData/Hive/%E9%85%8D%E7%BD%AE/" title="分类于 配置">配置</a>
+</div>
+
+    <span><a href="/2023/11/16/BaiduSyncdisk/%E5%A4%A7%E6%95%B0%E6%8D%AE/Hive/hive3-13%E6%B7%BB%E5%8A%A0spark%E5%BC%95%E6%93%8E/" title="hive3.13添加spark引擎">hive3.13添加spark引擎</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/Java/" title="分类于 教程">教程</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/Java/Fluid%E4%B8%BB%E9%A2%98/" title="分类于 Fluid 主题">Fluid 主题</a>
+</div>
+
+    <span><a href="/2023/10/13/BaiduSyncdisk/markdown/fluid%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/" title="fluid使用指南">fluid使用指南</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2024/05/30/BaiduSyncdisk/markdown/hello-world/" title="Hello World">Hello World</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/bigData/" title="分类于 大数据">大数据</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/bigData/%E7%A6%BB%E7%BA%BF%E6%95%B0%E4%BB%93/" title="分类于 离线数仓">离线数仓</a>
+</div>
+
+    <span><a href="/2023/10/19/BaiduSyncdisk/%E5%A4%A7%E6%95%B0%E6%8D%AE/%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93/%E6%95%B0%E4%BB%93%E6%90%AD%E5%BB%BA%E7%9A%84%E6%95%B0%E6%8D%AE%E8%B7%A8%E5%A4%A9%E9%97%AE%E9%A2%98/" title="数仓搭建的数据跨天问题">数仓搭建的数据跨天问题</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/Java/" title="分类于 教程">教程</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/Java/Python/" title="分类于 Python">Python</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/Java/Python/%E7%88%AC%E8%99%AB/" title="分类于 爬虫">爬虫</a>
+</div>
+
+    <span><a href="/2023/10/24/BaiduSyncdisk/%E5%A4%A7%E6%95%B0%E6%8D%AE/Python/Python%E7%BD%91%E7%BB%9C%E7%88%AC%E8%99%AB%E4%B8%80/" title="Python网络爬虫（一）">Python网络爬虫（一）</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/bigData/" title="分类于 大数据">大数据</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/bigData/%E5%AE%9E%E6%97%B6%E6%95%B0%E4%BB%93/" title="分类于 实时数仓">实时数仓</a>
+</div>
+
+    <span><a href="/2024/03/07/BaiduSyncdisk/%E5%A4%A7%E6%95%B0%E6%8D%AE/%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93/%E5%AE%9E%E6%97%B6%E6%95%B0%E4%BB%93%E6%90%AD%E5%BB%BA/" title="实时数仓搭建">实时数仓搭建</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/Java/" title="分类于 教程">教程</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/Java/Python/" title="分类于 Python">Python</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/Java/Python/%E7%88%AC%E8%99%AB/" title="分类于 爬虫">爬虫</a>
+</div>
+
+    <span><a href="/2023/10/24/BaiduSyncdisk/%E5%A4%A7%E6%95%B0%E6%8D%AE/Python/Python%E7%BD%91%E7%BB%9C%E7%88%AC%E8%99%AB%EF%BC%88%E4%BA%8C%EF%BC%89/" title="Python网络爬虫（二）">Python网络爬虫（二）</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E6%B5%8B%E8%AF%95/" title="分类于 测试">测试</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/%E6%B5%8B%E8%AF%95/Markdown/" title="分类于 Markdown">Markdown</a>
+</div>
+
+    <span><a href="/2023/10/13/BaiduSyncdisk/markdown/%E6%B5%8B%E8%AF%95%E5%9B%BE%E5%BA%8A/" title="测试图床">测试图床</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/Java/" title="分类于 教程">教程</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/Java/Markdown/" title="分类于 Markdown">Markdown</a>
+</div>
+
+    <span><a href="/2023/10/08/BaiduSyncdisk/markdown/md%E8%AF%AD%E6%B3%95/" title="Markdown模版">Markdown模版</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/bigData/" title="分类于 大数据">大数据</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/bigData/Flink/" title="分类于 Flink">Flink</a>
+</div>
+
+    <span><a href="/2023/12/14/BaiduSyncdisk/%E5%A4%A7%E6%95%B0%E6%8D%AE/Flink/Flink%E7%9A%84%E4%B8%8D%E5%90%8Csource/" title="Flink的不同source">Flink的不同source</a></span>
+  </li>
+
+  </ul>
+</div>
+<div>
+  <h2>最新评论</h2>
+  <ul class="leancloud-recent-comment"></ul>
+</div>
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 2023 – 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="ic i-shyl"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">shyl @ 碎念随风</span>
+  </div>
+  <div class="count">
+    <span class="post-meta-item-icon">
+      <i class="ic i-chart-area"></i>
+    </span>
+    <span title="站点总字数">53k 字</span>
+
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="ic i-coffee"></i>
+    </span>
+    <span title="站点阅读时长">49 分钟</span>
+  </div>
+  <div class="powered-by">
+    基于 <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: '2023/12/14/BaiduSyncdisk/大数据/Flink/Flink的不同source/',
+    favicon: {
+      show: "（●´3｀●）やれやれだぜ",
+      hide: "(´Д｀)大変だ！"
+    },
+    search : {
+      placeholder: "文章搜索",
+      empty: "关于 「 ${query} 」，什么也没搜到",
+      stats: "${time} ms 内找到 ${hits} 条结果"
+    },
+    valine: true,fancybox: true,
+    copyright: '复制成功，转载请遵守 <i class="ic i-creative-commons"></i>BY-NC-SA 协议。',
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/js/app.js?v=0.2.5"></script>
+
+
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/koharu.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":false},"log":false});</script></body>
+</html>

@@ -7,22 +7,22 @@
         <language>zh-CN</language>
         <pubDate>Thu, 16 Nov 2023 10:39:42 +0800</pubDate>
         <lastBuildDate>Thu, 16 Nov 2023 10:39:42 +0800</lastBuildDate>
+        <category>笔记</category>
+        <category>Markdown</category>
+        <category>test</category>
+        <category>图床</category>
         <category>大数据</category>
         <category>Flink</category>
         <category>Bug</category>
+        <category>升级</category>
         <category>Python</category>
         <category>爬虫</category>
-        <category>笔记</category>
-        <category>Markdown</category>
-        <category>升级</category>
         <category>总结</category>
         <category>数仓搭建</category>
-        <category>test</category>
-        <category>图床</category>
         <item>
-            <guid isPermalink="true">http://example.com/2023/11/16/BaiduSyncdisk/hive3-13%E6%B7%BB%E5%8A%A0spark%E5%BC%95%E6%93%8E/</guid>
+            <guid isPermalink="true">http://example.com/2023/11/16/BaiduSyncdisk/%E5%A4%A7%E6%95%B0%E6%8D%AE/Hive/hive3-13%E6%B7%BB%E5%8A%A0spark%E5%BC%95%E6%93%8E/</guid>
             <title>hive3.13添加spark引擎</title>
-            <link>http://example.com/2023/11/16/BaiduSyncdisk/hive3-13%E6%B7%BB%E5%8A%A0spark%E5%BC%95%E6%93%8E/</link>
+            <link>http://example.com/2023/11/16/BaiduSyncdisk/%E5%A4%A7%E6%95%B0%E6%8D%AE/Hive/hive3-13%E6%B7%BB%E5%8A%A0spark%E5%BC%95%E6%93%8E/</link>
             <category>升级</category>
             <pubDate>Thu, 16 Nov 2023 10:39:42 +0800</pubDate>
             <description><![CDATA[ &lt;p&gt;&lt;em&gt;&lt;strong&gt;大数据架构 :lambda 架构，hsap 架构，流批一体&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;

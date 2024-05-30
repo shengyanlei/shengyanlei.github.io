@@ -5,25 +5,25 @@
         <link>http://example.com</link>
         <description>人海未见之时，我亦独行在这城市。 料峭，春醒，酷暑，骤雨，寒意四起，大雁南飞，而后，大雪，寒风， 斗转星移，人间寒暑。</description>
         <language>zh-CN</language>
-        <pubDate>Thu, 30 May 2024 11:09:14 +0800</pubDate>
-        <lastBuildDate>Thu, 30 May 2024 11:09:14 +0800</lastBuildDate>
+        <pubDate>Thu, 30 May 2024 12:06:49 +0800</pubDate>
+        <lastBuildDate>Thu, 30 May 2024 12:06:49 +0800</lastBuildDate>
+        <category>笔记</category>
+        <category>Markdown</category>
+        <category>test</category>
+        <category>图床</category>
         <category>大数据</category>
         <category>Flink</category>
         <category>Bug</category>
+        <category>升级</category>
         <category>Python</category>
         <category>爬虫</category>
-        <category>笔记</category>
-        <category>Markdown</category>
-        <category>升级</category>
         <category>总结</category>
         <category>数仓搭建</category>
-        <category>test</category>
-        <category>图床</category>
         <item>
-            <guid isPermalink="true">http://example.com/2024/05/30/BaiduSyncdisk/hello-world/</guid>
+            <guid isPermalink="true">http://example.com/2024/05/30/BaiduSyncdisk/markdown/hello-world/</guid>
             <title>Hello World</title>
-            <link>http://example.com/2024/05/30/BaiduSyncdisk/hello-world/</link>
-            <pubDate>Thu, 30 May 2024 11:09:14 +0800</pubDate>
+            <link>http://example.com/2024/05/30/BaiduSyncdisk/markdown/hello-world/</link>
+            <pubDate>Thu, 30 May 2024 12:06:49 +0800</pubDate>
             <description><![CDATA[ &lt;p&gt;Welcome to &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9oZXhvLmlvLw==&#34;&gt;Hexo&lt;/span&gt;! This is your very first post. Check &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9oZXhvLmlvL2RvY3Mv&#34;&gt;documentation&lt;/span&gt; for more info. If you get any problems when using Hexo, you can find the answer in &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9oZXhvLmlvL2RvY3MvdHJvdWJsZXNob290aW5nLmh0bWw=&#34;&gt;troubleshooting&lt;/span&gt; or you can ask me on &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9naXRodWIuY29tL2hleG9qcy9oZXhvL2lzc3Vlcw==&#34;&gt;GitHub&lt;/span&gt;.&lt;/p&gt;
 &lt;h2 id=&#34;quick-start&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#quick-start&#34;&gt;#&lt;/a&gt; Quick Start&lt;/h2&gt;
 &lt;h3 id=&#34;create-a-new-post&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#create-a-new-post&#34;&gt;#&lt;/a&gt; Create a new post&lt;/h3&gt;
@@ -37,9 +37,9 @@
  ]]></description>
         </item>
         <item>
-            <guid isPermalink="true">http://example.com/2024/05/23/BaiduSyncdisk/Flink%E7%9A%84%E7%AA%97%E5%8F%A3/</guid>
+            <guid isPermalink="true">http://example.com/2024/05/23/BaiduSyncdisk/%E5%A4%A7%E6%95%B0%E6%8D%AE/Flink/Flink%E7%9A%84%E7%AA%97%E5%8F%A3/</guid>
             <title>Flink的窗口</title>
-            <link>http://example.com/2024/05/23/BaiduSyncdisk/Flink%E7%9A%84%E7%AA%97%E5%8F%A3/</link>
+            <link>http://example.com/2024/05/23/BaiduSyncdisk/%E5%A4%A7%E6%95%B0%E6%8D%AE/Flink/Flink%E7%9A%84%E7%AA%97%E5%8F%A3/</link>
             <pubDate>Thu, 23 May 2024 10:36:44 +0800</pubDate>
             <description><![CDATA[ &lt;h4 id=&#34;一-为什么需要窗口&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#一-为什么需要窗口&#34;&gt;#&lt;/a&gt; 一、为什么需要窗口？&lt;/h4&gt;
 &lt;p&gt;在 Flink 中，流是一个无界数据集，当我们需要在流中进行一些聚合运算时，比如统计最近 30 秒的请求量或者异常次数，然后根据请求或者异常次数采取相应措施。无论是从时间还是空间上，在流中做聚合计算都不现实。所以必须将聚合计算回归到有界数据集上，因此 Flink 引入了窗口来作为框定一个有限数据集，窗口将流拆分成有限大小的 “桶”，允许开发者在这些桶中做聚合计算。Flink 的窗口可以是时间驱动（Time Window），也可以是事件驱动 (Event Window)。&lt;/p&gt;
@@ -147,9 +147,9 @@
  ]]></description>
         </item>
         <item>
-            <guid isPermalink="true">http://example.com/2024/05/17/BaiduSyncdisk/flink%E7%AE%97%E5%AD%90%E6%80%BB%E7%BB%93/</guid>
+            <guid isPermalink="true">http://example.com/2024/05/17/BaiduSyncdisk/%E5%A4%A7%E6%95%B0%E6%8D%AE/Flink/flink%E7%AE%97%E5%AD%90%E6%80%BB%E7%BB%93/</guid>
             <title>flink算子总结</title>
-            <link>http://example.com/2024/05/17/BaiduSyncdisk/flink%E7%AE%97%E5%AD%90%E6%80%BB%E7%BB%93/</link>
+            <link>http://example.com/2024/05/17/BaiduSyncdisk/%E5%A4%A7%E6%95%B0%E6%8D%AE/Flink/flink%E7%AE%97%E5%AD%90%E6%80%BB%E7%BB%93/</link>
             <category>大数据</category>
             <category>Flink</category>
             <pubDate>Fri, 17 May 2024 10:25:29 +0800</pubDate>
@@ -350,16 +350,16 @@
  ]]></description>
         </item>
         <item>
-            <guid isPermalink="true">http://example.com/2024/03/07/BaiduSyncdisk/%E5%AE%9E%E6%97%B6%E6%95%B0%E4%BB%93%E6%90%AD%E5%BB%BA/</guid>
+            <guid isPermalink="true">http://example.com/2024/03/07/BaiduSyncdisk/%E5%A4%A7%E6%95%B0%E6%8D%AE/%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93/%E5%AE%9E%E6%97%B6%E6%95%B0%E4%BB%93%E6%90%AD%E5%BB%BA/</guid>
             <title>实时数仓搭建</title>
-            <link>http://example.com/2024/03/07/BaiduSyncdisk/%E5%AE%9E%E6%97%B6%E6%95%B0%E4%BB%93%E6%90%AD%E5%BB%BA/</link>
+            <link>http://example.com/2024/03/07/BaiduSyncdisk/%E5%A4%A7%E6%95%B0%E6%8D%AE/%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93/%E5%AE%9E%E6%97%B6%E6%95%B0%E4%BB%93%E6%90%AD%E5%BB%BA/</link>
             <pubDate>Thu, 07 Mar 2024 13:52:09 +0800</pubDate>
             <description><![CDATA[  ]]></description>
         </item>
         <item>
-            <guid isPermalink="true">http://example.com/2023/12/14/BaiduSyncdisk/Flink%E7%9A%84%E4%B8%8D%E5%90%8Csource/</guid>
+            <guid isPermalink="true">http://example.com/2023/12/14/BaiduSyncdisk/%E5%A4%A7%E6%95%B0%E6%8D%AE/Flink/Flink%E7%9A%84%E4%B8%8D%E5%90%8Csource/</guid>
             <title>Flink的不同source</title>
-            <link>http://example.com/2023/12/14/BaiduSyncdisk/Flink%E7%9A%84%E4%B8%8D%E5%90%8Csource/</link>
+            <link>http://example.com/2023/12/14/BaiduSyncdisk/%E5%A4%A7%E6%95%B0%E6%8D%AE/Flink/Flink%E7%9A%84%E4%B8%8D%E5%90%8Csource/</link>
             <category>大数据</category>
             <category>Flink</category>
             <pubDate>Thu, 14 Dec 2023 15:31:33 +0800</pubDate>
@@ -385,9 +385,9 @@
 &lt;figure class=&#34;highlight xml&#34;&gt;&lt;figcaption data-lang=&#34;XML&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;lt;/&lt;/span&gt;dependency&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;        &lt;span class=&#34;token comment&#34;&gt;&amp;lt;!-- https://mvnrepository.com/artifact/org.apache.flink/flink-clients --&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;3&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;        &lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;lt;&lt;/span&gt;dependency&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;4&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;            &lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;lt;&lt;/span&gt;groupId&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&gt;&lt;/span&gt;&lt;/span&gt;org.apache.flink&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;lt;/&lt;/span&gt;groupId&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;5&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;            &lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;lt;&lt;/span&gt;artifactId&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&gt;&lt;/span&gt;&lt;/span&gt;flink-clients_2.12&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;lt;/&lt;/span&gt;artifactId&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;6&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;            &lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;lt;&lt;/span&gt;version&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&gt;&lt;/span&gt;&lt;/span&gt;1.14.4&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;lt;/&lt;/span&gt;version&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;7&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;        &lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;lt;/&lt;/span&gt;dependency&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;8&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;9&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;        &lt;span class=&#34;token comment&#34;&gt;&amp;lt;!-- https://mvnrepository.com/artifact/org.apache.flink/flink-streaming-java --&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;10&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;        &lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;lt;&lt;/span&gt;dependency&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;11&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;            &lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;lt;&lt;/span&gt;groupId&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&gt;&lt;/span&gt;&lt;/span&gt;org.apache.flink&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;lt;/&lt;/span&gt;groupId&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;12&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;            &lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;lt;&lt;/span&gt;artifactId&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&gt;&lt;/span&gt;&lt;/span&gt;flink-streaming-java_2.12&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;lt;/&lt;/span&gt;artifactId&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;13&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;            &lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;lt;&lt;/span&gt;version&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&gt;&lt;/span&gt;&lt;/span&gt;1.14.4&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;lt;/&lt;/span&gt;version&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;14&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token comment&#34;&gt;&amp;lt;!--            &amp;lt;scope&gt;provided&amp;lt;/scope&gt;--&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;15&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;        &lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;lt;/&lt;/span&gt;dependency&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;16&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;17&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;        &lt;span class=&#34;token comment&#34;&gt;&amp;lt;!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-api --&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;18&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;        &lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;lt;&lt;/span&gt;dependency&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;19&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;            &lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;lt;&lt;/span&gt;groupId&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&gt;&lt;/span&gt;&lt;/span&gt;org.slf4j&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;lt;/&lt;/span&gt;groupId&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;20&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;            &lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;lt;&lt;/span&gt;artifactId&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&gt;&lt;/span&gt;&lt;/span&gt;slf4j-api&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;lt;/&lt;/span&gt;artifactId&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;21&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;            &lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;lt;&lt;/span&gt;version&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&gt;&lt;/span&gt;&lt;/span&gt;1.7.12&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;lt;/&lt;/span&gt;version&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;22&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;        &lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;lt;/&lt;/span&gt;dependency&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;23&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;        &lt;span class=&#34;token comment&#34;&gt;&amp;lt;!-- https://mvnrepository.com/artifact/org.apache.flink/flink-runtime-web --&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;24&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;        &lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;lt;&lt;/span&gt;dependency&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;25&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;            &lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;lt;&lt;/span&gt;groupId&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&gt;&lt;/span&gt;&lt;/span&gt;org.apache.flink&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;lt;/&lt;/span&gt;groupId&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;26&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;            &lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;lt;&lt;/span&gt;artifactId&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&gt;&lt;/span&gt;&lt;/span&gt;flink-runtime-web_2.12&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;lt;/&lt;/span&gt;artifactId&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;27&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;            &lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;lt;&lt;/span&gt;version&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&gt;&lt;/span&gt;&lt;/span&gt;1.14.4&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;lt;/&lt;/span&gt;version&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;28&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token comment&#34;&gt;&amp;lt;!--            &amp;lt;scope&gt;test&amp;lt;/scope&gt;--&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;29&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;        &lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;lt;/&lt;/span&gt;dependency&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;30&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;        &lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;lt;&lt;/span&gt;dependency&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;31&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;            &lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;lt;&lt;/span&gt;groupId&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&gt;&lt;/span&gt;&lt;/span&gt;org.apache.flink&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;lt;/&lt;/span&gt;groupId&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;32&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;            &lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;lt;&lt;/span&gt;artifactId&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&gt;&lt;/span&gt;&lt;/span&gt;flink-connector-kafka_2.11&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;lt;/&lt;/span&gt;artifactId&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;33&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;            &lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;lt;&lt;/span&gt;version&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&gt;&lt;/span&gt;&lt;/span&gt;1.14.4&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;lt;/&lt;/span&gt;version&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;34&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;        &lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;lt;/&lt;/span&gt;dependency&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;35&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;        &lt;span class=&#34;token comment&#34;&gt;&amp;lt;!-- https://mvnrepository.com/artifact/org.apache.flink/flink-connector-jdbc --&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;36&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;        &lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;lt;&lt;/span&gt;dependency&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;37&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;            &lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;lt;&lt;/span&gt;groupId&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&gt;&lt;/span&gt;&lt;/span&gt;org.apache.flink&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;lt;/&lt;/span&gt;groupId&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;38&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;            &lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;lt;&lt;/span&gt;artifactId&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&gt;&lt;/span&gt;&lt;/span&gt;flink-connector-jdbc_2.12&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;lt;/&lt;/span&gt;artifactId&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;39&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;            &lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;lt;&lt;/span&gt;version&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&gt;&lt;/span&gt;&lt;/span&gt;1.14.4&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;lt;/&lt;/span&gt;version&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;40&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token comment&#34;&gt;&amp;lt;!--            &amp;lt;scope&gt;provided&amp;lt;/scope&gt;--&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;41&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;        &lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;lt;/&lt;/span&gt;dependency&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;42&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;        &lt;span class=&#34;token comment&#34;&gt;&amp;lt;!-- https://mvnrepository.com/artifact/com.mysql/mysql-connector-j --&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;43&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;        &lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;lt;&lt;/span&gt;dependency&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;44&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;            &lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;lt;&lt;/span&gt;groupId&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&gt;&lt;/span&gt;&lt;/span&gt;com.mysql&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;lt;/&lt;/span&gt;groupId&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;45&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;            &lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;lt;&lt;/span&gt;artifactId&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&gt;&lt;/span&gt;&lt;/span&gt;mysql-connector-j&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;lt;/&lt;/span&gt;artifactId&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;46&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;            &lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;lt;&lt;/span&gt;version&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&gt;&lt;/span&gt;&lt;/span&gt;8.0.31&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;lt;/&lt;/span&gt;version&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;47&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;        &lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;lt;/&lt;/span&gt;dependency&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt; ]]></description>
         </item>
         <item>
-            <guid isPermalink="true">http://example.com/2023/12/06/BaiduSyncdisk/Flink%E5%AD%A6%E4%B9%A0-%E4%B8%80/</guid>
+            <guid isPermalink="true">http://example.com/2023/12/06/BaiduSyncdisk/%E5%A4%A7%E6%95%B0%E6%8D%AE/Flink/Flink%E5%AD%A6%E4%B9%A0-%E4%B8%80/</guid>
             <title>Flink学习(一)</title>
-            <link>http://example.com/2023/12/06/BaiduSyncdisk/Flink%E5%AD%A6%E4%B9%A0-%E4%B8%80/</link>
+            <link>http://example.com/2023/12/06/BaiduSyncdisk/%E5%A4%A7%E6%95%B0%E6%8D%AE/Flink/Flink%E5%AD%A6%E4%B9%A0-%E4%B8%80/</link>
             <category>大数据</category>
             <category>Flink</category>
             <pubDate>Wed, 06 Dec 2023 11:36:08 +0800</pubDate>
@@ -516,9 +516,9 @@
  ]]></description>
         </item>
         <item>
-            <guid isPermalink="true">http://example.com/2023/12/01/BaiduSyncdisk/Flink%E7%9A%84%E6%90%AD%E5%BB%BA/</guid>
+            <guid isPermalink="true">http://example.com/2023/12/01/BaiduSyncdisk/%E5%A4%A7%E6%95%B0%E6%8D%AE/Flink/Flink%E7%9A%84%E6%90%AD%E5%BB%BA/</guid>
             <title>Flink的搭建</title>
-            <link>http://example.com/2023/12/01/BaiduSyncdisk/Flink%E7%9A%84%E6%90%AD%E5%BB%BA/</link>
+            <link>http://example.com/2023/12/01/BaiduSyncdisk/%E5%A4%A7%E6%95%B0%E6%8D%AE/Flink/Flink%E7%9A%84%E6%90%AD%E5%BB%BA/</link>
             <category>大数据</category>
             <category>Flink</category>
             <pubDate>Fri, 01 Dec 2023 09:33:02 +0800</pubDate>
@@ -676,9 +676,9 @@
  ]]></description>
         </item>
         <item>
-            <guid isPermalink="true">http://example.com/2023/11/16/BaiduSyncdisk/hive3-13%E6%B7%BB%E5%8A%A0spark%E5%BC%95%E6%93%8E/</guid>
+            <guid isPermalink="true">http://example.com/2023/11/16/BaiduSyncdisk/%E5%A4%A7%E6%95%B0%E6%8D%AE/Hive/hive3-13%E6%B7%BB%E5%8A%A0spark%E5%BC%95%E6%93%8E/</guid>
             <title>hive3.13添加spark引擎</title>
-            <link>http://example.com/2023/11/16/BaiduSyncdisk/hive3-13%E6%B7%BB%E5%8A%A0spark%E5%BC%95%E6%93%8E/</link>
+            <link>http://example.com/2023/11/16/BaiduSyncdisk/%E5%A4%A7%E6%95%B0%E6%8D%AE/Hive/hive3-13%E6%B7%BB%E5%8A%A0spark%E5%BC%95%E6%93%8E/</link>
             <category>升级</category>
             <pubDate>Thu, 16 Nov 2023 10:39:42 +0800</pubDate>
             <description><![CDATA[ &lt;p&gt;&lt;em&gt;&lt;strong&gt;大数据架构 :lambda 架构，hsap 架构，流批一体&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
@@ -691,9 +691,9 @@
  ]]></description>
         </item>
         <item>
-            <guid isPermalink="true">http://example.com/2023/11/03/BaiduSyncdisk/Hive%E4%B8%AD%E7%9A%84explode/</guid>
+            <guid isPermalink="true">http://example.com/2023/11/03/BaiduSyncdisk/%E5%A4%A7%E6%95%B0%E6%8D%AE/Hive/Hive%E4%B8%AD%E7%9A%84explode/</guid>
             <title>Hive中的explode</title>
-            <link>http://example.com/2023/11/03/BaiduSyncdisk/Hive%E4%B8%AD%E7%9A%84explode/</link>
+            <link>http://example.com/2023/11/03/BaiduSyncdisk/%E5%A4%A7%E6%95%B0%E6%8D%AE/Hive/Hive%E4%B8%AD%E7%9A%84explode/</link>
             <category>Bug</category>
             <pubDate>Fri, 03 Nov 2023 10:22:29 +0800</pubDate>
             <description><![CDATA[ &lt;h3 id=&#34;一-问题介绍&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#一-问题介绍&#34;&gt;#&lt;/a&gt; 一、问题介绍&lt;/h3&gt;
@@ -896,9 +896,9 @@ lateral view explode(nvl(list,array(NULL)))t1 as a;
  ]]></description>
         </item>
         <item>
-            <guid isPermalink="true">http://example.com/2023/11/03/BaiduSyncdisk/Hive%E4%B8%AD%E7%9A%84Struct%E7%B1%BB%E5%9E%8BBug/</guid>
+            <guid isPermalink="true">http://example.com/2023/11/03/BaiduSyncdisk/%E5%A4%A7%E6%95%B0%E6%8D%AE/Hive/Hive%E4%B8%AD%E7%9A%84Struct%E7%B1%BB%E5%9E%8BBug/</guid>
             <title>Hive中的Struct类型Bug</title>
-            <link>http://example.com/2023/11/03/BaiduSyncdisk/Hive%E4%B8%AD%E7%9A%84Struct%E7%B1%BB%E5%9E%8BBug/</link>
+            <link>http://example.com/2023/11/03/BaiduSyncdisk/%E5%A4%A7%E6%95%B0%E6%8D%AE/Hive/Hive%E4%B8%AD%E7%9A%84Struct%E7%B1%BB%E5%9E%8BBug/</link>
             <category>Bug</category>
             <pubDate>Fri, 03 Nov 2023 10:21:17 +0800</pubDate>
             <description><![CDATA[ &lt;p&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9pc3N1ZXMuYXBhY2hlLm9yZy9qaXJhL2Jyb3dzZS9ISVZFLTIxNzc4&#34;&gt;原文地址&lt;/span&gt;&lt;/p&gt;
@@ -909,9 +909,9 @@ lateral view explode(nvl(list,array(NULL)))t1 as a;
  ]]></description>
         </item>
         <item>
-            <guid isPermalink="true">http://example.com/2023/10/24/BaiduSyncdisk/Python%E7%BD%91%E7%BB%9C%E7%88%AC%E8%99%AB%EF%BC%88%E4%BA%8C%EF%BC%89/</guid>
+            <guid isPermalink="true">http://example.com/2023/10/24/BaiduSyncdisk/%E5%A4%A7%E6%95%B0%E6%8D%AE/Python/Python%E7%BD%91%E7%BB%9C%E7%88%AC%E8%99%AB%EF%BC%88%E4%BA%8C%EF%BC%89/</guid>
             <title>Python网络爬虫（二）</title>
-            <link>http://example.com/2023/10/24/BaiduSyncdisk/Python%E7%BD%91%E7%BB%9C%E7%88%AC%E8%99%AB%EF%BC%88%E4%BA%8C%EF%BC%89/</link>
+            <link>http://example.com/2023/10/24/BaiduSyncdisk/%E5%A4%A7%E6%95%B0%E6%8D%AE/Python/Python%E7%BD%91%E7%BB%9C%E7%88%AC%E8%99%AB%EF%BC%88%E4%BA%8C%EF%BC%89/</link>
             <category>Python</category>
             <category>爬虫</category>
             <pubDate>Tue, 24 Oct 2023 15:34:44 +0800</pubDate>
@@ -1123,9 +1123,9 @@ soup.title
  ]]></description>
         </item>
         <item>
-            <guid isPermalink="true">http://example.com/2023/10/24/BaiduSyncdisk/Python%E7%BD%91%E7%BB%9C%E7%88%AC%E8%99%AB%E4%B8%80/</guid>
+            <guid isPermalink="true">http://example.com/2023/10/24/BaiduSyncdisk/%E5%A4%A7%E6%95%B0%E6%8D%AE/Python/Python%E7%BD%91%E7%BB%9C%E7%88%AC%E8%99%AB%E4%B8%80/</guid>
             <title>Python网络爬虫（一）</title>
-            <link>http://example.com/2023/10/24/BaiduSyncdisk/Python%E7%BD%91%E7%BB%9C%E7%88%AC%E8%99%AB%E4%B8%80/</link>
+            <link>http://example.com/2023/10/24/BaiduSyncdisk/%E5%A4%A7%E6%95%B0%E6%8D%AE/Python/Python%E7%BD%91%E7%BB%9C%E7%88%AC%E8%99%AB%E4%B8%80/</link>
             <category>Python</category>
             <category>爬虫</category>
             <pubDate>Tue, 24 Oct 2023 09:21:16 +0800</pubDate>
@@ -1277,9 +1277,9 @@ soup.title
  ]]></description>
         </item>
         <item>
-            <guid isPermalink="true">http://example.com/2023/10/19/BaiduSyncdisk/%E6%95%B0%E4%BB%93%E6%90%AD%E5%BB%BA%E7%9A%84%E6%95%B0%E6%8D%AE%E8%B7%A8%E5%A4%A9%E9%97%AE%E9%A2%98/</guid>
+            <guid isPermalink="true">http://example.com/2023/10/19/BaiduSyncdisk/%E5%A4%A7%E6%95%B0%E6%8D%AE/%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93/%E6%95%B0%E4%BB%93%E6%90%AD%E5%BB%BA%E7%9A%84%E6%95%B0%E6%8D%AE%E8%B7%A8%E5%A4%A9%E9%97%AE%E9%A2%98/</guid>
             <title>数仓搭建的数据跨天问题</title>
-            <link>http://example.com/2023/10/19/BaiduSyncdisk/%E6%95%B0%E4%BB%93%E6%90%AD%E5%BB%BA%E7%9A%84%E6%95%B0%E6%8D%AE%E8%B7%A8%E5%A4%A9%E9%97%AE%E9%A2%98/</link>
+            <link>http://example.com/2023/10/19/BaiduSyncdisk/%E5%A4%A7%E6%95%B0%E6%8D%AE/%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93/%E6%95%B0%E4%BB%93%E6%90%AD%E5%BB%BA%E7%9A%84%E6%95%B0%E6%8D%AE%E8%B7%A8%E5%A4%A9%E9%97%AE%E9%A2%98/</link>
             <category>总结</category>
             <category>数仓搭建</category>
             <pubDate>Thu, 19 Oct 2023 17:19:32 +0800</pubDate>
@@ -1303,9 +1303,9 @@ soup.title
  ]]></description>
         </item>
         <item>
-            <guid isPermalink="true">http://example.com/2023/10/13/BaiduSyncdisk/fluid%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/</guid>
+            <guid isPermalink="true">http://example.com/2023/10/13/BaiduSyncdisk/markdown/fluid%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/</guid>
             <title>fluid使用指南</title>
-            <link>http://example.com/2023/10/13/BaiduSyncdisk/fluid%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/</link>
+            <link>http://example.com/2023/10/13/BaiduSyncdisk/markdown/fluid%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/</link>
             <pubDate>Fri, 13 Oct 2023 15:17:59 +0800</pubDate>
             <description><![CDATA[ &lt;h3 id=&#34;1文章中使用主题内置的便签&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#1文章中使用主题内置的便签&#34;&gt;#&lt;/a&gt; 1. 文章中使用主题内置的便签&lt;/h3&gt;
 &lt;figure class=&#34;highlight html&#34;&gt;&lt;figcaption data-lang=&#34;HTML&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;lt;&lt;/span&gt;p&lt;/span&gt; &lt;span class=&#34;token attr-name&#34;&gt;class&lt;/span&gt;&lt;span class=&#34;token attr-value&#34;&gt;&lt;span class=&#34;token punctuation attr-equals&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&#34;&lt;/span&gt;note note-primary&lt;span class=&#34;token punctuation&#34;&gt;&#34;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&gt;&lt;/span&gt;&lt;/span&gt;标签&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;lt;/&lt;/span&gt;p&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;使用效果图如下：&lt;/p&gt;
@@ -1322,9 +1322,9 @@ soup.title
  ]]></description>
         </item>
         <item>
-            <guid isPermalink="true">http://example.com/2023/10/13/BaiduSyncdisk/%E6%B5%8B%E8%AF%95%E5%9B%BE%E5%BA%8A/</guid>
+            <guid isPermalink="true">http://example.com/2023/10/13/BaiduSyncdisk/markdown/%E6%B5%8B%E8%AF%95%E5%9B%BE%E5%BA%8A/</guid>
             <title>测试图床</title>
-            <link>http://example.com/2023/10/13/BaiduSyncdisk/%E6%B5%8B%E8%AF%95%E5%9B%BE%E5%BA%8A/</link>
+            <link>http://example.com/2023/10/13/BaiduSyncdisk/markdown/%E6%B5%8B%E8%AF%95%E5%9B%BE%E5%BA%8A/</link>
             <category>test</category>
             <category>图床</category>
             <pubDate>Fri, 13 Oct 2023 11:12:37 +0800</pubDate>
@@ -1364,9 +1364,9 @@ Tips:&lt;br&gt;
  ]]></description>
         </item>
         <item>
-            <guid isPermalink="true">http://example.com/2023/10/08/BaiduSyncdisk/md%E8%AF%AD%E6%B3%95/</guid>
+            <guid isPermalink="true">http://example.com/2023/10/08/BaiduSyncdisk/markdown/md%E8%AF%AD%E6%B3%95/</guid>
             <title>Markdown模版</title>
-            <link>http://example.com/2023/10/08/BaiduSyncdisk/md%E8%AF%AD%E6%B3%95/</link>
+            <link>http://example.com/2023/10/08/BaiduSyncdisk/markdown/md%E8%AF%AD%E6%B3%95/</link>
             <category>笔记</category>
             <category>Markdown</category>
             <pubDate>Sun, 08 Oct 2023 17:47:18 +0800</pubDate>

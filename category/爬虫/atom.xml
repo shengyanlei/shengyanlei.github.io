@@ -4,22 +4,22 @@
     <title>碎念随风 • Posts by &#34;爬虫&#34; category</title>
     <link href="http://example.com" />
     <updated>2023-10-24T07:34:44.000Z</updated>
+    <category term="笔记" />
+    <category term="Markdown" />
+    <category term="test" />
+    <category term="图床" />
     <category term="大数据" />
     <category term="Flink" />
     <category term="Bug" />
+    <category term="升级" />
     <category term="Python" />
     <category term="爬虫" />
-    <category term="笔记" />
-    <category term="Markdown" />
-    <category term="升级" />
     <category term="总结" />
     <category term="数仓搭建" />
-    <category term="test" />
-    <category term="图床" />
     <entry>
-        <id>http://example.com/2023/10/24/BaiduSyncdisk/Python%E7%BD%91%E7%BB%9C%E7%88%AC%E8%99%AB%EF%BC%88%E4%BA%8C%EF%BC%89/</id>
+        <id>http://example.com/2023/10/24/BaiduSyncdisk/%E5%A4%A7%E6%95%B0%E6%8D%AE/Python/Python%E7%BD%91%E7%BB%9C%E7%88%AC%E8%99%AB%EF%BC%88%E4%BA%8C%EF%BC%89/</id>
         <title>Python网络爬虫（二）</title>
-        <link rel="alternate" href="http://example.com/2023/10/24/BaiduSyncdisk/Python%E7%BD%91%E7%BB%9C%E7%88%AC%E8%99%AB%EF%BC%88%E4%BA%8C%EF%BC%89/"/>
+        <link rel="alternate" href="http://example.com/2023/10/24/BaiduSyncdisk/%E5%A4%A7%E6%95%B0%E6%8D%AE/Python/Python%E7%BD%91%E7%BB%9C%E7%88%AC%E8%99%AB%EF%BC%88%E4%BA%8C%EF%BC%89/"/>
         <content type="html">&lt;h3 id=&#34;一-request库&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#一-request库&#34;&gt;#&lt;/a&gt; 一、request 库&lt;/h3&gt;
 &lt;p&gt;Requests 是一个常用的 HTTP 请求库，可以方便地向网站发送 HTTP 请求，并获取响应结果。这是官方的文档：&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9yZXF1ZXN0cy5yZWFkdGhlZG9jcy5pby9lbi9sYXRlc3Qv&#34;&gt;request 官方文档&lt;/span&gt;（官方文档不太容易看懂😹）可以选择菜鸟教程里面的 requests 库讲解&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly93d3cucnVub29iLmNvbS9weXRob24zL3B5dGhvbi1yZXF1ZXN0cy5odG1s&#34;&gt;菜鸟教程&lt;/span&gt;。&lt;/p&gt;
 &lt;table&gt;
@@ -231,9 +231,9 @@ soup.title
         <updated>2023-10-24T07:34:44.000Z</updated>
     </entry>
     <entry>
-        <id>http://example.com/2023/10/24/BaiduSyncdisk/Python%E7%BD%91%E7%BB%9C%E7%88%AC%E8%99%AB%E4%B8%80/</id>
+        <id>http://example.com/2023/10/24/BaiduSyncdisk/%E5%A4%A7%E6%95%B0%E6%8D%AE/Python/Python%E7%BD%91%E7%BB%9C%E7%88%AC%E8%99%AB%E4%B8%80/</id>
         <title>Python网络爬虫（一）</title>
-        <link rel="alternate" href="http://example.com/2023/10/24/BaiduSyncdisk/Python%E7%BD%91%E7%BB%9C%E7%88%AC%E8%99%AB%E4%B8%80/"/>
+        <link rel="alternate" href="http://example.com/2023/10/24/BaiduSyncdisk/%E5%A4%A7%E6%95%B0%E6%8D%AE/Python/Python%E7%BD%91%E7%BB%9C%E7%88%AC%E8%99%AB%E4%B8%80/"/>
         <content type="html">&lt;h3 id=&#34;一-爬虫简介&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#一-爬虫简介&#34;&gt;#&lt;/a&gt; 一、爬虫简介&lt;/h3&gt;
 &lt;p&gt;网络爬虫（又称为网页蜘蛛，网络机器人，在 FOAF 社区中间，更经常的称为网页追逐者），是一种按照一定的规则，自动地抓取万维网信息的程序或者脚本。另外一些不常使用的名字还有蚂蚁、自动索引、模拟程序或者蠕虫。&lt;/p&gt;
 &lt;h3 id=&#34;二-网站robots协议&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#二-网站robots协议&#34;&gt;#&lt;/a&gt; 二、网站 robots 协议&lt;/h3&gt;

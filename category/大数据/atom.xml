@@ -4,22 +4,22 @@
     <title>碎念随风 • Posts by &#34;大数据&#34; category</title>
     <link href="http://example.com" />
     <updated>2024-05-23T02:36:44.000Z</updated>
+    <category term="笔记" />
+    <category term="Markdown" />
+    <category term="test" />
+    <category term="图床" />
     <category term="大数据" />
     <category term="Flink" />
     <category term="Bug" />
+    <category term="升级" />
     <category term="Python" />
     <category term="爬虫" />
-    <category term="笔记" />
-    <category term="Markdown" />
-    <category term="升级" />
     <category term="总结" />
     <category term="数仓搭建" />
-    <category term="test" />
-    <category term="图床" />
     <entry>
-        <id>http://example.com/2024/05/23/BaiduSyncdisk/Flink%E7%9A%84%E7%AA%97%E5%8F%A3/</id>
+        <id>http://example.com/2024/05/23/BaiduSyncdisk/%E5%A4%A7%E6%95%B0%E6%8D%AE/Flink/Flink%E7%9A%84%E7%AA%97%E5%8F%A3/</id>
         <title>Flink的窗口</title>
-        <link rel="alternate" href="http://example.com/2024/05/23/BaiduSyncdisk/Flink%E7%9A%84%E7%AA%97%E5%8F%A3/"/>
+        <link rel="alternate" href="http://example.com/2024/05/23/BaiduSyncdisk/%E5%A4%A7%E6%95%B0%E6%8D%AE/Flink/Flink%E7%9A%84%E7%AA%97%E5%8F%A3/"/>
         <content type="html">&lt;h4 id=&#34;一-为什么需要窗口&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#一-为什么需要窗口&#34;&gt;#&lt;/a&gt; 一、为什么需要窗口？&lt;/h4&gt;
 &lt;p&gt;在 Flink 中，流是一个无界数据集，当我们需要在流中进行一些聚合运算时，比如统计最近 30 秒的请求量或者异常次数，然后根据请求或者异常次数采取相应措施。无论是从时间还是空间上，在流中做聚合计算都不现实。所以必须将聚合计算回归到有界数据集上，因此 Flink 引入了窗口来作为框定一个有限数据集，窗口将流拆分成有限大小的 “桶”，允许开发者在这些桶中做聚合计算。Flink 的窗口可以是时间驱动（Time Window），也可以是事件驱动 (Event Window)。&lt;/p&gt;
 &lt;h4 id=&#34;二-基本概念&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#二-基本概念&#34;&gt;#&lt;/a&gt; 二、 基本概念&lt;/h4&gt;
@@ -127,9 +127,9 @@
         <updated>2024-05-23T02:36:44.000Z</updated>
     </entry>
     <entry>
-        <id>http://example.com/2024/05/17/BaiduSyncdisk/flink%E7%AE%97%E5%AD%90%E6%80%BB%E7%BB%93/</id>
+        <id>http://example.com/2024/05/17/BaiduSyncdisk/%E5%A4%A7%E6%95%B0%E6%8D%AE/Flink/flink%E7%AE%97%E5%AD%90%E6%80%BB%E7%BB%93/</id>
         <title>flink算子总结</title>
-        <link rel="alternate" href="http://example.com/2024/05/17/BaiduSyncdisk/flink%E7%AE%97%E5%AD%90%E6%80%BB%E7%BB%93/"/>
+        <link rel="alternate" href="http://example.com/2024/05/17/BaiduSyncdisk/%E5%A4%A7%E6%95%B0%E6%8D%AE/Flink/flink%E7%AE%97%E5%AD%90%E6%80%BB%E7%BB%93/"/>
         <content type="html">&lt;p&gt;前言： Flink 提供了丰富的算子来方便开发者处理各种应用场景。&lt;/p&gt;
 &lt;h4 id=&#34;一-基本转换类算子&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#一-基本转换类算子&#34;&gt;#&lt;/a&gt; 一、基本转换类算子&lt;/h4&gt;
 &lt;ol&gt;
@@ -330,16 +330,16 @@
         <updated>2024-05-17T02:25:29.000Z</updated>
     </entry>
     <entry>
-        <id>http://example.com/2024/03/07/BaiduSyncdisk/%E5%AE%9E%E6%97%B6%E6%95%B0%E4%BB%93%E6%90%AD%E5%BB%BA/</id>
+        <id>http://example.com/2024/03/07/BaiduSyncdisk/%E5%A4%A7%E6%95%B0%E6%8D%AE/%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93/%E5%AE%9E%E6%97%B6%E6%95%B0%E4%BB%93%E6%90%AD%E5%BB%BA/</id>
         <title>实时数仓搭建</title>
-        <link rel="alternate" href="http://example.com/2024/03/07/BaiduSyncdisk/%E5%AE%9E%E6%97%B6%E6%95%B0%E4%BB%93%E6%90%AD%E5%BB%BA/"/>
+        <link rel="alternate" href="http://example.com/2024/03/07/BaiduSyncdisk/%E5%A4%A7%E6%95%B0%E6%8D%AE/%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93/%E5%AE%9E%E6%97%B6%E6%95%B0%E4%BB%93%E6%90%AD%E5%BB%BA/"/>
         <content type="html"></content>
         <updated>2024-03-07T05:52:09.000Z</updated>
     </entry>
     <entry>
-        <id>http://example.com/2023/12/14/BaiduSyncdisk/Flink%E7%9A%84%E4%B8%8D%E5%90%8Csource/</id>
+        <id>http://example.com/2023/12/14/BaiduSyncdisk/%E5%A4%A7%E6%95%B0%E6%8D%AE/Flink/Flink%E7%9A%84%E4%B8%8D%E5%90%8Csource/</id>
         <title>Flink的不同source</title>
-        <link rel="alternate" href="http://example.com/2023/12/14/BaiduSyncdisk/Flink%E7%9A%84%E4%B8%8D%E5%90%8Csource/"/>
+        <link rel="alternate" href="http://example.com/2023/12/14/BaiduSyncdisk/%E5%A4%A7%E6%95%B0%E6%8D%AE/Flink/Flink%E7%9A%84%E4%B8%8D%E5%90%8Csource/"/>
         <content type="html">&lt;ol&gt;
 &lt;li&gt;&lt;strong&gt;Elements&lt;/strong&gt;&lt;/li&gt;
 &lt;/ol&gt;
@@ -365,9 +365,9 @@
         <updated>2023-12-14T07:31:33.000Z</updated>
     </entry>
     <entry>
-        <id>http://example.com/2023/12/06/BaiduSyncdisk/Flink%E5%AD%A6%E4%B9%A0-%E4%B8%80/</id>
+        <id>http://example.com/2023/12/06/BaiduSyncdisk/%E5%A4%A7%E6%95%B0%E6%8D%AE/Flink/Flink%E5%AD%A6%E4%B9%A0-%E4%B8%80/</id>
         <title>Flink学习(一)</title>
-        <link rel="alternate" href="http://example.com/2023/12/06/BaiduSyncdisk/Flink%E5%AD%A6%E4%B9%A0-%E4%B8%80/"/>
+        <link rel="alternate" href="http://example.com/2023/12/06/BaiduSyncdisk/%E5%A4%A7%E6%95%B0%E6%8D%AE/Flink/Flink%E5%AD%A6%E4%B9%A0-%E4%B8%80/"/>
         <content type="html">&lt;h3 id=&#34;一-flink相关名词解析&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#一-flink相关名词解析&#34;&gt;#&lt;/a&gt; 一、Flink 相关名词解析&lt;/h3&gt;
 &lt;ol&gt;
 &lt;li&gt;DataStream API&lt;/li&gt;
@@ -496,9 +496,9 @@
         <updated>2023-12-06T03:36:08.000Z</updated>
     </entry>
     <entry>
-        <id>http://example.com/2023/12/01/BaiduSyncdisk/Flink%E7%9A%84%E6%90%AD%E5%BB%BA/</id>
+        <id>http://example.com/2023/12/01/BaiduSyncdisk/%E5%A4%A7%E6%95%B0%E6%8D%AE/Flink/Flink%E7%9A%84%E6%90%AD%E5%BB%BA/</id>
         <title>Flink的搭建</title>
-        <link rel="alternate" href="http://example.com/2023/12/01/BaiduSyncdisk/Flink%E7%9A%84%E6%90%AD%E5%BB%BA/"/>
+        <link rel="alternate" href="http://example.com/2023/12/01/BaiduSyncdisk/%E5%A4%A7%E6%95%B0%E6%8D%AE/Flink/Flink%E7%9A%84%E6%90%AD%E5%BB%BA/"/>
         <content type="html">&lt;h3 id=&#34;一-集群规划&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#一-集群规划&#34;&gt;#&lt;/a&gt; 一、集群规划&lt;/h3&gt;
 &lt;table&gt;
 &lt;thead&gt;
@@ -656,9 +656,9 @@
         <updated>2023-12-01T01:33:02.000Z</updated>
     </entry>
     <entry>
-        <id>http://example.com/2023/11/16/BaiduSyncdisk/hive3-13%E6%B7%BB%E5%8A%A0spark%E5%BC%95%E6%93%8E/</id>
+        <id>http://example.com/2023/11/16/BaiduSyncdisk/%E5%A4%A7%E6%95%B0%E6%8D%AE/Hive/hive3-13%E6%B7%BB%E5%8A%A0spark%E5%BC%95%E6%93%8E/</id>
         <title>hive3.13添加spark引擎</title>
-        <link rel="alternate" href="http://example.com/2023/11/16/BaiduSyncdisk/hive3-13%E6%B7%BB%E5%8A%A0spark%E5%BC%95%E6%93%8E/"/>
+        <link rel="alternate" href="http://example.com/2023/11/16/BaiduSyncdisk/%E5%A4%A7%E6%95%B0%E6%8D%AE/Hive/hive3-13%E6%B7%BB%E5%8A%A0spark%E5%BC%95%E6%93%8E/"/>
         <content type="html">&lt;p&gt;&lt;em&gt;&lt;strong&gt;大数据架构 :lambda 架构，hsap 架构，流批一体&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9jd2lraS5hcGFjaGUub3JnL2NvbmZsdWVuY2UvZGlzcGxheS9IaXZlL0hpdmUrb24rU3BhcmslM0ErR2V0dGluZytTdGFydGVk&#34;&gt;Hive 官网关于 spark on hive&lt;/span&gt;&lt;/p&gt;
 &lt;h3 id=&#34;一-spark-on-hive-和-hive-on-spark-的区别和联系&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#一-spark-on-hive-和-hive-on-spark-的区别和联系&#34;&gt;#&lt;/a&gt; 一、spark on hive 和 hive on spark 的区别和联系&lt;/h3&gt;
@@ -671,9 +671,9 @@
         <updated>2023-11-16T02:39:42.000Z</updated>
     </entry>
     <entry>
-        <id>http://example.com/2023/11/03/BaiduSyncdisk/Hive%E4%B8%AD%E7%9A%84explode/</id>
+        <id>http://example.com/2023/11/03/BaiduSyncdisk/%E5%A4%A7%E6%95%B0%E6%8D%AE/Hive/Hive%E4%B8%AD%E7%9A%84explode/</id>
         <title>Hive中的explode</title>
-        <link rel="alternate" href="http://example.com/2023/11/03/BaiduSyncdisk/Hive%E4%B8%AD%E7%9A%84explode/"/>
+        <link rel="alternate" href="http://example.com/2023/11/03/BaiduSyncdisk/%E5%A4%A7%E6%95%B0%E6%8D%AE/Hive/Hive%E4%B8%AD%E7%9A%84explode/"/>
         <content type="html">&lt;h3 id=&#34;一-问题介绍&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#一-问题介绍&#34;&gt;#&lt;/a&gt; 一、问题介绍&lt;/h3&gt;
 &lt;p&gt;在使用 explode 进行炸列操作时，发现炸列后有的行消失了。&lt;/p&gt;
 &lt;h3 id=&#34;二-模拟场景&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#二-模拟场景&#34;&gt;#&lt;/a&gt; 二、模拟场景&lt;/h3&gt;
@@ -876,9 +876,9 @@ lateral view explode(nvl(list,array(NULL)))t1 as a;
         <updated>2023-11-03T02:22:29.000Z</updated>
     </entry>
     <entry>
-        <id>http://example.com/2023/11/03/BaiduSyncdisk/Hive%E4%B8%AD%E7%9A%84Struct%E7%B1%BB%E5%9E%8BBug/</id>
+        <id>http://example.com/2023/11/03/BaiduSyncdisk/%E5%A4%A7%E6%95%B0%E6%8D%AE/Hive/Hive%E4%B8%AD%E7%9A%84Struct%E7%B1%BB%E5%9E%8BBug/</id>
         <title>Hive中的Struct类型Bug</title>
-        <link rel="alternate" href="http://example.com/2023/11/03/BaiduSyncdisk/Hive%E4%B8%AD%E7%9A%84Struct%E7%B1%BB%E5%9E%8BBug/"/>
+        <link rel="alternate" href="http://example.com/2023/11/03/BaiduSyncdisk/%E5%A4%A7%E6%95%B0%E6%8D%AE/Hive/Hive%E4%B8%AD%E7%9A%84Struct%E7%B1%BB%E5%9E%8BBug/"/>
         <content type="html">&lt;p&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9pc3N1ZXMuYXBhY2hlLm9yZy9qaXJhL2Jyb3dzZS9ISVZFLTIxNzc4&#34;&gt;原文地址&lt;/span&gt;&lt;/p&gt;
 &lt;h3 id=&#34;一-hive的struct类型介绍&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#一-hive的struct类型介绍&#34;&gt;#&lt;/a&gt; 一、hive 的 Struct 类型介绍&lt;/h3&gt;
 &lt;p&gt;Struct 是 Hive 复杂数据类型的一种 ，声明方式  &lt;code&gt;STRUCT&amp;lt;col_name : data_type [COMMENT col_comment], ...&amp;gt;&lt;/code&gt;&lt;/p&gt;
@@ -889,9 +889,9 @@ lateral view explode(nvl(list,array(NULL)))t1 as a;
         <updated>2023-11-03T02:21:17.000Z</updated>
     </entry>
     <entry>
-        <id>http://example.com/2023/10/19/BaiduSyncdisk/%E6%95%B0%E4%BB%93%E6%90%AD%E5%BB%BA%E7%9A%84%E6%95%B0%E6%8D%AE%E8%B7%A8%E5%A4%A9%E9%97%AE%E9%A2%98/</id>
+        <id>http://example.com/2023/10/19/BaiduSyncdisk/%E5%A4%A7%E6%95%B0%E6%8D%AE/%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93/%E6%95%B0%E4%BB%93%E6%90%AD%E5%BB%BA%E7%9A%84%E6%95%B0%E6%8D%AE%E8%B7%A8%E5%A4%A9%E9%97%AE%E9%A2%98/</id>
         <title>数仓搭建的数据跨天问题</title>
-        <link rel="alternate" href="http://example.com/2023/10/19/BaiduSyncdisk/%E6%95%B0%E4%BB%93%E6%90%AD%E5%BB%BA%E7%9A%84%E6%95%B0%E6%8D%AE%E8%B7%A8%E5%A4%A9%E9%97%AE%E9%A2%98/"/>
+        <link rel="alternate" href="http://example.com/2023/10/19/BaiduSyncdisk/%E5%A4%A7%E6%95%B0%E6%8D%AE/%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93/%E6%95%B0%E4%BB%93%E6%90%AD%E5%BB%BA%E7%9A%84%E6%95%B0%E6%8D%AE%E8%B7%A8%E5%A4%A9%E9%97%AE%E9%A2%98/"/>
         <content type="html">&lt;h3 id=&#34;一-问题背景&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#一-问题背景&#34;&gt;#&lt;/a&gt; 一、问题背景&lt;/h3&gt;
 &lt;p&gt;在电商的离线数仓搭建中，进行 dwd 层订单域的设计中，普遍会出现订单数据跨天的情况，对于边界数据该如何处理。&lt;/p&gt;
 &lt;h3 id=&#34;二-业务背景&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#二-业务背景&#34;&gt;#&lt;/a&gt; 二、业务背景&lt;/h3&gt;

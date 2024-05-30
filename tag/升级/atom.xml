@@ -4,22 +4,22 @@
     <title>碎念随风 • Posts by &#34;升级&#34; tag</title>
     <link href="http://example.com" />
     <updated>2023-11-16T02:39:42.000Z</updated>
+    <category term="笔记" />
+    <category term="Markdown" />
+    <category term="test" />
+    <category term="图床" />
     <category term="大数据" />
     <category term="Flink" />
     <category term="Bug" />
+    <category term="升级" />
     <category term="Python" />
     <category term="爬虫" />
-    <category term="笔记" />
-    <category term="Markdown" />
-    <category term="升级" />
     <category term="总结" />
     <category term="数仓搭建" />
-    <category term="test" />
-    <category term="图床" />
     <entry>
-        <id>http://example.com/2023/11/16/BaiduSyncdisk/hive3-13%E6%B7%BB%E5%8A%A0spark%E5%BC%95%E6%93%8E/</id>
+        <id>http://example.com/2023/11/16/BaiduSyncdisk/%E5%A4%A7%E6%95%B0%E6%8D%AE/Hive/hive3-13%E6%B7%BB%E5%8A%A0spark%E5%BC%95%E6%93%8E/</id>
         <title>hive3.13添加spark引擎</title>
-        <link rel="alternate" href="http://example.com/2023/11/16/BaiduSyncdisk/hive3-13%E6%B7%BB%E5%8A%A0spark%E5%BC%95%E6%93%8E/"/>
+        <link rel="alternate" href="http://example.com/2023/11/16/BaiduSyncdisk/%E5%A4%A7%E6%95%B0%E6%8D%AE/Hive/hive3-13%E6%B7%BB%E5%8A%A0spark%E5%BC%95%E6%93%8E/"/>
         <content type="html">&lt;p&gt;&lt;em&gt;&lt;strong&gt;大数据架构 :lambda 架构，hsap 架构，流批一体&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9jd2lraS5hcGFjaGUub3JnL2NvbmZsdWVuY2UvZGlzcGxheS9IaXZlL0hpdmUrb24rU3BhcmslM0ErR2V0dGluZytTdGFydGVk&#34;&gt;Hive 官网关于 spark on hive&lt;/span&gt;&lt;/p&gt;
 &lt;h3 id=&#34;一-spark-on-hive-和-hive-on-spark-的区别和联系&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#一-spark-on-hive-和-hive-on-spark-的区别和联系&#34;&gt;#&lt;/a&gt; 一、spark on hive 和 hive on spark 的区别和联系&lt;/h3&gt;

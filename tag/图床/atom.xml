@@ -4,22 +4,22 @@
     <title>碎念随风 • Posts by &#34;图床&#34; tag</title>
     <link href="http://example.com" />
     <updated>2023-10-13T03:12:37.000Z</updated>
+    <category term="笔记" />
+    <category term="Markdown" />
+    <category term="test" />
+    <category term="图床" />
     <category term="大数据" />
     <category term="Flink" />
     <category term="Bug" />
+    <category term="升级" />
     <category term="Python" />
     <category term="爬虫" />
-    <category term="笔记" />
-    <category term="Markdown" />
-    <category term="升级" />
     <category term="总结" />
     <category term="数仓搭建" />
-    <category term="test" />
-    <category term="图床" />
     <entry>
-        <id>http://example.com/2023/10/13/BaiduSyncdisk/%E6%B5%8B%E8%AF%95%E5%9B%BE%E5%BA%8A/</id>
+        <id>http://example.com/2023/10/13/BaiduSyncdisk/markdown/%E6%B5%8B%E8%AF%95%E5%9B%BE%E5%BA%8A/</id>
         <title>测试图床</title>
-        <link rel="alternate" href="http://example.com/2023/10/13/BaiduSyncdisk/%E6%B5%8B%E8%AF%95%E5%9B%BE%E5%BA%8A/"/>
+        <link rel="alternate" href="http://example.com/2023/10/13/BaiduSyncdisk/markdown/%E6%B5%8B%E8%AF%95%E5%9B%BE%E5%BA%8A/"/>
         <content type="html">&lt;h3 id=&#34;一-b站图床不可用使用效果如下&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#一-b站图床不可用使用效果如下&#34;&gt;#&lt;/a&gt; 一、B 站图床 (不可用，使用效果如下)&lt;/h3&gt;
 &lt;img data-src=&#34;https://article.biliimg.com/bfs/article/0edd9af11db1d637b88126fe896a7fb01339455642.png@1e_1c.webp&#34;&gt;
 &lt;h3 id=&#34;二-有道云图床可用有些麻烦&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#二-有道云图床可用有些麻烦&#34;&gt;#&lt;/a&gt; 二、有道云图床（可用，有些麻烦）&lt;/h3&gt;

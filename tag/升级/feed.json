@@ -5,8 +5,8 @@
     "home_page_url": "http://example.com",
     "items": [
         {
-            "id": "http://example.com/2023/11/16/BaiduSyncdisk/hive3-13%E6%B7%BB%E5%8A%A0spark%E5%BC%95%E6%93%8E/",
-            "url": "http://example.com/2023/11/16/BaiduSyncdisk/hive3-13%E6%B7%BB%E5%8A%A0spark%E5%BC%95%E6%93%8E/",
+            "id": "http://example.com/2023/11/16/BaiduSyncdisk/%E5%A4%A7%E6%95%B0%E6%8D%AE/Hive/hive3-13%E6%B7%BB%E5%8A%A0spark%E5%BC%95%E6%93%8E/",
+            "url": "http://example.com/2023/11/16/BaiduSyncdisk/%E5%A4%A7%E6%95%B0%E6%8D%AE/Hive/hive3-13%E6%B7%BB%E5%8A%A0spark%E5%BC%95%E6%93%8E/",
             "title": "hive3.13添加spark引擎",
             "date_published": "2023-11-16T02:39:42.000Z",
             "content_html": "<p><em><strong>大数据架构 :lambda 架构，hsap 架构，流批一体</strong></em></p>\n<p><span class=\"exturl\" data-url=\"aHR0cHM6Ly9jd2lraS5hcGFjaGUub3JnL2NvbmZsdWVuY2UvZGlzcGxheS9IaXZlL0hpdmUrb24rU3BhcmslM0ErR2V0dGluZytTdGFydGVk\">Hive 官网关于 spark on hive</span></p>\n<h3 id=\"一-spark-on-hive-和-hive-on-spark-的区别和联系\"><a class=\"markdownIt-Anchor\" href=\"#一-spark-on-hive-和-hive-on-spark-的区别和联系\">#</a> 一、spark on hive 和 hive on spark 的区别和联系</h3>\n<p><em><strong>spark on hive</strong></em>：Spark on Hive 是 Hive 只作为存储角色，Spark 负责 sql 解析优化，执行</p>\n<p><em><strong>hive on spark：</strong></em></p>\n<h3 id=\"二-版本选择\"><a class=\"markdownIt-Anchor\" href=\"#二-版本选择\">#</a> 二、版本选择</h3>\n<h3 id=\"三-修改后运行时长对比\"><a class=\"markdownIt-Anchor\" href=\"#三-修改后运行时长对比\">#</a> 三、修改后运行时长对比</h3>\n",
