@@ -18,7 +18,7 @@
     <category term="数仓搭建" />
     <entry>
         <id>http://example.com/2024/05/17/BaiduSyncdisk/%E5%A4%A7%E6%95%B0%E6%8D%AE/Flink/flink%E7%AE%97%E5%AD%90%E6%80%BB%E7%BB%93/</id>
-        <title>flink算子总结</title>
+        <title>Flink算子总结</title>
         <link rel="alternate" href="http://example.com/2024/05/17/BaiduSyncdisk/%E5%A4%A7%E6%95%B0%E6%8D%AE/Flink/flink%E7%AE%97%E5%AD%90%E6%80%BB%E7%BB%93/"/>
         <content type="html">&lt;p&gt;前言： Flink 提供了丰富的算子来方便开发者处理各种应用场景。&lt;/p&gt;
 &lt;h4 id=&#34;一-基本转换类算子&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#一-基本转换类算子&#34;&gt;#&lt;/a&gt; 一、基本转换类算子&lt;/h4&gt;

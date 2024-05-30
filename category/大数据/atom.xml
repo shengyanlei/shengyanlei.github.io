@@ -79,7 +79,7 @@
 &lt;h5 id=&#34;flodfunction当前版本删除&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#flodfunction当前版本删除&#34;&gt;#&lt;/a&gt; FlodFunction：(当前版本删除)&lt;/h5&gt;
 &lt;ol&gt;
 &lt;li&gt;&lt;strong&gt;作用：&lt;/strong&gt; 将用户定义的 FlodFuction 窗口函数指定如何将窗口的输入元素与输出类型的元素进行组合，添加到窗口的第一个元素将与输出类型的预定义的初始值进行组合。用户定义 FlodFunction 窗口函数的核心逻辑是将输入值和当前输出类型的值组合为一个指定输出类型的值。FlodFunction 窗口函数会连续应用于同一个窗口内的所有值，知道仅剩一个值为止。&lt;/li&gt;
-&lt;li&gt;** 数据流转换：**WindowedStream -&amp;gt; DataStream /AllWindowedStream -&amp;gt; DataStream&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;数据流转换：&lt;/strong&gt; WindowedStream -&amp;gt; DataStream /AllWindowedStream -&amp;gt; DataStream&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;应用场景：&lt;/strong&gt;&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;代码示例：&lt;/strong&gt;&lt;/li&gt;
 &lt;/ol&gt;
@@ -88,7 +88,7 @@
 &lt;h5 id=&#34;aggregatefunction&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#aggregatefunction&#34;&gt;#&lt;/a&gt; AggregateFunction：&lt;/h5&gt;
 &lt;ol&gt;
 &lt;li&gt;&lt;strong&gt;作用：&lt;/strong&gt; 应用用户定义的 AggregateFunction 窗口函数对窗口内的元素进行聚合计算。AggregateFunction 是 ReduceFunction 的广义版本，它有三种类型：输入类型（汇总值的类型，IN)、累加器类型（中间聚合状态 ACC）和输出类型（汇总结果的类型，OUT），相比 ReduceFunction 窗口函数，AggregateFunction 窗口函数可以为聚合计算的输入值，中间聚合值，和结果值使用不同的类型，以支持更广泛的聚合类型。为了简化开发者对于 AggregateFunction 窗口函数的使用，提供了一些预定义的实现逻辑，可以对一个窗口内的元素进行求和，求最大值，最小值等。&lt;/li&gt;
-&lt;li&gt;** 数据流转换：**WindowedStream -&amp;gt; DataStream /AllWindowedStream -&amp;gt; DataStream&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;数据流转换：&lt;/strong&gt; WindowedStream -&amp;gt; DataStream /AllWindowedStream -&amp;gt; DataStream&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;应用场景：&lt;/strong&gt;&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;代码示例：&lt;/strong&gt;&lt;/li&gt;
 &lt;/ol&gt;
@@ -107,7 +107,7 @@
 &lt;h5 id=&#34;processwindowfunctionprocessallwindowfunction&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#processwindowfunctionprocessallwindowfunction&#34;&gt;#&lt;/a&gt; ProcessWindowFunction/ProcessAllWindowFunction&lt;/h5&gt;
 &lt;ol&gt;
 &lt;li&gt;&lt;strong&gt;作用：&lt;/strong&gt; process 操作符应用用户定义的 ProcessWindowFunction 和 ProcessAllWindowFunction 窗口函数对窗口内的元素进行计算，这两个窗口函数会获取一个包含窗口所有元素的迭代器，以及一个可以访问窗口和状态信息的上下文对象，因此这两个窗口函数具有比其他窗口函数更大的灵活性。但是以消耗性能和资源为代价的，因为窗口内的元素不能增量的聚合，需要在内部进行缓冲，直到认为窗口已经准备好进行处理，所以当开发者使用这两个函数时需要充分考虑内存的占用情况。&lt;/li&gt;
-&lt;li&gt;** 数据流转换：**WindowedStream -&amp;gt; DataStream /AllWindowedStream -&amp;gt; DataStream&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;数据流转换：&lt;/strong&gt; WindowedStream -&amp;gt; DataStream /AllWindowedStream -&amp;gt; DataStream&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;应用场景：&lt;/strong&gt;&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;代码示例：&lt;/strong&gt;&lt;/li&gt;
 &lt;/ol&gt;
@@ -116,7 +116,7 @@
 &lt;h5 id=&#34;增量聚合的processwindowfunctionprocessallwindowfunction&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#增量聚合的processwindowfunctionprocessallwindowfunction&#34;&gt;#&lt;/a&gt; 增量聚合的 ProcessWindowFunction/ProcessAllWindowFunction&lt;/h5&gt;
 &lt;ol&gt;
 &lt;li&gt;&lt;strong&gt;作用：&lt;/strong&gt; ProcessWindowFunction 或 ProcessAllWindowFunction 可以和 ReduceFunction、AggregateFunction、FoldFunction 组合使用，以便在元素到达窗口时增量的聚合它们。当窗口关闭时，ProcessWindowFunction 或 ProcessAllWindowFunction 将提供聚合的结果。这允许开发者在访问 ProcessWindowFunction 或 ProcessAllWindowFunction 提供的窗口元素据的同时可以对窗口内的元素进行增量的聚合计算。&lt;/li&gt;
-&lt;li&gt;** 数据流转换：**WindowedStream -&amp;gt; DataStream /AllWindowedStream -&amp;gt; DataStream&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;数据流转换：&lt;/strong&gt; WindowedStream -&amp;gt; DataStream /AllWindowedStream -&amp;gt; DataStream&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;应用场景：&lt;/strong&gt;&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;代码示例：&lt;/strong&gt;&lt;/li&gt;
 &lt;/ol&gt;
@@ -128,7 +128,7 @@
     </entry>
     <entry>
         <id>http://example.com/2024/05/17/BaiduSyncdisk/%E5%A4%A7%E6%95%B0%E6%8D%AE/Flink/flink%E7%AE%97%E5%AD%90%E6%80%BB%E7%BB%93/</id>
-        <title>flink算子总结</title>
+        <title>Flink算子总结</title>
         <link rel="alternate" href="http://example.com/2024/05/17/BaiduSyncdisk/%E5%A4%A7%E6%95%B0%E6%8D%AE/Flink/flink%E7%AE%97%E5%AD%90%E6%80%BB%E7%BB%93/"/>
         <content type="html">&lt;p&gt;前言： Flink 提供了丰富的算子来方便开发者处理各种应用场景。&lt;/p&gt;
 &lt;h4 id=&#34;一-基本转换类算子&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#一-基本转换类算子&#34;&gt;#&lt;/a&gt; 一、基本转换类算子&lt;/h4&gt;
