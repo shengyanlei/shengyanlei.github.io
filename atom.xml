@@ -3,23 +3,40 @@
     <id>http://example.com</id>
     <title>碎念随风</title>
     <link href="http://example.com" />
-    <updated>2024-05-23T02:36:44.000Z</updated>
+    <updated>2024-05-30T03:09:14.571Z</updated>
     <category term="大数据" />
     <category term="Flink" />
     <category term="Bug" />
     <category term="Python" />
     <category term="爬虫" />
-    <category term="升级" />
     <category term="笔记" />
     <category term="Markdown" />
-    <category term="test" />
-    <category term="图床" />
+    <category term="升级" />
     <category term="总结" />
     <category term="数仓搭建" />
+    <category term="test" />
+    <category term="图床" />
     <entry>
-        <id>http://example.com/2024/05/23/Flink%E7%9A%84%E7%AA%97%E5%8F%A3/</id>
+        <id>http://example.com/2024/05/30/BaiduSyncdisk/hello-world/</id>
+        <title>Hello World</title>
+        <link rel="alternate" href="http://example.com/2024/05/30/BaiduSyncdisk/hello-world/"/>
+        <content type="html">&lt;p&gt;Welcome to &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9oZXhvLmlvLw==&#34;&gt;Hexo&lt;/span&gt;! This is your very first post. Check &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9oZXhvLmlvL2RvY3Mv&#34;&gt;documentation&lt;/span&gt; for more info. If you get any problems when using Hexo, you can find the answer in &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9oZXhvLmlvL2RvY3MvdHJvdWJsZXNob290aW5nLmh0bWw=&#34;&gt;troubleshooting&lt;/span&gt; or you can ask me on &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9naXRodWIuY29tL2hleG9qcy9oZXhvL2lzc3Vlcw==&#34;&gt;GitHub&lt;/span&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;quick-start&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#quick-start&#34;&gt;#&lt;/a&gt; Quick Start&lt;/h2&gt;
+&lt;h3 id=&#34;create-a-new-post&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#create-a-new-post&#34;&gt;#&lt;/a&gt; Create a new post&lt;/h3&gt;
+&lt;figure class=&#34;highlight bash&#34;&gt;&lt;figcaption data-lang=&#34;bash&#34;&gt;&lt;span&gt;h&lt;/span&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;$ hexo new &lt;span class=&#34;token string&#34;&gt;&#34;My New Post&#34;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;More info: &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9oZXhvLmlvL2RvY3Mvd3JpdGluZy5odG1s&#34;&gt;Writing&lt;/span&gt;&lt;/p&gt;
+&lt;h3 id=&#34;run-server&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#run-server&#34;&gt;#&lt;/a&gt; Run server&lt;/h3&gt;
+&lt;figure class=&#34;highlight bash&#34;&gt;&lt;figcaption data-lang=&#34;bash&#34;&gt;&lt;span&gt;h&lt;/span&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;$ hexo server&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;More info: &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9oZXhvLmlvL2RvY3Mvc2VydmVyLmh0bWw=&#34;&gt;Server&lt;/span&gt;&lt;/p&gt;
+&lt;h3 id=&#34;generate-static-files&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#generate-static-files&#34;&gt;#&lt;/a&gt; Generate static files&lt;/h3&gt;
+&lt;figure class=&#34;highlight bash&#34;&gt;&lt;figcaption data-lang=&#34;bash&#34;&gt;&lt;span&gt;h&lt;/span&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;$ hexo generate&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;More info: &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9oZXhvLmlvL2RvY3MvZ2VuZXJhdGluZy5odG1s&#34;&gt;Generating&lt;/span&gt;&lt;/p&gt;
+&lt;h3 id=&#34;deploy-to-remote-sites&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#deploy-to-remote-sites&#34;&gt;#&lt;/a&gt; Deploy to remote sites&lt;/h3&gt;
+&lt;figure class=&#34;highlight bash&#34;&gt;&lt;figcaption data-lang=&#34;bash&#34;&gt;&lt;span&gt;h&lt;/span&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;$ hexo deploy&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;More info: &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9oZXhvLmlvL2RvY3Mvb25lLWNvbW1hbmQtZGVwbG95bWVudC5odG1s&#34;&gt;Deployment&lt;/span&gt;&lt;/p&gt;
+</content>
+        <updated>2024-05-30T03:09:14.571Z</updated>
+    </entry>
+    <entry>
+        <id>http://example.com/2024/05/23/BaiduSyncdisk/Flink%E7%9A%84%E7%AA%97%E5%8F%A3/</id>
         <title>Flink的窗口</title>
-        <link rel="alternate" href="http://example.com/2024/05/23/Flink%E7%9A%84%E7%AA%97%E5%8F%A3/"/>
+        <link rel="alternate" href="http://example.com/2024/05/23/BaiduSyncdisk/Flink%E7%9A%84%E7%AA%97%E5%8F%A3/"/>
         <content type="html">&lt;h4 id=&#34;一-为什么需要窗口&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#一-为什么需要窗口&#34;&gt;#&lt;/a&gt; 一、为什么需要窗口？&lt;/h4&gt;
 &lt;p&gt;在 Flink 中，流是一个无界数据集，当我们需要在流中进行一些聚合运算时，比如统计最近 30 秒的请求量或者异常次数，然后根据请求或者异常次数采取相应措施。无论是从时间还是空间上，在流中做聚合计算都不现实。所以必须将聚合计算回归到有界数据集上，因此 Flink 引入了窗口来作为框定一个有限数据集，窗口将流拆分成有限大小的 “桶”，允许开发者在这些桶中做聚合计算。Flink 的窗口可以是时间驱动（Time Window），也可以是事件驱动 (Event Window)。&lt;/p&gt;
 &lt;h4 id=&#34;二-基本概念&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#二-基本概念&#34;&gt;#&lt;/a&gt; 二、 基本概念&lt;/h4&gt;
@@ -127,9 +144,9 @@
         <updated>2024-05-23T02:36:44.000Z</updated>
     </entry>
     <entry>
-        <id>http://example.com/2024/05/17/flink%E7%AE%97%E5%AD%90%E6%80%BB%E7%BB%93/</id>
+        <id>http://example.com/2024/05/17/BaiduSyncdisk/flink%E7%AE%97%E5%AD%90%E6%80%BB%E7%BB%93/</id>
         <title>flink算子总结</title>
-        <link rel="alternate" href="http://example.com/2024/05/17/flink%E7%AE%97%E5%AD%90%E6%80%BB%E7%BB%93/"/>
+        <link rel="alternate" href="http://example.com/2024/05/17/BaiduSyncdisk/flink%E7%AE%97%E5%AD%90%E6%80%BB%E7%BB%93/"/>
         <content type="html">&lt;p&gt;前言： Flink 提供了丰富的算子来方便开发者处理各种应用场景。&lt;/p&gt;
 &lt;h4 id=&#34;一-基本转换类算子&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#一-基本转换类算子&#34;&gt;#&lt;/a&gt; 一、基本转换类算子&lt;/h4&gt;
 &lt;ol&gt;
@@ -308,7 +325,7 @@
 &lt;/li&gt;
 &lt;/ol&gt;
 &lt;h4 id=&#34;四-窗口算子&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#四-窗口算子&#34;&gt;#&lt;/a&gt; 四、窗口算子&lt;/h4&gt;
-&lt;p&gt;有关窗口的介绍请参考文章&lt;a href=&#34;/2024/05/23/Flink%E7%9A%84%E7%AA%97%E5%8F%A3/&#34; style=&#34;display: inline;white-space: nowrap;&#34;&gt;Flink 的窗口&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;有关窗口的介绍请参考文章&lt;a href=&#34;&#34; style=&#34;display: inline;white-space: nowrap;&#34;&gt;Flink 的窗口&lt;/a&gt;&lt;/p&gt;
 &lt;h5 id=&#34;6代码示例&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#6代码示例&#34;&gt;#&lt;/a&gt; 6. 代码示例&lt;/h5&gt;
 &lt;ol&gt;
 &lt;li&gt;自定义数据源 (1 秒发送一条数据)&lt;/li&gt;
@@ -330,16 +347,16 @@
         <updated>2024-05-17T02:25:29.000Z</updated>
     </entry>
     <entry>
-        <id>http://example.com/2024/03/07/%E5%AE%9E%E6%97%B6%E6%95%B0%E4%BB%93%E6%90%AD%E5%BB%BA/</id>
+        <id>http://example.com/2024/03/07/BaiduSyncdisk/%E5%AE%9E%E6%97%B6%E6%95%B0%E4%BB%93%E6%90%AD%E5%BB%BA/</id>
         <title>实时数仓搭建</title>
-        <link rel="alternate" href="http://example.com/2024/03/07/%E5%AE%9E%E6%97%B6%E6%95%B0%E4%BB%93%E6%90%AD%E5%BB%BA/"/>
+        <link rel="alternate" href="http://example.com/2024/03/07/BaiduSyncdisk/%E5%AE%9E%E6%97%B6%E6%95%B0%E4%BB%93%E6%90%AD%E5%BB%BA/"/>
         <content type="html"></content>
         <updated>2024-03-07T05:52:09.000Z</updated>
     </entry>
     <entry>
-        <id>http://example.com/2023/12/14/Flink%E7%9A%84%E4%B8%8D%E5%90%8Csource/</id>
+        <id>http://example.com/2023/12/14/BaiduSyncdisk/Flink%E7%9A%84%E4%B8%8D%E5%90%8Csource/</id>
         <title>Flink的不同source</title>
-        <link rel="alternate" href="http://example.com/2023/12/14/Flink%E7%9A%84%E4%B8%8D%E5%90%8Csource/"/>
+        <link rel="alternate" href="http://example.com/2023/12/14/BaiduSyncdisk/Flink%E7%9A%84%E4%B8%8D%E5%90%8Csource/"/>
         <content type="html">&lt;ol&gt;
 &lt;li&gt;&lt;strong&gt;Elements&lt;/strong&gt;&lt;/li&gt;
 &lt;/ol&gt;
@@ -365,9 +382,9 @@
         <updated>2023-12-14T07:31:33.000Z</updated>
     </entry>
     <entry>
-        <id>http://example.com/2023/12/06/Flink%E5%AD%A6%E4%B9%A0-%E4%B8%80/</id>
+        <id>http://example.com/2023/12/06/BaiduSyncdisk/Flink%E5%AD%A6%E4%B9%A0-%E4%B8%80/</id>
         <title>Flink学习(一)</title>
-        <link rel="alternate" href="http://example.com/2023/12/06/Flink%E5%AD%A6%E4%B9%A0-%E4%B8%80/"/>
+        <link rel="alternate" href="http://example.com/2023/12/06/BaiduSyncdisk/Flink%E5%AD%A6%E4%B9%A0-%E4%B8%80/"/>
         <content type="html">&lt;h3 id=&#34;一-flink相关名词解析&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#一-flink相关名词解析&#34;&gt;#&lt;/a&gt; 一、Flink 相关名词解析&lt;/h3&gt;
 &lt;ol&gt;
 &lt;li&gt;DataStream API&lt;/li&gt;
@@ -496,9 +513,9 @@
         <updated>2023-12-06T03:36:08.000Z</updated>
     </entry>
     <entry>
-        <id>http://example.com/2023/12/01/Flink%E7%9A%84%E6%90%AD%E5%BB%BA/</id>
+        <id>http://example.com/2023/12/01/BaiduSyncdisk/Flink%E7%9A%84%E6%90%AD%E5%BB%BA/</id>
         <title>Flink的搭建</title>
-        <link rel="alternate" href="http://example.com/2023/12/01/Flink%E7%9A%84%E6%90%AD%E5%BB%BA/"/>
+        <link rel="alternate" href="http://example.com/2023/12/01/BaiduSyncdisk/Flink%E7%9A%84%E6%90%AD%E5%BB%BA/"/>
         <content type="html">&lt;h3 id=&#34;一-集群规划&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#一-集群规划&#34;&gt;#&lt;/a&gt; 一、集群规划&lt;/h3&gt;
 &lt;table&gt;
 &lt;thead&gt;
@@ -656,9 +673,9 @@
         <updated>2023-12-01T01:33:02.000Z</updated>
     </entry>
     <entry>
-        <id>http://example.com/2023/11/16/hive3-13%E6%B7%BB%E5%8A%A0spark%E5%BC%95%E6%93%8E/</id>
+        <id>http://example.com/2023/11/16/BaiduSyncdisk/hive3-13%E6%B7%BB%E5%8A%A0spark%E5%BC%95%E6%93%8E/</id>
         <title>hive3.13添加spark引擎</title>
-        <link rel="alternate" href="http://example.com/2023/11/16/hive3-13%E6%B7%BB%E5%8A%A0spark%E5%BC%95%E6%93%8E/"/>
+        <link rel="alternate" href="http://example.com/2023/11/16/BaiduSyncdisk/hive3-13%E6%B7%BB%E5%8A%A0spark%E5%BC%95%E6%93%8E/"/>
         <content type="html">&lt;p&gt;&lt;em&gt;&lt;strong&gt;大数据架构 :lambda 架构，hsap 架构，流批一体&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9jd2lraS5hcGFjaGUub3JnL2NvbmZsdWVuY2UvZGlzcGxheS9IaXZlL0hpdmUrb24rU3BhcmslM0ErR2V0dGluZytTdGFydGVk&#34;&gt;Hive 官网关于 spark on hive&lt;/span&gt;&lt;/p&gt;
 &lt;h3 id=&#34;一-spark-on-hive-和-hive-on-spark-的区别和联系&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#一-spark-on-hive-和-hive-on-spark-的区别和联系&#34;&gt;#&lt;/a&gt; 一、spark on hive 和 hive on spark 的区别和联系&lt;/h3&gt;
@@ -671,9 +688,9 @@
         <updated>2023-11-16T02:39:42.000Z</updated>
     </entry>
     <entry>
-        <id>http://example.com/2023/11/03/Hive%E4%B8%AD%E7%9A%84explode/</id>
+        <id>http://example.com/2023/11/03/BaiduSyncdisk/Hive%E4%B8%AD%E7%9A%84explode/</id>
         <title>Hive中的explode</title>
-        <link rel="alternate" href="http://example.com/2023/11/03/Hive%E4%B8%AD%E7%9A%84explode/"/>
+        <link rel="alternate" href="http://example.com/2023/11/03/BaiduSyncdisk/Hive%E4%B8%AD%E7%9A%84explode/"/>
         <content type="html">&lt;h3 id=&#34;一-问题介绍&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#一-问题介绍&#34;&gt;#&lt;/a&gt; 一、问题介绍&lt;/h3&gt;
 &lt;p&gt;在使用 explode 进行炸列操作时，发现炸列后有的行消失了。&lt;/p&gt;
 &lt;h3 id=&#34;二-模拟场景&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#二-模拟场景&#34;&gt;#&lt;/a&gt; 二、模拟场景&lt;/h3&gt;
@@ -876,9 +893,9 @@ lateral view explode(nvl(list,array(NULL)))t1 as a;
         <updated>2023-11-03T02:22:29.000Z</updated>
     </entry>
     <entry>
-        <id>http://example.com/2023/11/03/Hive%E4%B8%AD%E7%9A%84Struct%E7%B1%BB%E5%9E%8BBug/</id>
+        <id>http://example.com/2023/11/03/BaiduSyncdisk/Hive%E4%B8%AD%E7%9A%84Struct%E7%B1%BB%E5%9E%8BBug/</id>
         <title>Hive中的Struct类型Bug</title>
-        <link rel="alternate" href="http://example.com/2023/11/03/Hive%E4%B8%AD%E7%9A%84Struct%E7%B1%BB%E5%9E%8BBug/"/>
+        <link rel="alternate" href="http://example.com/2023/11/03/BaiduSyncdisk/Hive%E4%B8%AD%E7%9A%84Struct%E7%B1%BB%E5%9E%8BBug/"/>
         <content type="html">&lt;p&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9pc3N1ZXMuYXBhY2hlLm9yZy9qaXJhL2Jyb3dzZS9ISVZFLTIxNzc4&#34;&gt;原文地址&lt;/span&gt;&lt;/p&gt;
 &lt;h3 id=&#34;一-hive的struct类型介绍&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#一-hive的struct类型介绍&#34;&gt;#&lt;/a&gt; 一、hive 的 Struct 类型介绍&lt;/h3&gt;
 &lt;p&gt;Struct 是 Hive 复杂数据类型的一种 ，声明方式  &lt;code&gt;STRUCT&amp;lt;col_name : data_type [COMMENT col_comment], ...&amp;gt;&lt;/code&gt;&lt;/p&gt;
@@ -889,9 +906,9 @@ lateral view explode(nvl(list,array(NULL)))t1 as a;
         <updated>2023-11-03T02:21:17.000Z</updated>
     </entry>
     <entry>
-        <id>http://example.com/2023/10/24/Python%E7%BD%91%E7%BB%9C%E7%88%AC%E8%99%AB%EF%BC%88%E4%BA%8C%EF%BC%89/</id>
+        <id>http://example.com/2023/10/24/BaiduSyncdisk/Python%E7%BD%91%E7%BB%9C%E7%88%AC%E8%99%AB%EF%BC%88%E4%BA%8C%EF%BC%89/</id>
         <title>Python网络爬虫（二）</title>
-        <link rel="alternate" href="http://example.com/2023/10/24/Python%E7%BD%91%E7%BB%9C%E7%88%AC%E8%99%AB%EF%BC%88%E4%BA%8C%EF%BC%89/"/>
+        <link rel="alternate" href="http://example.com/2023/10/24/BaiduSyncdisk/Python%E7%BD%91%E7%BB%9C%E7%88%AC%E8%99%AB%EF%BC%88%E4%BA%8C%EF%BC%89/"/>
         <content type="html">&lt;h3 id=&#34;一-request库&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#一-request库&#34;&gt;#&lt;/a&gt; 一、request 库&lt;/h3&gt;
 &lt;p&gt;Requests 是一个常用的 HTTP 请求库，可以方便地向网站发送 HTTP 请求，并获取响应结果。这是官方的文档：&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9yZXF1ZXN0cy5yZWFkdGhlZG9jcy5pby9lbi9sYXRlc3Qv&#34;&gt;request 官方文档&lt;/span&gt;（官方文档不太容易看懂😹）可以选择菜鸟教程里面的 requests 库讲解&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly93d3cucnVub29iLmNvbS9weXRob24zL3B5dGhvbi1yZXF1ZXN0cy5odG1s&#34;&gt;菜鸟教程&lt;/span&gt;。&lt;/p&gt;
 &lt;table&gt;
@@ -1103,9 +1120,9 @@ soup.title
         <updated>2023-10-24T07:34:44.000Z</updated>
     </entry>
     <entry>
-        <id>http://example.com/2023/10/24/Python%E7%BD%91%E7%BB%9C%E7%88%AC%E8%99%AB%E4%B8%80/</id>
+        <id>http://example.com/2023/10/24/BaiduSyncdisk/Python%E7%BD%91%E7%BB%9C%E7%88%AC%E8%99%AB%E4%B8%80/</id>
         <title>Python网络爬虫（一）</title>
-        <link rel="alternate" href="http://example.com/2023/10/24/Python%E7%BD%91%E7%BB%9C%E7%88%AC%E8%99%AB%E4%B8%80/"/>
+        <link rel="alternate" href="http://example.com/2023/10/24/BaiduSyncdisk/Python%E7%BD%91%E7%BB%9C%E7%88%AC%E8%99%AB%E4%B8%80/"/>
         <content type="html">&lt;h3 id=&#34;一-爬虫简介&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#一-爬虫简介&#34;&gt;#&lt;/a&gt; 一、爬虫简介&lt;/h3&gt;
 &lt;p&gt;网络爬虫（又称为网页蜘蛛，网络机器人，在 FOAF 社区中间，更经常的称为网页追逐者），是一种按照一定的规则，自动地抓取万维网信息的程序或者脚本。另外一些不常使用的名字还有蚂蚁、自动索引、模拟程序或者蠕虫。&lt;/p&gt;
 &lt;h3 id=&#34;二-网站robots协议&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#二-网站robots协议&#34;&gt;#&lt;/a&gt; 二、网站 robots 协议&lt;/h3&gt;
@@ -1250,16 +1267,16 @@ soup.title
 &lt;li&gt;Cookie&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;cookie，有时也用其复数形式 Cookies。类型为 “&lt;strong&gt;小型文本文件&lt;/strong&gt;”，是某些网站为了辨别用户身份，进行 Session 跟踪而储存在用户本地终端上的数据（通常经过加密），由用户客户端计算机暂时或永久保存的信息 。具体信息见&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9iYWlrZS5iYWlkdS5jb20vaXRlbS9DT09LSUUvMTExOQ==&#34;&gt; cookies 百度百科&lt;/span&gt;。&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;/2023/10/24/Python%E7%BD%91%E7%BB%9C%E7%88%AC%E8%99%AB%EF%BC%88%E4%BA%8C%EF%BC%89/&#34; style=&#34;display: block;text-align: right;&#34;&gt;转到 Python 网络爬虫（二）&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;&#34; style=&#34;display: block;text-align: right;&#34;&gt;转到 Python 网络爬虫（二）&lt;/a&gt;&lt;/p&gt;
 </content>
         <category term="Python" />
         <category term="爬虫" />
         <updated>2023-10-24T01:21:16.000Z</updated>
     </entry>
     <entry>
-        <id>http://example.com/2023/10/19/%E6%95%B0%E4%BB%93%E6%90%AD%E5%BB%BA%E7%9A%84%E6%95%B0%E6%8D%AE%E8%B7%A8%E5%A4%A9%E9%97%AE%E9%A2%98/</id>
+        <id>http://example.com/2023/10/19/BaiduSyncdisk/%E6%95%B0%E4%BB%93%E6%90%AD%E5%BB%BA%E7%9A%84%E6%95%B0%E6%8D%AE%E8%B7%A8%E5%A4%A9%E9%97%AE%E9%A2%98/</id>
         <title>数仓搭建的数据跨天问题</title>
-        <link rel="alternate" href="http://example.com/2023/10/19/%E6%95%B0%E4%BB%93%E6%90%AD%E5%BB%BA%E7%9A%84%E6%95%B0%E6%8D%AE%E8%B7%A8%E5%A4%A9%E9%97%AE%E9%A2%98/"/>
+        <link rel="alternate" href="http://example.com/2023/10/19/BaiduSyncdisk/%E6%95%B0%E4%BB%93%E6%90%AD%E5%BB%BA%E7%9A%84%E6%95%B0%E6%8D%AE%E8%B7%A8%E5%A4%A9%E9%97%AE%E9%A2%98/"/>
         <content type="html">&lt;h3 id=&#34;一-问题背景&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#一-问题背景&#34;&gt;#&lt;/a&gt; 一、问题背景&lt;/h3&gt;
 &lt;p&gt;在电商的离线数仓搭建中，进行 dwd 层订单域的设计中，普遍会出现订单数据跨天的情况，对于边界数据该如何处理。&lt;/p&gt;
 &lt;h3 id=&#34;二-业务背景&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#二-业务背景&#34;&gt;#&lt;/a&gt; 二、业务背景&lt;/h3&gt;
@@ -1283,14 +1300,14 @@ soup.title
         <updated>2023-10-19T09:19:32.000Z</updated>
     </entry>
     <entry>
-        <id>http://example.com/2023/10/13/fluid%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/</id>
+        <id>http://example.com/2023/10/13/BaiduSyncdisk/fluid%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/</id>
         <title>fluid使用指南</title>
-        <link rel="alternate" href="http://example.com/2023/10/13/fluid%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/"/>
+        <link rel="alternate" href="http://example.com/2023/10/13/BaiduSyncdisk/fluid%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/"/>
         <content type="html">&lt;h3 id=&#34;1文章中使用主题内置的便签&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#1文章中使用主题内置的便签&#34;&gt;#&lt;/a&gt; 1. 文章中使用主题内置的便签&lt;/h3&gt;
 &lt;figure class=&#34;highlight html&#34;&gt;&lt;figcaption data-lang=&#34;HTML&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;lt;&lt;/span&gt;p&lt;/span&gt; &lt;span class=&#34;token attr-name&#34;&gt;class&lt;/span&gt;&lt;span class=&#34;token attr-value&#34;&gt;&lt;span class=&#34;token punctuation attr-equals&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&#34;&lt;/span&gt;note note-primary&lt;span class=&#34;token punctuation&#34;&gt;&#34;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&gt;&lt;/span&gt;&lt;/span&gt;标签&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;lt;/&lt;/span&gt;p&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;使用效果图如下：&lt;/p&gt;
 &lt;p&gt;&lt;img data-src=&#34;https://note.youdao.com/yws/api/personal/file/WEBaefe0d8151326e6297d0a1c2604201a5?method=download&amp;amp;shareKey=e76161d555ba41618cd18f07fda59b2e&#34; alt=&#34;效果图&#34;&gt;&lt;/p&gt;
 &lt;h3 id=&#34;2文章中链接其它文章&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#2文章中链接其它文章&#34;&gt;#&lt;/a&gt; 2. 文章中链接其它文章&lt;/h3&gt;
-&lt;figure class=&#34;highlight html&#34;&gt;&lt;figcaption data-lang=&#34;HTML&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;lt;&lt;/span&gt;a&lt;/span&gt; &lt;span class=&#34;token attr-name&#34;&gt;href&lt;/span&gt;&lt;span class=&#34;token attr-value&#34;&gt;&lt;span class=&#34;token punctuation attr-equals&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&#34;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&#34;&lt;/span&gt;&lt;/span&gt; &lt;span class=&#34;token special-attr&#34;&gt;&lt;span class=&#34;token attr-name&#34;&gt;style&lt;/span&gt;&lt;span class=&#34;token attr-value&#34;&gt;&lt;span class=&#34;token punctuation attr-equals&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&#34;&lt;/span&gt;&lt;span class=&#34;token value css language-css&#34;&gt;&lt;span class=&#34;token property&#34;&gt;display&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;:&lt;/span&gt; inline&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;token property&#34;&gt;white-space&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;:&lt;/span&gt; nowrap&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&#34;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&gt;&lt;/span&gt;&lt;/span&gt;转到【文章名】&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;lt;/&lt;/span&gt;a&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;示例：&lt;a href=&#34;/2023/10/08/md%E8%AF%AD%E6%B3%95/&#34; style=&#34;display: inline;white-space: nowrap;&#34;&gt;转到【md 语法】&lt;/a&gt;&lt;/p&gt;
+&lt;figure class=&#34;highlight html&#34;&gt;&lt;figcaption data-lang=&#34;HTML&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;lt;&lt;/span&gt;a&lt;/span&gt; &lt;span class=&#34;token attr-name&#34;&gt;href&lt;/span&gt;&lt;span class=&#34;token attr-value&#34;&gt;&lt;span class=&#34;token punctuation attr-equals&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&#34;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&#34;&lt;/span&gt;&lt;/span&gt; &lt;span class=&#34;token special-attr&#34;&gt;&lt;span class=&#34;token attr-name&#34;&gt;style&lt;/span&gt;&lt;span class=&#34;token attr-value&#34;&gt;&lt;span class=&#34;token punctuation attr-equals&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&#34;&lt;/span&gt;&lt;span class=&#34;token value css language-css&#34;&gt;&lt;span class=&#34;token property&#34;&gt;display&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;:&lt;/span&gt; inline&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;token property&#34;&gt;white-space&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;:&lt;/span&gt; nowrap&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&#34;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&gt;&lt;/span&gt;&lt;/span&gt;转到【文章名】&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;lt;/&lt;/span&gt;a&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;示例：&lt;a href=&#34;&#34; style=&#34;display: inline;white-space: nowrap;&#34;&gt;转到【md 语法】&lt;/a&gt;&lt;/p&gt;
 &lt;h3 id=&#34;3摘要的处理&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#3摘要的处理&#34;&gt;#&lt;/a&gt; 3. 摘要的处理&lt;/h3&gt;
 &lt;p&gt;手动指定摘要，使用  &lt;code&gt;&amp;lt;!-- more --&amp;gt;&lt;/code&gt;  MD 文档里划分，如：&lt;/p&gt;
 &lt;figure class=&#34;highlight markdown&#34;&gt;&lt;figcaption data-lang=&#34;markdown&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;正文的一部分作为摘要&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token comment&#34;&gt;&amp;lt;!-- more --&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;3&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;余下的正文&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;或者在 &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9oZXhvLmlvL3poLWNuL2RvY3MvZnJvbnQtbWF0dGVy&#34;&gt;front-matter (opens new window)&lt;/span&gt; 里设置  &lt;code&gt;excerpt&lt;/code&gt;  字段，如：&lt;/p&gt;
@@ -1302,9 +1319,9 @@ soup.title
         <updated>2023-10-13T07:17:59.000Z</updated>
     </entry>
     <entry>
-        <id>http://example.com/2023/10/13/%E6%B5%8B%E8%AF%95%E5%9B%BE%E5%BA%8A/</id>
+        <id>http://example.com/2023/10/13/BaiduSyncdisk/%E6%B5%8B%E8%AF%95%E5%9B%BE%E5%BA%8A/</id>
         <title>测试图床</title>
-        <link rel="alternate" href="http://example.com/2023/10/13/%E6%B5%8B%E8%AF%95%E5%9B%BE%E5%BA%8A/"/>
+        <link rel="alternate" href="http://example.com/2023/10/13/BaiduSyncdisk/%E6%B5%8B%E8%AF%95%E5%9B%BE%E5%BA%8A/"/>
         <content type="html">&lt;h3 id=&#34;一-b站图床不可用使用效果如下&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#一-b站图床不可用使用效果如下&#34;&gt;#&lt;/a&gt; 一、B 站图床 (不可用，使用效果如下)&lt;/h3&gt;
 &lt;img data-src=&#34;https://article.biliimg.com/bfs/article/0edd9af11db1d637b88126fe896a7fb01339455642.png@1e_1c.webp&#34;&gt;
 &lt;h3 id=&#34;二-有道云图床可用有些麻烦&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#二-有道云图床可用有些麻烦&#34;&gt;#&lt;/a&gt; 二、有道云图床（可用，有些麻烦）&lt;/h3&gt;
@@ -1344,9 +1361,9 @@ Tips:&lt;br&gt;
         <updated>2023-10-13T03:12:37.000Z</updated>
     </entry>
     <entry>
-        <id>http://example.com/2023/10/08/md%E8%AF%AD%E6%B3%95/</id>
+        <id>http://example.com/2023/10/08/BaiduSyncdisk/md%E8%AF%AD%E6%B3%95/</id>
         <title>Markdown模版</title>
-        <link rel="alternate" href="http://example.com/2023/10/08/md%E8%AF%AD%E6%B3%95/"/>
+        <link rel="alternate" href="http://example.com/2023/10/08/BaiduSyncdisk/md%E8%AF%AD%E6%B3%95/"/>
         <content type="html">&lt;h3 id=&#34;一-markdown标题语法&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#一-markdown标题语法&#34;&gt;#&lt;/a&gt; 一、Markdown 标题语法&lt;/h3&gt;
 &lt;p&gt;要创建标题，请在单词或短语前面添加井号 ( &lt;code&gt;#&lt;/code&gt; ) 。 &lt;code&gt;#&lt;/code&gt;  的数量代表了标题的级别。例如，添加三个  &lt;code&gt;#&lt;/code&gt;  表示创建一个三级标题&lt;/p&gt;
 &lt;table&gt;
@@ -1707,22 +1724,5 @@ This is another regular paragraph.
         <category term="笔记" />
         <category term="Markdown" />
         <updated>2023-10-08T09:47:18.000Z</updated>
-    </entry>
-    <entry>
-        <id>http://example.com/2023/10/07/hello-world/</id>
-        <title>Hello World</title>
-        <link rel="alternate" href="http://example.com/2023/10/07/hello-world/"/>
-        <content type="html">&lt;p&gt;Welcome to &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9oZXhvLmlvLw==&#34;&gt;Hexo&lt;/span&gt;! This is your very first post. Check &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9oZXhvLmlvL2RvY3Mv&#34;&gt;documentation&lt;/span&gt; for more info. If you get any problems when using Hexo, you can find the answer in &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9oZXhvLmlvL2RvY3MvdHJvdWJsZXNob290aW5nLmh0bWw=&#34;&gt;troubleshooting&lt;/span&gt; or you can ask me on &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9naXRodWIuY29tL2hleG9qcy9oZXhvL2lzc3Vlcw==&#34;&gt;GitHub&lt;/span&gt;.&lt;/p&gt;
-&lt;h2 id=&#34;quick-start&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#quick-start&#34;&gt;#&lt;/a&gt; Quick Start&lt;/h2&gt;
-&lt;h3 id=&#34;create-a-new-post&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#create-a-new-post&#34;&gt;#&lt;/a&gt; Create a new post&lt;/h3&gt;
-&lt;figure class=&#34;highlight bash&#34;&gt;&lt;figcaption data-lang=&#34;bash&#34;&gt;&lt;span&gt;h&lt;/span&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;$ hexo new &lt;span class=&#34;token string&#34;&gt;&#34;My New Post&#34;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;More info: &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9oZXhvLmlvL2RvY3Mvd3JpdGluZy5odG1s&#34;&gt;Writing&lt;/span&gt;&lt;/p&gt;
-&lt;h3 id=&#34;run-server&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#run-server&#34;&gt;#&lt;/a&gt; Run server&lt;/h3&gt;
-&lt;figure class=&#34;highlight bash&#34;&gt;&lt;figcaption data-lang=&#34;bash&#34;&gt;&lt;span&gt;h&lt;/span&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;$ hexo server&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;More info: &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9oZXhvLmlvL2RvY3Mvc2VydmVyLmh0bWw=&#34;&gt;Server&lt;/span&gt;&lt;/p&gt;
-&lt;h3 id=&#34;generate-static-files&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#generate-static-files&#34;&gt;#&lt;/a&gt; Generate static files&lt;/h3&gt;
-&lt;figure class=&#34;highlight bash&#34;&gt;&lt;figcaption data-lang=&#34;bash&#34;&gt;&lt;span&gt;h&lt;/span&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;$ hexo generate&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;More info: &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9oZXhvLmlvL2RvY3MvZ2VuZXJhdGluZy5odG1s&#34;&gt;Generating&lt;/span&gt;&lt;/p&gt;
-&lt;h3 id=&#34;deploy-to-remote-sites&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#deploy-to-remote-sites&#34;&gt;#&lt;/a&gt; Deploy to remote sites&lt;/h3&gt;
-&lt;figure class=&#34;highlight bash&#34;&gt;&lt;figcaption data-lang=&#34;bash&#34;&gt;&lt;span&gt;h&lt;/span&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;$ hexo deploy&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;More info: &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9oZXhvLmlvL2RvY3Mvb25lLWNvbW1hbmQtZGVwbG95bWVudC5odG1s&#34;&gt;Deployment&lt;/span&gt;&lt;/p&gt;
-</content>
-        <updated>2023-10-07T08:23:34.041Z</updated>
     </entry>
 </feed>

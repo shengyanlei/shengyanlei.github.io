@@ -9,17 +9,17 @@
     <category term="Bug" />
     <category term="Python" />
     <category term="爬虫" />
-    <category term="升级" />
     <category term="笔记" />
     <category term="Markdown" />
-    <category term="test" />
-    <category term="图床" />
+    <category term="升级" />
     <category term="总结" />
     <category term="数仓搭建" />
+    <category term="test" />
+    <category term="图床" />
     <entry>
-        <id>http://example.com/2023/11/03/Hive%E4%B8%AD%E7%9A%84explode/</id>
+        <id>http://example.com/2023/11/03/BaiduSyncdisk/Hive%E4%B8%AD%E7%9A%84explode/</id>
         <title>Hive中的explode</title>
-        <link rel="alternate" href="http://example.com/2023/11/03/Hive%E4%B8%AD%E7%9A%84explode/"/>
+        <link rel="alternate" href="http://example.com/2023/11/03/BaiduSyncdisk/Hive%E4%B8%AD%E7%9A%84explode/"/>
         <content type="html">&lt;h3 id=&#34;一-问题介绍&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#一-问题介绍&#34;&gt;#&lt;/a&gt; 一、问题介绍&lt;/h3&gt;
 &lt;p&gt;在使用 explode 进行炸列操作时，发现炸列后有的行消失了。&lt;/p&gt;
 &lt;h3 id=&#34;二-模拟场景&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#二-模拟场景&#34;&gt;#&lt;/a&gt; 二、模拟场景&lt;/h3&gt;
@@ -222,9 +222,9 @@ lateral view explode(nvl(list,array(NULL)))t1 as a;
         <updated>2023-11-03T02:22:29.000Z</updated>
     </entry>
     <entry>
-        <id>http://example.com/2023/11/03/Hive%E4%B8%AD%E7%9A%84Struct%E7%B1%BB%E5%9E%8BBug/</id>
+        <id>http://example.com/2023/11/03/BaiduSyncdisk/Hive%E4%B8%AD%E7%9A%84Struct%E7%B1%BB%E5%9E%8BBug/</id>
         <title>Hive中的Struct类型Bug</title>
-        <link rel="alternate" href="http://example.com/2023/11/03/Hive%E4%B8%AD%E7%9A%84Struct%E7%B1%BB%E5%9E%8BBug/"/>
+        <link rel="alternate" href="http://example.com/2023/11/03/BaiduSyncdisk/Hive%E4%B8%AD%E7%9A%84Struct%E7%B1%BB%E5%9E%8BBug/"/>
         <content type="html">&lt;p&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9pc3N1ZXMuYXBhY2hlLm9yZy9qaXJhL2Jyb3dzZS9ISVZFLTIxNzc4&#34;&gt;原文地址&lt;/span&gt;&lt;/p&gt;
 &lt;h3 id=&#34;一-hive的struct类型介绍&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#一-hive的struct类型介绍&#34;&gt;#&lt;/a&gt; 一、hive 的 Struct 类型介绍&lt;/h3&gt;
 &lt;p&gt;Struct 是 Hive 复杂数据类型的一种 ，声明方式  &lt;code&gt;STRUCT&amp;lt;col_name : data_type [COMMENT col_comment], ...&amp;gt;&lt;/code&gt;&lt;/p&gt;

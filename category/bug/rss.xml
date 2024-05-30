@@ -12,17 +12,17 @@
         <category>Bug</category>
         <category>Python</category>
         <category>爬虫</category>
-        <category>升级</category>
         <category>笔记</category>
         <category>Markdown</category>
-        <category>test</category>
-        <category>图床</category>
+        <category>升级</category>
         <category>总结</category>
         <category>数仓搭建</category>
+        <category>test</category>
+        <category>图床</category>
         <item>
-            <guid isPermalink="true">http://example.com/2023/11/03/Hive%E4%B8%AD%E7%9A%84explode/</guid>
+            <guid isPermalink="true">http://example.com/2023/11/03/BaiduSyncdisk/Hive%E4%B8%AD%E7%9A%84explode/</guid>
             <title>Hive中的explode</title>
-            <link>http://example.com/2023/11/03/Hive%E4%B8%AD%E7%9A%84explode/</link>
+            <link>http://example.com/2023/11/03/BaiduSyncdisk/Hive%E4%B8%AD%E7%9A%84explode/</link>
             <category>Bug</category>
             <pubDate>Fri, 03 Nov 2023 10:22:29 +0800</pubDate>
             <description><![CDATA[ &lt;h3 id=&#34;一-问题介绍&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#一-问题介绍&#34;&gt;#&lt;/a&gt; 一、问题介绍&lt;/h3&gt;
@@ -225,9 +225,9 @@ lateral view explode(nvl(list,array(NULL)))t1 as a;
  ]]></description>
         </item>
         <item>
-            <guid isPermalink="true">http://example.com/2023/11/03/Hive%E4%B8%AD%E7%9A%84Struct%E7%B1%BB%E5%9E%8BBug/</guid>
+            <guid isPermalink="true">http://example.com/2023/11/03/BaiduSyncdisk/Hive%E4%B8%AD%E7%9A%84Struct%E7%B1%BB%E5%9E%8BBug/</guid>
             <title>Hive中的Struct类型Bug</title>
-            <link>http://example.com/2023/11/03/Hive%E4%B8%AD%E7%9A%84Struct%E7%B1%BB%E5%9E%8BBug/</link>
+            <link>http://example.com/2023/11/03/BaiduSyncdisk/Hive%E4%B8%AD%E7%9A%84Struct%E7%B1%BB%E5%9E%8BBug/</link>
             <category>Bug</category>
             <pubDate>Fri, 03 Nov 2023 10:21:17 +0800</pubDate>
             <description><![CDATA[ &lt;p&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9pc3N1ZXMuYXBhY2hlLm9yZy9qaXJhL2Jyb3dzZS9ISVZFLTIxNzc4&#34;&gt;原文地址&lt;/span&gt;&lt;/p&gt;

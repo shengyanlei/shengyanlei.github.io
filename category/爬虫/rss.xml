@@ -12,17 +12,17 @@
         <category>Bug</category>
         <category>Python</category>
         <category>爬虫</category>
-        <category>升级</category>
         <category>笔记</category>
         <category>Markdown</category>
-        <category>test</category>
-        <category>图床</category>
+        <category>升级</category>
         <category>总结</category>
         <category>数仓搭建</category>
+        <category>test</category>
+        <category>图床</category>
         <item>
-            <guid isPermalink="true">http://example.com/2023/10/24/Python%E7%BD%91%E7%BB%9C%E7%88%AC%E8%99%AB%EF%BC%88%E4%BA%8C%EF%BC%89/</guid>
+            <guid isPermalink="true">http://example.com/2023/10/24/BaiduSyncdisk/Python%E7%BD%91%E7%BB%9C%E7%88%AC%E8%99%AB%EF%BC%88%E4%BA%8C%EF%BC%89/</guid>
             <title>Python网络爬虫（二）</title>
-            <link>http://example.com/2023/10/24/Python%E7%BD%91%E7%BB%9C%E7%88%AC%E8%99%AB%EF%BC%88%E4%BA%8C%EF%BC%89/</link>
+            <link>http://example.com/2023/10/24/BaiduSyncdisk/Python%E7%BD%91%E7%BB%9C%E7%88%AC%E8%99%AB%EF%BC%88%E4%BA%8C%EF%BC%89/</link>
             <category>Python</category>
             <category>爬虫</category>
             <pubDate>Tue, 24 Oct 2023 15:34:44 +0800</pubDate>
@@ -234,9 +234,9 @@ soup.title
  ]]></description>
         </item>
         <item>
-            <guid isPermalink="true">http://example.com/2023/10/24/Python%E7%BD%91%E7%BB%9C%E7%88%AC%E8%99%AB%E4%B8%80/</guid>
+            <guid isPermalink="true">http://example.com/2023/10/24/BaiduSyncdisk/Python%E7%BD%91%E7%BB%9C%E7%88%AC%E8%99%AB%E4%B8%80/</guid>
             <title>Python网络爬虫（一）</title>
-            <link>http://example.com/2023/10/24/Python%E7%BD%91%E7%BB%9C%E7%88%AC%E8%99%AB%E4%B8%80/</link>
+            <link>http://example.com/2023/10/24/BaiduSyncdisk/Python%E7%BD%91%E7%BB%9C%E7%88%AC%E8%99%AB%E4%B8%80/</link>
             <category>Python</category>
             <category>爬虫</category>
             <pubDate>Tue, 24 Oct 2023 09:21:16 +0800</pubDate>
@@ -384,7 +384,7 @@ soup.title
 &lt;li&gt;Cookie&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;cookie，有时也用其复数形式 Cookies。类型为 “&lt;strong&gt;小型文本文件&lt;/strong&gt;”，是某些网站为了辨别用户身份，进行 Session 跟踪而储存在用户本地终端上的数据（通常经过加密），由用户客户端计算机暂时或永久保存的信息 。具体信息见&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9iYWlrZS5iYWlkdS5jb20vaXRlbS9DT09LSUUvMTExOQ==&#34;&gt; cookies 百度百科&lt;/span&gt;。&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;/2023/10/24/Python%E7%BD%91%E7%BB%9C%E7%88%AC%E8%99%AB%EF%BC%88%E4%BA%8C%EF%BC%89/&#34; style=&#34;display: block;text-align: right;&#34;&gt;转到 Python 网络爬虫（二）&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;&#34; style=&#34;display: block;text-align: right;&#34;&gt;转到 Python 网络爬虫（二）&lt;/a&gt;&lt;/p&gt;
  ]]></description>
         </item>
     </channel>

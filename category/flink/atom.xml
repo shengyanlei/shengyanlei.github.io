@@ -9,17 +9,17 @@
     <category term="Bug" />
     <category term="Python" />
     <category term="爬虫" />
-    <category term="升级" />
     <category term="笔记" />
     <category term="Markdown" />
-    <category term="test" />
-    <category term="图床" />
+    <category term="升级" />
     <category term="总结" />
     <category term="数仓搭建" />
+    <category term="test" />
+    <category term="图床" />
     <entry>
-        <id>http://example.com/2024/05/23/Flink%E7%9A%84%E7%AA%97%E5%8F%A3/</id>
+        <id>http://example.com/2024/05/23/BaiduSyncdisk/Flink%E7%9A%84%E7%AA%97%E5%8F%A3/</id>
         <title>Flink的窗口</title>
-        <link rel="alternate" href="http://example.com/2024/05/23/Flink%E7%9A%84%E7%AA%97%E5%8F%A3/"/>
+        <link rel="alternate" href="http://example.com/2024/05/23/BaiduSyncdisk/Flink%E7%9A%84%E7%AA%97%E5%8F%A3/"/>
         <content type="html">&lt;h4 id=&#34;一-为什么需要窗口&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#一-为什么需要窗口&#34;&gt;#&lt;/a&gt; 一、为什么需要窗口？&lt;/h4&gt;
 &lt;p&gt;在 Flink 中，流是一个无界数据集，当我们需要在流中进行一些聚合运算时，比如统计最近 30 秒的请求量或者异常次数，然后根据请求或者异常次数采取相应措施。无论是从时间还是空间上，在流中做聚合计算都不现实。所以必须将聚合计算回归到有界数据集上，因此 Flink 引入了窗口来作为框定一个有限数据集，窗口将流拆分成有限大小的 “桶”，允许开发者在这些桶中做聚合计算。Flink 的窗口可以是时间驱动（Time Window），也可以是事件驱动 (Event Window)。&lt;/p&gt;
 &lt;h4 id=&#34;二-基本概念&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#二-基本概念&#34;&gt;#&lt;/a&gt; 二、 基本概念&lt;/h4&gt;
@@ -127,9 +127,9 @@
         <updated>2024-05-23T02:36:44.000Z</updated>
     </entry>
     <entry>
-        <id>http://example.com/2024/05/17/flink%E7%AE%97%E5%AD%90%E6%80%BB%E7%BB%93/</id>
+        <id>http://example.com/2024/05/17/BaiduSyncdisk/flink%E7%AE%97%E5%AD%90%E6%80%BB%E7%BB%93/</id>
         <title>flink算子总结</title>
-        <link rel="alternate" href="http://example.com/2024/05/17/flink%E7%AE%97%E5%AD%90%E6%80%BB%E7%BB%93/"/>
+        <link rel="alternate" href="http://example.com/2024/05/17/BaiduSyncdisk/flink%E7%AE%97%E5%AD%90%E6%80%BB%E7%BB%93/"/>
         <content type="html">&lt;p&gt;前言： Flink 提供了丰富的算子来方便开发者处理各种应用场景。&lt;/p&gt;
 &lt;h4 id=&#34;一-基本转换类算子&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#一-基本转换类算子&#34;&gt;#&lt;/a&gt; 一、基本转换类算子&lt;/h4&gt;
 &lt;ol&gt;
@@ -308,7 +308,7 @@
 &lt;/li&gt;
 &lt;/ol&gt;
 &lt;h4 id=&#34;四-窗口算子&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#四-窗口算子&#34;&gt;#&lt;/a&gt; 四、窗口算子&lt;/h4&gt;
-&lt;p&gt;有关窗口的介绍请参考文章&lt;a href=&#34;/2024/05/23/Flink%E7%9A%84%E7%AA%97%E5%8F%A3/&#34; style=&#34;display: inline;white-space: nowrap;&#34;&gt;Flink 的窗口&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;有关窗口的介绍请参考文章&lt;a href=&#34;&#34; style=&#34;display: inline;white-space: nowrap;&#34;&gt;Flink 的窗口&lt;/a&gt;&lt;/p&gt;
 &lt;h5 id=&#34;6代码示例&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#6代码示例&#34;&gt;#&lt;/a&gt; 6. 代码示例&lt;/h5&gt;
 &lt;ol&gt;
 &lt;li&gt;自定义数据源 (1 秒发送一条数据)&lt;/li&gt;
@@ -330,9 +330,9 @@
         <updated>2024-05-17T02:25:29.000Z</updated>
     </entry>
     <entry>
-        <id>http://example.com/2023/12/14/Flink%E7%9A%84%E4%B8%8D%E5%90%8Csource/</id>
+        <id>http://example.com/2023/12/14/BaiduSyncdisk/Flink%E7%9A%84%E4%B8%8D%E5%90%8Csource/</id>
         <title>Flink的不同source</title>
-        <link rel="alternate" href="http://example.com/2023/12/14/Flink%E7%9A%84%E4%B8%8D%E5%90%8Csource/"/>
+        <link rel="alternate" href="http://example.com/2023/12/14/BaiduSyncdisk/Flink%E7%9A%84%E4%B8%8D%E5%90%8Csource/"/>
         <content type="html">&lt;ol&gt;
 &lt;li&gt;&lt;strong&gt;Elements&lt;/strong&gt;&lt;/li&gt;
 &lt;/ol&gt;
@@ -358,9 +358,9 @@
         <updated>2023-12-14T07:31:33.000Z</updated>
     </entry>
     <entry>
-        <id>http://example.com/2023/12/06/Flink%E5%AD%A6%E4%B9%A0-%E4%B8%80/</id>
+        <id>http://example.com/2023/12/06/BaiduSyncdisk/Flink%E5%AD%A6%E4%B9%A0-%E4%B8%80/</id>
         <title>Flink学习(一)</title>
-        <link rel="alternate" href="http://example.com/2023/12/06/Flink%E5%AD%A6%E4%B9%A0-%E4%B8%80/"/>
+        <link rel="alternate" href="http://example.com/2023/12/06/BaiduSyncdisk/Flink%E5%AD%A6%E4%B9%A0-%E4%B8%80/"/>
         <content type="html">&lt;h3 id=&#34;一-flink相关名词解析&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#一-flink相关名词解析&#34;&gt;#&lt;/a&gt; 一、Flink 相关名词解析&lt;/h3&gt;
 &lt;ol&gt;
 &lt;li&gt;DataStream API&lt;/li&gt;
@@ -489,9 +489,9 @@
         <updated>2023-12-06T03:36:08.000Z</updated>
     </entry>
     <entry>
-        <id>http://example.com/2023/12/01/Flink%E7%9A%84%E6%90%AD%E5%BB%BA/</id>
+        <id>http://example.com/2023/12/01/BaiduSyncdisk/Flink%E7%9A%84%E6%90%AD%E5%BB%BA/</id>
         <title>Flink的搭建</title>
-        <link rel="alternate" href="http://example.com/2023/12/01/Flink%E7%9A%84%E6%90%AD%E5%BB%BA/"/>
+        <link rel="alternate" href="http://example.com/2023/12/01/BaiduSyncdisk/Flink%E7%9A%84%E6%90%AD%E5%BB%BA/"/>
         <content type="html">&lt;h3 id=&#34;一-集群规划&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#一-集群规划&#34;&gt;#&lt;/a&gt; 一、集群规划&lt;/h3&gt;
 &lt;table&gt;
 &lt;thead&gt;
