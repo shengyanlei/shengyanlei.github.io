@@ -17,9 +17,9 @@
     <category term="总结" />
     <category term="数仓搭建" />
     <entry>
-        <id>http://example.com/2023/10/08/BaiduSyncdisk/markdown/md%E8%AF%AD%E6%B3%95/</id>
+        <id>http://example.com/2023/10/08/BaiduSyncdisk/tutorial/md%E8%AF%AD%E6%B3%95/</id>
         <title>Markdown模版</title>
-        <link rel="alternate" href="http://example.com/2023/10/08/BaiduSyncdisk/markdown/md%E8%AF%AD%E6%B3%95/"/>
+        <link rel="alternate" href="http://example.com/2023/10/08/BaiduSyncdisk/tutorial/md%E8%AF%AD%E6%B3%95/"/>
         <content type="html">&lt;h3 id=&#34;一-markdown标题语法&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#一-markdown标题语法&#34;&gt;#&lt;/a&gt; 一、Markdown 标题语法&lt;/h3&gt;
 &lt;p&gt;要创建标题，请在单词或短语前面添加井号 ( &lt;code&gt;#&lt;/code&gt; ) 。 &lt;code&gt;#&lt;/code&gt;  的数量代表了标题的级别。例如，添加三个  &lt;code&gt;#&lt;/code&gt;  表示创建一个三级标题&lt;/p&gt;
 &lt;table&gt;
