@@ -4,10 +4,10 @@
     <title>碎念随风 • Posts by &#34;升级&#34; tag</title>
     <link href="http://example.com" />
     <updated>2023-11-16T02:39:42.000Z</updated>
-    <category term="test" />
-    <category term="图床" />
     <category term="笔记" />
     <category term="Markdown" />
+    <category term="test" />
+    <category term="图床" />
     <category term="大数据" />
     <category term="Flink" />
     <category term="Bug" />
@@ -26,7 +26,43 @@
 &lt;p&gt;&lt;em&gt;&lt;strong&gt;spark on hive&lt;/strong&gt;&lt;/em&gt;：Spark on Hive 是 Hive 只作为存储角色，Spark 负责 sql 解析优化，执行&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;&lt;strong&gt;hive on spark：&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
 &lt;h3 id=&#34;二-版本选择&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#二-版本选择&#34;&gt;#&lt;/a&gt; 二、版本选择&lt;/h3&gt;
-&lt;h3 id=&#34;三-修改后运行时长对比&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#三-修改后运行时长对比&#34;&gt;#&lt;/a&gt; 三、修改后运行时长对比&lt;/h3&gt;
+&lt;p&gt;要在 Hive 3.1.3 中更换为 Spark 2.3 引擎，您需要按照以下步骤进行配置：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;下载并安装 Spark 2.3&lt;/strong&gt;：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;从 Apache Spark 官网下载 Spark 2.3.3 版本，并解压到指定目录。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&#34;highlight bash&#34;&gt;&lt;figcaption data-lang=&#34;bash&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token function&#34;&gt;tar&lt;/span&gt; &lt;span class=&#34;token parameter variable&#34;&gt;-zxvf&lt;/span&gt; spark-2.3.3-bin-without-hadoop.tgz &lt;span class=&#34;token parameter variable&#34;&gt;-C&lt;/span&gt; /opt/module/&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token function&#34;&gt;mv&lt;/span&gt; /opt/module/spark-2.3.3-bin-without-hadoop /opt/module/spark-2.3.0&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;ul&gt;
+&lt;li&gt;配置 &lt;code&gt;SPARK_HOME&lt;/code&gt;  环境变量。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&#34;highlight bash&#34;&gt;&lt;figcaption data-lang=&#34;bash&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token function&#34;&gt;vim&lt;/span&gt; /etc/profile.d/my_env.sh&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;添加以下内容：&lt;/p&gt;
+&lt;figure class=&#34;highlight bash&#34;&gt;&lt;figcaption data-lang=&#34;bash&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token comment&#34;&gt;# SPARK_HOME&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token builtin class-name&#34;&gt;export&lt;/span&gt; &lt;span class=&#34;token assign-left variable&#34;&gt;SPARK_HOME&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt;/opt/module/spark-2.3.0&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;3&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token builtin class-name&#34;&gt;export&lt;/span&gt; &lt;span class=&#34;token assign-left variable&#34;&gt;&lt;span class=&#34;token environment constant&#34;&gt;PATH&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;token environment constant&#34;&gt;$PATH&lt;/span&gt;&lt;span class=&#34;token builtin class-name&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;token variable&#34;&gt;$SPARK_HOME&lt;/span&gt;/bin&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;然后，使环境变量生效：&lt;/p&gt;
+&lt;figure class=&#34;highlight bash&#34;&gt;&lt;figcaption data-lang=&#34;bash&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token builtin class-name&#34;&gt;source&lt;/span&gt; /etc/profile.d/my_env.sh&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;配置 Hive 以使用 Spark 作为执行引擎&lt;/strong&gt;：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;修改 &lt;code&gt;hive-site.xml&lt;/code&gt;  文件，添加以下内容：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&#34;highlight xml&#34;&gt;&lt;figcaption data-lang=&#34;XML&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;lt;&lt;/span&gt;property&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;  &lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;lt;&lt;/span&gt;name&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&gt;&lt;/span&gt;&lt;/span&gt;hive.execution.engine&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;lt;/&lt;/span&gt;name&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;3&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;  &lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;lt;&lt;/span&gt;value&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&gt;&lt;/span&gt;&lt;/span&gt;spark&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;lt;/&lt;/span&gt;value&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;4&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;lt;/&lt;/span&gt;property&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;ul&gt;
+&lt;li&gt;指定 Spark 的 jar 包位置（注意：端口号 8020 必须和 namenode 的端口号一致）：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&#34;highlight xml&#34;&gt;&lt;figcaption data-lang=&#34;XML&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;lt;&lt;/span&gt;property&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;  &lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;lt;&lt;/span&gt;name&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&gt;&lt;/span&gt;&lt;/span&gt;spark.yarn.jars&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;lt;/&lt;/span&gt;name&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;3&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;  &lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;lt;&lt;/span&gt;value&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&gt;&lt;/span&gt;&lt;/span&gt;hdfs://hadoop102:8020/spark-jars/*&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;lt;/&lt;/span&gt;value&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;4&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;lt;/&lt;/span&gt;property&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;上传 Spark 的 jar 包至 HDFS&lt;/strong&gt;：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;将 Spark 的 jar 包上传到 HDFS 的指定目录：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&#34;highlight bash&#34;&gt;&lt;figcaption data-lang=&#34;bash&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;hdfs dfs &lt;span class=&#34;token parameter variable&#34;&gt;-mkdir&lt;/span&gt; &lt;span class=&#34;token parameter variable&#34;&gt;-p&lt;/span&gt; /spark-jars&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;hdfs dfs &lt;span class=&#34;token parameter variable&#34;&gt;-put&lt;/span&gt; /opt/module/spark/jars/* /spark-jars/&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;测试 Hive on Spark&lt;/strong&gt;：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;启动 Hive 客户端并执行一些测试查询以确保 Spark 作为执行引擎正常工作。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://note.youdao.com/yws/api/personal/file/WEBbae2c251f4135b4211f8586212d00c3b?method=download&amp;amp;shareKey=8f2f03de469097c4b137501a257214cc&#34; alt=&#34;查询验证&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://note.youdao.com/yws/api/personal/file/WEBea630c8b4ed974f7ccc9ca09a5f90865?method=download&amp;amp;shareKey=8025360ba19b11bfcabd229bc0f0e2f1&#34; alt=&#34;引擎查询&#34;&gt;&lt;/p&gt;
 </content>
         <category term="升级" />
         <updated>2023-11-16T02:39:42.000Z</updated>
